@@ -234,7 +234,7 @@ class Transport :
             else:
                 n += 1
         
-        cc = n / N
+        cc = (N-n) / N
         
         # Calculate the changes in capacity and map to sorted nodes
         capacities = {sorted_nodes[i]: capacity[i] for i in range(len(sorted_nodes))}
@@ -328,3 +328,105 @@ class Rossa:
         core_nodes = [i for i, alpha_value in enumerate(self.alpha) if alpha_value >= threshold]
         return core_nodes
 
+
+class Minre :
+    def __init__(self, G, A):
+        """
+        Initialize the SBM class with the adjacency matrix.
+        :param A: Adjacency matrix
+        """
+        self.G = G
+        self.A = A
+
+
+    def normalize_w(self, w):
+        """
+        코어니스 벡터 w를 정규화하여 반환하고, 0~1 범위로 스케일링합니다.
+
+        Parameters
+        ----------
+        w : ndarray
+            n 차원의 코어니스 벡터.
+
+        Returns
+        -------
+        w_scaled : ndarray
+            정규화된 후 0~1로 스케일링된 코어니스 벡터.
+        """
+        # 정규화
+        norm_factor = np.sqrt(np.sum(w ** 2))
+        w_normalized = w / norm_factor
+
+        # 0~1로 스케일링
+        w_min = np.min(w_normalized)
+        w_max = np.max(w_normalized)
+        w_scaled = (w_normalized - w_min) / (w_max - w_min)
+
+        return w_scaled
+
+    def calculate_pre(self, A, w):
+        n = A.shape[0]
+        
+        # ww^T 계산
+        wwT = np.outer(w, w)
+        
+        # A의 비대각선 평균 계산
+        mean_A = np.mean(A[np.triu_indices(n, k=1)])
+        A_bar = np.full(A.shape, mean_A)
+        
+        # SS(A - ww^T) 계산 (비대각선에 대해서만)
+        residual_ss = np.sum((A[np.triu_indices(n, k=1)] - wwT[np.triu_indices(n, k=1)]) ** 2)
+        
+        # SS(A - A_bar) 계산 (비대각선에 대해서만)
+        total_ss = np.sum((A[np.triu_indices(n, k=1)] - A_bar[np.triu_indices(n, k=1)]) ** 2)
+        
+        # PRE 계산
+        pre = 1 - (residual_ss / total_ss)
+        
+        return pre
+
+    def minres(self, tol=1e-5, max_iter=10000, learning_rate=0.001):
+        """
+        MINRES 알고리즘을 사용하여 행렬 A에 대해 w를 구함.
+
+        Parameters
+        ----------
+        A : ndarray
+            n x n 데이터 행렬.
+        tol : float, optional
+            수렴 허용 오차, 기본값은 1e-5.
+        max_iter : int, optional
+            최대 반복 횟수, 기본값은 1000.
+        learning_rate : float, optional
+            기울기 하강법의 학습률, 기본값은 0.01.
+
+        Returns
+        -------
+        w : ndarray
+            n 차원의 벡터, 코어니스 값.
+        PRE : float
+            비율 오차 감소(Proportional Reduction of Error).
+        """
+        A = self.A
+        n = A.shape[0]
+        w = np.random.rand(n)  # w의 초기값은 랜덤으로 설정
+
+        for _ in range(max_iter):
+            gradient = np.zeros(n)
+            for i in range(n):
+                for j in range(n):
+                    if i != j:
+                        gradient[i] += -2 * (A[i, j] - w[i] * w[j]) * w[j]
+
+            w_new = w - learning_rate * gradient
+
+            if np.linalg.norm(w_new - w) < tol:
+                break
+
+            w = w_new
+
+        self.PRE = self.calculate_pre(A, w)
+        self.w = self.normalize_w(w)
+        self.indices = np.where(self.w > 0.8)[0]
+        return self.w, self.indices, self.PRE
+    
