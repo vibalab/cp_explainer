@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 from scipy.stats import gaussian_kde
 from scipy.sparse.linalg import eigs
+import itertools
+import math
 
 class Stochastic_Block_Model:
     def __init__(self, G, A):
@@ -671,6 +673,7 @@ class KM_ER :
         p = self.p
         updates = 0
 
+        r_nodes = list(self.G.nodes)
         for _ in range(max_updates):
             if updates >= max_updates:
                 break
@@ -681,7 +684,7 @@ class KM_ER :
             for i in nodes:
                 best_delta_Q = 0
                 best_c, best_x = c[i], x[i]
-                di = self.G.degree[i]  # Degree of node i
+                di = self.G.degree[r_nodes[i]]  # Degree of node i
                 evaluations = 0  # To count the number of evaluations for this node
 
                 
@@ -694,20 +697,21 @@ class KM_ER :
                         N_tilde[c[j], int(x[j])] += 1
 
                 # Check all neighbors of i, but limit to 2di evaluations
-                for j in self.G.neighbors(i):
+                for j in self.G.neighbors(r_nodes[i]):
                     if evaluations >= 2 * di:
                         break
-                    
+                    neighbor_index = r_nodes.index(j)
                     for new_x in [0, 1]:
                         if evaluations >= 2 * di:
                             break
                         
-                        delta_Q = self.update_Q_cp(i, c, x, c[j], new_x, p, d_tilde, N_tilde)
+
+                        delta_Q = self.update_Q_cp(i, c, x, c[neighbor_index], new_x, p, d_tilde, N_tilde)
                         evaluations += 1
                         
                         if delta_Q > best_delta_Q:
                             best_delta_Q = delta_Q
-                            best_c, best_x = c[j], new_x
+                            best_c, best_x = c[neighbor_index], new_x
 
                 # Update (ci, xi) if it improves Q_cp
                 if best_delta_Q > 0:
@@ -738,10 +742,11 @@ class KM_ER :
         colors = plt.cm.get_cmap('hsv', len(unique_c_values))
         color_map = {val: colors(i) for i, val in enumerate(unique_c_values)}
         
+        r_nodes = list(self.G.nodes)
         for i in range(len(c)):
             node_color = 'white' if x[i] == 0 else color_map[c[i]]
             nx.draw_networkx_nodes(
-                self.G, pos, nodelist=[i], 
+                self.G, pos, nodelist=[r_nodes[i]], 
                 node_color=node_color, 
                 edgecolors=color_map[c[i]], 
                 linewidths=2, 
@@ -863,8 +868,9 @@ class KM_Config :
         Compute the sum of degrees of nodes in each block (c, x).
         """
         D = np.zeros((max(c) + 1, 2))
+        r_nodes = list(self.G.nodes)
         for node in degrees:
-            D[c[node], int(x[node])] += degrees[node]
+            D[c[r_nodes.index(node)], int(x[r_nodes.index(node)])] += degrees[node]
         return D
 
     def compute_Q_cp_config(self, c, x):
@@ -883,14 +889,14 @@ class KM_Config :
         M = self.G.number_of_edges()
         A = nx.to_numpy_array(self.G)
         degrees = dict(self.G.degree())
-
+        r_nodes = list(self.G.nodes)
         Q_cp_config = 0
         
         for i in range(N):
             for j in range(N):
                 A_ij = A[i, j]
-                d_i = degrees[i]
-                d_j = degrees[j]
+                d_i = degrees[r_nodes[i]]
+                d_j = degrees[r_nodes[j]]
                 
                 delta = 1 if c[i] == c[j] else 0
                 
@@ -954,7 +960,8 @@ class KM_Config :
         N = self.G.number_of_nodes()
         M = self.G.number_of_edges()
         A = nx.to_numpy_array(self.G)
-
+        r_nodes = list(self.G.nodes)
+        
         updates = 0
         for _ in range(max_updates):
             if updates >= max_updates:
@@ -969,7 +976,7 @@ class KM_Config :
             for i in nodes:
                 best_delta_Q = 0
                 best_c, best_x = c[i], x[i]
-                di = self.G.degree[i]  # Degree of node i
+                di = self.G.degree[r_nodes[i]]  # Degree of node i
                 evaluations = 0  # To count the number of evaluations for this node
                 
                 d_tilde = np.zeros((N, 2))  # d_tilde[i][0] for x=0, d_tilde[i][1] for x=1
@@ -979,7 +986,9 @@ class KM_Config :
                         d_tilde[c[j], int(x[j])] += A[i, j]
 
                 # Check all neighbors of i, but limit to 2di evaluations
-                for j in self.G.neighbors(i):
+                for j in self.G.neighbors(r_nodes[i]):
+                    neighbor_index = r_nodes.index(j)
+
                     if evaluations >= 2 * di:
                         break
                     
@@ -987,12 +996,12 @@ class KM_Config :
                         if evaluations >= 2 * di:
                             break
                         
-                        delta_Q = self.update_Q_cp_config(i, c, x, c[j], new_x, d_tilde, di, D, M)
+                        delta_Q = self.update_Q_cp_config(i, c, x, c[neighbor_index], new_x, d_tilde, di, D, M)
                         evaluations += 1
 
                         if delta_Q > best_delta_Q:
                             best_delta_Q = delta_Q
-                            best_c, best_x = c[j], new_x
+                            best_c, best_x = c[neighbor_index], new_x
 
                 # Update (ci, xi) if it improves Q_cp
                 if best_delta_Q > 0:
@@ -1355,37 +1364,178 @@ class Lap_Core :
         return z, core_set, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)
     
 
-    def visualize_core_periphery(self, core_set):
-        """
-        Visualize the core-periphery structure on the graph.
-        
-        Parameters:
-        - G: A networkx graph.
-        - core_set: Set of nodes identified as the core.
-        """
+    def plot_core_periphery_graph(self, core_indices):
         G = self.G
-        pos = nx.spring_layout(G)  # Layout for visualization
+        # Get the node labels (strings) from the graph using the indices
+        core_nodes = [list(G.nodes)[i] for i in core_indices]
         
-        # Nodes in the core set
-        core_nodes = list(core_set)
+        # Set node color: 'red' for core nodes and 'blue' for periphery nodes
+        node_colors = ['red' if node in core_nodes else 'blue' for node in G.nodes]
         
-        # Nodes in the periphery
-        periphery_nodes = list(set(G.nodes()) - core_set)
+        # Draw the graph
+        pos = nx.spring_layout(G)  # spring layout for better visualization
+        nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=10, font_size=0, font_color='white')
         
-        plt.figure(figsize=(10, 8))
+        # Highlight core nodes with larger size
+        nx.draw_networkx_nodes(G, pos, nodelist=core_nodes, node_color='red', node_size=30)
+
+        plt.show()
+
+
+
+class Surprise :
+    def __init__(self, G, A) :
+        self.G = G
+        self.A = A
+
+    def calculate_parameters_enhanced(self, group_1, group_2):
+        G = self.G
         
-        # Draw core nodes
-        nx.draw_networkx_nodes(G, pos, nodelist=core_nodes, node_color='red', node_size=300, label='Core')
+        # 노드 쌍의 수 계산
+        V = math.comb(G.number_of_nodes(), 2)
+        V_bullet = math.comb(len(group_1), 2)
+        V_circle = math.comb(len(group_2), 2)
         
-        # Draw periphery nodes
-        nx.draw_networkx_nodes(G, pos, nodelist=periphery_nodes, node_color='blue', node_size=300, label='Periphery')
+        # 엣지 수 계산
+        L = G.number_of_edges()
+        l_bullet = len([edge for edge in G.edges if edge[0] in group_1 and edge[1] in group_1])
+        l_circle = len([edge for edge in G.edges if edge[0] in group_2 and edge[1] in group_2])
         
-        # Draw edges
-        nx.draw_networkx_edges(G, pos, alpha=0.5)
+        # 가중치 있는 경우와 없는 경우 모두 처리
+        W = 0
+        w_bullet = 0
+        w_circle = 0
+
+        for u, v, data in G.edges(data=True):
+            weight = data.get('weight', 1)  # 가중치가 없으면 기본값 1 사용
+            W += weight
+            if u in group_1 and v in group_1:
+                w_bullet += weight
+            elif u in group_2 and v in group_2:
+                w_circle += weight
+            
+        return V, V_bullet, V_circle, L, l_bullet, l_circle, W, w_bullet, w_circle
+
+
+
+    def calculate_MEH(self, V, V_bullet, V_circle, L, l_bullet, l_circle, W, w_bullet, w_circle):
+        V_top = V - (V_bullet + V_circle)
+        l_top = L - (l_bullet + l_circle)
+        w_top = W - (w_bullet + w_circle)
         
-        # Draw labels
-        nx.draw_networkx_labels(G, pos, font_size=12, font_color='white')
+        t1_numerator = (
+            math.comb(V_bullet, l_bullet) *
+            math.comb(V_circle, l_circle) *
+            math.comb(V_top, l_top)
+        )
         
-        plt.legend()
-        plt.title("Core-Periphery Structure of the Karate Club Graph")
+        t1_denominator = math.comb(V, L)
+        
+        if w_circle > l_circle :
+            t2_numerator = (
+                math.comb(w_bullet-1, w_bullet-l_bullet) *
+                math.comb(w_circle-1, w_circle-l_circle) *
+                math.comb(w_top-1, w_top-l_top ) 
+            )
+
+            t2_denominator = math.comb(W-1, L-1)
+        else :
+            t2_numerator = 1
+            t2_denominator = 1
+
+        MEH_value = (t1_numerator / t1_denominator) * (t2_numerator / t2_denominator)
+        
+        return MEH_value
+
+    def calculate_intra_connection_probability(self, coreset):
+        G = self.G
+        n = len(coreset)
+
+        # 가능한 연결 수 계산
+        possible_connections = math.comb(n, 2)
+        actual_connections = len([edge for edge in G.edges if edge[0] in coreset and edge[1] in coreset])
+        # 연결 확률 p 계산
+        if possible_connections == 0:
+            return 0  # 노드가 하나 이하일 경우 연결 확률은 0
+        p = actual_connections / possible_connections
+        return p
+
+    def core_periphery_optimization(self, iterations=10):
+        G = self.G
+        N = G.number_of_nodes()
+        A = nx.to_numpy_array(G, weight='weight')
+        x = np.random.choice([0, 1], size=N)  # 초기 노드 분할 (0: periphery, 1: core)
+
+        def calculate_surprise(x):
+            group_1 = np.where(x == 1)[0]  # core
+            group_2 = np.where(x == 0)[0]  # periphery
+
+            V, V_bullet, V_circle, L, l_bullet, l_circle, W, w_bullet, w_circle = self.calculate_parameters_enhanced(group_1, group_2)
+            return self.calculate_MEH(int(V), int(V_bullet), int(V_circle), int(L), int(l_bullet), int(l_circle), int(W), int(w_bullet), int(w_circle))
+
+        best_x = x.copy()
+        best_q = calculate_surprise(x)
+
+        for _ in range(iterations):
+
+            permuted_nodes = np.random.permutation(N)  # N개의 노드를 무작위 순서로 섞음
+            for node in permuted_nodes:
+                x[node] = 1 - x[node]  # 노드 이동 (core ↔ periphery)
+                try :
+                    q = calculate_surprise(x)
+                except :
+                    continue
+                
+                if q > best_q:  # 개선이 안 되면 롤백
+                    x[node] = 1 - x[node]
+                else:
+                    best_q = q
+                    best_x = x.copy()
+            
+            if np.random.rand() > 0.5:
+                # Move some nodes in a random manner for perturbation
+                flip_nodes = np.random.choice(N, size=max(int(round(N/10, 0)), 3) , replace=False)
+                x[flip_nodes] = 1 - x[flip_nodes]
+                try :
+                    q = calculate_surprise(x)
+                except :
+                    continue
+                if q > best_q:
+                    x[flip_nodes] = 1 - x[flip_nodes]
+                else:
+                    best_q = q
+                    best_x = x.copy()
+
+
+        #p11 < p22 인 경우 core를 바꿈
+        set1 = np.where(best_x==1)[0]
+        set2 = np.where(best_x==0)[0]
+
+        set1_p = self.calculate_intra_connection_probability(set1)
+        set2_p = self.calculate_intra_connection_probability(set2)
+
+        if set1_p < set2_p :
+            best_x = 1 - best_x
+            core_set = set2
+        else :
+            core_set = set1
+
+        return best_x, core_set, best_q
+
+
+    def plot_core_periphery_graph(self, core_indices):
+        G = self.G
+        # Get the node labels (strings) from the graph using the indices
+        core_nodes = [list(G.nodes)[i] for i in core_indices]
+        
+        # Set node color: 'red' for core nodes and 'blue' for periphery nodes
+        node_colors = ['red' if node in core_nodes else 'blue' for node in G.nodes]
+        
+        # Draw the graph
+        pos = nx.spring_layout(G)  # spring layout for better visualization
+        nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=10, font_size=0, font_color='white')
+        
+        # Highlight core nodes with larger size
+        nx.draw_networkx_nodes(G, pos, nodelist=core_nodes, node_color='red', node_size=30)
+
         plt.show()
