@@ -1,0 +1,70 @@
+1. Borgatti Everett
+	- Delta(A, C) = rho 최대화 하는 방향으로 최적화
+	- A는 Adjacency, C는 둘 중 하나의 노드가 core인 경우 1, 둘다 peri인 경우 0
+	- Metric: Rho
+
+2. Brusco
+	- Z = I(둘다 코어 및 연결) + I(둘다 주변 및 비연결) 최대화 하는 방향으로 최적화
+	- Metric: Z
+
+
+3. Lip
+	- Degree가 큰 것부터 하나하나 넣으며, Z influence 구함.
+	-- Z 값이 최소화 하는 시점이 Core.
+	-- Z = I(둘다 코어 및 비연결) + I(둘다 주변 및 연결)
+	- Metric: Z
+
+4. Holme
+	- Core그룹의 Closeness Centrality를 최대화 하는 방향으로 최적화.
+	-- k를 1부터 시작해서, Closeness Centrality가 최대화 되는 k-core 찾음
+	- Metric: Holme Metric - Configuration Model과 비교하여 평가
+
+5. Silva
+	- Capacity : 모든 노드 쌍 간 최소 거리 합의 역수 -> Capcity 클수록 효율적
+	- 각 노드별 Closeness Centrality 계산 후, 내림차순 정렬 후 하나씩 제거.
+	- 하나씩 제거하며, Capacity가 초기치의 90%에 도달하면 Core 선정
+	- Metric: Core Coefficient - (N- core_nodes) / N
+
+6. MINRE
+	- 초기 가중치 벡터 w 무작위 생성 후, ww^t와 A의 차이가 최소화 되도록 w 조정.
+	-- 가중치 w의 cutoff에 따라 core 설정
+	- Metric: PRE - w가 A를 얼마나 잘 복원하였는가
+
+7. Low Rank Core
+	- A의 Eigen Vector 활용해서 A의 근사행렬 구함
+	- 여기에서 노드 차수 구하고, 이를 기준으로 Core-Periphery 분할
+	-- Density 구해서, 이를 최대화 하는 노드 분할. 
+	- Metric: Density - Core-Core, Core-Peri 간 연결 높고, Peri-Peri 간은 낮아지게
+
+8. Rombach
+	- Transition Function(여러 Variant 존재)으로 코어 분류 가능성 평가
+	-- 이를 활용해, CP 분류 진행하며, Core Quality 최대화 하는 Anealing 진행
+	- 최적화 완료 후, 최적 벡터와 코어 노드 집합 결정.
+	- Metric: Core Quality - Sum (A * C)
+
+9. Rossa
+	- Random Walk 기반으로, Peri-Peri 간 전이확률을 최소화하는 최대 갯수의 Periphery Nodes를 구함.
+	-- 해당 전이확률을 alpha로 지정.
+	- Metric: CP-Centralization - 얼마나 코어 중심적인가
+	-- Z score - Configuration 과 비교
+
+10. KM-ER
+	- Q라는 값을 가지고, 각 노드를 [Core, Peri] and [Core1, Core2]로 이동시키며 최적화
+	-- Erdős–Rényi 모델에 비교하여 얼마나 좋아졌는지 비교
+	- Q_cp: 여러 코어와 Core-Periphery 관련 delta function
+
+11. KM-Config
+	- Q라는 값을 가지고, 각 노드를 [Core, Peri] and [Core1, Core2]로 이동시키며 최적화
+	-- Configuration 모델에 비교하여 얼마나 좋아졌는지 비교
+	- Q_cp: 여러 코어와 Core-Periphery 관련 delta function
+
+12. Influence Based Detection
+	- P: 각 노드의 여러 노드에 대한 영향력 행렬
+	- H: 각 노드가 가장 많은 영향을 받는 노드를 찾는 벡터
+	- 코드 스코어 기반으로 코어 노드 식별
+	- 코어 스코어, 코어 노드, 코어-퍼리페리 쌍, 가장 가까운 코어 클럿흐터 반환
+	
+
+
+
+

@@ -1,7 +1,7 @@
 import numpy as np
 import networkx as nx
 
-class IBD:
+class ICPA:
     def __init__(self, G, A):
         self.G = G
         self.A = A

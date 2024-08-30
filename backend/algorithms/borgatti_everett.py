@@ -87,9 +87,9 @@ class Borgatti_Everett:
         initial_population = []
 
         # 상위 1%개 노드에 1을 넣은 해
-        solution_1 = np.zeros(num_nodes)
-        solution_1[top_1_nodes] = 1
-        initial_population.append(solution_1)
+        # solution_1 = np.zeros(num_nodes)
+        # solution_1[top_1_nodes] = 1
+        # initial_population.append(solution_1)
 
         # 상위 10% 노드에 1을 넣은 해
         solution_10 = np.zeros(num_nodes)
@@ -121,7 +121,7 @@ class Borgatti_Everett:
         return initial_population
 
 
-    def run_genetic_algorithm(self, iter=1000):
+    def fit(self, iter=1000):
         initial_population = self.initial_sol()
         ga_instance_borgatti = pygad.GA(
             num_generations=iter,
@@ -138,5 +138,6 @@ class Borgatti_Everett:
 
         # Run the genetic algorithm for Borgatti and Everett correlation
         ga_instance_borgatti.run()
+        solution_borgatti, solution_fitness_borgatti, solution_idx_borgatti = ga_instance_borgatti.best_solution()
 
-        return ga_instance_borgatti
+        return solution_borgatti, solution_fitness_borgatti, solution_idx_borgatti
