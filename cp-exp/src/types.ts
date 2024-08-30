@@ -39,6 +39,12 @@ export interface Overview {
   eigenvector_centrality_avg: number;
 }
 
+export interface GraphAdjacency {
+  nodes_labels: (string | number)[];
+  cp_ind: number[];
+  adjacency: number[][];
+}
+
 export interface Dataset {
   nodes: NodeData[];
   edges: EdgeData[];

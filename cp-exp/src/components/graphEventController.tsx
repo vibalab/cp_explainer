@@ -71,12 +71,7 @@ const GraphEventsController: FC<
       },
       clickStage() {
         // 그래프의 배경을 클릭했을 때
-        graph.forEachNode((node) => {
-          if (graph.getNodeAttribute(node, "filter_hidden") === false) {
-            graph.setNodeAttribute(node, "highlighted", false);
-            graph.setNodeAttribute(node, "hidden", false);
-          }
-        });
+        graph.forEachNode((node) => {});
         setSelectedNode(null); // 패널 닫기
       },
       enterNode({ node }) {

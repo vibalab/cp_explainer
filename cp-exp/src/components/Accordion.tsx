@@ -90,7 +90,14 @@ const Accordion: React.FC<AccordionProps> = ({
       <div
         ref={contentRef}
         className={`accordion-content ${isTransitioning ? "transition" : ""}`}
-        style={{ height, overflow: "hidden" }}
+        style={{
+          height,
+          flexDirection: "column",
+          overflowY: "auto",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "0 auto",
+        }}
       >
         {children}
       </div>

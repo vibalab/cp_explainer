@@ -1,0 +1,16 @@
+{
+    "node_count": 77,
+    "edge_count": 254,
+    "average_degree": 6.597402597402597,
+    "density": 0.08680792891319207,
+    "average_clustering_coefficient": 0.5731367499320134,
+    "average_shortest_path_length": 2.6411483253588517,
+    "degree_centrality_max": 0.47368421052631576,
+    "degree_centrality_avg": 0.08680792891319204,
+    "betweenness_centrality_max": 0.45389967342598925,
+    "betweenness_centrality_avg": 0.029025546122948727,
+    "closeness_centrality_max": 0.6440677966101694,
+    "closeness_centrality_avg": 0.3893412505666163,
+    "eigenvector_centrality_max": 0.3178389397749768,
+    "eigenvector_centrality_avg": 0.07802991544392941
+}
