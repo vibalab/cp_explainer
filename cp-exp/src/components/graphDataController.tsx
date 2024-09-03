@@ -52,8 +52,9 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
           attributes: node.attributes, // attributes는 임의의 형태로 올 수 있음
           size: nodeSize,
           color: node.core_periphery === 0 ? "#FFFFFF" : "#87CEEB", // core_periphery 값에 따라 color 설정
-          borderColor: "FFFFFF",
+          borderColor: node.core_periphery === 0 ? "#87CEEB" : "#000000",
           pictoColor: "FFFFFF",
+          clicked: false,
         });
       });
 

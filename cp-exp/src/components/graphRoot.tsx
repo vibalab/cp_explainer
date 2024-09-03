@@ -29,6 +29,14 @@ import GraphTitle from "./graphTitle";
 import SearchField from "./searchField";
 import Tooltips from "./toolTips";
 import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
+import { Attributes } from "graphology-types";
+
+interface RootProps {
+  onNodeClick: (
+    nodeAttrs: Attributes,
+    neighbors: Array<{ label: string; attributes: Attributes }>
+  ) => void;
+}
 
 const NodeBorderCustomProgram = createNodeBorderProgram({
   borders: [
@@ -49,7 +57,7 @@ const NodeProgram = createNodeCompoundProgram([
   NodePictogramCustomProgram,
 ]);
 
-const Root: FC = () => {
+const Root: FC<RootProps> = ({ onNodeClick }) => {
   const [showContents, setShowContents] = useState(false);
   const [dataReady, setDataReady] = useState(false);
   const [dataset, setDataset] = useState<Dataset | null>(null);
@@ -128,7 +136,10 @@ const Root: FC = () => {
       className="react-sigma"
     >
       <GraphSettingsController hoveredNode={hoveredNode} />
-      <GraphEventsController setHoveredNode={setHoveredNode} />
+      <GraphEventsController
+        setHoveredNode={setHoveredNode}
+        onNodeClick={onNodeClick}
+      />
       <GraphDataController dataset={dataset} />
 
       {dataReady && (

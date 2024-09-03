@@ -1,12 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Root from "./graphRoot";
 import OverveiwPanel from "./OverviewPanel";
-import Accordion from "./Accordion";
+import Accordion from "./sub/Accordion";
 import AdjacencyMatrix from "./AdjacencyPanel";
+import { Attributes } from "graphology-types";
+import NodeDetailsPanel from "./NodeDetailPanel";
+import ConnectedNodes from "./ConnectedNodesPanel";
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);
   const [isRightPanelVisible, setIsRightPanelVisible] = useState<boolean>(true);
+  const [clickedNodeAttributes, setClickedNodeAttributes] =
+    useState<Attributes | null>(null);
+  const [clickedNeighborDetails, setClickedNeighborDetails] = useState<Array<{
+    label: string;
+    attributes: Attributes;
+  }> | null>(null);
 
   const [showOverview, setShowOverview] = useState({
     overview1: true,
@@ -18,6 +27,21 @@ const ResizableContainer: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const handleNodeClick = (
+    nodeAttrs: Attributes,
+    neighbors: Array<{ label: string; attributes: Attributes }>
+  ) => {
+    setClickedNodeAttributes(nodeAttrs);
+    setClickedNeighborDetails(neighbors);
+
+    // Node Detail Panel이 자동으로 활성화되도록 설정
+    setShowOverview((prev) => ({
+      ...prev,
+      overview2: true,
+    }));
+  };
 
   const handleMouseMove = (e: MouseEvent) => {
     const container = document.querySelector("#resizable-container");
@@ -65,6 +89,27 @@ const ResizableContainer: React.FC = () => {
     }));
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   return (
     <div
       id="resizable-container"
@@ -79,7 +124,7 @@ const ResizableContainer: React.FC = () => {
         <button className="fancy-button" onClick={toggleRightPanel}>
           {isRightPanelVisible ? "Detail Panel" : "Detail Panel"}
         </button>
-        <Root />
+        <Root onNodeClick={handleNodeClick} />
       </div>
       {isRightPanelVisible && (
         <div
@@ -121,6 +166,7 @@ const ResizableContainer: React.FC = () => {
             </button>
             {isDropdownOpen && (
               <div
+                ref={dropdownRef}
                 style={{
                   position: "absolute",
                   backgroundColor: "#fff",
@@ -144,7 +190,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview2}
                     onChange={(e) => handleCheckboxChange(e, "overview2")}
                   />
-                  Overview 2
+                  Node Detail Panel
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -152,7 +198,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview3}
                     onChange={(e) => handleCheckboxChange(e, "overview3")}
                   />
-                  Adjacency Matrix
+                  Connected Nodes
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -160,7 +206,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview4}
                     onChange={(e) => handleCheckboxChange(e, "overview4")}
                   />
-                  Overview 4
+                  Adjacency Matrix
                 </label>
               </div>
             )}
@@ -175,19 +221,25 @@ const ResizableContainer: React.FC = () => {
 
           {showOverview.overview2 && (
             <div style={{ flexShrink: 0 }}>
-              <OverveiwPanel />
+              <NodeDetailsPanel
+                nodeAttributes={clickedNodeAttributes}
+                neighborDetails={clickedNeighborDetails}
+              />
             </div>
           )}
 
           {showOverview.overview3 && (
             <div style={{ flexShrink: 0 }}>
-              <AdjacencyMatrix />
+              <ConnectedNodes
+                nodeAttributes={clickedNodeAttributes}
+                neighborDetails={clickedNeighborDetails}
+              />
             </div>
           )}
 
           {showOverview.overview4 && (
             <div style={{ flexShrink: 0 }}>
-              <OverveiwPanel />
+              <AdjacencyMatrix />
             </div>
           )}
         </div>

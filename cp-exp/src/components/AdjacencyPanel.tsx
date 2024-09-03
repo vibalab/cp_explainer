@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import { GraphAdjacency } from "../types";
-import Accordion from "./Accordion";
+import Accordion from "./sub/Accordion";
 
 const AdjacencyMatrixHeatmap: React.FC = () => {
   const [graphData, setGraphData] = useState<GraphAdjacency | null>(null);
@@ -149,7 +149,7 @@ const AdjacencyMatrixHeatmap: React.FC = () => {
   };
 
   return (
-    <Accordion title="Adjacency Matrix">
+    <Accordion title="Adjacency Matrix" isOpen={true}>
       <p>Grey area means Core-Core or Core-Periphery</p>
 
       <div

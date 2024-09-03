@@ -1,141 +1,151 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Attributes } from "graphology-types";
-import { useSigma } from "@react-sigma/core";
+import Accordion, { AccordionHandle } from "./sub/Accordion";
+import styled from "styled-components";
+import SmallAccordion from "./sub/SmallAccordion";
+import Tooltip from "./sub/Tooltip";
+import OverviewItem from "./sub/OverviewItem";
 
-interface NodeDetailPanelProps {
-  node: Attributes | null;
-  onClose: () => void;
+interface NodeDetailsPanelProps {
+  nodeAttributes: Attributes | null;
+  neighborDetails: Array<{ label: string; attributes: Attributes }> | null;
 }
 
-const NodeDetailPanel: React.FC<NodeDetailPanelProps> = ({ node, onClose }) => {
-  const [flipped, setFlipped] = useState(false);
-  const [neighborCount, setNeighborCount] = useState(0);
-  const sigma = useSigma();
-  const graph = sigma.getGraph();
+const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({
+  nodeAttributes,
+  neighborDetails,
+}) => {
+  const [tooltip, setTooltip] = useState<{
+    text: string;
+    x: number;
+    y: number;
+  } | null>(null);
 
-  useEffect(() => {
-    setFlipped(false);
-  }, [node]);
-
-  if (!node) return null;
-
-  const handleFlip = () => {
-    setFlipped(!flipped);
+  const handleCopy = (
+    text: string,
+    event: React.MouseEvent<HTMLDivElement>
+  ) => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        setTooltip({
+          text: "Number Copied!",
+          x: event.clientX,
+          y: event.clientY,
+        });
+        setTimeout(() => setTooltip(null), 1000); // 1초 후에 tooltip 숨기기
+      },
+      (err) => {
+        console.error("Failed to copy: ", err);
+      }
+    );
   };
 
-  const neighbors = graph
-    .neighbors(node.label)
-    .filter(
-      (neighbor) => graph.getNodeAttribute(neighbor, "filter_hidden") === false
-    );
-  const sortedNeighbors = neighbors.sort((a, b) => a.localeCompare(b));
+  const nodeLabel = nodeAttributes?.label;
+  const nodeColor = nodeAttributes?.color;
+  const nodeDegree = nodeAttributes?.degree || 0;
+  const isCore = nodeAttributes?.core_periphery === 1;
+  const corePeripheryCount = neighborDetails
+    ? neighborDetails.filter(
+        (neighbor) => neighbor.attributes.core_periphery === 1
+      ).length
+    : 0;
 
-  const formattedSynopKeys = node.synop_keys
-    ? node.synop_keys.split(", ").map((key: string) => `#${key}`)
-    : [];
-
-  const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(
-    node.label
-  )}`;
-
-  let genreString = "";
-
-  const genres = [
-    { key: "genre_action", name: "Action" },
-    { key: "genre_adventure", name: "Adventure" },
-    { key: "genre_comedy", name: "Comedy" },
-    { key: "genre_drama", name: "Drama" },
-    { key: "genre_fantasy", name: "Fantasy" },
-    { key: "genre_horror", name: "Horror" },
-    { key: "genre_mystery", name: "Mystery" },
-    { key: "genre_romance", name: "Romance" },
-    { key: "genre_sf", name: "SF" },
-    { key: "genre_sports", name: "Sports" },
-    { key: "genre_suspense", name: "Suspense" },
-  ];
-
-  genreString = genres
-    .filter((genre) => node[genre.key] === 1)
-    .map((genre) => genre.name)
-    .join(", ");
-
-  let maxVal = 0;
-  let maxGenreVal = 0;
+  // 비율 계산 (퍼센트)
+  const percentage =
+    nodeDegree > 0 ? ((corePeripheryCount / nodeDegree) * 100).toFixed(2) : "0";
 
   return (
-    <div className="node-detail-panel">
-      <button className="close-btn" onClick={onClose}>
-        X
-      </button>
-      <div className={`card ${flipped ? "flipped" : ""}`} onClick={handleFlip}>
-        <div className="card-inner">
-          <div className="card-front">
-            <img src={node.URL} alt={node.label} />
-          </div>
-          <div className="card-back">
-            {
-              <>
-                <p className="synopsis">
-                  <strong>Synopsis:</strong>
-                </p>
-                <p className="synopsis">{node.synopsis}</p>
-              </>
-            }
-          </div>
-        </div>
-      </div>
-      <h1 className="title-container">
-        <a
-          href={googleSearchUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="title-link"
-        >
-          <div className="highlight"></div>
-          <span>{node.label}</span>
-        </a>
-      </h1>
-      {
-        <>
-          {formattedSynopKeys.length > 0 && (
-            <div className="synop-keys">
-              {formattedSynopKeys.map((key: string, index: number) => (
-                <span key={index} className="synop-key">
-                  {key}
-                </span>
-              ))}
-            </div>
-          )}
-          {node.awarded === 1 && (
-            <p className="awarded-message">
-              <img
-                src={node.image}
-                alt="Awarded"
-                style={{ width: "20px", verticalAlign: "middle" }}
+    <Accordion
+      title={
+        !nodeAttributes ? (
+          <div>No selected Node.</div>
+        ) : (
+          <>
+            {nodeColor && (
+              <div
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  backgroundColor: nodeColor,
+                  borderColor: nodeAttributes?.borderColor,
+                  marginRight: "10px",
+                  border: "1px solid #000",
+                  display: "inline-block", // Add this to match the inline style of the title
+                  borderRadius: "50%", // 원형으로 만들기 위해 반지름을 50%로 설정
+                }}
               />
-              <span style={{ marginLeft: "5px" }}>Awarded Animation</span>
-            </p>
-          )}
-          <p>
-            <strong>Studio:</strong> {node.studios}
-          </p>
-          <p>
-            <strong>Year:</strong> {node.year}
-          </p>
-          <p>
-            <strong>Genre:</strong> {genreString}
-          </p>
-          <p>
-            <strong>Rating:</strong> {node.rating}
-          </p>
-          <p>
-            <strong>Episodes:</strong> {Math.round(node.episodes)} (
-            {node.duration})<br />
-          </p>
-        </>
+            )}
+            {nodeLabel} {isCore && <span>(Core Node)</span>}
+          </>
+        )
       }
-    </div>
+      isOpen={true}
+    >
+      {!nodeAttributes ? (
+        <div>Select a node to see its details</div>
+      ) : (
+        <>
+          <Container>
+            <Row>
+              <OverviewItem
+                label="Degree"
+                value={nodeDegree.toString()}
+                onCopy={handleCopy}
+              />
+            </Row>
+            <Row>
+              <OverviewItem
+                label="Degree Centrality"
+                value={nodeAttributes?.degree_centrality.toFixed(4)}
+                onCopy={handleCopy}
+              />
+            </Row>
+            <Row>
+              <OverviewItem
+                label="Betweenness Centrality"
+                value={nodeAttributes?.betweenness_centrality.toFixed(4)}
+                onCopy={handleCopy}
+              />
+            </Row>
+            <Row>
+              <OverviewItem
+                label="Closeness Centrality"
+                value={nodeAttributes?.closeness_centrality.toFixed(4)}
+                onCopy={handleCopy}
+              />
+            </Row>
+            <Row>
+              <OverviewItem
+                label="Eigenvector Centrality"
+                value={nodeAttributes?.eigenvector_centrality.toFixed(4)}
+                onCopy={handleCopy}
+              />
+            </Row>
+          </Container>
+
+          {tooltip && (
+            <Tooltip text={tooltip.text} x={tooltip.x} y={tooltip.y} />
+          )}
+        </>
+      )}
+    </Accordion>
   );
 };
 
-export default NodeDetailPanel;
+export default NodeDetailsPanel;
+
+// Styled components
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const Row = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Column = styled.div`
+  width: 48%; /* 두 열로 나누기 위해 각 열의 너비를 50%보다 약간 작게 설정 */
+`;
