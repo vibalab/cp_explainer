@@ -1,11 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import Root from "./graphRoot";
 import OverveiwPanel from "./OverviewPanel";
-import Accordion from "./sub/Accordion";
 import AdjacencyMatrix from "./AdjacencyPanel";
 import { Attributes } from "graphology-types";
 import NodeDetailsPanel from "./NodeDetailPanel";
 import ConnectedNodes from "./ConnectedNodesPanel";
+import Sigma from "sigma";
+
+import { SigmaContainer } from "@react-sigma/core";
+type NodeType = { x: number; y: number; label: string; size: number };
+type EdgeType = { label: string };
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);

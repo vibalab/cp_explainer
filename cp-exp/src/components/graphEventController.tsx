@@ -1,10 +1,7 @@
 import { useRegisterEvents, useSigma } from "@react-sigma/core";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Attributes } from "graphology-types";
-
-function getMouseLayer() {
-  return document.querySelector(".sigma-mouse");
-}
+import NodeChangePanel from "./NodeChangePanel"; // Adjust the import path as needed
 
 const GraphEventsController: FC<
   PropsWithChildren<{
@@ -25,17 +22,44 @@ const GraphEventsController: FC<
     x: number;
     y: number;
   } | null>(null);
+  const [refreshToggle, setRefreshToggle] = useState(false); // Trigger to refresh panels
+  const [neighborDetails, setNeighborDetails] = useState<
+    Array<{ label: string; attributes: Attributes }>
+  >([]);
 
   const handleClose = () => setSelectedNode(null);
 
+  const handleRefreshPanels = () => {
+    setRefreshToggle(!refreshToggle); // Toggle to force re-render
+
+    // Trigger onNodeClick after attributes change
+    if (onNodeClick && selectedNode) {
+      const neighbors = graph.neighbors(selectedNode.id);
+
+      const updatedNeighborDetails = neighbors.map((neighborNode) => {
+        const neighborAttributes = graph.getNodeAttributes(neighborNode);
+        const neighborLabel = neighborAttributes.label || neighborNode;
+        return {
+          label: neighborLabel,
+          attributes: neighborAttributes,
+        };
+      });
+
+      onNodeClick(selectedNode, updatedNeighborDetails);
+    }
+  };
+
   useEffect(() => {
-    // 노드 클릭 시 패널의 위치를 마우스 클릭 위치로 설정
     registerEvents({
       clickNode({ node, event }) {
         if (mouseDownTime && Date.now() - mouseDownTime < 200) {
           const nodeAttributes = graph.getNodeAttributes(node);
 
           if (graph.getNodeAttribute(node, "clicked") === false) {
+            graph.forEachNode((node) => {
+              graph.setNodeAttribute(node, "clicked", false);
+              graph.setNodeAttribute(node, "borderSize", 0.1);
+            });
             const neighbors = graph.neighbors(node);
 
             const neighborDetails = neighbors
@@ -51,15 +75,14 @@ const GraphEventsController: FC<
               });
 
             graph.setNodeAttribute(node, "clicked", true);
+            graph.setNodeAttribute(node, "borderSize", 0.3);
 
-            // 부모 컴포넌트로 nodeAttributes와 neighborDetails 전달
             if (onNodeClick) {
               onNodeClick(nodeAttributes, neighborDetails);
             }
           } else {
             setSelectedNode(nodeAttributes);
-
-            // 패널 위치를 클릭한 위치로 설정
+            setNeighborDetails(neighborDetails); // Set neighbor details for refresh
             setPanelPosition({
               x: event.original.clientX,
               y: event.original.clientY,
@@ -70,29 +93,18 @@ const GraphEventsController: FC<
       clickStage() {
         graph.forEachNode((node) => {
           graph.setNodeAttribute(node, "clicked", false);
+          graph.setNodeAttribute(node, "borderSize", 0.1);
         });
         setSelectedNode(null);
-        setPanelPosition(null); // 패널 숨기기
+        setPanelPosition(null);
       },
       enterNode({ node }) {
         setHoveredNode(node);
-        const mouseLayer = getMouseLayer();
-        if (mouseLayer) mouseLayer.classList.add("mouse-pointer");
-
         graph.setNodeAttribute(node, "highlighted", true);
-        graph.forEachNeighbor(node, (neighbor) => {
-          graph.setNodeAttribute(neighbor, "highlighted", true);
-        });
       },
       leaveNode({ node }) {
         setHoveredNode(null);
-        const mouseLayer = getMouseLayer();
-        if (mouseLayer) mouseLayer.classList.remove("mouse-pointer");
-
         graph.setNodeAttribute(node, "highlighted", false);
-        graph.forEachNeighbor(node, (neighbor) => {
-          graph.setNodeAttribute(neighbor, "highlighted", false);
-        });
       },
       downNode: (e) => {
         setMouseDownTime(Date.now());
@@ -120,27 +132,26 @@ const GraphEventsController: FC<
         if (!sigma.getCustomBBox()) sigma.setCustomBBox(sigma.getBBox());
       },
     });
-  }, [registerEvents, sigma, draggedNode, mouseDownTime, graph, onNodeClick]);
+  }, [
+    registerEvents,
+    sigma,
+    draggedNode,
+    mouseDownTime,
+    graph,
+    onNodeClick,
+    refreshToggle, // Re-run effect on refreshToggle change
+  ]);
 
   return (
     <>
       {children}
-      {panelPosition && selectedNode && (
-        <div
-          style={{
-            position: "absolute",
-            top: panelPosition.y,
-            left: panelPosition.x,
-            backgroundColor: "white",
-            border: "1px solid black",
-            padding: "10px",
-            zIndex: 1000,
-          }}
-        >
-          <div>Node Label: {selectedNode.label}</div>
-          <button onClick={handleClose}>Close</button>
-        </div>
-      )}
+      <NodeChangePanel
+        panelPosition={panelPosition}
+        selectedNode={selectedNode}
+        onClose={handleClose}
+        onRefreshPanels={handleRefreshPanels} // Pass the refresh function
+        onNodeClick={onNodeClick} // Pass the onNodeClick to NodeChangePanel
+      />
     </>
   );
 };

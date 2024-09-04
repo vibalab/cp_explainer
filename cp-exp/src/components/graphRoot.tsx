@@ -30,6 +30,7 @@ import SearchField from "./searchField";
 import Tooltips from "./toolTips";
 import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
 import { Attributes } from "graphology-types";
+import SaveGraphToJson from "./SaveGraphToJson";
 
 interface RootProps {
   onNodeClick: (
@@ -40,7 +41,10 @@ interface RootProps {
 
 const NodeBorderCustomProgram = createNodeBorderProgram({
   borders: [
-    { size: { value: 0.1 }, color: { attribute: "borderColor" } },
+    {
+      size: { attribute: "borderSize", defaultValue: 0.1 },
+      color: { attribute: "borderColor" },
+    },
     { size: { fill: true }, color: { attribute: "color" } },
   ],
 });
@@ -145,6 +149,7 @@ const Root: FC<RootProps> = ({ onNodeClick }) => {
       {dataReady && (
         <>
           <div className="controls">
+            {/* <SaveGraphToJson></SaveGraphToJson> */}
             <FullScreenControl className="ico">
               <BsArrowsFullscreen />
               <BsFullscreenExit />

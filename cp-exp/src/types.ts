@@ -22,6 +22,12 @@ export interface EdgeData {
   attributes: Record<string, any>; // attributes는 임의의 형태로 올 수 있음
 }
 
+export interface Dataset {
+  nodes: NodeData[];
+  edges: EdgeData[];
+  overviews: Overview;
+}
+
 export interface Overview {
   node_count: number;
   edge_count: number;
@@ -43,10 +49,4 @@ export interface GraphAdjacency {
   nodes_labels: (string | number)[];
   cp_ind: number[];
   adjacency: number[][];
-}
-
-export interface Dataset {
-  nodes: NodeData[];
-  edges: EdgeData[];
-  overviews: Overview;
 }

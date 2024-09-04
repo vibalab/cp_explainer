@@ -21,31 +21,30 @@ const GraphSettingsController: FC<
   const graph = sigma.getGraph(); // Sigma로부터 그래프를 가져옴
 
   // 마우스를 그래프 위에서 움직일 때 하이라이트 갱신을 너무 자주 하지 않도록 디바운스 처리
-  const debouncedHoveredNode = useDebounce(hoveredNode, 5); // 디바운스된 hoveredNode를 설정
+  const debouncedHoveredNode = useDebounce(hoveredNode, 3); // 디바운스된 hoveredNode를 설정
 
   // 캐시된 노드 및 이웃 노드 데이터
   const lastHoveredNodeRef = useRef<string | null>(null);
   const cachedNeighborsRef = useRef<string[]>([]);
 
+  // 호버된 노드의 이웃 노드를 캐시에 저장하는 함수
   const updateCache = (node: string | null) => {
     if (node && node !== lastHoveredNodeRef.current) {
+      // 이전에 저장된 호버 노드와 다른 경우만 처리
       lastHoveredNodeRef.current = node;
-      cachedNeighborsRef.current = Array.from(graph.neighbors(node))
-        .map((neighbor) => ({
-          node: neighbor,
-          total_art: graph.getNodeAttribute(neighbor, "total_art") || 0,
-        }))
-        .sort((a, b) => b.total_art - a.total_art)
-        .slice(0, 20)
-        .map((neighbor) => neighbor.node);
+      cachedNeighborsRef.current = node
+        ? graph.neighbors(node) // 호버된 노드의 이웃 노드를 가져옴
+        : [];
     }
   };
 
   useEffect(() => {
     const hoveredColor: string =
-      (debouncedHoveredNode &&
-        sigma.getNodeDisplayData(debouncedHoveredNode)?.color) ||
-      ""; // 호버된 노드의 색상을 가져옴
+      sigma.getNodeDisplayData(debouncedHoveredNode)?.color === "#FFFFFF"
+        ? graph.getNodeAttribute(debouncedHoveredNode, "borderColor")
+        : (debouncedHoveredNode &&
+            sigma.getNodeDisplayData(debouncedHoveredNode)?.color) ||
+          ""; // 호버된 노드의 색상을 가져옴
 
     updateCache(debouncedHoveredNode);
 
@@ -54,20 +53,30 @@ const GraphSettingsController: FC<
         const isHoveredNode = node === debouncedHoveredNode;
         const isNeighborNode = cachedNeighborsRef.current.includes(node);
 
-        if (isHoveredNode || isNeighborNode) {
+        if (isHoveredNode) {
           return {
             ...data,
-            zIndex: 1,
-            label: data.label || node,
-            highlighted: true,
+            zIndex: 1, // zIndex를 높게 설정하여 위에 렌더링되도록 함
+            label: data.label || node, // 라벨 표시
+            highlighted: true, // 하이라이트 적용
+            color: data.color, // 원래 색상 유지
+          };
+        } else if (isNeighborNode) {
+          return {
+            ...data,
+            zIndex: 1, // zIndex를 높게 설정하여 위에 렌더링되도록 함
+            label: data.label || node, // 라벨 표시
+            color: data.color, // 원래 색상 유지
+            forceLabel: true,
           };
         }
 
         return {
           ...data,
           zIndex: 0,
-          label: "",
-          color: NODE_FADE_COLOR,
+          label: "", // 라벨 제거
+          color: NODE_FADE_COLOR, // 페이드된 색상 적용
+          borderColor: NODE_FADE_COLOR,
           image: null,
           highlighted: false,
         };
@@ -80,21 +89,21 @@ const GraphSettingsController: FC<
         const isConnectedEdge = graph.hasExtremity(edge, debouncedHoveredNode);
 
         return isConnectedEdge
-          ? { ...data, color: hoveredColor, size: 4 }
-          : { ...data, color: EDGE_FADE_COLOR, hidden: true };
+          ? { ...data, color: hoveredColor } // 연결된 엣지 원래 색상 유지
+          : { ...data, color: EDGE_FADE_COLOR, hidden: false }; // 페이드된 엣지 색상
       }
       return data;
     };
 
     setSettings({
-      defaultDrawNodeLabel: drawLabel,
-      defaultDrawNodeHover: drawHover,
+      defaultDrawNodeLabel: drawLabel, // 노드 라벨을 그리는 커스텀 함수
+      defaultDrawNodeHover: drawHover, // 노드 호버 상태를 그리는 커스텀 함수
       nodeReducer,
       edgeReducer,
     });
-  }, [sigma, graph, debouncedHoveredNode, setSettings]); // 의존성 배열에 sigma, graph, debouncedHoveredNode, isContributor, setSettings 포함
+  }, [sigma, graph, debouncedHoveredNode, setSettings]); // 의존성 배열에 sigma, graph, debouncedHoveredNode 포함
 
   return <>{children}</>; // 자식 요소를 렌더링
 };
 
-export default GraphSettingsController; // GraphSettingsController 컴포넌트를 기본 내보내기로 설정
+export default GraphSettingsController;
