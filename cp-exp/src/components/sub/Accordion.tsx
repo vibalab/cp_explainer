@@ -116,8 +116,12 @@ const Accordion = forwardRef<AccordionHandle, AccordionProps>(
     }, [autoResize]);
 
     return (
-      <div className="accordion" style={{ userSelect: "none" }}>
-        <div className="accordion-header" onClick={toggleAccordion}>
+      <div className="accordion">
+        <div
+          className="accordion-header"
+          onClick={toggleAccordion}
+          style={{ userSelect: "none" }} // Disable text selection only for the header
+        >
           <h3 style={{ fontSize }}>{title}</h3>
           <span>
             {isOpenState ? (

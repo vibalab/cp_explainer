@@ -1,12 +1,16 @@
-// src/components/OverviewPanel.tsx
 import React, { useEffect, useState } from "react";
 import { Overview } from "../types";
 import Accordion from "./sub/Accordion";
 import OverviewItem from "./sub/OverviewItem";
 import Tooltip from "./sub/Tooltip";
 import styled from "styled-components";
+import axios from "axios";
 
-const OverviewPanel: React.FC = () => {
+interface OverviewPanelProps {
+  isDataUploaded: boolean;
+}
+
+const OverviewPanel: React.FC<OverviewPanelProps> = ({ isDataUploaded }) => {
   const [graphData, setGraphData] = useState<Overview | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,21 +40,14 @@ const OverviewPanel: React.FC = () => {
   };
 
   useEffect(() => {
-    const dataFile = "data/graph_data_overview.json";
-
     const fetchData = async () => {
       try {
-        const res = await fetch(dataFile);
-        if (!res.ok) {
-          throw new Error(
-            `Failed to fetch data from ${dataFile}: ${res.statusText}`
-          );
-        }
-        const dataset: Overview = await res.json();
+        const res = await axios.get(
+          "http://localhost:8000/graph/overview-json/"
+        );
+        const dataset: Overview = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
         setGraphData(dataset);
-        requestAnimationFrame(() => {
-          setLoading(false); // 로딩 완료 상태로 설정
-        });
+        setLoading(false); // 로딩 완료 상태로 설정
       } catch (err) {
         console.error("Error fetching dataset:", err);
         setError("Failed to load graph data.");
@@ -58,8 +55,11 @@ const OverviewPanel: React.FC = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    // 데이터가 업로드될 때마다 fetchData 호출
+    if (isDataUploaded) {
+      fetchData();
+    }
+  }, [isDataUploaded]);
 
   if (loading) {
     return <div>Loading graph data...</div>;
@@ -70,7 +70,7 @@ const OverviewPanel: React.FC = () => {
   }
 
   if (!graphData) {
-    return <div>Error loading graph data.</div>;
+    return <div>No graph data available.</div>;
   }
 
   return (

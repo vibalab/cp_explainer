@@ -2,14 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import Root from "./graphRoot";
 import OverveiwPanel from "./OverviewPanel";
 import AdjacencyMatrix from "./AdjacencyPanel";
-import { Attributes } from "graphology-types";
 import NodeDetailsPanel from "./NodeDetailPanel";
 import ConnectedNodes from "./ConnectedNodesPanel";
-import Sigma from "sigma";
-
-import { SigmaContainer } from "@react-sigma/core";
-type NodeType = { x: number; y: number; label: string; size: number };
-type EdgeType = { label: string };
+import ConenctionProbPanel from "./ConnectionProbPanel"; // ConnectionProbPanel 가져오기
+import MethodModal from "./sub/MethodModal";
+import UploadDataModal from "./sub/UploadDataModal";
+import { Attributes } from "graphology-types";
+import axios from "axios";
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);
@@ -26,12 +25,79 @@ const ResizableContainer: React.FC = () => {
     overview2: false,
     overview3: false,
     overview4: false,
+    overview5: false,
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [isMethodModalOpen, setIsMethodModalOpen] = useState<boolean>(false);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
 
+  // Add state to store connection probabilities
+  const [connectionProbabilities, setConnectionProbabilities] = useState<{
+    coreCore: { possible: number; actual: number };
+    corePeriphery: { possible: number; actual: number };
+    peripheryPeriphery: { possible: number; actual: number };
+  } | null>(null);
+
+  const handleConnectionProbabilities = (data: {
+    coreCore: { possible: number; actual: number };
+    corePeriphery: { possible: number; actual: number };
+    peripheryPeriphery: { possible: number; actual: number };
+  }) => {
+    // Store the connection probabilities in state
+    setConnectionProbabilities(data);
+  };
+
+  // 파일 업로드 완료 시 호출될 함수
+  const handleFileUpload = async (file: File) => {
+    setUploadedFile(file);
+    setIsDataUploaded(false);
+
+    const filename = file.name;
+
+    try {
+      const graphOverviewResponse = await axios.get(
+        `http://localhost:8000/graph/overview?filename=${filename}`
+      );
+      const graphOverviewPath = graphOverviewResponse.data.filepath;
+
+      const nodeEdgeResponse = await axios.get(
+        `http://localhost:8000/graph/node-edge?filename=${filename}`
+      );
+      const nodeEdgePath = nodeEdgeResponse.data.filepath;
+
+      const adjacencyResponse = await axios.get(
+        `http://localhost:8000/graph/adjacency?filename=${filename}`
+      );
+      const adjacencyPath = adjacencyResponse.data.filepath;
+
+      alert(
+        `파일 처리 완료:\n1. 그래프 요약: ${graphOverviewPath}\n2. 노드 및 엣지: ${nodeEdgePath}\n3. 인접 행렬: ${adjacencyPath}`
+      );
+
+      setIsDataUploaded(true);
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+      alert("API 호출 중 오류가 발생했습니다.");
+    }
+  };
+
+  const [selectedMethod, setSelectedMethod] = useState<string>("BE");
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const screenWidthInInches =
+      window.screen.width / window.devicePixelRatio / 96;
+
+    if (screenWidthInInches >= 24) {
+      setLeftWidthPercentage(85);
+    } else {
+      setLeftWidthPercentage(75);
+    }
+  }, []);
 
   const handleNodeClick = (
     nodeAttrs: Attributes,
@@ -40,7 +106,6 @@ const ResizableContainer: React.FC = () => {
     setClickedNodeAttributes(nodeAttrs);
     setClickedNeighborDetails(neighbors);
 
-    // Node Detail Panel이 자동으로 활성화되도록 설정
     setShowOverview((prev) => ({
       ...prev,
       overview2: true,
@@ -93,6 +158,11 @@ const ResizableContainer: React.FC = () => {
     }));
   };
 
+  const handleMethodChange = (method: string) => {
+    setSelectedMethod(method);
+    setIsMethodModalOpen(false); // 모달 닫기
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -117,19 +187,39 @@ const ResizableContainer: React.FC = () => {
   return (
     <div
       id="resizable-container"
-      style={{ display: "flex", height: "100vh", width: "100%" }}
+      style={{ display: "flex", height: "100%", width: "100%" }}
     >
       <div
         style={{
-          flexBasis: isRightPanelVisible ? `${leftWidthPercentage}%` : "100%", // 우측 패널이 없으면 좌측 패널이 전체를 차지
+          flexBasis: isRightPanelVisible ? `${leftWidthPercentage}%` : "100%",
           padding: "10px",
         }}
       >
-        <button className="fancy-button" onClick={toggleRightPanel}>
-          {isRightPanelVisible ? "Detail Panel" : "Detail Panel"}
+        <button
+          className="fancy-button"
+          onClick={() => setIsUploadModalOpen(true)} // Upload Data 모달 열기
+          style={{ marginRight: "10px" }}
+        >
+          {"Upload Data"}
         </button>
-        <Root onNodeClick={handleNodeClick} />
+        <button
+          className="fancy-button"
+          onClick={() => setIsMethodModalOpen(true)} // Method 모달 열기
+          style={{ marginRight: "10px" }}
+        >
+          {"Change Method"}
+        </button>
+        <button className="fancy-button" onClick={toggleRightPanel}>
+          {isRightPanelVisible ? "Hide Detail Panel" : "Show Detail Panel"}
+        </button>
+        <Root
+          onConnectionProbabilitiesCalculated={handleConnectionProbabilities} // Pass data from Root
+          onNodeClick={handleNodeClick}
+          methods={selectedMethod}
+          isDataUploaded={isDataUploaded}
+        />
       </div>
+
       {isRightPanelVisible && (
         <div
           onMouseDown={handleMouseDown}
@@ -151,10 +241,9 @@ const ResizableContainer: React.FC = () => {
             flexDirection: "column",
             gap: "10px",
             height: "100%",
-            overflowY: "auto", // 스크롤을 추가
+            overflowY: "auto",
           }}
         >
-          {/* 오버뷰 선택 드롭다운 */}
           <div
             style={{
               marginBottom: "0px",
@@ -174,6 +263,7 @@ const ResizableContainer: React.FC = () => {
                 style={{
                   position: "absolute",
                   backgroundColor: "#fff",
+
                   border: "1px solid #ccc",
                   borderRadius: "5px",
                   padding: "10px",
@@ -210,16 +300,23 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview4}
                     onChange={(e) => handleCheckboxChange(e, "overview4")}
                   />
+                  Core-periphery Metric
+                </label>
+                <label style={{ display: "block", marginBottom: "5px" }}>
+                  <input
+                    type="checkbox"
+                    checked={showOverview.overview5}
+                    onChange={(e) => handleCheckboxChange(e, "overview5")}
+                  />
                   Adjacency Matrix
                 </label>
               </div>
             )}
           </div>
 
-          {/* 오버뷰들 */}
           {showOverview.overview1 && (
             <div style={{ flexShrink: 0 }}>
-              <OverveiwPanel />
+              <OverveiwPanel isDataUploaded={isDataUploaded} />
             </div>
           )}
 
@@ -243,11 +340,30 @@ const ResizableContainer: React.FC = () => {
 
           {showOverview.overview4 && (
             <div style={{ flexShrink: 0 }}>
-              <AdjacencyMatrix />
+              <ConenctionProbPanel
+                connectionProbabilities={connectionProbabilities} // Pass the connection probabilities to the panel
+              />
+            </div>
+          )}
+          {showOverview.overview5 && (
+            <div style={{ flexShrink: 0 }}>
+              <AdjacencyMatrix isDataUploaded={isDataUploaded} />
             </div>
           )}
         </div>
       )}
+
+      <MethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSelectMethod={handleMethodChange}
+      />
+
+      <UploadDataModal
+        isOpen={isUploadModalOpen}
+        onClose={() => setIsUploadModalOpen(false)}
+        onFileUpload={handleFileUpload}
+      />
     </div>
   );
 };

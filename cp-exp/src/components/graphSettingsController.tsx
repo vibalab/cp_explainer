@@ -21,7 +21,7 @@ const GraphSettingsController: FC<
   const graph = sigma.getGraph(); // Sigma로부터 그래프를 가져옴
 
   // 마우스를 그래프 위에서 움직일 때 하이라이트 갱신을 너무 자주 하지 않도록 디바운스 처리
-  const debouncedHoveredNode = useDebounce(hoveredNode, 3); // 디바운스된 hoveredNode를 설정
+  const debouncedHoveredNode = useDebounce(hoveredNode, 10); // 디바운스된 hoveredNode를 설정
 
   // 캐시된 노드 및 이웃 노드 데이터
   const lastHoveredNodeRef = useRef<string | null>(null);

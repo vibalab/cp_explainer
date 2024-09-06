@@ -2,32 +2,41 @@ import React, { useEffect, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
 import { GraphAdjacency } from "../types";
 import Accordion from "./sub/Accordion";
+import axios from "axios";
 
-const AdjacencyMatrixHeatmap: React.FC = () => {
+interface AdjacencyProps {
+  isDataUploaded: boolean;
+}
+
+const AdjacencyMatrixHeatmap: React.FC<AdjacencyProps> = ({
+  isDataUploaded,
+}) => {
   const [graphData, setGraphData] = useState<GraphAdjacency | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [chartSize, setChartSize] = useState<number>(300); // Default size
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const fetchGraphData = async () => {
-      try {
-        const response = await fetch("data/graph_data_adjacency.json");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.statusText}`);
-        }
-        const data: GraphAdjacency = await response.json();
-        setGraphData(data);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to load graph data.");
-        setLoading(false);
-      }
-    };
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        "http://localhost:8000/graph/adjacency-json/"
+      );
+      const dataset: GraphAdjacency = res.data; // 서버에서 가져온 데이터를 타입에 맞게 변환
+      setGraphData(dataset);
+      setLoading(false); // 로딩 완료 상태로 설정
+    } catch (err) {
+      console.error("Error fetching dataset:", err);
+      setError("Failed to load graph data.");
+      setLoading(false); // 오류 발생 시 로딩 상태 해제
+    }
+  };
 
-    fetchGraphData();
-  }, []);
+  // 컴포넌트가 처음 마운트될 때 및 데이터 업로드 상태가 변경될 때마다 데이터를 가져옴
+  useEffect(() => {
+    fetchData();
+  }, [isDataUploaded]);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -37,7 +46,6 @@ const AdjacencyMatrixHeatmap: React.FC = () => {
     }
   }, [containerRef.current]);
 
-  console.log(chartSize);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -47,7 +55,7 @@ const AdjacencyMatrixHeatmap: React.FC = () => {
   }
 
   if (!graphData) {
-    return null;
+    return <div>No data available</div>;
   }
 
   const { nodes_labels, adjacency, cp_ind } = graphData;
@@ -162,7 +170,10 @@ const AdjacencyMatrixHeatmap: React.FC = () => {
           height: "300px", // 초기 높이 설정
         }}
       >
-        <ReactECharts option={option} style={{ height: 300, width: 300 }} />
+        <ReactECharts
+          option={option}
+          style={{ height: chartSize, width: chartSize }}
+        />
       </div>
     </Accordion>
   );
