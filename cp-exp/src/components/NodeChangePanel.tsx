@@ -40,12 +40,6 @@ const NodeChangePanel: FC<{
     const label =
       currentCorePeriphery === 1 ? "Toggle to Periphery" : "Toggle to Core";
     setButtonLabel(label);
-
-    console.log("Node attributes loaded: ", {
-      core_periphery: currentCorePeriphery,
-      color: currentColor,
-      borderColor: currentBorderColor,
-    });
   }, [graph, selectedNode]);
 
   const toggleAttributes = () => {
@@ -75,7 +69,7 @@ const NodeChangePanel: FC<{
 
     // Update the button label
     const newButtonLabel =
-      newCorePeriphery === 1 ? "Toggle to Periphery" : "Toggle to Core";
+      newCorePeriphery >= 0.5 ? "Toggle to Periphery" : "Toggle to Core";
     setButtonLabel(newButtonLabel);
 
     onRefreshPanels();

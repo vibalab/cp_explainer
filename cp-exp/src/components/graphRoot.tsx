@@ -70,39 +70,25 @@ const NodeProgram = createNodeCompoundProgram([
   NodeBorderCustomProgram,
   NodePictogramCustomProgram,
 ]);
-
 const Root: FC<RootProps> = ({
   onNodeClick,
   methods,
   isDataUploaded,
-  onConnectionProbabilitiesCalculated, // Receive the callback
+  onConnectionProbabilitiesCalculated, // Use this as the unified function
 }) => {
   const [showContents, setShowContents] = useState(false);
   const [dataReady, setDataReady] = useState(false);
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
   const method = methods;
-  const handleDataCalculated = (data: {
-    coreCore: { possible: number; actual: number };
-    corePeriphery: { possible: number; actual: number };
-    peripheryPeriphery: { possible: number; actual: number };
-  }) => {
-    // Pass the data to the grandparent through the callback
-    onConnectionProbabilitiesCalculated(data);
-  };
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
   const sigmaSettings: Partial<Settings> = useMemo(
     () => ({
-      // nodeProgramClasses: {
-      //   image: createNodeImageProgram({
-      //     size: { mode: "force", value: 256 },
-      //   }),
-      // },
       defaultDrawNodeLabel: drawLabel,
       defaultDrawNodeHover: drawHover,
       enableEdgeEvents: true,
@@ -110,7 +96,6 @@ const Root: FC<RootProps> = ({
       nodeProgramClasses: {
         pictogram: NodeProgram,
       },
-      // defaultEdgeType: "arrow",
       defaultEdgeType: "curve",
       edgeProgramClasses: {
         curve: EdgeCurveProgram,
@@ -126,33 +111,31 @@ const Root: FC<RootProps> = ({
   );
 
   // Load data on mount:
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
           "http://localhost:8000/graph/node-edge-json/"
         );
-        const dataset: Dataset = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
+        const dataset: Dataset = res.data;
         setDataset(dataset);
         requestAnimationFrame(() => {
           setDataReady(true);
-          setIsLoading(false); // 로딩 완료 상태로 설정
+          setIsLoading(false);
         });
       } catch (err) {
         console.error("Error fetching dataset:", err);
-        setIsLoading(false); // 오류 발생 시 로딩 상태 해제
+        setIsLoading(false);
       }
     };
 
-    // 데이터가 업로드될 때마다 fetchData 호출
     if (isDataUploaded) {
       fetchData();
     }
   }, [isDataUploaded]);
 
   if (isLoading) {
-    return <div>Loading...</div>; // 로딩 중일 때 표시할 내용
+    return <div>Loading...</div>;
   }
 
   if (!dataset) return null;
@@ -170,13 +153,9 @@ const Root: FC<RootProps> = ({
         onNodeClick={onNodeClick}
       />
       <GraphDataController dataset={dataset} />
-      {/* <ConnectionProbabilityCalculator
-        onDataCalculated={handleDataCalculated}
-      /> */}
       {dataReady && (
         <>
           <div className="controls">
-            {/* <SaveGraphToJson></SaveGraphToJson> */}
             <FullScreenControl className="ico">
               <BsArrowsFullscreen />
               <BsFullscreenExit />
@@ -199,6 +178,9 @@ const Root: FC<RootProps> = ({
             style={{ border: "1px solid", borderRadius: "2em" }}
           >
             <CPMetric method={method} hoveredNode={hoveredNode} />
+            <ConnectionProbabilityCalculator
+              onDataCalculated={onConnectionProbabilitiesCalculated}
+            />
           </div>
         </>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Root from "./graphRoot";
 import OverveiwPanel from "./OverviewPanel";
 import AdjacencyMatrix from "./AdjacencyPanel";
@@ -41,6 +41,7 @@ const ResizableContainer: React.FC = () => {
     peripheryPeriphery: { possible: number; actual: number };
   } | null>(null);
 
+  // Unified function for handling connection probabilities
   const handleConnectionProbabilities = (data: {
     coreCore: { possible: number; actual: number };
     corePeriphery: { possible: number; actual: number };
@@ -213,7 +214,7 @@ const ResizableContainer: React.FC = () => {
           {isRightPanelVisible ? "Hide Detail Panel" : "Show Detail Panel"}
         </button>
         <Root
-          onConnectionProbabilitiesCalculated={handleConnectionProbabilities} // Pass data from Root
+          onConnectionProbabilitiesCalculated={handleConnectionProbabilities} // Unified function passed to Root
           onNodeClick={handleNodeClick}
           methods={selectedMethod}
           isDataUploaded={isDataUploaded}

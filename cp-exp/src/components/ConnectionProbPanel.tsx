@@ -26,7 +26,6 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
     x: number;
     y: number;
   } | null>(null);
-  const [sigma, setSigma] = useState<Sigma<NodeData, EdgeData> | null>(null);
 
   const handleCopy = (
     text: string,
@@ -46,13 +45,6 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
       }
     );
   };
-
-  useEffect(() => {
-    if (sigma) {
-      const graph = sigma.getGraph();
-      console.log(graph);
-    }
-  }, [sigma]);
 
   // If connectionProbabilities are not available yet, show loading or an error message
   if (!connectionProbabilities) {
@@ -78,7 +70,13 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
         {/* Core-Periphery Probability Table */}
         <CorePeripheryTable p00={p00} p01={p01} p11={p11} />
       </div>
-      <div>Overall p: {p.toFixed(2)}</div> {/* Apply .toFixed when rendering */}
+      <div>
+        <br></br>
+        <strong style={{ fontSize: "12px" }}>
+          Total Connection Prob(p): {p.toFixed(2)}
+        </strong>
+      </div>{" "}
+      {/* Apply .toFixed when rendering */}
       <br />
       {/* Connection Information Table */}
       <table

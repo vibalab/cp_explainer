@@ -65,7 +65,7 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
         iterations: 200, // 레이아웃 적용 반복 횟수 (더 많으면 더 정교해짐)
         settings: {
           gravity: 1, // 중력 설정
-          scalingRatio: 2, // 노드 간 거리 조정
+          scalingRatio: 3, // 노드 간 거리 조정
         },
       });
 
