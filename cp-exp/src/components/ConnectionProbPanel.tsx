@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Accordion from "./sub/Accordion";
 import CorePeripheryTable from "./sub/CorePeripheryTable";
 import Tooltip from "./sub/Tooltip";
-import Sigma from "sigma";
-import { NodeData, EdgeData } from "../types";
-import { SigmaContainer } from "@react-sigma/core";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };
@@ -19,8 +16,6 @@ interface ConnectionProbPanelProps {
 const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
   connectionProbabilities,
 }) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
   const [tooltip, setTooltip] = useState<{
     text: string;
     x: number;
@@ -64,6 +59,9 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
     (coreCore.actual + corePeriphery.actual + peripheryPeriphery.actual) /
     (coreCore.possible + corePeriphery.possible + peripheryPeriphery.possible);
 
+  // Check if the network has a Core-Periphery structure
+  const hasCorePeripheryStructure = p11 > p01 && p01 > p00;
+
   return (
     <Accordion title="Connection Probability" isOpen={false}>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -71,12 +69,23 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
         <CorePeripheryTable p00={p00} p01={p01} p11={p11} />
       </div>
       <div>
-        <br></br>
+        <br />
         <strong style={{ fontSize: "12px" }}>
           Total Connection Prob(p): {p.toFixed(2)}
         </strong>
-      </div>{" "}
-      {/* Apply .toFixed when rendering */}
+        <br />
+        {/* Display message based on Core-Periphery structure condition */}
+        {hasCorePeripheryStructure ? (
+          <div style={{ color: "green", fontSize: "12px", marginTop: "10px" }}>
+            The network exhibits a Core-Periphery Structure under the Stochastic
+            Block Model.
+          </div>
+        ) : (
+          <div style={{ color: "red", fontSize: "12px", marginTop: "10px" }}>
+            The network does not satisfy the Core-Periphery Structure.
+          </div>
+        )}
+      </div>
       <br />
       {/* Connection Information Table */}
       <table
@@ -90,37 +99,33 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
           <tr>
             <th style={{ border: "1px solid gray", padding: "5px" }}></th>
             <th style={{ border: "1px solid gray", padding: "5px" }}>
-              Possible
+              (Actual) / (Possible)
             </th>
-            <th style={{ border: "1px solid gray", padding: "5px" }}>Actual</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style={{ border: "1px solid gray", padding: "5px" }}>C-C</td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {coreCore.possible}
+              Core-Core
             </td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {coreCore.actual}
-            </td>
-          </tr>
-          <tr>
-            <td style={{ border: "1px solid gray", padding: "5px" }}>C-P</td>
-            <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {corePeriphery.possible}
-            </td>
-            <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {corePeriphery.actual}
+              {coreCore.actual}/{coreCore.possible}
             </td>
           </tr>
           <tr>
-            <td style={{ border: "1px solid gray", padding: "5px" }}>P-P</td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {peripheryPeriphery.possible}
+              Core-Peri
             </td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {peripheryPeriphery.actual}
+              {corePeriphery.actual}/{corePeriphery.possible}
+            </td>
+          </tr>
+          <tr>
+            <td style={{ border: "1px solid gray", padding: "5px" }}>
+              Peri-Peri
+            </td>
+            <td style={{ border: "1px solid gray", padding: "5px" }}>
+              {peripheryPeriphery.actual}/{peripheryPeriphery.possible}
             </td>
           </tr>
         </tbody>

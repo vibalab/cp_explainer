@@ -33,13 +33,14 @@ def graph_overview(G):
     return overview
 
 # 노드 및 엣지 데이터를 생성하는 함수
-def graph_node_edge(G, model=None):
+def graph_node_edge(G, cp_index=None, cp_cluster=None):
     pos = nx.spring_layout(G)  # spring layout을 사용하여 노드 위치 계산
 
-    if model==None :
+    if cp_index is None :
         cp_index = np.zeros(G.number_of_nodes())
-    else :
-        cp_index, cp_metric, cp_cluster = model.fit()
+
+    if cp_cluster is None :
+        cp_cluster = np.zeros(G.number_of_nodes())
 
     degree_centrality = nx.degree_centrality(G)
     betweenness_centrality = nx.betweenness_centrality(G, weight='weight')
@@ -60,7 +61,7 @@ def graph_node_edge(G, model=None):
             "closeness_centrality": closeness_centrality[n],
             "eigenvector_centrality": eigenvector_centrality[n],
             "core_periphery": float(cp_index[list(G.nodes).index(n)]),
-            "group": 0,
+            "group": cp_cluster[list(G.nodes).index(n)],
             "attributes": data,
         }
         for n, data in G.nodes(data=True)

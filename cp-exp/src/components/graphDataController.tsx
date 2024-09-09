@@ -46,8 +46,8 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
           core_periphery: node.core_periphery,
           attributes: node.attributes,
           size: nodeSize,
-          color: node.core_periphery === 0 ? "#FFFFFF" : "#87CEEB",
-          borderColor: node.core_periphery === 0 ? "#87CEEB" : "#000000",
+          color: node.core_periphery < 0.8 ? "#FFFFFF" : "#87CEEB",
+          borderColor: node.core_periphery < 0.8 ? "#87CEEB" : "#000000",
           pictoColor: "FFFFFF",
           clicked: false,
         });

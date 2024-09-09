@@ -91,7 +91,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           borderRadius: "10px",
         }}
       >
-        <h3>데이터 업로드</h3>
+        <h3>Upload Your Own gexf File</h3>
         <div style={{ marginBottom: "20px" }}>
           <input type="file" onChange={handleFileChange} />
         </div>
@@ -107,7 +107,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
               cursor: "pointer",
             }}
           >
-            업로드
+            Load
           </button>
           <button
             onClick={onClose}
@@ -121,7 +121,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
               marginLeft: "10px",
             }}
           >
-            취소
+            Quit
           </button>
         </div>
       </div>

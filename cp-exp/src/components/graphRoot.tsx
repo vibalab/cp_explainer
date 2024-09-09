@@ -40,7 +40,7 @@ interface RootProps {
     nodeAttrs: Attributes,
     neighbors: Array<{ label: string; attributes: Attributes }>
   ) => void;
-  methods: string;
+  methods: string | null;
   isDataUploaded: boolean;
   onConnectionProbabilitiesCalculated: (data: {
     coreCore: { possible: number; actual: number };

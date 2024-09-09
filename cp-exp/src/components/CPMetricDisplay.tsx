@@ -5,7 +5,7 @@ import Borgatti from "./algorithms/BorgattiEverett";
 import Rossa from "./algorithms/Rossa";
 
 interface CPMetricProps {
-  method: string;
+  method: string | null;
   hoveredNode: string | null;
 }
 
@@ -19,8 +19,10 @@ const CPMetric: FC<CPMetricProps> = ({ method = "Rossa", hoveredNode }) => {
 
   return (
     <div className="cpmetric">
-      {method === "BE" && <Borgatti />}
-      {method === "Rossa" && <Rossa hoveredNode={debouncedHoveredNode} />}
+      {method === "BE" && <Borgatti method={method} />}
+      {method === "Rossa" && (
+        <Rossa hoveredNode={debouncedHoveredNode} method={method} />
+      )}
     </div>
   );
 };

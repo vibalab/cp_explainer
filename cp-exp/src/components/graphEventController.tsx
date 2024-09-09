@@ -106,6 +106,28 @@ const GraphEventsController: FC<
         setHoveredNode(null);
         graph.setNodeAttribute(node, "highlighted", false);
       },
+      enterEdge({ edge }) {
+        // Highlight both source and target nodes when edge is hovered
+        const sourceNode = graph.source(edge);
+        const targetNode = graph.target(edge);
+
+        graph.setNodeAttribute(sourceNode, "highlighted", true);
+        graph.setNodeAttribute(targetNode, "highlighted", true);
+
+        // Highlight the edge itself
+        graph.setEdgeAttribute(edge, "highlighted", true);
+      },
+      leaveEdge({ edge }) {
+        // Unhighlight both source and target nodes when edge is no longer hovered
+        const sourceNode = graph.source(edge);
+        const targetNode = graph.target(edge);
+
+        graph.setNodeAttribute(sourceNode, "highlighted", false);
+        graph.setNodeAttribute(targetNode, "highlighted", false);
+
+        // Unhighlight the edge itself
+        graph.setEdgeAttribute(edge, "highlighted", false);
+      },
       downNode: (e) => {
         setMouseDownTime(Date.now());
         setDraggedNode(e.node);

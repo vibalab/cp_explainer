@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSigma } from "@react-sigma/core";
+import throttle from "lodash/throttle";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };
@@ -18,7 +19,6 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
   const graph = sigma.getGraph();
   const [stateChange, setStateChange] = useState(false);
 
-  // Moved calculateConnectionProbabilities outside of useEffect
   const calculateConnectionProbabilities = useCallback(() => {
     const coreNodes: string[] = [];
     const peripheryNodes: string[] = [];
@@ -57,14 +57,14 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
         typeof sourceCorePeriphery === "number" &&
         typeof targetCorePeriphery === "number"
       ) {
-        if (sourceCorePeriphery >= 0.5 && targetCorePeriphery >= 0.5) {
+        if (sourceCorePeriphery >= 0.8 && targetCorePeriphery >= 0.8) {
           coreCoreEdges++;
         } else if (
-          (sourceCorePeriphery >= 0.5 && targetCorePeriphery < 0.5) ||
-          (sourceCorePeriphery < 0.5 && targetCorePeriphery >= 0.5)
+          (sourceCorePeriphery >= 0.8 && targetCorePeriphery < 0.8) ||
+          (sourceCorePeriphery < 0.8 && targetCorePeriphery >= 0.8)
         ) {
           corePeripheryEdges++;
-        } else if (sourceCorePeriphery < 0.5 && targetCorePeriphery < 0.5) {
+        } else if (sourceCorePeriphery < 0.8 && targetCorePeriphery < 0.8) {
           peripheryPeripheryEdges++;
         }
       }
@@ -92,12 +92,18 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
     onDataCalculated(result);
   }, [graph, onDataCalculated]);
 
+  // Throttle the calculateConnectionProbabilities function
+  const throttledCalculate = useCallback(
+    throttle(calculateConnectionProbabilities, 500),
+    [calculateConnectionProbabilities]
+  );
+
   useEffect(() => {
     if (!graph) return;
 
     // Watch for attribute changes
     const handleAttributesChange = () => {
-      calculateConnectionProbabilities();
+      throttledCalculate();
     };
 
     graph.on("nodeAttributesUpdated", handleAttributesChange);
@@ -105,7 +111,7 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
     return () => {
       graph.off("nodeAttributesUpdated", handleAttributesChange);
     };
-  }, [graph, calculateConnectionProbabilities]);
+  }, [graph, throttledCalculate]);
 
   useEffect(() => {
     setStateChange(!stateChange);

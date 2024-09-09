@@ -1,16 +1,43 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex"; // LaTeX 수식 표시를 위한 라이브러리
+import axios from "axios";
 
-const Borgatti: FC = () => {
+interface BorgattiProps {
+  method: string | null;
+}
+const Borgatti: FC<BorgattiProps> = ({ method }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const rho = 0.25;
   const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
+  const [metric, setMetric] = useState<Record<string, any> | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   // 모달 토글 함수
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
+
+  // 데이터 가져오는 함수
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8000/graph/metric-json/");
+      const dataset: Record<string, any> = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
+      setMetric(dataset);
+      setLoading(false); // 로딩 완료 상태로 설정
+    } catch (err) {
+      console.error("Error fetching dataset:", err);
+      setError("Failed to load graph data.");
+      setLoading(false); // 오류 발생 시 로딩 상태 해제
+    }
+  };
+
+  // method가 바뀔 때마다 fetchData 실행
+  useEffect(() => {
+    if (method) {
+      fetchData(); // method가 있을 때만 데이터 가져오기
+    }
+  }, [method]);
 
   return (
     <div>
@@ -23,7 +50,7 @@ const Borgatti: FC = () => {
       <h2 style={{ marginTop: 0, marginBottom: 0 }}>
         {/* 클릭 시 모달 열림 상태를 토글 */}
         <i style={{ cursor: "pointer" }} onClick={toggleModal}>
-          ρ: {rho}
+          ρ: {metric?.rho ? metric.rho.toFixed(4) : "N/A"}
         </i>
       </h2>
 

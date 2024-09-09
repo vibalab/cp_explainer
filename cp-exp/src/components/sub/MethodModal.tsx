@@ -3,34 +3,108 @@ import React, { useState } from "react";
 interface MethodModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectMethod: (method: string) => void;
+  onProcessing: (method: string, parameters: Record<string, string>) => void;
 }
 
 const MethodModal: React.FC<MethodModalProps> = ({
   isOpen,
   onClose,
-  onSelectMethod,
+  onProcessing,
 }) => {
-  const [selectedMethod, setSelectedMethod] = useState("BE"); // 기본값을 "BE"로 설정
+  const [selectedMethod, setSelectedMethod] = useState("BE");
+  const [parameters, setParameters] = useState<Record<string, string>>({});
 
-  if (!isOpen) return null; // 모달이 열리지 않으면 아무것도 렌더링하지 않음
+  if (!isOpen) return null;
 
   const handleMethodChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMethod(event.target.value);
+    setParameters({}); // 메소드 변경 시 파라미터 초기화
+  };
+
+  const handleParameterChange = (paramKey: string, value: string) => {
+    setParameters((prev) => ({
+      ...prev,
+      [paramKey]: value,
+    }));
   };
 
   const handleSubmit = () => {
-    onSelectMethod(selectedMethod); // 선택한 메소드 부모로 전달
+    onProcessing(selectedMethod, parameters); // 선택한 메소드와 파라미터를 부모로 전달
     onClose(); // 모달 닫기
   };
 
   const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation(); // 모달 내용 클릭 시 배경 클릭 이벤트 막기
+    e.stopPropagation();
+  };
+
+  const renderParameters = () => {
+    switch (selectedMethod) {
+      case "BE":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case "Rossa":
+        return (
+          <div>
+            <label>
+              Threshold:
+              <input
+                type="number"
+                value={parameters["threshold"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("threshold", e.target.value)
+                }
+              />
+            </label>
+          </div>
+        );
+      case "Method 3":
+        return (
+          <div>
+            <label>
+              Gamma:
+              <input
+                type="number"
+                value={parameters["gamma"] || ""}
+                onChange={(e) => handleParameterChange("gamma", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Delta:
+              <input
+                type="number"
+                value={parameters["delta"] || ""}
+                onChange={(e) => handleParameterChange("delta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <>
-      {/* 모달 배경 */}
       <div
         style={{
           position: "fixed",
@@ -41,12 +115,11 @@ const MethodModal: React.FC<MethodModalProps> = ({
           backgroundColor: "rgba(0, 0, 0, 0.5)",
           zIndex: 999,
         }}
-        onClick={onClose} // 배경 클릭 시 모달 닫기
+        onClick={onClose}
       />
 
-      {/* 모달 창 */}
       <div
-        onClick={handleModalClick} // 모달 클릭 시 배경 클릭 이벤트 무효화
+        onClick={handleModalClick}
         style={{
           position: "fixed",
           top: "50%",
@@ -78,6 +151,9 @@ const MethodModal: React.FC<MethodModalProps> = ({
             <option value="Method 3">Method 3</option>
           </select>
         </div>
+
+        <div style={{ marginBottom: "20px" }}>{renderParameters()}</div>
+
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
             onClick={handleSubmit}

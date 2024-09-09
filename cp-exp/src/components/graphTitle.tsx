@@ -22,7 +22,7 @@ const GraphTitle: FC = () => {
     graph.forEachNode((_, attributes) => {
       if (!attributes.hidden) {
         counts.nodes++;
-        if (attributes.core_periphery && attributes.core_periphery > 0) {
+        if (attributes.core_periphery && attributes.core_periphery > 0.8) {
           counts.corePeripheryNodes++;
         }
       }

@@ -29,7 +29,7 @@ const ResizableContainer: React.FC = () => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [isMethodModalOpen, setIsMethodModalOpen] = useState<boolean>(false);
+  const [isMethodModalOpen, setIsMethodModalOpen] = useState(false);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
@@ -85,7 +85,44 @@ const ResizableContainer: React.FC = () => {
     }
   };
 
-  const [selectedMethod, setSelectedMethod] = useState<string>("BE");
+  const handleMethodSelection = async (
+    method: string,
+    parameters: Record<string, string>
+  ) => {
+    setIsDataUploaded(false);
+
+    if (!uploadedFile) {
+      alert("파일이 업로드되지 않았습니다.");
+      return;
+    }
+
+    const filename = uploadedFile.name;
+    setSelectedMethod(method);
+
+    try {
+      // GET 요청으로 데이터 전달, parameters를 직렬화하여 전달
+      const algorithmResponse = await axios.get(
+        `http://localhost:8000/graph/algorithm`,
+        {
+          params: {
+            filename,
+            method,
+            parameters: JSON.stringify(parameters), // parameters를 JSON 문자열로 변환
+          },
+        }
+      );
+
+      const algorithmResultPath = algorithmResponse.data.filepath;
+
+      alert(`알고리즘 적용 및 업데이트 완료`);
+      setIsDataUploaded(true);
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+      alert("API 호출 중 오류가 발생했습니다.");
+    }
+  };
+
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -157,11 +194,6 @@ const ResizableContainer: React.FC = () => {
       ...prev,
       [overview]: event.target.checked,
     }));
-  };
-
-  const handleMethodChange = (method: string) => {
-    setSelectedMethod(method);
-    setIsMethodModalOpen(false); // 모달 닫기
   };
 
   useEffect(() => {
@@ -357,7 +389,7 @@ const ResizableContainer: React.FC = () => {
       <MethodModal
         isOpen={isMethodModalOpen}
         onClose={() => setIsMethodModalOpen(false)}
-        onSelectMethod={handleMethodChange}
+        onProcessing={handleMethodSelection}
       />
 
       <UploadDataModal
