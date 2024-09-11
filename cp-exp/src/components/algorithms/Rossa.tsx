@@ -3,13 +3,13 @@ import { useSigma } from "@react-sigma/core";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex"; // LaTeX 수식 표시를 위한 라이브러리
 import axios from "axios";
-
 interface RossaProps {
   hoveredNode: string | null;
   method: string | null;
+  onThresholdChange: (threshold: number) => void; // Callback to send threshold to parent
 }
 
-const Rossa: FC<RossaProps> = ({ hoveredNode, method }) => {
+const Rossa: FC<RossaProps> = ({ hoveredNode, method, onThresholdChange }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
   const [isModalOpen, setModalOpen] = useState(false);
@@ -18,23 +18,35 @@ const Rossa: FC<RossaProps> = ({ hoveredNode, method }) => {
   const [error, setError] = useState<string | null>(null);
   const doiRef = "https://doi.org/10.1038/srep01467";
   const [alpha, setAlpha] = useState<number>(0);
+  const [threshold, setThreshold] = useState<number>(0.5); // Threshold state with default value
 
   // 모달 토글 함수
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
 
+  // threshold 값 업데이트 함수
+  const handleThresholdChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = parseFloat(event.target.value);
+    if (value >= 0 && value <= 1) {
+      setThreshold(value); // Update local threshold state
+      onThresholdChange(value); // Send new threshold value to parent
+    }
+  };
+
   // 데이터 가져오는 함수
   const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:8000/graph/metric-json/");
-      const dataset: Record<string, any> = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
+      const dataset: Record<string, any> = res.data;
       setMetric(dataset);
-      setLoading(false); // 로딩 완료 상태로 설정
+      setLoading(false);
     } catch (err) {
       console.error("Error fetching dataset:", err);
       setError("Failed to load graph data.");
-      setLoading(false); // 오류 발생 시 로딩 상태 해제
+      setLoading(false);
     }
   };
 
@@ -54,7 +66,7 @@ const Rossa: FC<RossaProps> = ({ hoveredNode, method }) => {
     } else {
       setAlpha(0); // hoveredNode가 없을 때는 0으로 설정
     }
-  }, [graph, hoveredNode]); // graph와 hoveredNode에 종속
+  }, [graph, hoveredNode]);
 
   return (
     <div>
@@ -65,16 +77,29 @@ const Rossa: FC<RossaProps> = ({ hoveredNode, method }) => {
         </a>
       </h1>
       <h2 style={{ marginTop: 0, marginBottom: 0 }}>
-        {/* 클릭 시 모달 열림 상태를 토글 */}
         <i style={{ cursor: "pointer" }} onClick={toggleModal}>
           cp_centrality: {metric?.cp_centrality.toFixed(4) || "N/A"}
         </i>
       </h2>
       <h2 style={{ marginTop: 0, marginBottom: 0 }}>
-        {/* alpha 값 표시 */}
         <i style={{ cursor: "pointer" }}>alpha: {alpha}</i>
       </h2>
-      {/* 모달이 열렸을 때만 표시 */}
+      <h2 style={{ marginTop: 0, marginBottom: 0 }}>
+        {/* threshold 값 표시 및 입력 */}
+        <label>
+          Threshold (0-1):
+          <input
+            type="number"
+            step="0.01"
+            min="0"
+            max="1"
+            value={threshold}
+            onChange={handleThresholdChange}
+            style={{ marginLeft: "10px" }}
+          />
+        </label>
+      </h2>
+
       {isModalOpen && (
         <div
           style={{

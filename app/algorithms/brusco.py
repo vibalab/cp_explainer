@@ -67,9 +67,9 @@ class Brusco:
         initial_population = []
 
         # 상위 1%개 노드에 1을 넣은 해
-        solution_1 = np.zeros(num_nodes)
-        solution_1[top_1_nodes] = 1
-        initial_population.append(solution_1)
+        # solution_1 = np.zeros(num_nodes)
+        # solution_1[top_1_nodes] = 1
+        # initial_population.append(solution_1)
 
         # 상위 10% 노드에 1을 넣은 해
         solution_10 = np.zeros(num_nodes)
@@ -101,9 +101,9 @@ class Brusco:
         return initial_population
 
 
-    def run_genetic_algorithm(self, iter=1000):
+    def fit(self, iter=1000):
         initial_population = self.initial_sol()
-        ga_instance_borgatti = pygad.GA(
+        ga_instance_brusco = pygad.GA(
             num_generations=iter,
             num_parents_mating=2,
             fitness_func=self.fitness_function_brusco_metric,
@@ -117,6 +117,8 @@ class Brusco:
         )
 
         # Run the genetic algorithm for Borgatti and Everett correlation
-        ga_instance_borgatti.run()
 
-        return ga_instance_borgatti
+        ga_instance_brusco.run()
+        solution_brusco, solution_fitness_brusco, solution_idx_brusco = ga_instance_brusco.best_solution()
+
+        return solution_brusco, solution_fitness_brusco, solution_idx_brusco

@@ -34,6 +34,7 @@ import SaveGraphToJson from "./SaveGraphToJson";
 import CPMetric from "./CPMetricDisplay";
 import axios from "axios";
 import ConnectionProbabilityCalculator from "./sub/ConnectProbCal";
+import GraphThresholdUpdater from "./GraphThresholdUpdater";
 
 interface RootProps {
   onNodeClick: (
@@ -70,23 +71,37 @@ const NodeProgram = createNodeCompoundProgram([
   NodeBorderCustomProgram,
   NodePictogramCustomProgram,
 ]);
+
+interface RootProps {
+  onNodeClick: (
+    nodeAttrs: Attributes,
+    neighbors: Array<{ label: string; attributes: Attributes }>
+  ) => void;
+  methods: string | null;
+  isDataUploaded: boolean;
+  onConnectionProbabilitiesCalculated: (data: {
+    coreCore: { possible: number; actual: number };
+    corePeriphery: { possible: number; actual: number };
+    peripheryPeriphery: { possible: number; actual: number };
+  }) => void; // Add the callback prop
+  onThresholdChange: (threshold: number) => void; // New callback to pass threshold to the parent of Root
+  threshold: number; // Receive the threshold from the parent
+}
+
 const Root: FC<RootProps> = ({
   onNodeClick,
   methods,
   isDataUploaded,
   onConnectionProbabilitiesCalculated, // Use this as the unified function
+  onThresholdChange, // Receive the callback from the parent component
+  threshold,
 }) => {
   const [showContents, setShowContents] = useState(false);
   const [dataReady, setDataReady] = useState(false);
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setModalOpen] = useState(false);
   const method = methods;
-
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
   const sigmaSettings: Partial<Settings> = useMemo(
     () => ({
       defaultDrawNodeLabel: drawLabel,
@@ -153,6 +168,8 @@ const Root: FC<RootProps> = ({
         onNodeClick={onNodeClick}
       />
       <GraphDataController dataset={dataset} />
+      <GraphThresholdUpdater threshold={threshold} />
+      {/* Add the GraphThresholdUpdater */}
       {dataReady && (
         <>
           <div className="controls">
@@ -177,9 +194,14 @@ const Root: FC<RootProps> = ({
             className="cpmetric_panel"
             style={{ border: "1px solid", borderRadius: "2em" }}
           >
-            <CPMetric method={method} hoveredNode={hoveredNode} />
+            <CPMetric
+              method={method}
+              hoveredNode={hoveredNode}
+              onThresholdChange={onThresholdChange} // Pass the callback to CPMetric
+            />
             <ConnectionProbabilityCalculator
               onDataCalculated={onConnectionProbabilitiesCalculated}
+              threshold={threshold}
             />
           </div>
         </>

@@ -9,9 +9,21 @@ import json
 from typing import Optional, Dict
 from pydantic import BaseModel
 import networkx as nx
+import traceback
 
 from algorithms.borgatti_everett import Borgatti_Everett
 from algorithms.rossa import Rossa
+from algorithms.brusco import Brusco
+from algorithms.holme import Holme
+from algorithms.lip import Lip
+from algorithms.low_rank_core import Low_Rank_Core
+from algorithms.minre import Minre
+from algorithms.rombach import Rombach
+from algorithms.silva import Silva
+
+from algorithms.km_config import KM_Config
+from algorithms.km_er import KM_ER
+from algorithms.icpa import ICPA
 
 
 app = FastAPI()
@@ -142,6 +154,7 @@ async def get_graph_adjacency_json():
         raise HTTPException(status_code=404, detail="Node Edge file not found")
     return FileResponse(ADJFILE, media_type='application/json')
 
+
 @app.get("/graph/algorithm")
 async def apply_algorithm(
     filename: str,
@@ -169,12 +182,49 @@ async def apply_algorithm(
             cp_index, cp_metric, cp_cluster = model.fit()
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=cp_index)
             metric = {"rho": cp_metric}
+        elif method == "Brusco":
+            model = Brusco(graph, A, n)
+            cp_index, cp_metric, cp_cluster = model.fit()
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=cp_index)
+            metric = {"Z": int(cp_metric)}
+
+        elif method == "Holme":
+            model = Holme(graph)
+
+        elif method == "Lip":
+            model = Lip(graph)
+
+        elif method == "LowRankCore":
+            model = Low_Rank_Core(graph)
+
+        elif method == "Minre":
+            model = Minre(graph)
+
+        elif method == "Rombach":
+            model = Rombach(graph)
+
+        elif method == "Silva":
+            model = Silva(graph)
+
         elif method == "Rossa":
             model = Rossa(graph)
             alpha = model.get_alpha()
             cp_centralization = model.get_cp_centralization()
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=alpha)
             metric = {"cp_centrality": cp_centralization}
+
+
+        elif method == "KM_Config":
+            model = KM_Config(graph)
+
+
+        elif method == "KM_ER":
+            model = KM_ER(graph)
+
+
+        elif method == "ICPA":
+            model = ICPA(graph)
+
         else:
             raise HTTPException(status_code=400, detail="Invalid method")
 
@@ -190,6 +240,8 @@ async def apply_algorithm(
         return {"message": "Adjacency data saved successfully", "filepath": str(output_file)}
 
     except Exception as e:
+        print(f"Error: {e}")
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
     
 @app.get("/graph/metric-json/")

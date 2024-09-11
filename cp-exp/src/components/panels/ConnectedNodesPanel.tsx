@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Attributes } from "graphology-types";
-import Accordion from "./sub/Accordion";
+import Accordion from "../sub/Accordion";
 
 interface ConnectedNodesProps {
   nodeAttributes: Attributes | null;
   neighborDetails: Array<{ label: string; attributes: Attributes }> | null;
+  threshold: number;
 }
 
 const ConnectedNodes: React.FC<ConnectedNodesProps> = ({
   nodeAttributes,
   neighborDetails,
+  threshold,
 }) => {
   const [tooltip, setTooltip] = useState<{
     text: string;
@@ -40,10 +42,10 @@ const ConnectedNodes: React.FC<ConnectedNodesProps> = ({
   const nodeLabel = nodeAttributes?.label;
   const nodeColor = nodeAttributes?.color;
   const nodeDegree = nodeAttributes?.degree || 0;
-  const isCore = nodeAttributes?.core_periphery === 1;
+  const isCore = nodeAttributes?.core_periphery >= threshold;
   const corePeripheryCount = neighborDetails
     ? neighborDetails.filter(
-        (neighbor) => neighbor.attributes.core_periphery === 1
+        (neighbor) => neighbor.attributes.core_periphery >= threshold
       ).length
     : 0;
 
@@ -83,7 +85,9 @@ const ConnectedNodes: React.FC<ConnectedNodesProps> = ({
           <h4>Cores</h4>
           <ul>
             {neighborDetails
-              ?.filter((neighbor) => neighbor.attributes.core_periphery === 1)
+              ?.filter(
+                (neighbor) => neighbor.attributes.core_periphery >= threshold
+              )
               .map((neighbor, index) => (
                 <li
                   key={index}
@@ -111,7 +115,9 @@ const ConnectedNodes: React.FC<ConnectedNodesProps> = ({
           <h4>Peripheries</h4>
           <ul>
             {neighborDetails
-              ?.filter((neighbor) => neighbor.attributes.core_periphery !== 1)
+              ?.filter(
+                (neighbor) => neighbor.attributes.core_periphery < threshold
+              )
               .map((neighbor, index) => (
                 <li
                   key={index}

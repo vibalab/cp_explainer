@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Root from "./graphRoot";
-import OverveiwPanel from "./OverviewPanel";
-import AdjacencyMatrix from "./AdjacencyPanel";
-import NodeDetailsPanel from "./NodeDetailPanel";
-import ConnectedNodes from "./ConnectedNodesPanel";
-import ConenctionProbPanel from "./ConnectionProbPanel"; // ConnectionProbPanel 가져오기
+import OverveiwPanel from "./panels/OverviewPanel";
+import AdjacencyMatrix from "./panels/AdjacencyPanel";
+import NodeDetailsPanel from "./panels/NodeDetailPanel";
+import ConnectedNodes from "./panels/ConnectedNodesPanel";
+import ConenctionProbPanel from "./panels/ConnectionProbPanel"; // ConnectionProbPanel 가져오기
 import MethodModal from "./sub/MethodModal";
 import UploadDataModal from "./sub/UploadDataModal";
 import { Attributes } from "graphology-types";
@@ -33,6 +33,12 @@ const ResizableContainer: React.FC = () => {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
+  const [threshold, setThreshold] = useState<number>(0.5); // State for threshold
+
+  const handleThresholdChangeInParent = (newThreshold: number) => {
+    setThreshold(newThreshold); // Update threshold in the parent component
+    console.log("Threshold updated in ParentComponent:", newThreshold);
+  };
 
   // Add state to store connection probabilities
   const [connectionProbabilities, setConnectionProbabilities] = useState<{
@@ -250,6 +256,8 @@ const ResizableContainer: React.FC = () => {
           onNodeClick={handleNodeClick}
           methods={selectedMethod}
           isDataUploaded={isDataUploaded}
+          onThresholdChange={handleThresholdChangeInParent}
+          threshold={threshold}
         />
       </div>
 
@@ -358,6 +366,7 @@ const ResizableContainer: React.FC = () => {
               <NodeDetailsPanel
                 nodeAttributes={clickedNodeAttributes}
                 neighborDetails={clickedNeighborDetails}
+                threshold={threshold}
               />
             </div>
           )}
@@ -367,6 +376,7 @@ const ResizableContainer: React.FC = () => {
               <ConnectedNodes
                 nodeAttributes={clickedNodeAttributes}
                 neighborDetails={clickedNeighborDetails}
+                threshold={threshold}
               />
             </div>
           )}

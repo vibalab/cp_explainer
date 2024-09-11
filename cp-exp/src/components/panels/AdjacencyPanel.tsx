@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactECharts from "echarts-for-react";
-import { GraphAdjacency } from "../types";
-import Accordion from "./sub/Accordion";
+import { GraphAdjacency } from "../../types";
+import Accordion from "../sub/Accordion";
 import axios from "axios";
 
 interface AdjacencyProps {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Accordion from "./sub/Accordion";
-import CorePeripheryTable from "./sub/CorePeripheryTable";
-import Tooltip from "./sub/Tooltip";
+import Accordion from "../sub/Accordion";
+import CorePeripheryTable from "../sub/CorePeripheryTable";
+import Tooltip from "../sub/Tooltip";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };

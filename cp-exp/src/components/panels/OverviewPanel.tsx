@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Overview } from "../types";
-import Accordion from "./sub/Accordion";
-import OverviewItem from "./sub/OverviewItem";
-import Tooltip from "./sub/Tooltip";
+import { Overview } from "../../types";
+import Accordion from "../sub/Accordion";
+import OverviewItem from "../sub/OverviewItem";
+import Tooltip from "../sub/Tooltip";
 import styled from "styled-components";
 import axios from "axios";
 

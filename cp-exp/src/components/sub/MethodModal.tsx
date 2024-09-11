@@ -61,6 +61,28 @@ const MethodModal: React.FC<MethodModalProps> = ({
             </label>
           </div>
         );
+      case "Brusco":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
       case "Rossa":
         return (
           <div>
@@ -147,8 +169,8 @@ const MethodModal: React.FC<MethodModalProps> = ({
             }}
           >
             <option value="BE">Borgatti Everett</option>
+            <option value="Brusco">Brusco</option>
             <option value="Rossa">Rossa</option>
-            <option value="Method 3">Method 3</option>
           </select>
         </div>
 

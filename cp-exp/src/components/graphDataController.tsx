@@ -5,6 +5,39 @@ import "@react-sigma/core/lib/react-sigma.min.css";
 import { Dataset } from "../types";
 import forceAtlas2 from "graphology-layout-forceatlas2"; // ForceAtlas2 알고리즘 가져옴
 
+// HSL -> RGB 변환 함수
+const hslToRgb = (h: number, s: number, l: number) => {
+  s /= 100;
+  l /= 100;
+  const k = (n: number) => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = (n: number) =>
+    l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+
+  return [
+    Math.round(f(0) * 255),
+    Math.round(f(8) * 255),
+    Math.round(f(4) * 255),
+  ];
+};
+
+// RGB -> HEX 변환 함수
+const rgbToHex = (r: number, g: number, b: number) =>
+  `#${[r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("")}`;
+
+// HSL 색상 값 생성 후 HEX 변환
+const getHSLColor = (
+  HUE: number,
+  SAT: number,
+  LIGHT: number,
+  value: number
+): string => {
+  const lightness = 100 - (100 - LIGHT) * value;
+
+  const rgb = hslToRgb(HUE, SAT, lightness);
+  return rgbToHex(rgb[0], rgb[1], rgb[2]);
+};
+
 interface GraphDataControllerProps {
   dataset: Dataset;
 }
@@ -46,8 +79,8 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
           core_periphery: node.core_periphery,
           attributes: node.attributes,
           size: nodeSize,
-          color: node.core_periphery < 0.8 ? "#FFFFFF" : "#87CEEB",
-          borderColor: node.core_periphery < 0.8 ? "#87CEEB" : "#000000",
+          color: getHSLColor(197, 71, 73, node.core_periphery),
+          borderColor: node.core_periphery < 0.5 ? "#87CEEB" : "#000000",
           pictoColor: "FFFFFF",
           clicked: false,
         });

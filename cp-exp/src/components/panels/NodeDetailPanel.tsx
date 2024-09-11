@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { Attributes } from "graphology-types";
-import Accordion, { AccordionHandle } from "./sub/Accordion";
+import Accordion, { AccordionHandle } from "../sub/Accordion";
 import styled from "styled-components";
-import SmallAccordion from "./sub/SmallAccordion";
-import Tooltip from "./sub/Tooltip";
-import OverviewItem from "./sub/OverviewItem";
+import SmallAccordion from "../sub/SmallAccordion";
+import Tooltip from "../sub/Tooltip";
+import OverviewItem from "../sub/OverviewItem";
 
 interface NodeDetailsPanelProps {
   nodeAttributes: Attributes | null;
   neighborDetails: Array<{ label: string; attributes: Attributes }> | null;
+  threshold: number;
 }
 
 const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({
   nodeAttributes,
   neighborDetails,
+  threshold,
 }) => {
   const [tooltip, setTooltip] = useState<{
     text: string;
@@ -43,10 +45,10 @@ const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({
   const nodeLabel = nodeAttributes?.label;
   const nodeColor = nodeAttributes?.color;
   const nodeDegree = nodeAttributes?.degree || 0;
-  const isCore = nodeAttributes?.core_periphery === 1;
+  const isCore = nodeAttributes?.core_periphery >= threshold;
   const corePeripheryCount = neighborDetails
     ? neighborDetails.filter(
-        (neighbor) => neighbor.attributes.core_periphery === 1
+        (neighbor) => neighbor.attributes.core_periphery >= threshold
       ).length
     : 0;
 

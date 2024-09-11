@@ -10,10 +10,12 @@ interface ConnectionProbabilities {
 
 interface GraphProps {
   onDataCalculated: (data: ConnectionProbabilities) => void; // Unified callback function
+  threshold: number;
 }
 
 const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
   onDataCalculated,
+  threshold,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
@@ -26,7 +28,7 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
     // Separate nodes into core and periphery
     graph.forEachNode((node) => {
       const corePeriphery = graph.getNodeAttribute(node, "core_periphery");
-      if (typeof corePeriphery === "number" && corePeriphery >= 0.5) {
+      if (typeof corePeriphery === "number" && corePeriphery >= threshold) {
         coreNodes.push(node);
       } else {
         peripheryNodes.push(node);
@@ -57,14 +59,21 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
         typeof sourceCorePeriphery === "number" &&
         typeof targetCorePeriphery === "number"
       ) {
-        if (sourceCorePeriphery >= 0.8 && targetCorePeriphery >= 0.8) {
+        if (
+          sourceCorePeriphery >= threshold &&
+          targetCorePeriphery >= threshold
+        ) {
           coreCoreEdges++;
         } else if (
-          (sourceCorePeriphery >= 0.8 && targetCorePeriphery < 0.8) ||
-          (sourceCorePeriphery < 0.8 && targetCorePeriphery >= 0.8)
+          (sourceCorePeriphery >= threshold &&
+            targetCorePeriphery < threshold) ||
+          (sourceCorePeriphery < threshold && targetCorePeriphery >= threshold)
         ) {
           corePeripheryEdges++;
-        } else if (sourceCorePeriphery < 0.8 && targetCorePeriphery < 0.8) {
+        } else if (
+          sourceCorePeriphery < threshold &&
+          targetCorePeriphery < threshold
+        ) {
           peripheryPeripheryEdges++;
         }
       }
@@ -111,7 +120,7 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
     return () => {
       graph.off("nodeAttributesUpdated", handleAttributesChange);
     };
-  }, [graph, throttledCalculate]);
+  }, [graph, throttledCalculate, threshold]);
 
   useEffect(() => {
     setStateChange(!stateChange);
