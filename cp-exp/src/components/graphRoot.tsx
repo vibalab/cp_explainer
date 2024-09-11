@@ -185,7 +185,7 @@ const Root: FC<RootProps> = ({
             </ZoomControl>
           </div>
           <div className="contents">
-            <GraphTitle />
+            <GraphTitle threshold={threshold} />
             <div className="search_panel">
               <SearchField />
             </div>

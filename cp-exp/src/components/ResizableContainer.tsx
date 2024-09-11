@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Root from "./graphRoot";
 import OverveiwPanel from "./panels/OverviewPanel";
 import AdjacencyMatrix from "./panels/AdjacencyPanel";
@@ -9,6 +9,7 @@ import MethodModal from "./sub/MethodModal";
 import UploadDataModal from "./sub/UploadDataModal";
 import { Attributes } from "graphology-types";
 import axios from "axios";
+import Spinner from "./sub/Spinner"; // Add a Spinner component or library
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);
@@ -35,9 +36,10 @@ const ResizableContainer: React.FC = () => {
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
   const [threshold, setThreshold] = useState<number>(0.5); // State for threshold
 
+  const [isProcessing, setIsProcessing] = useState<boolean>(false); // New state for spinner
+
   const handleThresholdChangeInParent = (newThreshold: number) => {
     setThreshold(newThreshold); // Update threshold in the parent component
-    console.log("Threshold updated in ParentComponent:", newThreshold);
   };
 
   // Add state to store connection probabilities
@@ -95,10 +97,12 @@ const ResizableContainer: React.FC = () => {
     method: string,
     parameters: Record<string, string>
   ) => {
+    setIsProcessing(true); // Show spinner
     setIsDataUploaded(false);
 
     if (!uploadedFile) {
       alert("파일이 업로드되지 않았습니다.");
+      setIsProcessing(false); // Hide spinner if there's an error
       return;
     }
 
@@ -125,6 +129,8 @@ const ResizableContainer: React.FC = () => {
     } catch (error) {
       console.error("API 호출 중 오류 발생:", error);
       alert("API 호출 중 오류가 발생했습니다.");
+    } finally {
+      setIsProcessing(false); // Hide spinner after processing is done
     }
   };
 
@@ -234,6 +240,7 @@ const ResizableContainer: React.FC = () => {
           padding: "10px",
         }}
       >
+        {isProcessing && <Spinner />} {/* Show spinner when processing */}
         <button
           className="fancy-button"
           onClick={() => setIsUploadModalOpen(true)} // Upload Data 모달 열기

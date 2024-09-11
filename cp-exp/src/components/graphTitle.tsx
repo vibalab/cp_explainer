@@ -1,7 +1,12 @@
 import { useSigma } from "@react-sigma/core";
 import { FC, useEffect, useState } from "react";
 
-const GraphTitle: FC = () => {
+interface TitleProps {
+  threshold: number;
+}
+
+const GraphTitle: FC<TitleProps> = ({ threshold }) => {
+  // Correctly destructure threshold
   const sigma = useSigma();
   const graph = sigma.getGraph();
 
@@ -22,7 +27,7 @@ const GraphTitle: FC = () => {
     graph.forEachNode((_, attributes) => {
       if (!attributes.hidden) {
         counts.nodes++;
-        if (attributes.core_periphery && attributes.core_periphery > 0.8) {
+        if (attributes?.core_periphery >= threshold) {
           counts.corePeripheryNodes++;
         }
       }
@@ -53,7 +58,7 @@ const GraphTitle: FC = () => {
       graph.off("nodeDropped", updateHandler);
       graph.off("nodeAttributesUpdated", updateHandler);
     };
-  }, [graph]);
+  }, [graph, threshold]);
 
   return (
     <div className="graph-title">
