@@ -6,7 +6,7 @@ import os
 import preprocess
 import numpy as np
 import json
-from typing import Optional, Dict
+from typing import Optional,  List, Dict, Any
 from pydantic import BaseModel
 import networkx as nx
 import traceback
@@ -36,6 +36,40 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class NodeData(BaseModel):
+    id: str
+    key: str
+    label: str
+    x: float
+    y: float
+    degree: int
+    degree_centrality: float
+    betweenness_centrality: float
+    closeness_centrality: float
+    eigenvector_centrality: float
+    core_periphery: float
+    group: float
+    attributes: Dict[str, Any]  # This matches the Record<string, any> in TypeScript
+
+# Define EdgeData to match the TypeScript interface
+class EdgeData(BaseModel):
+    source: str
+    target: str
+    weight: float
+    attributes: Dict[str, Any]  # This matches the Record<string, any> in TypeScript
+
+
+# GraphData model to hold nodes and edges
+class GraphData(BaseModel):
+    nodes: List[NodeData]
+    edges: List[EdgeData]
+    core_indices: List[int]
+
+class GraphWithMethod(BaseModel):
+    graphData: GraphData
+    method: str
+
 
 class AlgorithmRequest(BaseModel):
     filename: str
@@ -127,9 +161,10 @@ async def get_graph_node_edge_json():
     return FileResponse(NODEFILE, media_type='application/json')
 
 
-# 그래프 인접 행렬 데이터 API
-@app.get("/graph/adjacency/")
-async def get_graph_adjacency(filename: str):
+
+    
+@app.get("/graph/adjacency-init/")
+async def get_graph_adjacency_json(filename: str):
     try:
         file_location = UPLOAD_DIR / filename
         if not file_location.exists():
@@ -137,22 +172,11 @@ async def get_graph_adjacency(filename: str):
 
         graph = preprocess.load_gexf_to_graph(str(file_location))
         cp_index = np.zeros(graph.number_of_nodes())
-        adjacency_data = preprocess.graph_adjacency(graph, cp_index)
+        graph_json = preprocess.graph_adjacency(G=graph, cp_index=cp_index)
+        return JSONResponse(content=graph_json)
 
-        output_file = JSON_DIR / f"adjacency.json"
-        with open(output_file, "w") as f:
-            json.dump(adjacency_data, f, indent=4)
-
-        return JSONResponse(content={"message": "Adjacency data saved successfully", "filepath": str(output_file)})
-    
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-@app.get("/graph/adjacency-json/")
-async def get_graph_adjacency_json():
-    if not ADJFILE.exists():
-        raise HTTPException(status_code=404, detail="Node Edge file not found")
-    return FileResponse(ADJFILE, media_type='application/json')
 
 
 @app.get("/graph/algorithm")
@@ -249,3 +273,100 @@ async def get_graph_metric_json():
     if not METFILE.exists():
         raise HTTPException(status_code=404, detail="Metric file not found")
     return FileResponse(METFILE, media_type='application/json')
+
+
+
+# GEXF 파일 업로드 및 분석 처리
+@app.post("/uploadCurrent/")
+async def upload_graph(data: GraphWithMethod):
+    try:
+        graphData = data.graphData
+        method = data.method
+                # networkx 그래프 생성
+        G = nx.Graph()
+        core_indices = graphData.core_indices
+        for node in graphData.nodes:
+            G.add_node(
+                node.id,
+                label=node.label,
+                degree=node.degree,
+                degree_centrality=node.degree_centrality,
+                betweenness_centrality=node.betweenness_centrality,
+                closeness_centrality=node.closeness_centrality,
+                eigenvector_centrality=node.eigenvector_centrality,
+                core_periphery=node.core_periphery,
+                attributes=node.attributes,
+                pos=(node.x, node.y)  # 노드의 좌표 추가
+            )
+
+        # 엣지 추가
+        for edge in graphData.edges:
+            G.add_edge(
+                edge.source,
+                edge.target,
+                weight=edge.weight,
+                attributes=edge.attributes
+            )
+        A = nx.to_numpy_array(G)
+        n = A.shape[0]
+
+        # 선택한 메소드에 따른 처리
+        if method == "BE":
+
+            model = Borgatti_Everett(G, A, n)
+            rho = model.borgatti_everett_correlation(core_indices)
+            metric = {"rho": rho}
+
+        elif method == "Brusco":
+            model = Brusco(G, A, n)
+            cp_index, cp_metric, cp_cluster = model.fit()
+            node_edge_data = preprocess.graph_node_edge(G, cp_index=cp_index)
+            metric = {"Z": int(cp_metric)}
+
+        elif method == "Holme":
+            model = Holme(G)
+
+        elif method == "Lip":
+            model = Lip(G)
+
+        elif method == "LowRankCore":
+            model = Low_Rank_Core(G)
+
+        elif method == "Minre":
+            model = Minre(G)
+
+        elif method == "Rombach":
+            model = Rombach(G)
+
+        elif method == "Silva":
+            model = Silva(G)
+
+        elif method == "Rossa":
+            model = Rossa(G)
+            alpha = model.get_alpha()
+            cp_centralization = model.get_cp_centralization()
+            node_edge_data = preprocess.graph_node_edge(G, cp_index=alpha)
+            metric = {"cp_centrality": cp_centralization}
+
+
+        elif method == "KM_Config":
+            model = KM_Config(G)
+
+
+        elif method == "KM_ER":
+            model = KM_ER(G)
+
+
+        elif method == "ICPA":
+            model = ICPA(G)
+
+        else:
+            raise HTTPException(status_code=400, detail="Invalid method")
+
+
+
+        # 처리된 후 성공 메시지를 반환
+        return {"message": "Metric Refreshed.", "metric": metric}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

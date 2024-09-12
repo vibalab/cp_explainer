@@ -30,11 +30,11 @@ import SearchField from "./searchField";
 import Tooltips from "./toolTips";
 import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
 import { Attributes } from "graphology-types";
-import SaveGraphToJson from "./SaveGraphToJson";
 import CPMetric from "./CPMetricDisplay";
 import axios from "axios";
 import ConnectionProbabilityCalculator from "./sub/ConnectProbCal";
 import GraphThresholdUpdater from "./GraphThresholdUpdater";
+import { NodeData, EdgeData } from "../types";
 
 interface RootProps {
   onNodeClick: (
@@ -48,6 +48,18 @@ interface RootProps {
     corePeriphery: { possible: number; actual: number };
     peripheryPeriphery: { possible: number; actual: number };
   }) => void; // Add the callback prop
+  graphData: {
+    nodes: NodeData[];
+    edges: EdgeData[];
+    core_indices: number[];
+  };
+  setGraphData: React.Dispatch<
+    React.SetStateAction<{
+      nodes: NodeData[];
+      edges: EdgeData[];
+      core_indices: number[];
+    }>
+  >;
 }
 
 const NodeBorderCustomProgram = createNodeBorderProgram({
@@ -95,6 +107,8 @@ const Root: FC<RootProps> = ({
   onConnectionProbabilitiesCalculated, // Use this as the unified function
   onThresholdChange, // Receive the callback from the parent component
   threshold,
+  graphData,
+  setGraphData,
 }) => {
   const [showContents, setShowContents] = useState(false);
   const [dataReady, setDataReady] = useState(false);
@@ -166,8 +180,10 @@ const Root: FC<RootProps> = ({
       <GraphEventsController
         setHoveredNode={setHoveredNode}
         onNodeClick={onNodeClick}
+        threshold={threshold}
+        method={method}
       />
-      <GraphDataController dataset={dataset} />
+      <GraphDataController dataset={dataset} threshold={threshold} />
       <GraphThresholdUpdater threshold={threshold} />
       {/* Add the GraphThresholdUpdater */}
       {dataReady && (
@@ -198,6 +214,7 @@ const Root: FC<RootProps> = ({
               method={method}
               hoveredNode={hoveredNode}
               onThresholdChange={onThresholdChange} // Pass the callback to CPMetric
+              setGraphData={setGraphData} // setGraphData를 전달
             />
             <ConnectionProbabilityCalculator
               onDataCalculated={onConnectionProbabilitiesCalculated}

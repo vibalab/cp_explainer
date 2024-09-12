@@ -37,6 +37,7 @@ const SaveGraphToJson: FC = () => {
         closeness_centrality: attributes.closeness_centrality,
         eigenvector_centrality: attributes.eigenvector_centrality,
         core_periphery: attributes.core_periphery,
+        group: attributes.group,
         attributes: attributes.attributes || {}, // attributes는 선택적으로 처리
       });
     });

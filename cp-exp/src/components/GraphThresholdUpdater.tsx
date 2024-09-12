@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { useSigma } from "@react-sigma/core";
+import { getHSLColor } from "./sub/colorUtils";
 
 interface GraphThresholdUpdaterProps {
   threshold: number;
@@ -18,18 +19,16 @@ const GraphThresholdUpdater: FC<GraphThresholdUpdaterProps> = ({
     }
 
     try {
-      console.log(threshold);
       // Update node attributes based on the threshold value
       graph.forEachNode((nodeId, attributes) => {
         const corePeriphery = attributes.core_periphery;
-        const newColor = corePeriphery < threshold ? "#87CEEB" : "#000000";
-        graph.setNodeAttribute(nodeId, "borderColor", newColor);
+        const borderColor =
+          corePeriphery < threshold ? getHSLColor(197, 71, 73, 1) : "#000000";
+        graph.setNodeAttribute(nodeId, "borderColor", borderColor);
       });
 
       // Trigger a re-render for the sigma instance
       sigma.refresh();
-
-      console.log("Graph attributes updated based on threshold:", threshold);
     } catch (error) {
       console.error("Error updating graph attributes:", error);
     }

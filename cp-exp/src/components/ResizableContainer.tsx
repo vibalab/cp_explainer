@@ -10,6 +10,7 @@ import UploadDataModal from "./sub/UploadDataModal";
 import { Attributes } from "graphology-types";
 import axios from "axios";
 import Spinner from "./sub/Spinner"; // Add a Spinner component or library
+import { NodeData, EdgeData } from "../types";
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);
@@ -41,6 +42,16 @@ const ResizableContainer: React.FC = () => {
   const handleThresholdChangeInParent = (newThreshold: number) => {
     setThreshold(newThreshold); // Update threshold in the parent component
   };
+
+  const [graphData, setGraphData] = useState<{
+    nodes: NodeData[];
+    edges: EdgeData[];
+    core_indices: number[];
+  }>({
+    nodes: [],
+    edges: [],
+    core_indices: [],
+  });
 
   // Add state to store connection probabilities
   const [connectionProbabilities, setConnectionProbabilities] = useState<{
@@ -77,13 +88,8 @@ const ResizableContainer: React.FC = () => {
       );
       const nodeEdgePath = nodeEdgeResponse.data.filepath;
 
-      const adjacencyResponse = await axios.get(
-        `http://localhost:8000/graph/adjacency?filename=${filename}`
-      );
-      const adjacencyPath = adjacencyResponse.data.filepath;
-
       alert(
-        `파일 처리 완료:\n1. 그래프 요약: ${graphOverviewPath}\n2. 노드 및 엣지: ${nodeEdgePath}\n3. 인접 행렬: ${adjacencyPath}`
+        `파일 처리 완료:\n1. 그래프 요약: ${graphOverviewPath}\n2. 노드 및 엣지: ${nodeEdgePath}`
       );
 
       setIsDataUploaded(true);
@@ -265,6 +271,8 @@ const ResizableContainer: React.FC = () => {
           isDataUploaded={isDataUploaded}
           onThresholdChange={handleThresholdChangeInParent}
           threshold={threshold}
+          graphData={graphData}
+          setGraphData={setGraphData}
         />
       </div>
 
@@ -397,7 +405,11 @@ const ResizableContainer: React.FC = () => {
           )}
           {showOverview.overview5 && (
             <div style={{ flexShrink: 0 }}>
-              <AdjacencyMatrix isDataUploaded={isDataUploaded} />
+              <AdjacencyMatrix
+                isDataUploaded={isDataUploaded}
+                filename={uploadedFile?.name}
+                graphData={graphData}
+              />
             </div>
           )}
         </div>

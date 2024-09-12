@@ -1,6 +1,7 @@
 import { useSigma } from "@react-sigma/core";
 import { FC, useEffect, useState } from "react";
 import { Attributes } from "graphology-types";
+import { getHSLColor } from "./sub/colorUtils";
 
 const NodeChangePanel: FC<{
   panelPosition: { x: number; y: number } | null;
@@ -11,12 +12,16 @@ const NodeChangePanel: FC<{
     nodeAttributes: Attributes,
     neighborDetails: Array<{ label: string; attributes: Attributes }>
   ) => void;
+  threshold: number;
+  method: string | null;
 }> = ({
   panelPosition,
   selectedNode,
   onClose,
   onRefreshPanels,
   onNodeClick,
+  threshold,
+  method,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
@@ -30,17 +35,14 @@ const NodeChangePanel: FC<{
       selectedNode.id,
       "core_periphery"
     );
-    const currentColor = graph.getNodeAttribute(selectedNode.id, "color");
-    const currentBorderColor = graph.getNodeAttribute(
-      selectedNode.id,
-      "borderColor"
-    );
 
     // Set button label based on the current core_periphery value
     const label =
-      currentCorePeriphery === 1 ? "Toggle to Periphery" : "Toggle to Core";
+      currentCorePeriphery >= threshold
+        ? "Toggle to Periphery"
+        : "Toggle to Core";
     setButtonLabel(label);
-  }, [graph, selectedNode]);
+  }, [graph, selectedNode, threshold]);
 
   const toggleAttributes = () => {
     if (!selectedNode) return;
@@ -55,7 +57,10 @@ const NodeChangePanel: FC<{
 
     // Toggle color
     const currentColor = graph.getNodeAttribute(selectedNode.id, "color");
-    const newColor = currentColor === "#87CEEB" ? "#FFFFFF" : "#87CEEB";
+    const newColor =
+      currentColor === getHSLColor(197, 71, 73, 1)
+        ? "#FFFFFF"
+        : getHSLColor(197, 71, 73, 1);
     graph.setNodeAttribute(selectedNode.id, "color", newColor);
 
     // Set borderColor based on the new core_periphery value
@@ -64,12 +69,14 @@ const NodeChangePanel: FC<{
       "borderColor"
     );
     const newBorderColor =
-      currentBorderColor === "#87CEEB" ? "#000000" : "#87CEEB";
+      currentBorderColor === getHSLColor(197, 71, 73, 1)
+        ? "#000000"
+        : getHSLColor(197, 71, 73, 1);
     graph.setNodeAttribute(selectedNode.id, "borderColor", newBorderColor);
 
     // Update the button label
     const newButtonLabel =
-      newCorePeriphery >= 0.5 ? "Toggle to Periphery" : "Toggle to Core";
+      newCorePeriphery >= threshold ? "Toggle to Periphery" : "Toggle to Core";
     setButtonLabel(newButtonLabel);
 
     onRefreshPanels();
@@ -98,7 +105,9 @@ const NodeChangePanel: FC<{
         top: panelPosition.y,
         left: panelPosition.x,
         backgroundColor: "#fff",
-        border: "1px solid #ced4da",
+        borderWidth: "1px", // Split shorthand
+        borderStyle: "solid", // Split shorthand
+        borderColor: "#ced4da", // Split shorthand
         borderRadius: "8px",
         padding: "12px",
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
@@ -106,28 +115,30 @@ const NodeChangePanel: FC<{
         fontFamily: "Arial, sans-serif",
       }}
     >
-      {/* <div style={{ marginBottom: "8px" }}>
-        <strong>Node Label: {selectedNode.label}</strong>
-      </div> */}
-      <button
-        onClick={toggleAttributes}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        style={{
-          display: "block",
-          width: "100%",
-          backgroundColor: isHovered ? "#87CEEB" : "#fff",
-          border: "1px solid #ced4da",
-          color: isHovered ? "#fff" : "#000",
-          borderRadius: "4px",
-          padding: "8px",
-          cursor: "pointer",
-          marginBottom: "8px",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
-        {buttonLabel}
-      </button>
+      {/* Conditionally render the button if method is not "Rossa" */}
+      {method !== "Rossa" && (
+        <button
+          onClick={toggleAttributes}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{
+            display: "block",
+            width: "100%",
+            backgroundColor: isHovered ? "#87CEEB" : "#fff",
+            borderWidth: "1px", // Split shorthand
+            borderStyle: "solid", // Split shorthand
+            borderColor: "#ced4da", // Split shorthand
+            color: isHovered ? "#fff" : "#000",
+            borderRadius: "4px",
+            padding: "8px",
+            cursor: "pointer",
+            marginBottom: "8px",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
+          {buttonLabel}
+        </button>
+      )}
     </div>
   );
 };

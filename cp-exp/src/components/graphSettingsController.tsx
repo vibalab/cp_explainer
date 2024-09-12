@@ -4,6 +4,7 @@ import { FC, PropsWithChildren, useEffect, useRef } from "react"; // React 훅�
 
 import { drawHover, drawLabel } from "../canvas-utils"; // 커스텀 그리기 유틸리티를 가져옴
 import useDebounce from "../use_debounce"; // 디바운스 훅을 가져옴
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const NODE_FADE_COLOR = "#eee"; // 노드 페이드 색상
 const EDGE_FADE_COLOR = "#eee"; // 엣지 페이드 색상
@@ -40,12 +41,11 @@ const GraphSettingsController: FC<
 
   useEffect(() => {
     const hoveredColor: string =
-      sigma.getNodeDisplayData(debouncedHoveredNode)?.color === "#FFFFFF"
+      sigma.getNodeDisplayData(debouncedHoveredNode)?.color === "#ffffff"
         ? graph.getNodeAttribute(debouncedHoveredNode, "borderColor")
         : (debouncedHoveredNode &&
             sigma.getNodeDisplayData(debouncedHoveredNode)?.color) ||
           ""; // 호버된 노드의 색상을 가져옴
-
     updateCache(debouncedHoveredNode);
 
     const nodeReducer = (node: string, data: Attributes) => {

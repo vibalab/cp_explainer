@@ -1,5 +1,6 @@
 import { useSetSettings, useSigma } from "@react-sigma/core"; // Sigma 설정 및 인스턴스를 가져옴
 import { FC, useState } from "react";
+import { NodeData, EdgeData } from "../types";
 import useDebounce from "../use_debounce"; // 디바운스 훅을 가져옴
 import Borgatti from "./algorithms/BorgattiEverett";
 import Rossa from "./algorithms/Rossa";
@@ -9,12 +10,20 @@ interface CPMetricProps {
   method: string | null;
   hoveredNode: string | null;
   onThresholdChange: (threshold: number) => void; // Add this prop
+  setGraphData: React.Dispatch<
+    React.SetStateAction<{
+      nodes: NodeData[];
+      edges: EdgeData[];
+      core_indices: number[];
+    }>
+  >; // setGraphData를 props로 받아옴
 }
 
 const CPMetric: FC<CPMetricProps> = ({
   method = null,
   hoveredNode,
   onThresholdChange,
+  setGraphData,
 }) => {
   const sigma = useSigma(); // Sigma 인스턴스를 가져옴
   const graph = sigma.getGraph(); // Sigma로부터 그래프를 가져옴
@@ -24,7 +33,9 @@ const CPMetric: FC<CPMetricProps> = ({
 
   return (
     <div className="cpmetric">
-      {method === "BE" && <Borgatti method={method} />}
+      {method === "BE" && (
+        <Borgatti method={method} setGraphData={setGraphData} />
+      )}
       {method === "Brusco" && <Brusco method={method} />}
       {method === "Rossa" && (
         <Rossa

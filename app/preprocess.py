@@ -1,6 +1,8 @@
 import networkx as nx
 import numpy as np
 import json
+import plotly.graph_objects as go
+
 
 def load_gexf_to_graph(gexf_file_path):
     graph = nx.read_gexf(gexf_file_path)
@@ -80,30 +82,85 @@ def graph_node_edge(G, cp_index=None, cp_cluster=None):
     return {"nodes": nodes, "edges": edges}
 
 # 인접 행렬 생성 함수
-def graph_adjacency(G, cp_index):
-    # Identify core and periphery nodes based on cp_index
-    core_nodes = [i for i, x in enumerate(cp_index) if x >= 0.5]
-    periphery_nodes = [i for i, x in enumerate(cp_index) if x < 0.5]
+def graph_adjacency(G, cp_index, threshold=0.5):
+    node_degrees = dict(G.degree())
+    # Separate core and periphery nodes based on `cp_index` values
+    core_nodes = [i for i, x in enumerate(cp_index) if x >= threshold]
+    periphery_nodes = [i for i, x in enumerate(cp_index) if x < threshold]
 
-    core = [1 for i,x in enumerate(cp_index) if x >= 0.5]
-    peri = [0 for i,x in enumerate(cp_index) if x < 0.5]
-    # Combined new order
-    new_order = core_nodes + periphery_nodes
-    cp_ind = core + peri
+    # Sort the core and periphery nodes by degree in descending order
+    core_nodes_sorted = sorted(core_nodes, key=lambda n: node_degrees[list(G.nodes())[n]], reverse=True)
+    periphery_nodes_sorted = sorted(periphery_nodes, key=lambda n: node_degrees[list(G.nodes())[n]], reverse=True)
 
-    # Reorder the adjacency matrix
+    # Combined new order (core nodes first, then periphery nodes, both sorted by degree)
+    new_order = core_nodes_sorted + periphery_nodes_sorted
+
+    # Reorder the adjacency matrix according to the new order
     A = nx.to_numpy_array(G)
-    A_reordered = A[new_order, :][:, new_order]
+    adjacency_matrix = A[new_order, :][:, new_order]
 
-    # Generate node labels, using 'label' attribute if it exists, otherwise the node ID
-    nodes_ordered_labels = [
-        G.nodes[i].get("label", i) for i in [list(G.nodes)[j] for j in new_order]
+
+    # Get the node labels based on the new order
+    node_labels = [G.nodes[list(G.nodes())[node]]['label'] for node in new_order]
+
+    # Custom colorscale: white for 0 (no connection), light blue for 1 (connection)
+    colorscale = [
+        [0, '#FFFFFF'],  # White color for 0 (no connection)
+        [1, '#87CEEB']   # Light blue for 1 (connection)
     ]
 
-    # Convert the reordered adjacency matrix to a list of lists for JSON serialization
-    A_reordered_list = A_reordered.tolist()
+    # Create the heatmap using Plotly
+    fig = go.Figure(data=go.Heatmap(
+        z=adjacency_matrix,        # Adjacency matrix
+        zmin=0,                    # Set minimum value
+        zmax=1,                    # Set maximum value to 1 (values >= 1 will be mapped to light blue)
+        x=node_labels,             # X-axis labels (nodes)
+        y=node_labels,             # Y-axis labels (nodes)
+        colorscale=colorscale,     # Custom colorscale
+        showscale=False            # Hide the color scale
+    ))
 
-    # Combine node labels and adjacency matrix into a dictionary
-    adj_info = {"nodes_labels": nodes_ordered_labels, "cp_ind": cp_ind, "adjacency": A_reordered_list}
+    # Add boundary between core and periphery
+    boundary_index = len(core_nodes_sorted)  # The index where the boundary is
+    fig.add_shape(
+        type="line",
+        x0=boundary_index - 0.5, y0=-0.5,
+        x1=boundary_index - 0.5, y1=len(new_order) - 0.5,
+        line=dict(color="black", width=1)
+    )
+    fig.add_shape(
+        type="line",
+        x0=-0.5, y0=boundary_index - 0.5,
+        x1=len(new_order) - 0.5, y1=boundary_index - 0.5,
+        line=dict(color="black", width=1)
+    )
 
-    return adj_info
+    # Update layout to set the size to 300x300, remove margins, and tighten the layout
+    fig.update_layout(
+        autosize=False,
+        width=300,  # Set width to 300 pixels
+        height=300,  # Set height to 300 pixels
+        margin=dict(l=0, r=0, t=30, b=30),  # Remove all margins around the plot
+        xaxis=dict(
+            showticklabels=False,   # Hide x-axis tick labels
+            mirror=True,            # Add border around the plot
+            linecolor='black',      # Border color
+            linewidth=1,            # Border thickness
+            showgrid=False,         # Hide gridlines
+            constrain='domain'      # Constrain the plot to fill the domain (no extra space)
+        ),
+        yaxis=dict(
+            showticklabels=False,   # Hide y-axis tick labels
+            mirror=True,            # Add border around the plot
+            linecolor='black',      # Border color
+            linewidth=1,            # Border thickness
+            showgrid=False,         # Hide gridlines
+            autorange='reversed',   # Flip the y-axis
+            scaleanchor='x',        # Match the scaling of x and y axes
+            constrain='domain'      # Constrain the plot to fill the domain (no extra space)
+        )
+    )
+
+    # Convert the Plotly figure to JSON
+    graph_json = fig.to_json()
+    return graph_json

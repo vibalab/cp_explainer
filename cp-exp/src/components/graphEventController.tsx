@@ -10,8 +10,10 @@ const GraphEventsController: FC<
       nodeAttributes: Attributes,
       neighborDetails: Array<{ label: string; attributes: Attributes }>
     ) => void;
+    method: string | null;
+    threshold: number;
   }>
-> = ({ setHoveredNode, onNodeClick, children }) => {
+> = ({ setHoveredNode, onNodeClick, threshold, method, children }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
   const registerEvents = useRegisterEvents();
@@ -173,6 +175,8 @@ const GraphEventsController: FC<
         onClose={handleClose}
         onRefreshPanels={handleRefreshPanels} // Pass the refresh function
         onNodeClick={onNodeClick} // Pass the onNodeClick to NodeChangePanel
+        threshold={threshold}
+        method={method}
       />
     </>
   );
