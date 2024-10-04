@@ -1,10 +1,9 @@
-import { FC, useEffect, PropsWithChildren, useState } from "react";
-import { keyBy } from "lodash";
+import { FC, useEffect, PropsWithChildren } from "react";
 import { useSigma } from "@react-sigma/core";
 import "@react-sigma/core/lib/react-sigma.min.css";
-import { Dataset } from "../types";
+import { Dataset } from "../../types";
 import forceAtlas2 from "graphology-layout-forceatlas2"; // ForceAtlas2 알고리즘 가져옴
-import { getHSLColor, hslToRgb, rgbToHex } from "./sub/colorUtils";
+import { getHSLColor } from "../sub/colorUtils";
 
 interface GraphDataControllerProps {
   dataset: Dataset;
@@ -47,6 +46,7 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
           closeness_centrality: node.closeness_centrality,
           eigenvector_centrality: node.eigenvector_centrality,
           core_periphery: node.core_periphery,
+          core_periphery_score: node.core_periphery_score,
           group: node.group,
           attributes: node.attributes,
           size: nodeSize,

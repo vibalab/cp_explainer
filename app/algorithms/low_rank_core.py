@@ -38,6 +38,9 @@ class Low_Rank_Core:
         
         for edge in G.edges():
             u, v = edge
+            r_nodes = list(G.nodes())
+            u = r_nodes.index(u)
+            v = r_nodes.index(v)
             if u in V_C and v in V_C:
                 E_VC_VC += 1
             elif (u in V_C and v in V_P) or (v in V_C and u in V_P):
@@ -58,7 +61,6 @@ class Low_Rank_Core:
             gamma * abs(len(V_C) / n) -
             beta
         )
-        
         return cp_density
 
     def find_cut(self, G, scores, b):
@@ -104,61 +106,10 @@ class Low_Rank_Core:
         else:
             b = 5
             core_set, periphery_set, _ = self.find_cut(G, scores, b)
-        
-        return scores, core_set, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)
 
-    def lap_core(self, beta=None):
-        G = self.G
-        A = nx.adjacency_matrix(G).astype(float)
-        D = np.diag(np.array(A.sum(axis=1)).flatten())
-        D_inv = np.linalg.inv(D)
-        L = D_inv @ A
+        n = self.G.number_of_nodes()
+        core_indices = [0 for _ in range(n)]
+        for i in core_set:
+            core_indices[i] = 1
 
-        eigenvalues, eigenvectors = eigs(L, k=2, which='SR')
-        lambda_n = eigenvalues[1]
-        v_n = eigenvectors[:, 1]
-
-        scores = np.real(v_n)
-
-        if beta is not None:
-            n = len(scores)
-            core_size = int(beta * n)
-            core_indices = np.argsort(scores)[-core_size:]
-            core_set = set(core_indices)
-            periphery_set = set(range(n)) - core_set
-        else:
-            b = 3
-            core_set, periphery_set, _ = self.find_cut(G, scores, b)
-        
-        return scores, core_set, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)
-
-    def lap_sgn_core(self):
-        G = self.G
-        A = nx.adjacency_matrix(G).astype(float)
-        D = np.diag(np.array(A.sum(axis=1)).flatten())
-        D_inv = np.linalg.inv(D)
-        L = D_inv @ A
-
-        eigenvalues, eigenvectors = eigs(L, k=2, which='SR')
-        v_n = np.real(eigenvectors[:, 1])
-        z = np.sign(v_n)
-
-        def evaluate_partition(z):
-            core_set = set(np.where(z >= 0)[0])
-            periphery_set = set(np.where(z < 0)[0])
-            return core_set, periphery_set
-
-        core_set_1, periphery_set_1 = evaluate_partition(z)
-        n1 = self.calculate_cp_density(G, core_set_1, periphery_set_1, 1)
-
-        core_set_2, periphery_set_2 = evaluate_partition(-z)
-        n2 = self.calculate_cp_density(G, core_set_2, periphery_set_2, 1)
-
-        if n1 < n2:
-            core_set, periphery_set = core_set_1, periphery_set_1
-        elif n2 < n1:
-            core_set, periphery_set = core_set_2, periphery_set_2
-        else:
-            core_set, periphery_set = None, None
-
-        return z, core_set, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)
+        return scores, core_indices, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)

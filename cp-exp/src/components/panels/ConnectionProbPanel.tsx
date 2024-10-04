@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "../sub/Accordion";
 import CorePeripheryTable from "../sub/CorePeripheryTable";
 import Tooltip from "../sub/Tooltip";
+import { NodeData, EdgeData } from "../../types";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };
@@ -11,16 +12,29 @@ interface ConnectionProbabilities {
 
 interface ConnectionProbPanelProps {
   connectionProbabilities: ConnectionProbabilities | null;
+  graphData: {
+    nodes: NodeData[];
+    edges: EdgeData[];
+    core_indices: number[];
+  };
 }
 
 const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
   connectionProbabilities,
+  graphData,
 }) => {
   const [tooltip, setTooltip] = useState<{
     text: string;
     x: number;
     y: number;
   } | null>(null);
+
+  const [p00, setP00] = useState<number>(0);
+  const [p01, setP01] = useState<number>(0);
+  const [p11, setP11] = useState<number>(0);
+  const [p, setP] = useState<number>(0);
+  const [hasCorePeripheryStructure, setHasCorePeripheryStructure] =
+    useState<boolean>(false);
 
   const handleCopy = (
     text: string,
@@ -41,26 +55,55 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
     );
   };
 
+  const probCal = () => {
+    if (!connectionProbabilities) return;
+
+    const { coreCore, corePeriphery, peripheryPeriphery } =
+      connectionProbabilities;
+
+    // Calculate p00, p01, and p11
+    const p00Value =
+      peripheryPeriphery.possible > 0
+        ? peripheryPeriphery.actual / peripheryPeriphery.possible
+        : 0;
+    const p01Value =
+      corePeriphery.possible > 0
+        ? corePeriphery.actual / corePeriphery.possible
+        : 0;
+    const p11Value =
+      coreCore.possible > 0 ? coreCore.actual / coreCore.possible : 0;
+
+    // Overall p calculation
+    const pValue =
+      coreCore.possible + corePeriphery.possible + peripheryPeriphery.possible >
+      0
+        ? (coreCore.actual + corePeriphery.actual + peripheryPeriphery.actual) /
+          (coreCore.possible +
+            corePeriphery.possible +
+            peripheryPeriphery.possible)
+        : 0;
+
+    // Check if the network has a Core-Periphery structure
+    const hasCPStructure = p11Value > p01Value && p01Value > p00Value;
+
+    // Update state with calculated values
+    setP00(p00Value);
+    setP01(p01Value);
+    setP11(p11Value);
+    setP(pValue);
+    setHasCorePeripheryStructure(hasCPStructure);
+  };
+
+  useEffect(() => {
+    if (graphData) {
+      probCal();
+    }
+  }, [graphData, connectionProbabilities]);
+
   // If connectionProbabilities are not available yet, show loading or an error message
   if (!connectionProbabilities) {
     return <div>Loading connection probabilities...</div>;
   }
-
-  const { coreCore, corePeriphery, peripheryPeriphery } =
-    connectionProbabilities;
-
-  // Calculate p00, p01, and p11 as numbers
-  const p00 = peripheryPeriphery.actual / peripheryPeriphery.possible;
-  const p01 = corePeriphery.actual / corePeriphery.possible;
-  const p11 = coreCore.actual / coreCore.possible;
-
-  // Overall p
-  const p =
-    (coreCore.actual + corePeriphery.actual + peripheryPeriphery.actual) /
-    (coreCore.possible + corePeriphery.possible + peripheryPeriphery.possible);
-
-  // Check if the network has a Core-Periphery structure
-  const hasCorePeripheryStructure = p11 > p01 && p01 > p00;
 
   return (
     <Accordion title="Connection Probability" isOpen={false}>
@@ -109,7 +152,8 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
               Core-Core
             </td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {coreCore.actual}/{coreCore.possible}
+              {connectionProbabilities.coreCore.actual}/
+              {connectionProbabilities.coreCore.possible}
             </td>
           </tr>
           <tr>
@@ -117,7 +161,8 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
               Core-Peri
             </td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {corePeriphery.actual}/{corePeriphery.possible}
+              {connectionProbabilities.corePeriphery.actual}/
+              {connectionProbabilities.corePeriphery.possible}
             </td>
           </tr>
           <tr>
@@ -125,7 +170,8 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
               Peri-Peri
             </td>
             <td style={{ border: "1px solid gray", padding: "5px" }}>
-              {peripheryPeriphery.actual}/{peripheryPeriphery.possible}
+              {connectionProbabilities.peripheryPeriphery.actual}/
+              {connectionProbabilities.peripheryPeriphery.possible}
             </td>
           </tr>
         </tbody>

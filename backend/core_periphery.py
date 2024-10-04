@@ -160,7 +160,7 @@ class Transport :
         r_nodes= list(self.G.nodes())
         r_index = [r_nodes.index(i) for i in best_k_core_nodes]
 
-        return c_cp, r_index
+        return c_cp, r_index, r_nodes
     
 
 
@@ -399,15 +399,37 @@ class Minre:
     
 
     
-
-class Lip :
-    def __init__(self, G, A) :
+class Lip:
+    def __init__(self, G, A):
         self.G = G
         self.A = A
 
+    @staticmethod
+    @numba.jit(nopython=True, cache=True)
+    def calculate_brusco_metric(A, n, core_indices, periphery_indices):
+        core_core_edges = 0
+        periphery_periphery_edges = 0
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if i in core_indices and j in core_indices:
+                    if A[i, j] == 0:
+                        core_core_edges += 1
+                if i in periphery_indices and j in periphery_indices:
+                    if A[i, j] == 1:
+                        periphery_periphery_edges += 1
+
+        return core_core_edges + periphery_periphery_edges
+
+
+    def brusco_metric(self, core_indices):
+        n = self.A.shape[0]
+        periphery_indices = self.get_periphery_indices(n, core_indices)
+        return self.calculate_brusco_metric(self.A, n, core_indices, periphery_indices)
     
-    def calculate(self) :
-        A = self.A
+    @staticmethod
+    @numba.jit(nopython=True, cache=True)
+    def calculate_numba(A):
         n = A.shape[0]
         deg = A.sum(axis=1)
         sorted_indices = np.argsort(-deg)
@@ -425,8 +447,18 @@ class Lip :
             if Z < Z_best:
                 Z_best = Z
                 k_best = k
+
         S1 = sorted_indices[:k_best]
         return Z_influence, S1, Z_best
+
+    def calculate(self):
+        z_influence, cores, z = self.calculate_numba(self.A)
+        n = self.A.shape[0]
+        core_indices = [0 for _ in range(n)]
+        for i in cores:
+            core_indices[i] = 1
+
+        return z_influence, core_indices, z
     
 
 class Rombach:
@@ -1209,6 +1241,7 @@ class Lap_Core :
         # Step 3: Threshold the entries of A_hat at 0.5
         A_hat_thresh = np.where(A_hat > 0.5, 1, 0)
         
+        print(A_hat)
         # Convert A_hat_thresh back to a graph to compute degrees
         G_hat = nx.from_numpy_array(A_hat_thresh)  # Use from_numpy_array instead of from_numpy_matrix
         

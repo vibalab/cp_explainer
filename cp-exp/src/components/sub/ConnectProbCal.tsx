@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSigma } from "@react-sigma/core";
 import throttle from "lodash/throttle";
+import { NodeData, EdgeData } from "../../types";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };
@@ -11,21 +12,27 @@ interface ConnectionProbabilities {
 interface GraphProps {
   onDataCalculated: (data: ConnectionProbabilities) => void; // Unified callback function
   threshold: number;
+  graphData: {
+    nodes: NodeData[];
+    edges: EdgeData[];
+    core_indices: number[];
+  };
 }
 
 const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
   onDataCalculated,
   threshold,
+  graphData,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
-  const [stateChange, setStateChange] = useState(false);
 
+  // Connection probability calculation
   const calculateConnectionProbabilities = useCallback(() => {
     const coreNodes: string[] = [];
     const peripheryNodes: string[] = [];
 
-    // Separate nodes into core and periphery
+    // Separate nodes into core and periphery based on the threshold
     graph.forEachNode((node) => {
       const corePeriphery = graph.getNodeAttribute(node, "core_periphery");
       if (typeof corePeriphery === "number" && corePeriphery >= threshold) {
@@ -97,34 +104,22 @@ const ConnectionProbabilityCalculator: React.FC<GraphProps> = ({
       },
     };
 
-    // Trigger the unified callback function with the calculated data
+    // Trigger the callback function with the calculated data
     onDataCalculated(result);
-  }, [graph, onDataCalculated]);
+  }, [graphData, threshold]);
 
-  // Throttle the calculateConnectionProbabilities function
+  // Throttle the calculateConnectionProbabilities function to avoid too many re-calculations
   const throttledCalculate = useCallback(
     throttle(calculateConnectionProbabilities, 500),
     [calculateConnectionProbabilities]
   );
 
+  // Effect to calculate probabilities whenever graphData or threshold changes
   useEffect(() => {
-    if (!graph) return;
-
-    // Watch for attribute changes
-    const handleAttributesChange = () => {
-      throttledCalculate();
-    };
-
-    graph.on("nodeAttributesUpdated", handleAttributesChange);
-
-    return () => {
-      graph.off("nodeAttributesUpdated", handleAttributesChange);
-    };
-  }, [graph, throttledCalculate, threshold]);
-
-  useEffect(() => {
-    setStateChange(!stateChange);
-  }, [sigma, graph]);
+    if (graph && graphData) {
+      throttledCalculate(); // Calculate whenever graphData or threshold changes
+    }
+  }, [graphData, threshold, throttledCalculate]);
 
   return null; // No visual output, just processing logic
 };

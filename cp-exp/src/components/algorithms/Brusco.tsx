@@ -2,40 +2,73 @@ import { FC, useState, useEffect } from "react";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex"; // LaTeX 수식 표시를 위한 라이브러리
 import axios from "axios";
+import { NodeData, EdgeData } from "../../types";
+import {
+  fetchMetricData,
+  updateGraphMetric,
+  createGraphData,
+} from "../sub/metricService"; // metricService 가져오기
+import { useSigma } from "@react-sigma/core";
 
 interface BruscoProps {
   method: string | null;
+  setGraphData: React.Dispatch<
+    React.SetStateAction<{
+      nodes: NodeData[];
+      edges: EdgeData[];
+      core_indices: number[];
+    }>
+  >; // setGraphData를 props로 받아옴
 }
-const Brusco: FC<BruscoProps> = ({ method }) => {
+const Brusco: FC<BruscoProps> = ({ method, setGraphData }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const sigma = useSigma();
+  const graph = sigma.getGraph();
+  const [isSaving, setIsSaving] = useState(false); // 저장 중인지 여부\
 
-  // 모달 토글 함수
-  const toggleModal = () => {
-    setModalOpen(!isModalOpen);
-  };
+  const toggleModal = () => setModalOpen(!isModalOpen);
 
-  // 데이터 가져오는 함수
-  const fetchData = async () => {
+  // Update metric when the "Refresh Metric" button is clicked
+  const handleUpdateMetric = async () => {
+    setIsSaving(true);
+
+    const graphData = createGraphData(graph);
+    setGraphData(graphData);
     try {
-      const res = await axios.get("http://localhost:8000/graph/metric-json/");
-      const dataset: Record<string, any> = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
-      setMetric(dataset);
-      setLoading(false); // 로딩 완료 상태로 설정
-    } catch (err) {
-      console.error("Error fetching dataset:", err);
-      setError("Failed to load graph data.");
-      setLoading(false); // 오류 발생 시 로딩 상태 해제
+      // 분리된 graphData 생성 로직과 통신 로직을 사용하여 업데이트
+      const updatedMetric = await updateGraphMetric(graphData, method);
+      setMetric(updatedMetric);
+    } catch (error) {
+      console.error("Error uploading graph data:", error);
+    } finally {
+      setIsSaving(false);
     }
   };
 
-  // method가 바뀔 때마다 fetchData 실행
+  // Fetch metric data based on the method
+  const handleFetchData = async () => {
+    setLoading(true);
+    try {
+      const dataset = await fetchMetricData();
+      setMetric(dataset);
+      setError(null);
+    } catch (err) {
+      setError("Failed to load graph data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // method가 바뀔 때마다 데이터 fetch
   useEffect(() => {
     if (method) {
-      fetchData(); // method가 있을 때만 데이터 가져오기
+      handleFetchData();
+      const graphData = createGraphData(graph);
+      setGraphData(graphData);
     }
   }, [method]);
 
@@ -52,6 +85,19 @@ const Brusco: FC<BruscoProps> = ({ method }) => {
         <i style={{ cursor: "pointer" }} onClick={toggleModal}>
           Z: {metric?.Z}
         </i>
+        <button
+          onClick={handleUpdateMetric}
+          style={{
+            marginLeft: "10px",
+            backgroundColor: isSaving ? "#cccccc" : "#f0f0f0",
+            border: "1px solid #ced4da",
+            padding: "5px 10px",
+            borderRadius: "5px",
+            fontSize: "12px",
+          }}
+        >
+          Refresh Metric
+        </button>
       </h2>
 
       {/* 모달이 열렸을 때만 표시 */}

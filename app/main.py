@@ -49,18 +49,15 @@ class NodeData(BaseModel):
     closeness_centrality: float
     eigenvector_centrality: float
     core_periphery: float
-    group: float
-    attributes: Dict[str, Any]  # This matches the Record<string, any> in TypeScript
+    group: int
+    attributes: Dict[str, Any]
 
-# Define EdgeData to match the TypeScript interface
 class EdgeData(BaseModel):
     source: str
     target: str
-    weight: float
-    attributes: Dict[str, Any]  # This matches the Record<string, any> in TypeScript
+    weight: float  # Ensure weight is a float
+    attributes: Dict[str, Any]
 
-
-# GraphData model to hold nodes and edges
 class GraphData(BaseModel):
     nodes: List[NodeData]
     edges: List[EdgeData]
@@ -68,7 +65,8 @@ class GraphData(BaseModel):
 
 class GraphWithMethod(BaseModel):
     graphData: GraphData
-    method: str
+    method: str  # Ensure method is a string
+
 
 
 class AlgorithmRequest(BaseModel):
@@ -178,6 +176,56 @@ async def get_graph_adjacency_json(filename: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/graph/adjacency-update/")
+async def get_graph_adjacency_update(request: dict):
+    try:
+        graph_data = request.get('graphData')  # 'graphData' 부분을 딕셔너리로 파싱
+        threshold = request.get('threshold')  # 'threshold'도 마찬가지로 가져옴
+
+        if not graph_data or threshold is None:
+            raise ValueError("Invalid input data")
+
+        # networkx 그래프 생성
+        G = nx.Graph()
+        core_index = []
+
+        for node in graph_data['nodes']:
+            G.add_node(
+                node['id'],
+                label=node['label'],
+                degree=node['degree'],
+                degree_centrality=node['degree_centrality'],
+                betweenness_centrality=node['betweenness_centrality'],
+                closeness_centrality=node['closeness_centrality'],
+                eigenvector_centrality=node['eigenvector_centrality'],
+                core_periphery=node['core_periphery'],
+                attributes=node['attributes'],
+                pos=(node['x'], node['y'])  # 노드의 좌표 추가
+            )
+            core_index.append(node['core_periphery'])
+
+        # 엣지 추가
+        for edge in graph_data['edges']:
+            G.add_edge(
+                edge['source'],
+                edge['target'],
+                weight=edge['weight'],
+                attributes=edge['attributes']
+            )
+
+        # 그래프를 numpy 배열로 변환
+        A = nx.to_numpy_array(G)
+        n = A.shape[0]
+        # 특정 전처리 함수 호출, 수정해야 할 수 있음
+        graph_json = preprocess.graph_adjacency(G=G, cp_index=core_index, threshold=threshold)
+
+        # JSON으로 응답 반환
+        return JSONResponse(content=graph_json)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 
 @app.get("/graph/algorithm")
 async def apply_algorithm(
@@ -214,27 +262,46 @@ async def apply_algorithm(
 
         elif method == "Holme":
             model = Holme(graph)
+            cp_metric, core_indices = model.holme_metric(graph, 100)
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices)
+            metric = {"C_cp": cp_metric}
 
         elif method == "Lip":
-            model = Lip(graph)
+            model = Lip(graph, A)
+            z_influence, core_indices, z = model.calculate()
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=z_influence)
+            metric = {"Z": int(z)}
 
-        elif method == "LowRankCore":
+        elif method == "LLC":
             model = Low_Rank_Core(graph)
+            scores, core_indices, q = model.low_rank_core()
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=scores)
+            print(q)
+            metric = {"Q": q}
 
         elif method == "Minre":
-            model = Minre(graph)
+            model = Minre(graph, A)
+            w, indices, PRE = model.minres()
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=w, cp_node_metric=w)
+            metric = {"PRE": PRE}
 
         elif method == "Rombach":
-            model = Rombach(graph)
+            model = Rombach(graph, A)
+            best_order, core_scores_optimized, result, R_gamma = model.optimize()
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_scores_optimized, cp_node_metric=core_scores_optimized)
+            metric = {"R_gamma": R_gamma}
 
         elif method == "Silva":
             model = Silva(graph)
+            cc, core_indices, capcity_order = model.silva_core_coefficient(graph)
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=capcity_order)
+            metric = {"cc": cc}
 
         elif method == "Rossa":
             model = Rossa(graph)
             alpha = model.get_alpha()
             cp_centralization = model.get_cp_centralization()
-            node_edge_data = preprocess.graph_node_edge(graph, cp_index=alpha)
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=alpha, cp_node_metric=alpha)
             metric = {"cp_centrality": cp_centralization}
 
 
@@ -261,7 +328,7 @@ async def apply_algorithm(
         with open(metric_file, "w") as f:
             json.dump(metric, f, indent=4)
 
-        return {"message": "Adjacency data saved successfully", "filepath": str(output_file)}
+        return {"message": "Algorithm applied successfully", "filepath": str(output_file)}
 
     except Exception as e:
         print(f"Error: {e}")
@@ -319,15 +386,16 @@ async def upload_graph(data: GraphWithMethod):
 
         elif method == "Brusco":
             model = Brusco(G, A, n)
-            cp_index, cp_metric, cp_cluster = model.fit()
-            node_edge_data = preprocess.graph_node_edge(G, cp_index=cp_index)
-            metric = {"Z": int(cp_metric)}
+            Z = model.brusco_metric(core_indices)
+            metric = {"Z": int(Z)}
 
         elif method == "Holme":
             model = Holme(G)
 
         elif method == "Lip":
-            model = Lip(G)
+            model = Lip(G, A)
+            Z = model.brusco_metric(core_indices)
+            metric = {"Z": int(Z)}
 
         elif method == "LowRankCore":
             model = Low_Rank_Core(G)

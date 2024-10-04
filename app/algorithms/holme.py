@@ -103,4 +103,10 @@ class Holme:
         r_nodes = list(G.nodes())
         r_index = [r_nodes.index(i) for i in best_k_core_nodes]
 
-        return c_cp, r_index
+        n = self.G.number_of_nodes()
+        core_indices = [0 for _ in range(n)]
+        for i in r_index:
+            core_indices[i] = 1
+
+
+        return c_cp, core_indices

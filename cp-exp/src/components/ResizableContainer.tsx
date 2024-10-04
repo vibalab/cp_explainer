@@ -35,6 +35,7 @@ const ResizableContainer: React.FC = () => {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
+  const [isMethodChanged, setIsMethodChanged] = useState<boolean>(false);
   const [threshold, setThreshold] = useState<number>(0.5); // State for threshold
 
   const [isProcessing, setIsProcessing] = useState<boolean>(false); // New state for spinner
@@ -104,7 +105,7 @@ const ResizableContainer: React.FC = () => {
     parameters: Record<string, string>
   ) => {
     setIsProcessing(true); // Show spinner
-    setIsDataUploaded(false);
+    setIsMethodChanged(false);
 
     if (!uploadedFile) {
       alert("파일이 업로드되지 않았습니다.");
@@ -131,7 +132,7 @@ const ResizableContainer: React.FC = () => {
       const algorithmResultPath = algorithmResponse.data.filepath;
 
       alert(`알고리즘 적용 및 업데이트 완료`);
-      setIsDataUploaded(true);
+      setIsMethodChanged(true);
     } catch (error) {
       console.error("API 호출 중 오류 발생:", error);
       alert("API 호출 중 오류가 발생했습니다.");
@@ -269,6 +270,7 @@ const ResizableContainer: React.FC = () => {
           onNodeClick={handleNodeClick}
           methods={selectedMethod}
           isDataUploaded={isDataUploaded}
+          isMethodChanged={isMethodChanged}
           onThresholdChange={handleThresholdChangeInParent}
           threshold={threshold}
           graphData={graphData}
@@ -400,6 +402,7 @@ const ResizableContainer: React.FC = () => {
             <div style={{ flexShrink: 0 }}>
               <ConenctionProbPanel
                 connectionProbabilities={connectionProbabilities} // Pass the connection probabilities to the panel
+                graphData={graphData}
               />
             </div>
           )}
@@ -409,6 +412,8 @@ const ResizableContainer: React.FC = () => {
                 isDataUploaded={isDataUploaded}
                 filename={uploadedFile?.name}
                 graphData={graphData}
+                threshold={threshold}
+                method={selectedMethod}
               />
             </div>
           )}

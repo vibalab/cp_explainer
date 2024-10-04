@@ -8,6 +8,34 @@ class Lip:
 
     @staticmethod
     @numba.jit(nopython=True, cache=True)
+    def calculate_brusco_metric(A, n, core_indices, periphery_indices):
+        core_core_edges = 0
+        periphery_periphery_edges = 0
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                if i in core_indices and j in core_indices:
+                    if A[i, j] == 0:
+                        core_core_edges += 1
+                if i in periphery_indices and j in periphery_indices:
+                    if A[i, j] == 1:
+                        periphery_periphery_edges += 1
+
+        return core_core_edges + periphery_periphery_edges
+
+    @staticmethod
+    @numba.jit(nopython=True, cache=True)
+    def get_periphery_indices(n, core_indices) :
+        periphery_indices = [i for i in range(n) if i not in core_indices]
+        return periphery_indices
+
+    def brusco_metric(self, core_indices):
+        n = self.A.shape[0]
+        periphery_indices = self.get_periphery_indices(n, core_indices)
+        return self.calculate_brusco_metric(self.A, n, core_indices, periphery_indices)
+    
+    @staticmethod
+    @numba.jit(nopython=True, cache=True)
     def calculate_numba(A):
         n = A.shape[0]
         deg = A.sum(axis=1)
@@ -31,4 +59,11 @@ class Lip:
         return Z_influence, S1, Z_best
 
     def calculate(self):
-        return self.calculate_numba(self.A)
+        z_influence, cores, z = self.calculate_numba(self.A)
+        n = self.A.shape[0]
+        core_indices = [0 for _ in range(n)]
+        for i in cores:
+            core_indices[i] = 1
+
+        z = self.brusco_metric(core_indices)
+        return z_influence, core_indices, z

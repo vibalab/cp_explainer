@@ -12,6 +12,7 @@ export interface NodeData {
   closeness_centrality: number;
   eigenvector_centrality: number;
   core_periphery: number;
+  core_periphery_score: number;
   group: number;
   attributes: Record<string, any>; // attributes는 임의의 형태로 올 수 있음
 }

@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { useSigma } from "@react-sigma/core";
-import { getHSLColor } from "./sub/colorUtils";
+import { getHSLColor } from "../sub/colorUtils";
 
 interface GraphThresholdUpdaterProps {
   threshold: number;

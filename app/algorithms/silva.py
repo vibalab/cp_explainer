@@ -80,4 +80,16 @@ class Silva:
         r_nodes = list(G.nodes())
         r_index = [r_nodes.index(i) for i in removed_nodes[:n]]
 
-        return cc, r_index, capacities
+        n = self.G.number_of_nodes()
+        core_indices = [0 for _ in range(n)]
+        for i in r_index:
+            core_indices[i] = 1
+            
+        # Create capacity_order using integer indices
+        capacity_order = [0 for _ in range(n)]
+        node_to_index = {node: idx for idx, node in enumerate(r_nodes)}
+        for node, cap in capacities.items():
+            idx = node_to_index[node]  # Get the index of the node
+            capacity_order[idx] = cap
+
+        return cc, core_indices, capacity_order

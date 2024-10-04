@@ -1,7 +1,8 @@
 import { useRegisterEvents, useSigma } from "@react-sigma/core";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Attributes } from "graphology-types";
-import NodeChangePanel from "./NodeChangePanel"; // Adjust the import path as needed
+import NodeChangePanel from "../NodeChangePanel"; // Adjust the import path as needed
+import { NodeData, EdgeData } from "../../types";
 
 const GraphEventsController: FC<
   PropsWithChildren<{
@@ -12,8 +13,22 @@ const GraphEventsController: FC<
     ) => void;
     method: string | null;
     threshold: number;
+    setGraphData: React.Dispatch<
+      React.SetStateAction<{
+        nodes: NodeData[];
+        edges: EdgeData[];
+        core_indices: number[];
+      }>
+    >; // setGraphData를 props로 받아옴
   }>
-> = ({ setHoveredNode, onNodeClick, threshold, method, children }) => {
+> = ({
+  setHoveredNode,
+  onNodeClick,
+  setGraphData,
+  threshold,
+  method,
+  children,
+}) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
   const registerEvents = useRegisterEvents();
@@ -175,6 +190,7 @@ const GraphEventsController: FC<
         onClose={handleClose}
         onRefreshPanels={handleRefreshPanels} // Pass the refresh function
         onNodeClick={onNodeClick} // Pass the onNodeClick to NodeChangePanel
+        setGraphData={setGraphData}
         threshold={threshold}
         method={method}
       />

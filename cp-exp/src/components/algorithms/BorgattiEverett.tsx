@@ -28,7 +28,7 @@ const Borgatti: FC<BorgattiProps> = ({ method, setGraphData }) => {
   const [error, setError] = useState<string | null>(null);
   const sigma = useSigma();
   const graph = sigma.getGraph();
-  const [isSaving, setIsSaving] = useState(false); // 저장 중인지 여부
+  const [isSaving, setIsSaving] = useState(false); // 저장 중인지 여부\
 
   const toggleModal = () => setModalOpen(!isModalOpen);
 
@@ -37,7 +37,6 @@ const Borgatti: FC<BorgattiProps> = ({ method, setGraphData }) => {
     setIsSaving(true);
 
     const graphData = createGraphData(graph);
-    console.log(graphData, method);
     setGraphData(graphData);
     try {
       // 분리된 graphData 생성 로직과 통신 로직을 사용하여 업데이트
@@ -68,6 +67,8 @@ const Borgatti: FC<BorgattiProps> = ({ method, setGraphData }) => {
   useEffect(() => {
     if (method) {
       handleFetchData();
+      const graphData = createGraphData(graph);
+      setGraphData(graphData);
     }
   }, [method]);
 

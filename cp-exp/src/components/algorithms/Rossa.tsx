@@ -2,14 +2,33 @@ import { FC, useState, useEffect } from "react";
 import { useSigma } from "@react-sigma/core";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex"; // LaTeX 수식 표시를 위한 라이브러리
+import { NodeData, EdgeData } from "../../types";
 import axios from "axios";
+import {
+  fetchMetricData,
+  updateGraphMetric,
+  createGraphData,
+} from "../sub/metricService"; // metricService 가져오기
+
 interface RossaProps {
   hoveredNode: string | null;
   method: string | null;
   onThresholdChange: (threshold: number) => void; // Callback to send threshold to parent
+  setGraphData: React.Dispatch<
+    React.SetStateAction<{
+      nodes: NodeData[];
+      edges: EdgeData[];
+      core_indices: number[];
+    }>
+  >; // setGraphData를 props로 받아옴
 }
 
-const Rossa: FC<RossaProps> = ({ hoveredNode, method, onThresholdChange }) => {
+const Rossa: FC<RossaProps> = ({
+  hoveredNode,
+  method,
+  onThresholdChange,
+  setGraphData,
+}) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
   const [isModalOpen, setModalOpen] = useState(false);
@@ -33,27 +52,32 @@ const Rossa: FC<RossaProps> = ({ hoveredNode, method, onThresholdChange }) => {
     if (value >= 0 && value <= 1) {
       setThreshold(value); // Update local threshold state
       onThresholdChange(value); // Send new threshold value to parent
+      const graphData = createGraphData(graph);
+      setGraphData(graphData);
     }
   };
 
-  // 데이터 가져오는 함수
-  const fetchData = async () => {
+  // Fetch metric data based on the method
+  const handleFetchData = async () => {
+    setLoading(true);
+
     try {
-      const res = await axios.get("http://localhost:8000/graph/metric-json/");
-      const dataset: Record<string, any> = res.data;
+      const dataset = await fetchMetricData();
       setMetric(dataset);
-      setLoading(false);
+      setError(null);
     } catch (err) {
-      console.error("Error fetching dataset:", err);
       setError("Failed to load graph data.");
+    } finally {
       setLoading(false);
     }
   };
 
-  // method가 바뀔 때마다 fetchData 실행
+  // method가 바뀔 때마다 데이터 fetch
   useEffect(() => {
     if (method) {
-      fetchData(); // method가 있을 때만 데이터 가져오기
+      handleFetchData();
+      const graphData = createGraphData(graph);
+      setGraphData(graphData);
     }
   }, [method]);
 

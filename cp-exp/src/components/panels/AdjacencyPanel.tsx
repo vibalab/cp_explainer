@@ -14,16 +14,21 @@ interface AdjacencyProps {
     edges: EdgeData[];
     core_indices: number[];
   };
+  threshold: number;
+  method: string | null;
 }
 
 const AdjacencyMatrixHeatmap: React.FC<AdjacencyProps> = ({
   isDataUploaded,
   filename,
   graphData,
+  threshold,
+  method,
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [chartSize, setChartSize] = useState<number>(300); // Default size
+  const [isAccordionOpen, setIsAccordionOpen] = useState<boolean>(true); // 상태 추가
   const containerRef = useRef<HTMLDivElement>(null);
   const [plotData, setPlotData] = useState<any>(null);
 
@@ -37,7 +42,6 @@ const AdjacencyMatrixHeatmap: React.FC<AdjacencyProps> = ({
       const plot = JSON.parse(res.data);
 
       setPlotData(plot);
-      setLoading(false); // 로딩 완료 상태로 설정
     } catch (err) {
       setError("Failed to load heatmap.");
     } finally {
@@ -51,32 +55,41 @@ const AdjacencyMatrixHeatmap: React.FC<AdjacencyProps> = ({
   }, [isDataUploaded]);
 
   const updateData = async () => {
+    const data = { graphData, threshold };
     try {
-      setLoading(true);
-      const res = await axios.get(
-        `http://localhost:8000/graph/adjacency-init/?filename=${filename}`
+      const response = await axios.post(
+        "http://localhost:8000/graph/adjacency-update/",
+        data, // 데이터를 그대로 보냄
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
 
-      const plot = JSON.parse(res.data);
-
+      const plot = JSON.parse(response.data); // 이미 JSON 데이터일 수 있음
       setPlotData(plot);
-      console.log(plotData);
-      setLoading(false); // 로딩 완료 상태로 설정
     } catch (err) {
+      console.error(err); // 에러 로그 출력
       setError("Failed to load heatmap.");
     } finally {
-      setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, [graphData]);
+  }, [isDataUploaded]);
+
+  useEffect(() => {
+    updateData();
+  }, [graphData, method, threshold, isAccordionOpen]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (
-    <Accordion title="Adjacency Matrix" isOpen={true}>
+    <Accordion title="Adjacency Matrix" isOpen={isAccordionOpen}>
+      <button onClick={updateData}>Update Heatmap</button>
       <p>Line shows the Core-periphery area</p>
 
       <div

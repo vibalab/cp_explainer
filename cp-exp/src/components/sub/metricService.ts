@@ -27,6 +27,7 @@ export const createGraphData = (graph: any) => {
       closeness_centrality: attributes.closeness_centrality,
       eigenvector_centrality: attributes.eigenvector_centrality,
       core_periphery: attributes.core_periphery,
+      core_periphery_score: attributes.core_periphery_score,
       group: attributes.group,
       attributes: attributes.attributes || {},
     });
@@ -51,20 +52,32 @@ export const createGraphData = (graph: any) => {
 };
 
 // Function to update the metric and upload graph data
-export const updateGraphMetric = async (graph: any, method: string | null) => {
-  // Create graph data
-  console.log("Sending Data:", { graph, method });
+export const updateGraphMetric = async (
+  graphData: any,
+  method: string | null
+) => {
+  // Create the correct data structure
+  const data = {
+    graphData, // Rename `graph` to `graphData`
+    method,
+  };
+
   // Upload graph data to the server
-  const response = await axios.post(
-    "http://localhost:8000/uploadCurrent/",
-    { graph, method },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  return response.data.metric;
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/uploadCurrent/",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data.metric;
+  } catch (error) {
+    console.error("Error uploading graph data:", error);
+    throw error;
+  }
 };
 
 // Function to fetch the metric data from the server

@@ -83,6 +83,95 @@ const MethodModal: React.FC<MethodModalProps> = ({
             </label>
           </div>
         );
+
+      case "Lip":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case "Holme":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case "Silva":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case "LLC":
+        return (
+          <div>
+            <label>
+              Alpha:
+              <input
+                type="number"
+                value={parameters["alpha"] || ""}
+                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Beta:
+              <input
+                type="number"
+                value={parameters["beta"] || ""}
+                onChange={(e) => handleParameterChange("beta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
       case "Rossa":
         return (
           <div>
@@ -98,7 +187,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
             </label>
           </div>
         );
-      case "Method 3":
+      case "Minre":
         return (
           <div>
             <label>
@@ -116,6 +205,21 @@ const MethodModal: React.FC<MethodModalProps> = ({
                 type="number"
                 value={parameters["delta"] || ""}
                 onChange={(e) => handleParameterChange("delta", e.target.value)}
+              />
+            </label>
+          </div>
+        );
+      case "Rombach":
+        return (
+          <div>
+            <label>
+              Threshold:
+              <input
+                type="number"
+                value={parameters["threshold"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("threshold", e.target.value)
+                }
               />
             </label>
           </div>
@@ -170,7 +274,13 @@ const MethodModal: React.FC<MethodModalProps> = ({
           >
             <option value="BE">Borgatti Everett</option>
             <option value="Brusco">Brusco</option>
+            <option value="Lip">Lip</option>
+            <option value="Holme">Holme</option>
+            <option value="Silva">Silva</option>
+            <option value="LLC">LowRankCore</option>
             <option value="Rossa">Rossa</option>
+            <option value="Minre">Minre</option>
+            <option value="Rombach">Rombach</option>
           </select>
         </div>
 

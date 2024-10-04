@@ -2,8 +2,8 @@ import { useSetSettings, useSigma } from "@react-sigma/core"; // Sigma 설정 �
 import { Attributes } from "graphology-types"; // graphology 타입 정의를 가져옴
 import { FC, PropsWithChildren, useEffect, useRef } from "react"; // React 훅과 타입을 가져옴
 
-import { drawHover, drawLabel } from "../canvas-utils"; // 커스텀 그리기 유틸리티를 가져옴
-import useDebounce from "../use_debounce"; // 디바운스 훅을 가져옴
+import { drawHover, drawLabel } from "../../canvas-utils"; // 커스텀 그리기 유틸리티를 가져옴
+import useDebounce from "../../use_debounce"; // 디바운스 훅을 가져옴
 import { hover } from "@testing-library/user-event/dist/hover";
 
 const NODE_FADE_COLOR = "#eee"; // 노드 페이드 색상

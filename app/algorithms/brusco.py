@@ -18,10 +18,10 @@ class Brusco:
         for i in range(n):
             for j in range(i + 1, n):
                 if i in core_indices and j in core_indices:
-                    if A[i, j] == 1:
+                    if A[i, j] == 0:
                         core_core_edges += 1
                 if i in periphery_indices and j in periphery_indices:
-                    if A[i, j] == 0:
+                    if A[i, j] == 1:
                         periphery_periphery_edges += 1
 
         return core_core_edges + periphery_periphery_edges
@@ -42,7 +42,7 @@ class Brusco:
         if not core_indices:
             return -1
         Z = self.brusco_metric(core_indices)
-        return Z if np.isfinite(Z) else -1
+        return -Z if np.isfinite(Z) else 0
     
     def initial_sol(self) :
         # 각 노드의 degree 계산
@@ -121,4 +121,4 @@ class Brusco:
         ga_instance_brusco.run()
         solution_brusco, solution_fitness_brusco, solution_idx_brusco = ga_instance_brusco.best_solution()
 
-        return solution_brusco, solution_fitness_brusco, solution_idx_brusco
+        return solution_brusco, -solution_fitness_brusco, solution_idx_brusco

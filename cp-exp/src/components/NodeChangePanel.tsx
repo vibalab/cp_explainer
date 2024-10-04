@@ -2,6 +2,8 @@ import { useSigma } from "@react-sigma/core";
 import { FC, useEffect, useState } from "react";
 import { Attributes } from "graphology-types";
 import { getHSLColor } from "./sub/colorUtils";
+import { NodeData, EdgeData } from "../types";
+import { createGraphData } from "./sub/metricService"; // metricService 가져오기
 
 const NodeChangePanel: FC<{
   panelPosition: { x: number; y: number } | null;
@@ -14,10 +16,18 @@ const NodeChangePanel: FC<{
   ) => void;
   threshold: number;
   method: string | null;
+  setGraphData: React.Dispatch<
+    React.SetStateAction<{
+      nodes: NodeData[];
+      edges: EdgeData[];
+      core_indices: number[];
+    }>
+  >; // setGraphData를 props로 받아옴
 }> = ({
   panelPosition,
   selectedNode,
   onClose,
+  setGraphData,
   onRefreshPanels,
   onNodeClick,
   threshold,
@@ -73,7 +83,8 @@ const NodeChangePanel: FC<{
         ? "#000000"
         : getHSLColor(197, 71, 73, 1);
     graph.setNodeAttribute(selectedNode.id, "borderColor", newBorderColor);
-
+    const graphData = createGraphData(graph);
+    setGraphData(graphData);
     // Update the button label
     const newButtonLabel =
       newCorePeriphery >= threshold ? "Toggle to Periphery" : "Toggle to Core";

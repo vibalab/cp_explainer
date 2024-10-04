@@ -22,18 +22,19 @@ import {
 import { Settings } from "sigma/settings";
 import { drawHover, drawLabel } from "../canvas-utils";
 import { Dataset } from "../types";
-import GraphDataController from "./graphDataController";
-import GraphEventsController from "./graphEventController";
-import GraphSettingsController from "./graphSettingsController";
-import GraphTitle from "./graphTitle";
+import GraphDataController from "./sigma/graphDataController";
+import GraphEventsController from "./sigma/graphEventController";
+import GraphSettingsController from "./sigma/graphSettingsController";
+import GraphTitle from "./sigma/graphTitle";
 import SearchField from "./searchField";
 import Tooltips from "./toolTips";
 import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
 import { Attributes } from "graphology-types";
-import CPMetric from "./CPMetricDisplay";
+import CPMetric from "./sigma/CPMetricDisplay";
 import axios from "axios";
 import ConnectionProbabilityCalculator from "./sub/ConnectProbCal";
-import GraphThresholdUpdater from "./GraphThresholdUpdater";
+import GraphThresholdUpdater from "./sigma/graphThresholdUpdater";
+import GraphCPApplier from "./sigma/graphCPApplier";
 import { NodeData, EdgeData } from "../types";
 
 interface RootProps {
@@ -43,6 +44,7 @@ interface RootProps {
   ) => void;
   methods: string | null;
   isDataUploaded: boolean;
+  isMethodChanged: boolean;
   onConnectionProbabilitiesCalculated: (data: {
     coreCore: { possible: number; actual: number };
     corePeriphery: { possible: number; actual: number };
@@ -104,6 +106,7 @@ const Root: FC<RootProps> = ({
   onNodeClick,
   methods,
   isDataUploaded,
+  isMethodChanged,
   onConnectionProbabilitiesCalculated, // Use this as the unified function
   onThresholdChange, // Receive the callback from the parent component
   threshold,
@@ -179,12 +182,18 @@ const Root: FC<RootProps> = ({
       <GraphSettingsController hoveredNode={hoveredNode} />
       <GraphEventsController
         setHoveredNode={setHoveredNode}
+        setGraphData={setGraphData}
         onNodeClick={onNodeClick}
         threshold={threshold}
         method={method}
       />
       <GraphDataController dataset={dataset} threshold={threshold} />
       <GraphThresholdUpdater threshold={threshold} />
+      <GraphCPApplier
+        isMethodChanged={isMethodChanged}
+        threshold={threshold}
+        setGraphData={setGraphData}
+      />
       {/* Add the GraphThresholdUpdater */}
       {dataReady && (
         <>
@@ -219,6 +228,7 @@ const Root: FC<RootProps> = ({
             <ConnectionProbabilityCalculator
               onDataCalculated={onConnectionProbabilitiesCalculated}
               threshold={threshold}
+              graphData={graphData}
             />
           </div>
         </>
