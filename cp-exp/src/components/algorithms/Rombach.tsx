@@ -35,7 +35,7 @@ const Rombach: FC<RombachProps> = ({
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const doiRef = "https://doi.org/10.1038/srep01467";
+  const doiRef = "https://doi.org/10.1137/17M1130046";
   const [core_score, setCS] = useState<number>(0);
   const [threshold, setThreshold] = useState<number>(0.5); // Threshold state with default value
 
@@ -139,58 +139,20 @@ const Rombach: FC<RombachProps> = ({
             maxWidth: "600px",
           }}
         >
-          <h3>Core-Periphery Profile Explanation</h3>
+          <h3>Core-Periphery Profile Explanation</h3> <br />
           <p>
-            The <strong>Core-Periphery Profile</strong> (denoted as{" "}
-            <InlineMath>a_k</InlineMath>) is a way to capture the structure of a
-            network, where the goal is to determine which nodes belong to the
-            "core" and which belong to the "periphery."
+            The <strong>Rombach algorithm</strong> focuses on maximizing Core
+            Quality, which is defined as the product of the adjacency matrix
+            <InlineMath math="A" /> and the core-periphery matrix{" "}
+            <InlineMath math="C" />. The matrix <InlineMath math="C" /> can be
+            defined in various ways using a transition function that assigns
+            nodes to either the core or periphery.
           </p>
           <p>
-            The profile values <InlineMath>a_k</InlineMath> are calculated
-            iteratively by selecting the node with minimal strength at each
-            step. The process is as follows:
-          </p>
-          <ul>
-            <li>
-              <strong>Step 1:</strong> Select the node with the smallest
-              strength and initialize the core. Set{" "}
-              <InlineMath>a_1 = 0</InlineMath>.
-            </li>
-            <li>
-              <strong>Step k:</strong> For each subsequent step, select the node
-              that minimizes the sum of connection strengths between the
-              existing core nodes and the newly added node. This is calculated
-              as:
-              <BlockMath>
-                {`a_k = \\min_{h \\in N \\setminus P_{k-1}} \\sum_{i \\in P_{k-1}} p_{ih}`}
-              </BlockMath>
-            </li>
-          </ul>
-          <p>
-            The core-periphery profile is monotonic, meaning that:
-            <BlockMath>{`a_{k+1} \\geq a_k \\quad \\text{for all} \\ k = 1, 2, \\dots, n-1.`}</BlockMath>
-          </p>
-
-          <h3>Centralization Explanation</h3>
-          <p>
-            The <strong>Centralization</strong> of a network, denoted as
-            <InlineMath>C</InlineMath>, measures how closely the network
-            resembles a perfect star network, where one central node is
-            connected to all others (core-periphery structure).
-          </p>
-          <p>
-            The centralization is defined as the complement of the normalized
-            area between the core-periphery profile <InlineMath>a_k</InlineMath>{" "}
-            and the profile of a star network. The formula is given by:
-            <BlockMath>{`C = 1 - \\frac{2}{n(n-1)} \\sum_{k=1}^{n-1} a_k`}</BlockMath>
-          </p>
-          <p>
-            In a star network, the profile values are{" "}
-            <InlineMath>a_k = 0</InlineMath> for
-            <InlineMath>k = 1, 2, \dots, n-1</InlineMath>, and{" "}
-            <InlineMath>a_n = 1</InlineMath>
-            for the final node.
+            Optimization is performed using annealing, allowing the model to
+            find the optimal core-periphery allocation for the network.
+            Additionally, the model calculates a Core Score to evaluate each
+            node’s contribution to the CP structure.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

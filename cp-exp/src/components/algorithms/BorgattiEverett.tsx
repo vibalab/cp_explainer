@@ -121,12 +121,34 @@ const Borgatti: FC<BorgattiProps> = ({ method, setGraphData }) => {
             maxWidth: "600px",
           }}
         >
-          <h3>Metric Explanation</h3>
+          <h3>Borgatti, Everett</h3>
+          <br />
           <p>
             The Borgatti and Everett metric measures how well the observed
-            network agrees with an "ideal" core-periphery (CP) structure...
+            network agrees with an "ideal" core-periphery (CP) structure. The CP
+            structure assumes that the core is dense and the periphery is
+            sparse. The ideal CP structure, <InlineMath>{"\\Delta"}</InlineMath>
+            , is defined as:
+          </p>
+          <BlockMath>{"\\Delta_{ij} = c_i + c_j - c_i c_j"}</BlockMath>
+          <p>
+            where <InlineMath>c_i</InlineMath> and <InlineMath>c_j</InlineMath>{" "}
+            are indicators of whether nodes <InlineMath>i</InlineMath> or{" "}
+            <InlineMath>j</InlineMath> is in the core.
+          </p>
+          <p>
+            The Borgatti and Everett metric, <InlineMath>{"\\rho"}</InlineMath>,
+            is then computed as the Pearson correlation between the adjacency
+            matrix <InlineMath>A</InlineMath> and the ideal CP structure{" "}
+            <InlineMath>{"\\Delta"}</InlineMath>:
           </p>
           <BlockMath>{"\\rho = \\text{Cor}(A, \\Delta)"}</BlockMath>
+          <p>
+            This metric can be used to assess how well the network aligns with a
+            CP structure. In some cases, the node assignments are known, but in
+            more complex cases, a combinatorial optimization routine, such as a
+            genetic algorithm, is used to find the optimal assignments.
+          </p>
           <button onClick={toggleModal}>Close</button>
         </div>
       )}

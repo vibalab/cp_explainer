@@ -22,7 +22,7 @@ interface HolmeProps {
 
 const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
+  const doiRef = "https://doi.org/10.1103/PhysRevE.72.046111";
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -121,12 +121,22 @@ const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
             maxWidth: "600px",
           }}
         >
-          <h3>Metric Explanation</h3>
+          <h3>Holme Explanation</h3> <br />
           <p>
-            The Borgatti and Everett metric measures how well the observed
-            network agrees with an "ideal" core-periphery (CP) structure...
+            The <strong>Holme algorithm</strong> identifies core-periphery (CP)
+            structures by optimizing the closeness centrality of core nodes. It
+            assumes that core nodes are closely connected to all other nodes,
+            differing from Borgatti-Everett-based methods. The closeness
+            centrality is computed as the inverse of the average distance
+            between core nodes and all other nodes.
           </p>
-          <BlockMath>{"\\rho = \\text{Cor}(A, \\Delta)"}</BlockMath>
+          <p>
+            The algorithm evaluates various <InlineMath math="k" />
+            -cores and selects the best <InlineMath math="k" /> that maximizes
+            the closeness centrality. Finally, it compares the observed core
+            with a random configuration model to assess its statistical
+            significance.
+          </p>
           <button onClick={toggleModal}>Close</button>
         </div>
       )}

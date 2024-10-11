@@ -4,18 +4,18 @@ import { FC, PropsWithChildren, useEffect, useRef } from "react"; // React 훅�
 
 import { drawHover, drawLabel } from "../../canvas-utils"; // 커스텀 그리기 유틸리티를 가져옴
 import useDebounce from "../../use_debounce"; // 디바운스 훅을 가져옴
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const NODE_FADE_COLOR = "#eee"; // 노드 페이드 색상
 const EDGE_FADE_COLOR = "#eee"; // 엣지 페이드 색상
 
 interface GraphSettingsControllerProps {
   hoveredNode: string | null;
+  threshold: number;
 }
 
 const GraphSettingsController: FC<
   PropsWithChildren<GraphSettingsControllerProps>
-> = ({ children, hoveredNode }) => {
+> = ({ children, hoveredNode, threshold }) => {
   // GraphSettingsController 컴포넌트 정의
   const sigma = useSigma(); // Sigma 인스턴스를 가져옴
   const setSettings = useSetSettings(); // Sigma 설정 함수를 가져옴
@@ -88,8 +88,34 @@ const GraphSettingsController: FC<
       if (debouncedHoveredNode) {
         const isConnectedEdge = graph.hasExtremity(edge, debouncedHoveredNode);
 
+        // 엣지의 양 끝 노드를 가져옴
+        const extremities = graph.extremities(edge);
+        const neighborNode =
+          extremities[0] === debouncedHoveredNode
+            ? extremities[1]
+            : extremities[0];
+
+        // neighbor 노드의 "core_periphery" 값을 가져옴
+        const selfCorePeripheryValue = graph.getNodeAttribute(
+          debouncedHoveredNode,
+          "core_periphery"
+        );
+        const corePeripheryValue = graph.getNodeAttribute(
+          neighborNode,
+          "core_periphery"
+        );
+        const edgeSize = Math.max(data.size || 1, 2); // size가 없으면 기본값 1을 사용
+
+        // 이웃 노드의 "core_periphery" 값이 threshold 이상인지 확인
+        let edgeColor;
+        if (selfCorePeripheryValue >= threshold) {
+          edgeColor = corePeripheryValue >= threshold ? "green" : "lightgreen"; // 조건에 따라 녹색 또는 연한 녹색 설정
+        } else {
+          edgeColor = corePeripheryValue >= threshold ? "lightgreen" : "red"; // 조건에 따라 연한 녹색 또는 빨간색 설정
+        }
+
         return isConnectedEdge
-          ? { ...data, color: hoveredColor } // 연결된 엣지 원래 색상 유지
+          ? { ...data, color: edgeColor, size: edgeSize } // 연결된 엣지의 원래 색상 유지
           : { ...data, color: EDGE_FADE_COLOR, hidden: false }; // 페이드된 엣지 색상
       }
       return data;
@@ -97,11 +123,12 @@ const GraphSettingsController: FC<
 
     setSettings({
       defaultDrawNodeLabel: drawLabel, // 노드 라벨을 그리는 커스텀 함수
-      defaultDrawNodeHover: drawHover, // 노드 호버 상태를 그리는 커스텀 함수
+      defaultDrawNodeHover: (context, data, settings) =>
+        drawHover(context, { ...data, threshold }, settings), // drawHover로 threshold 넘김
       nodeReducer,
       edgeReducer,
     });
-  }, [sigma, graph, debouncedHoveredNode, setSettings]); // 의존성 배열에 sigma, graph, debouncedHoveredNode 포함
+  }, [sigma, graph, debouncedHoveredNode, setSettings, threshold]); // 의존성 배열에 sigma, graph, debouncedHoveredNode, threshold 포함
 
   return <>{children}</>; // 자식 요소를 렌더링
 };

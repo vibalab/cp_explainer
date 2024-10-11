@@ -33,7 +33,7 @@ export function drawRoundRect(
  */
 export function drawHover(
   context: CanvasRenderingContext2D,
-  data: PlainObject,
+  data: PlainObject & { threshold: number }, // threshold를 포함한 데이터로 타입 정의
   settings: PlainObject
 ) {
   const size = settings.labelSize;
@@ -43,7 +43,8 @@ export function drawHover(
 
   const label = data.label;
   const subLabel = data.degree ? `Degree: ${data.degree}` : "";
-  const coreLabel = data.core_periphery === 1 ? "Core" : "Periphery";
+  const coreLabel =
+    data.core_periphery >= data.threshold ? "Core" : "Periphery";
 
   // Then we draw the label background
   context.beginPath();

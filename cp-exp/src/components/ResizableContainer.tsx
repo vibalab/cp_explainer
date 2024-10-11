@@ -7,6 +7,7 @@ import ConnectedNodes from "./panels/ConnectedNodesPanel";
 import ConenctionProbPanel from "./panels/ConnectionProbPanel"; // ConnectionProbPanel 가져오기
 import MethodModal from "./sub/MethodModal";
 import UploadDataModal from "./sub/UploadDataModal";
+import CentralityBox from "./panels/BoxplotPanel";
 import { Attributes } from "graphology-types";
 import axios from "axios";
 import Spinner from "./sub/Spinner"; // Add a Spinner component or library
@@ -28,6 +29,7 @@ const ResizableContainer: React.FC = () => {
     overview3: false,
     overview4: false,
     overview5: false,
+    overview6: false,
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -43,7 +45,9 @@ const ResizableContainer: React.FC = () => {
   const handleThresholdChangeInParent = (newThreshold: number) => {
     setThreshold(newThreshold); // Update threshold in the parent component
   };
-
+  const [closenessCentralityAvg, setClosenessCentralityAvg] = useState<
+    number | null
+  >(null);
   const [graphData, setGraphData] = useState<{
     nodes: NodeData[];
     edges: EdgeData[];
@@ -267,6 +271,7 @@ const ResizableContainer: React.FC = () => {
         </button>
         <Root
           onConnectionProbabilitiesCalculated={handleConnectionProbabilities} // Unified function passed to Root
+          connectionProbabilities={connectionProbabilities}
           onNodeClick={handleNodeClick}
           methods={selectedMethod}
           isDataUploaded={isDataUploaded}
@@ -275,6 +280,7 @@ const ResizableContainer: React.FC = () => {
           threshold={threshold}
           graphData={graphData}
           setGraphData={setGraphData}
+          closenessCentralityAvg={closenessCentralityAvg}
         />
       </div>
 
@@ -368,13 +374,26 @@ const ResizableContainer: React.FC = () => {
                   />
                   Adjacency Matrix
                 </label>
+                <label style={{ display: "block", marginBottom: "5px" }}>
+                  <input
+                    type="checkbox"
+                    checked={showOverview.overview6}
+                    onChange={(e) => handleCheckboxChange(e, "overview6")}
+                  />
+                  Closeness Centrality Boxplot
+                </label>
               </div>
             )}
           </div>
 
           {showOverview.overview1 && (
             <div style={{ flexShrink: 0 }}>
-              <OverveiwPanel isDataUploaded={isDataUploaded} />
+              <OverveiwPanel
+                isDataUploaded={isDataUploaded}
+                onClosenessCentralityAvg={(value) =>
+                  setClosenessCentralityAvg(value)
+                }
+              />
             </div>
           )}
 
@@ -409,6 +428,17 @@ const ResizableContainer: React.FC = () => {
           {showOverview.overview5 && (
             <div style={{ flexShrink: 0 }}>
               <AdjacencyMatrix
+                isDataUploaded={isDataUploaded}
+                filename={uploadedFile?.name}
+                graphData={graphData}
+                threshold={threshold}
+                method={selectedMethod}
+              />
+            </div>
+          )}
+          {showOverview.overview6 && (
+            <div style={{ flexShrink: 0 }}>
+              <CentralityBox
                 isDataUploaded={isDataUploaded}
                 filename={uploadedFile?.name}
                 graphData={graphData}

@@ -1,8 +1,14 @@
 import { useRegisterEvents, useSigma } from "@react-sigma/core";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { Attributes } from "graphology-types";
-import NodeChangePanel from "../NodeChangePanel"; // Adjust the import path as needed
+import NodeChangePanel from "./NodeChangePanel"; // Adjust the import path as needed
 import { NodeData, EdgeData } from "../../types";
+
+interface ConnectionProbabilities {
+  coreCore: { possible: number; actual: number };
+  corePeriphery: { possible: number; actual: number };
+  peripheryPeriphery: { possible: number; actual: number };
+}
 
 const GraphEventsController: FC<
   PropsWithChildren<{
@@ -20,14 +26,18 @@ const GraphEventsController: FC<
         core_indices: number[];
       }>
     >; // setGraphData를 props로 받아옴
+    connectionProbabilities: ConnectionProbabilities | null;
+    closenessCentralityAvg: number | null;
   }>
 > = ({
   setHoveredNode,
   onNodeClick,
   setGraphData,
+  connectionProbabilities,
   threshold,
   method,
   children,
+  closenessCentralityAvg,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
@@ -190,9 +200,11 @@ const GraphEventsController: FC<
         onClose={handleClose}
         onRefreshPanels={handleRefreshPanels} // Pass the refresh function
         onNodeClick={onNodeClick} // Pass the onNodeClick to NodeChangePanel
+        connectionProbabilities={connectionProbabilities}
         setGraphData={setGraphData}
         threshold={threshold}
         method={method}
+        closenessCentralityAvg={closenessCentralityAvg}
       />
     </>
   );

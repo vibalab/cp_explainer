@@ -226,6 +226,61 @@ async def get_graph_adjacency_update(request: dict):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/graph/centrality_box/")
+async def get_centrality_box(request: dict):
+    try:
+        # Assuming `graph_data` and `threshold` are already available from request
+        graph_data = request.get('graphData')  # 'graphData' 부분을 딕셔너리로 파싱
+        threshold = request.get('threshold')  # 'threshold'도 마찬가지로 가져옴
+
+        if not graph_data or threshold is None:
+            raise ValueError("Invalid input data")
+
+        # Create networkx graph
+        G = nx.Graph()
+
+        # Separate core and periphery lists
+        core_nodes = []
+        periphery_nodes = []
+
+        # Add nodes to the graph
+        for node in graph_data['nodes']:
+            G.add_node(
+                node['id'],
+                label=node['label'],
+                degree=node['degree'],
+                degree_centrality=node['degree_centrality'],
+                betweenness_centrality=node['betweenness_centrality'],
+                closeness_centrality=node['closeness_centrality'],
+                eigenvector_centrality=node['eigenvector_centrality'],
+                core_periphery=node['core_periphery'],
+                attributes=node['attributes'],
+                pos=(node['x'], node['y'])  # Adding node coordinates
+            )
+
+            # Separate nodes into core and periphery groups based on the threshold
+            if node['core_periphery'] >= threshold:
+                core_nodes.append(node)
+            else:
+                periphery_nodes.append(node)
+
+        # Add edges to the graph
+        for edge in graph_data['edges']:
+            G.add_edge(
+                edge['source'],
+                edge['target'],
+                weight=edge['weight'],
+                attributes=edge['attributes']
+            )
+
+        graph_json = preprocess.create_core_periphery_boxplots(core_nodes, periphery_nodes)
+
+        # JSON으로 응답 반환
+        return JSONResponse(content=graph_json)
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/graph/algorithm")
 async def apply_algorithm(

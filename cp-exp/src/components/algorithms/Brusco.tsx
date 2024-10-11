@@ -22,7 +22,7 @@ interface BruscoProps {
 }
 const Brusco: FC<BruscoProps> = ({ method, setGraphData }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
+  const doiRef = "https://doi.org/10.1016/j.socnet.2010.08.002";
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -116,32 +116,19 @@ const Brusco: FC<BruscoProps> = ({ method, setGraphData }) => {
             maxWidth: "600px",
           }}
         >
-          <h3>Metric Explanation</h3>
+          <h3>Brusco Explanation</h3> <br />
           <p>
-            The Borgatti and Everett metric measures how well the observed
-            network agrees with an "ideal" core-periphery (CP) structure. The CP
-            structure assumes that the core is dense and the periphery is
-            sparse. The ideal CP structure, <InlineMath>{"\\Delta"}</InlineMath>
-            , is defined as:
+            The <strong>Brusco algorithm</strong> is an extension of the
+            Borgatti-Everett model, focusing on maximizing core-core connections
+            and minimizing periphery-periphery connections. The objective
+            function <InlineMath math="Z(A, c)" /> is defined as:
           </p>
-          <BlockMath>{"\\Delta_{ij} = c_i + c_j - c_i c_j"}</BlockMath>
+          <BlockMath math="Z(A, c) = \sum_{i < j, c_i = c_j = 1} I(A_{ij} = 1) + \sum_{i < j, c_i = c_j = 0} I(A_{ij} = 0)" />
           <p>
-            where <InlineMath>c_i</InlineMath> and <InlineMath>c_j</InlineMath>{" "}
-            are indicators of whether nodes <InlineMath>i</InlineMath> or{" "}
-            <InlineMath>j</InlineMath> is in the core.
-          </p>
-          <p>
-            The Borgatti and Everett metric, <InlineMath>{"\\rho"}</InlineMath>,
-            is then computed as the Pearson correlation between the adjacency
-            matrix <InlineMath>A</InlineMath> and the ideal CP structure{" "}
-            <InlineMath>{"\\Delta"}</InlineMath>:
-          </p>
-          <BlockMath>{"\\rho = \\text{Cor}(A, \\Delta)"}</BlockMath>
-          <p>
-            This metric can be used to assess how well the network aligns with a
-            CP structure. In some cases, the node assignments are known, but in
-            more complex cases, a combinatorial optimization routine, such as a
-            genetic algorithm, is used to find the optimal assignments.
+            Unlike Borgatti-Everett, this method does not account for
+            core-periphery connections, instead emphasizing a clear separation
+            between core and periphery by ensuring core nodes are densely
+            connected, while periphery nodes remain disconnected.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

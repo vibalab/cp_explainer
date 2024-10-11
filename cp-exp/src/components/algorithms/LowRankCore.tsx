@@ -27,7 +27,7 @@ const LowRankCore: FC<LowRankCoreProps> = ({
   setGraphData,
 }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
+  const doiRef = "https://doi.org/10.1017/S095679251600022X";
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -139,12 +139,50 @@ const LowRankCore: FC<LowRankCoreProps> = ({
             maxWidth: "600px",
           }}
         >
-          <h3>Metric Explanation</h3>
+          <h3>LowRank-Core Method</h3> <br />
           <p>
-            The Borgatti and Everett metric measures how well the observed
-            network agrees with an "ideal" core-periphery (CP) structure...
+            The <strong>LowRank-Core</strong> method combines spectral analysis
+            to denoise the network and recover a block model. It uses the top
+            two eigenvalues <InlineMath math="\lambda_1" /> and{" "}
+            <InlineMath math="\lambda_2" />
+            along with their corresponding eigenvectors{" "}
+            <InlineMath math="v_1" /> and <InlineMath math="v_2" />
+            to form a rank-2 approximation of the adjacency matrix{" "}
+            <InlineMath math="A" />.
           </p>
-          <BlockMath>{"\\rho = \\text{Cor}(A, \\Delta)"}</BlockMath>
+          <p>This approximation is expressed as:</p>
+          <BlockMath math="\hat{A} = \lambda_1 v_1 v_1^T + \lambda_2 v_2 v_2^T" />
+          <p>
+            This step captures the dominant patterns of the network, removing
+            noise and recovering the Core-Periphery (CP) structure.
+          </p>
+          <br /> <br />
+          <h3>Thresholding and Find-Cut Algorithm</h3> <br />
+          <p>
+            After thresholding <InlineMath math="\hat{A}" /> to create{" "}
+            <InlineMath math="\hat{A}_t" />, which is composed of zeros and
+            ones, the <strong>Find-Cut algorithm</strong> is applied. The
+            Find-Cut algorithm optimizes the partition by ensuring core-core and
+            core-periphery connections remain dense while keeping
+            periphery-periphery connections sparse.
+          </p>
+          <p>
+            The <strong>Find-Cut algorithm</strong> classifies the vertices of a
+            graph into a core set
+            <InlineMath math="V_C" /> and a periphery set{" "}
+            <InlineMath math="V_P" /> based on a score vector{" "}
+            <InlineMath math="s = (s_1, s_2, \dots, s_n)" />. The entries of{" "}
+            <InlineMath math="s" />
+            are sorted in decreasing order, and the algorithm selects the core
+            size <InlineMath math="n_c" />
+            that maximizes the following objective function:
+          </p>
+          <BlockMath math="\Phi = \max_{n_c} \left( \frac{|E(X_C, X_C)|}{\text{Vol}(X_C, X_C)} + \frac{|E(X_C, Y_C)|}{\text{Vol}(X_C, Y_C)} - \frac{|E(Y_C, Y_C)|}{\text{Vol}(Y_C, Y_C)} \right)" />
+          <p>
+            The core set <InlineMath math="V_C = \{1, \dots, n_c\}" /> and
+            periphery set <InlineMath math="V_P = \{n_c+1, \dots, n\}" /> are
+            then defined to maximize core-periphery structure.
+          </p>
           <button onClick={toggleModal}>Close</button>
         </div>
       )}

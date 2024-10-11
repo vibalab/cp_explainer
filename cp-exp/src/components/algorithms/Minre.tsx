@@ -35,7 +35,7 @@ const Minre: FC<MinreProps> = ({
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const doiRef = "https://doi.org/10.1038/srep01467";
+  const doiRef = "https://doi.org/10.1016/j.socnet.2009.09.003";
   const [W, setW] = useState<number>(0);
   const [threshold, setThreshold] = useState<number>(0.5); // Threshold state with default value
 
@@ -138,58 +138,67 @@ const Minre: FC<MinreProps> = ({
             maxWidth: "600px",
           }}
         >
-          <h3>Core-Periphery Profile Explanation</h3>
+          <h3>MINRE (Minimum Residual Error)</h3>
           <p>
-            The <strong>Core-Periphery Profile</strong> (denoted as{" "}
-            <InlineMath>a_k</InlineMath>) is a way to capture the structure of a
-            network, where the goal is to determine which nodes belong to the
-            "core" and which belong to the "periphery."
+            MINRE is a method used to estimate the{" "}
+            <strong>Core-Periphery structure</strong> in a network. The goal of
+            MINRE is to adjust the weight vector <InlineMath math="w" /> to
+            approximate the network's adjacency matrix
+            <InlineMath math="A" />. This is done by minimizing the residuals
+            between the matrix product
+            <InlineMath math="w w^T" /> and the adjacency matrix{" "}
+            <InlineMath math="A" />.
           </p>
-          <p>
-            The profile values <InlineMath>a_k</InlineMath> are calculated
-            iteratively by selecting the node with minimal strength at each
-            step. The process is as follows:
-          </p>
+          <p>The residual to be minimized is given by the following formula:</p>
+          <BlockMath math="SS(A - w w^T) = \sum_{i \neq j} (A_{ij} - w_i w_j)^2" />
+          <p>Where:</p>
           <ul>
             <li>
-              <strong>Step 1:</strong> Select the node with the smallest
-              strength and initialize the core. Set{" "}
-              <InlineMath>a_1 = 0</InlineMath>.
+              <InlineMath math="A" /> is the adjacency matrix, representing the
+              connection strengths between nodes.
             </li>
             <li>
-              <strong>Step k:</strong> For each subsequent step, select the node
-              that minimizes the sum of connection strengths between the
-              existing core nodes and the newly added node. This is calculated
-              as:
-              <BlockMath>
-                {`a_k = \\min_{h \\in N \\setminus P_{k-1}} \\sum_{i \\in P_{k-1}} p_{ih}`}
-              </BlockMath>
+              <InlineMath math="w" /> is the weight vector, indicating whether
+              each node belongs to the core or periphery.
+            </li>
+            <li>
+              The residual represents the difference between{" "}
+              <InlineMath math="A" /> and <InlineMath math="w w^T" />.
             </li>
           </ul>
           <p>
-            The core-periphery profile is monotonic, meaning that:
-            <BlockMath>{`a_{k+1} \\geq a_k \\quad \\text{for all} \\ k = 1, 2, \\dots, n-1.`}</BlockMath>
+            The objective of the MINRE algorithm is to find the optimal weight
+            vector <InlineMath math="w" />, where nodes with higher{" "}
+            <InlineMath math="w" /> values are classified as core nodes, and
+            those with lower values are classified as periphery nodes.
           </p>
-
-          <h3>Centralization Explanation</h3>
+          <br />
+          <br />
+          <h3>PRE (Proportion of Reduction in Error)</h3>
           <p>
-            The <strong>Centralization</strong> of a network, denoted as
-            <InlineMath>C</InlineMath>, measures how closely the network
-            resembles a perfect star network, where one central node is
-            connected to all others (core-periphery structure).
+            PRE is a metric used to evaluate the performance of the MINRE model.
+            It measures how well the model fits the Core-Periphery structure of
+            the network by comparing the residuals to the global mean of the
+            adjacency matrix, denoted as <InlineMath math="\bar{A}" />.
           </p>
+          <p>PRE is defined as follows:</p>
+          <BlockMath math="PRE = 1 - \frac{SS(A - w w^T)}{SS(A - \bar{A})}" />
+          <p>Where:</p>
+          <ul>
+            <li>
+              <InlineMath math="SS(A - w w^T)" /> is the residual calculated by
+              the MINRE method.
+            </li>
+            <li>
+              <InlineMath math="\bar{A}" /> is the global mean of the adjacency
+              matrix <InlineMath math="A" />.
+            </li>
+          </ul>
           <p>
-            The centralization is defined as the complement of the normalized
-            area between the core-periphery profile <InlineMath>a_k</InlineMath>{" "}
-            and the profile of a star network. The formula is given by:
-            <BlockMath>{`C = 1 - \\frac{2}{n(n-1)} \\sum_{k=1}^{n-1} a_k`}</BlockMath>
-          </p>
-          <p>
-            In a star network, the profile values are{" "}
-            <InlineMath>a_k = 0</InlineMath> for
-            <InlineMath>k = 1, 2, \dots, n-1</InlineMath>, and{" "}
-            <InlineMath>a_n = 1</InlineMath>
-            for the final node.
+            A higher PRE value indicates that the model provides a better fit
+            for the network's Core-Periphery structure. Specifically, it shows
+            how much the MINRE model reduces the residuals compared to using the
+            global mean.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

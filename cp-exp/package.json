@@ -6,6 +6,7 @@
     "@react-sigma/core": "^4.0.3",
     "@react-sigma/layout-forceatlas2": "^4.0.3",
     "@sigma/edge-curve": "^3.0.0-beta.13",
+    "@sigma/export-image": "^3.0.0-beta.1",
     "@sigma/node-border": "^3.0.0-beta.4",
     "@sigma/node-image": "^3.0.0-beta.12",
     "@testing-library/jest-dom": "^5.17.0",

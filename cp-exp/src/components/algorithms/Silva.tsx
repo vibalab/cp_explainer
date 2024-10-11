@@ -23,7 +23,7 @@ interface SilvaProps {
 
 const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const doiRef = "https://doi.org/10.1016/S0378-8733(99)00019-2";
+  const doiRef = "https://doi.org/10.1109/JPROC.2008.925418";
   const [metric, setMetric] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -135,12 +135,21 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
             maxWidth: "600px",
           }}
         >
-          <h3>Metric Explanation</h3>
+          <h3>Silva Explanation</h3> <br />
           <p>
-            The Borgatti and Everett metric measures how well the observed
-            network agrees with an "ideal" core-periphery (CP) structure...
+            The <strong>Silva</strong> introduces the concept of network
+            capacity to measure the overall connectivity of a network. The
+            capacity <InlineMath math="C" /> is defined as the sum of the
+            inverses of the distances between nodes <InlineMath math="i" /> and
+            <InlineMath math="j" />. A higher capacity indicates a
+            well-connected network, meaning that a sub-network of core nodes
+            should have high capacity.
           </p>
-          <BlockMath>{"\\rho = \\text{Cor}(A, \\Delta)"}</BlockMath>
+          <p>
+            Silva's method removes nodes with the lowest closeness centrality
+            until the network's capacity drops to 90% of its initial value. The
+            nodes remaining at this point are considered core nodes.
+          </p>
           <button onClick={toggleModal}>Close</button>
         </div>
       )}

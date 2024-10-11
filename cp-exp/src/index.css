@@ -89,17 +89,17 @@ body {
 }
 .controls {
   position: absolute;
-  bottom: 150px; /* cpmetric_panel의 max-height (300px) + 여유 공간 */
-  left: 20px;
+  bottom: 5px; /* 화면의 맨 밑에서 20px 위 */
+  left: 50%; /* 수평 가운데로 설정 */
+  transform: translateX(-50%); /* 정확히 수평 중앙에 맞추기 */
   width: 165px;
   display: flex;
   justify-content: space-between;
   align-content: center;
   flex-grow: 1;
   gap: 20px;
-  z-index: 1000;
+  z-index: 1000; /* 위에 표시되도록 z-index 설정 */
 }
-
 .graph-title {
   z-index: 1;
   position: absolute;
@@ -125,9 +125,10 @@ body {
 }
 .search_panel {
   position: absolute;
-  bottom: 0;
+  align-items: center; /* Align items vertically in the center */
+  bottom: 5px; /* 화면의 맨 밑에서 20px 위 */
   right: 0;
-  width: 350px;
+  width: 200px;
   max-height: calc(100vh - 2 * var(--stage-padding));
   overflow-y: auto;
   padding: var(--stage-padding) var(--stage-padding) 0 var(--stage-padding);
@@ -243,6 +244,11 @@ ul > li {
  */
 .search-wrapper {
   position: relative;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right horizontally */
+  align-items: center; /* Align items vertically in the center */
+  bottom: 5px;
+  width: 100%; /* Ensure the container takes full width to apply right alignment */
 }
 .search-wrapper > input[type="search"] {
   width: calc(100%);
@@ -256,12 +262,25 @@ ul > li {
   font-family: "Poppins", sans-serif;
   font-size: 1em;
 }
+
 .search-wrapper > .icon {
   position: absolute;
   width: 1em;
   height: 1em;
   top: 1em;
   left: 1em;
+}
+.react-sigma-control.ico {
+  background: none;
+  width: 24px; /* 버튼 가로 크기 */
+  height: 24px; /* 버튼 세로 크기 */
+  border: none; /* 버튼의 기본 테두리 제거 */
+  cursor: pointer; /* 커서를 포인터로 변경 */
+  color: black; /* 기본 글자색 */
+  transition: color 0.2s ease; /* 색상 변경 애니메이션 */
+  display: flex; /* 플렉스 박스 사용으로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
 }
 
 /**

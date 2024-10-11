@@ -1,0 +1,842 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2024-10-07">
+    <creator>NetworkX 3.1</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <nodes>
+      <node id="Core_0_0" label="Core_0_0" />
+      <node id="Core_0_1" label="Core_0_1" />
+      <node id="Core_0_2" label="Core_0_2" />
+      <node id="Core_0_3" label="Core_0_3" />
+      <node id="Core_0_4" label="Core_0_4" />
+      <node id="Core_0_5" label="Core_0_5" />
+      <node id="Core_0_6" label="Core_0_6" />
+      <node id="Core_0_7" label="Core_0_7" />
+      <node id="Core_0_8" label="Core_0_8" />
+      <node id="Core_0_9" label="Core_0_9" />
+      <node id="Core_0_10" label="Core_0_10" />
+      <node id="Core_0_11" label="Core_0_11" />
+      <node id="Core_0_12" label="Core_0_12" />
+      <node id="Core_0_13" label="Core_0_13" />
+      <node id="Core_0_14" label="Core_0_14" />
+      <node id="Core_0_15" label="Core_0_15" />
+      <node id="Core_0_16" label="Core_0_16" />
+      <node id="Core_0_17" label="Core_0_17" />
+      <node id="Core_0_18" label="Core_0_18" />
+      <node id="Core_0_19" label="Core_0_19" />
+      <node id="Core_1_0" label="Core_1_0" />
+      <node id="Core_1_1" label="Core_1_1" />
+      <node id="Core_1_2" label="Core_1_2" />
+      <node id="Core_1_3" label="Core_1_3" />
+      <node id="Core_1_4" label="Core_1_4" />
+      <node id="Core_1_5" label="Core_1_5" />
+      <node id="Core_1_6" label="Core_1_6" />
+      <node id="Core_1_7" label="Core_1_7" />
+      <node id="Core_1_8" label="Core_1_8" />
+      <node id="Core_1_9" label="Core_1_9" />
+      <node id="Core_1_10" label="Core_1_10" />
+      <node id="Core_1_11" label="Core_1_11" />
+      <node id="Core_1_12" label="Core_1_12" />
+      <node id="Core_1_13" label="Core_1_13" />
+      <node id="Core_1_14" label="Core_1_14" />
+      <node id="Core_1_15" label="Core_1_15" />
+      <node id="Core_1_16" label="Core_1_16" />
+      <node id="Core_1_17" label="Core_1_17" />
+      <node id="Core_1_18" label="Core_1_18" />
+      <node id="Core_1_19" label="Core_1_19" />
+      <node id="Core_2_0" label="Core_2_0" />
+      <node id="Core_2_1" label="Core_2_1" />
+      <node id="Core_2_2" label="Core_2_2" />
+      <node id="Core_2_3" label="Core_2_3" />
+      <node id="Core_2_4" label="Core_2_4" />
+      <node id="Core_2_5" label="Core_2_5" />
+      <node id="Core_2_6" label="Core_2_6" />
+      <node id="Core_2_7" label="Core_2_7" />
+      <node id="Core_2_8" label="Core_2_8" />
+      <node id="Core_2_9" label="Core_2_9" />
+      <node id="Core_2_10" label="Core_2_10" />
+      <node id="Core_2_11" label="Core_2_11" />
+      <node id="Core_2_12" label="Core_2_12" />
+      <node id="Core_2_13" label="Core_2_13" />
+      <node id="Core_2_14" label="Core_2_14" />
+      <node id="Core_2_15" label="Core_2_15" />
+      <node id="Core_2_16" label="Core_2_16" />
+      <node id="Core_2_17" label="Core_2_17" />
+      <node id="Core_2_18" label="Core_2_18" />
+      <node id="Core_2_19" label="Core_2_19" />
+      <node id="Periphery_0" label="Periphery_0" />
+      <node id="Periphery_1" label="Periphery_1" />
+      <node id="Periphery_2" label="Periphery_2" />
+      <node id="Periphery_3" label="Periphery_3" />
+      <node id="Periphery_4" label="Periphery_4" />
+      <node id="Periphery_5" label="Periphery_5" />
+      <node id="Periphery_6" label="Periphery_6" />
+      <node id="Periphery_7" label="Periphery_7" />
+      <node id="Periphery_8" label="Periphery_8" />
+      <node id="Periphery_9" label="Periphery_9" />
+      <node id="Periphery_10" label="Periphery_10" />
+      <node id="Periphery_11" label="Periphery_11" />
+      <node id="Periphery_12" label="Periphery_12" />
+      <node id="Periphery_13" label="Periphery_13" />
+      <node id="Periphery_14" label="Periphery_14" />
+      <node id="Periphery_15" label="Periphery_15" />
+      <node id="Periphery_16" label="Periphery_16" />
+      <node id="Periphery_17" label="Periphery_17" />
+      <node id="Periphery_18" label="Periphery_18" />
+      <node id="Periphery_19" label="Periphery_19" />
+      <node id="Periphery_20" label="Periphery_20" />
+      <node id="Periphery_21" label="Periphery_21" />
+      <node id="Periphery_22" label="Periphery_22" />
+      <node id="Periphery_23" label="Periphery_23" />
+      <node id="Periphery_24" label="Periphery_24" />
+      <node id="Periphery_25" label="Periphery_25" />
+      <node id="Periphery_26" label="Periphery_26" />
+      <node id="Periphery_27" label="Periphery_27" />
+      <node id="Periphery_28" label="Periphery_28" />
+      <node id="Periphery_29" label="Periphery_29" />
+      <node id="Periphery_30" label="Periphery_30" />
+      <node id="Periphery_31" label="Periphery_31" />
+      <node id="Periphery_32" label="Periphery_32" />
+      <node id="Periphery_33" label="Periphery_33" />
+      <node id="Periphery_34" label="Periphery_34" />
+      <node id="Periphery_35" label="Periphery_35" />
+      <node id="Periphery_36" label="Periphery_36" />
+      <node id="Periphery_37" label="Periphery_37" />
+      <node id="Periphery_38" label="Periphery_38" />
+      <node id="Periphery_39" label="Periphery_39" />
+      <node id="Periphery_40" label="Periphery_40" />
+      <node id="Periphery_41" label="Periphery_41" />
+      <node id="Periphery_42" label="Periphery_42" />
+      <node id="Periphery_43" label="Periphery_43" />
+      <node id="Periphery_44" label="Periphery_44" />
+      <node id="Periphery_45" label="Periphery_45" />
+      <node id="Periphery_46" label="Periphery_46" />
+      <node id="Periphery_47" label="Periphery_47" />
+      <node id="Periphery_48" label="Periphery_48" />
+      <node id="Periphery_49" label="Periphery_49" />
+      <node id="Periphery_50" label="Periphery_50" />
+      <node id="Periphery_51" label="Periphery_51" />
+      <node id="Periphery_52" label="Periphery_52" />
+      <node id="Periphery_53" label="Periphery_53" />
+      <node id="Periphery_54" label="Periphery_54" />
+      <node id="Periphery_55" label="Periphery_55" />
+      <node id="Periphery_56" label="Periphery_56" />
+      <node id="Periphery_57" label="Periphery_57" />
+      <node id="Periphery_58" label="Periphery_58" />
+      <node id="Periphery_59" label="Periphery_59" />
+      <node id="Periphery_60" label="Periphery_60" />
+      <node id="Periphery_61" label="Periphery_61" />
+      <node id="Periphery_62" label="Periphery_62" />
+      <node id="Periphery_63" label="Periphery_63" />
+      <node id="Periphery_64" label="Periphery_64" />
+      <node id="Periphery_65" label="Periphery_65" />
+      <node id="Periphery_66" label="Periphery_66" />
+      <node id="Periphery_67" label="Periphery_67" />
+      <node id="Periphery_68" label="Periphery_68" />
+      <node id="Periphery_69" label="Periphery_69" />
+      <node id="Periphery_70" label="Periphery_70" />
+      <node id="Periphery_71" label="Periphery_71" />
+      <node id="Periphery_72" label="Periphery_72" />
+      <node id="Periphery_73" label="Periphery_73" />
+      <node id="Periphery_74" label="Periphery_74" />
+      <node id="Periphery_75" label="Periphery_75" />
+      <node id="Periphery_76" label="Periphery_76" />
+      <node id="Periphery_77" label="Periphery_77" />
+      <node id="Periphery_78" label="Periphery_78" />
+      <node id="Periphery_79" label="Periphery_79" />
+      <node id="Periphery_80" label="Periphery_80" />
+      <node id="Periphery_81" label="Periphery_81" />
+      <node id="Periphery_82" label="Periphery_82" />
+      <node id="Periphery_83" label="Periphery_83" />
+      <node id="Periphery_84" label="Periphery_84" />
+      <node id="Periphery_85" label="Periphery_85" />
+      <node id="Periphery_86" label="Periphery_86" />
+      <node id="Periphery_87" label="Periphery_87" />
+      <node id="Periphery_88" label="Periphery_88" />
+      <node id="Periphery_89" label="Periphery_89" />
+      <node id="Periphery_90" label="Periphery_90" />
+      <node id="Periphery_91" label="Periphery_91" />
+      <node id="Periphery_92" label="Periphery_92" />
+      <node id="Periphery_93" label="Periphery_93" />
+      <node id="Periphery_94" label="Periphery_94" />
+      <node id="Periphery_95" label="Periphery_95" />
+      <node id="Periphery_96" label="Periphery_96" />
+      <node id="Periphery_97" label="Periphery_97" />
+      <node id="Periphery_98" label="Periphery_98" />
+      <node id="Periphery_99" label="Periphery_99" />
+    </nodes>
+    <edges>
+      <edge source="Core_0_0" target="Core_0_1" id="0" />
+      <edge source="Core_0_0" target="Core_0_2" id="1" />
+      <edge source="Core_0_0" target="Core_0_3" id="2" />
+      <edge source="Core_0_0" target="Core_0_4" id="3" />
+      <edge source="Core_0_0" target="Core_0_5" id="4" />
+      <edge source="Core_0_0" target="Core_0_6" id="5" />
+      <edge source="Core_0_0" target="Core_0_7" id="6" />
+      <edge source="Core_0_0" target="Core_0_8" id="7" />
+      <edge source="Core_0_0" target="Core_0_9" id="8" />
+      <edge source="Core_0_0" target="Core_0_10" id="9" />
+      <edge source="Core_0_0" target="Core_0_11" id="10" />
+      <edge source="Core_0_0" target="Core_0_12" id="11" />
+      <edge source="Core_0_0" target="Core_0_13" id="12" />
+      <edge source="Core_0_0" target="Core_0_14" id="13" />
+      <edge source="Core_0_0" target="Core_0_15" id="14" />
+      <edge source="Core_0_0" target="Core_0_16" id="15" />
+      <edge source="Core_0_0" target="Core_0_17" id="16" />
+      <edge source="Core_0_0" target="Core_0_18" id="17" />
+      <edge source="Core_0_0" target="Core_0_19" id="18" />
+      <edge source="Core_0_0" target="Periphery_9" id="19" />
+      <edge source="Core_0_0" target="Periphery_18" id="20" />
+      <edge source="Core_0_0" target="Periphery_28" id="21" />
+      <edge source="Core_0_0" target="Periphery_54" id="22" />
+      <edge source="Core_0_0" target="Periphery_72" id="23" />
+      <edge source="Core_0_0" target="Periphery_77" id="24" />
+      <edge source="Core_0_1" target="Core_0_2" id="25" />
+      <edge source="Core_0_1" target="Core_0_3" id="26" />
+      <edge source="Core_0_1" target="Core_0_4" id="27" />
+      <edge source="Core_0_1" target="Core_0_5" id="28" />
+      <edge source="Core_0_1" target="Core_0_6" id="29" />
+      <edge source="Core_0_1" target="Core_0_7" id="30" />
+      <edge source="Core_0_1" target="Core_0_8" id="31" />
+      <edge source="Core_0_1" target="Core_0_9" id="32" />
+      <edge source="Core_0_1" target="Core_0_10" id="33" />
+      <edge source="Core_0_1" target="Core_0_11" id="34" />
+      <edge source="Core_0_1" target="Core_0_12" id="35" />
+      <edge source="Core_0_1" target="Core_0_13" id="36" />
+      <edge source="Core_0_1" target="Core_0_14" id="37" />
+      <edge source="Core_0_1" target="Core_0_15" id="38" />
+      <edge source="Core_0_1" target="Core_0_16" id="39" />
+      <edge source="Core_0_1" target="Core_0_17" id="40" />
+      <edge source="Core_0_1" target="Core_0_18" id="41" />
+      <edge source="Core_0_1" target="Core_0_19" id="42" />
+      <edge source="Core_0_1" target="Periphery_36" id="43" />
+      <edge source="Core_0_1" target="Periphery_44" id="44" />
+      <edge source="Core_0_1" target="Periphery_64" id="45" />
+      <edge source="Core_0_1" target="Periphery_92" id="46" />
+      <edge source="Core_0_2" target="Core_0_3" id="47" />
+      <edge source="Core_0_2" target="Core_0_4" id="48" />
+      <edge source="Core_0_2" target="Core_0_5" id="49" />
+      <edge source="Core_0_2" target="Core_0_6" id="50" />
+      <edge source="Core_0_2" target="Core_0_7" id="51" />
+      <edge source="Core_0_2" target="Core_0_8" id="52" />
+      <edge source="Core_0_2" target="Core_0_9" id="53" />
+      <edge source="Core_0_2" target="Core_0_10" id="54" />
+      <edge source="Core_0_2" target="Core_0_11" id="55" />
+      <edge source="Core_0_2" target="Core_0_12" id="56" />
+      <edge source="Core_0_2" target="Core_0_13" id="57" />
+      <edge source="Core_0_2" target="Core_0_14" id="58" />
+      <edge source="Core_0_2" target="Core_0_15" id="59" />
+      <edge source="Core_0_2" target="Core_0_16" id="60" />
+      <edge source="Core_0_2" target="Core_0_17" id="61" />
+      <edge source="Core_0_2" target="Core_0_18" id="62" />
+      <edge source="Core_0_2" target="Core_0_19" id="63" />
+      <edge source="Core_0_2" target="Periphery_26" id="64" />
+      <edge source="Core_0_2" target="Periphery_32" id="65" />
+      <edge source="Core_0_3" target="Core_0_4" id="66" />
+      <edge source="Core_0_3" target="Core_0_5" id="67" />
+      <edge source="Core_0_3" target="Core_0_6" id="68" />
+      <edge source="Core_0_3" target="Core_0_7" id="69" />
+      <edge source="Core_0_3" target="Core_0_8" id="70" />
+      <edge source="Core_0_3" target="Core_0_9" id="71" />
+      <edge source="Core_0_3" target="Core_0_10" id="72" />
+      <edge source="Core_0_3" target="Core_0_11" id="73" />
+      <edge source="Core_0_3" target="Core_0_12" id="74" />
+      <edge source="Core_0_3" target="Core_0_13" id="75" />
+      <edge source="Core_0_3" target="Core_0_14" id="76" />
+      <edge source="Core_0_3" target="Core_0_15" id="77" />
+      <edge source="Core_0_3" target="Core_0_16" id="78" />
+      <edge source="Core_0_3" target="Core_0_17" id="79" />
+      <edge source="Core_0_3" target="Core_0_18" id="80" />
+      <edge source="Core_0_3" target="Core_0_19" id="81" />
+      <edge source="Core_0_3" target="Periphery_40" id="82" />
+      <edge source="Core_0_4" target="Core_0_5" id="83" />
+      <edge source="Core_0_4" target="Core_0_6" id="84" />
+      <edge source="Core_0_4" target="Core_0_7" id="85" />
+      <edge source="Core_0_4" target="Core_0_8" id="86" />
+      <edge source="Core_0_4" target="Core_0_9" id="87" />
+      <edge source="Core_0_4" target="Core_0_10" id="88" />
+      <edge source="Core_0_4" target="Core_0_11" id="89" />
+      <edge source="Core_0_4" target="Core_0_12" id="90" />
+      <edge source="Core_0_4" target="Core_0_13" id="91" />
+      <edge source="Core_0_4" target="Core_0_14" id="92" />
+      <edge source="Core_0_4" target="Core_0_15" id="93" />
+      <edge source="Core_0_4" target="Core_0_16" id="94" />
+      <edge source="Core_0_4" target="Core_0_17" id="95" />
+      <edge source="Core_0_4" target="Core_0_18" id="96" />
+      <edge source="Core_0_4" target="Core_0_19" id="97" />
+      <edge source="Core_0_4" target="Periphery_80" id="98" />
+      <edge source="Core_0_4" target="Periphery_94" id="99" />
+      <edge source="Core_0_5" target="Core_0_6" id="100" />
+      <edge source="Core_0_5" target="Core_0_7" id="101" />
+      <edge source="Core_0_5" target="Core_0_8" id="102" />
+      <edge source="Core_0_5" target="Core_0_9" id="103" />
+      <edge source="Core_0_5" target="Core_0_10" id="104" />
+      <edge source="Core_0_5" target="Core_0_11" id="105" />
+      <edge source="Core_0_5" target="Core_0_12" id="106" />
+      <edge source="Core_0_5" target="Core_0_13" id="107" />
+      <edge source="Core_0_5" target="Core_0_14" id="108" />
+      <edge source="Core_0_5" target="Core_0_15" id="109" />
+      <edge source="Core_0_5" target="Core_0_16" id="110" />
+      <edge source="Core_0_5" target="Core_0_17" id="111" />
+      <edge source="Core_0_5" target="Core_0_18" id="112" />
+      <edge source="Core_0_5" target="Core_0_19" id="113" />
+      <edge source="Core_0_5" target="Periphery_91" id="114" />
+      <edge source="Core_0_6" target="Core_0_7" id="115" />
+      <edge source="Core_0_6" target="Core_0_8" id="116" />
+      <edge source="Core_0_6" target="Core_0_9" id="117" />
+      <edge source="Core_0_6" target="Core_0_10" id="118" />
+      <edge source="Core_0_6" target="Core_0_11" id="119" />
+      <edge source="Core_0_6" target="Core_0_12" id="120" />
+      <edge source="Core_0_6" target="Core_0_13" id="121" />
+      <edge source="Core_0_6" target="Core_0_14" id="122" />
+      <edge source="Core_0_6" target="Core_0_15" id="123" />
+      <edge source="Core_0_6" target="Core_0_16" id="124" />
+      <edge source="Core_0_6" target="Core_0_17" id="125" />
+      <edge source="Core_0_6" target="Core_0_18" id="126" />
+      <edge source="Core_0_6" target="Core_0_19" id="127" />
+      <edge source="Core_0_6" target="Periphery_45" id="128" />
+      <edge source="Core_0_6" target="Periphery_50" id="129" />
+      <edge source="Core_0_7" target="Core_0_8" id="130" />
+      <edge source="Core_0_7" target="Core_0_9" id="131" />
+      <edge source="Core_0_7" target="Core_0_10" id="132" />
+      <edge source="Core_0_7" target="Core_0_11" id="133" />
+      <edge source="Core_0_7" target="Core_0_12" id="134" />
+      <edge source="Core_0_7" target="Core_0_13" id="135" />
+      <edge source="Core_0_7" target="Core_0_14" id="136" />
+      <edge source="Core_0_7" target="Core_0_15" id="137" />
+      <edge source="Core_0_7" target="Core_0_16" id="138" />
+      <edge source="Core_0_7" target="Core_0_17" id="139" />
+      <edge source="Core_0_7" target="Core_0_18" id="140" />
+      <edge source="Core_0_7" target="Core_0_19" id="141" />
+      <edge source="Core_0_7" target="Periphery_3" id="142" />
+      <edge source="Core_0_7" target="Periphery_90" id="143" />
+      <edge source="Core_0_7" target="Periphery_96" id="144" />
+      <edge source="Core_0_8" target="Core_0_9" id="145" />
+      <edge source="Core_0_8" target="Core_0_10" id="146" />
+      <edge source="Core_0_8" target="Core_0_11" id="147" />
+      <edge source="Core_0_8" target="Core_0_12" id="148" />
+      <edge source="Core_0_8" target="Core_0_13" id="149" />
+      <edge source="Core_0_8" target="Core_0_14" id="150" />
+      <edge source="Core_0_8" target="Core_0_15" id="151" />
+      <edge source="Core_0_8" target="Core_0_16" id="152" />
+      <edge source="Core_0_8" target="Core_0_17" id="153" />
+      <edge source="Core_0_8" target="Core_0_18" id="154" />
+      <edge source="Core_0_8" target="Core_0_19" id="155" />
+      <edge source="Core_0_9" target="Core_0_10" id="156" />
+      <edge source="Core_0_9" target="Core_0_11" id="157" />
+      <edge source="Core_0_9" target="Core_0_12" id="158" />
+      <edge source="Core_0_9" target="Core_0_13" id="159" />
+      <edge source="Core_0_9" target="Core_0_14" id="160" />
+      <edge source="Core_0_9" target="Core_0_15" id="161" />
+      <edge source="Core_0_9" target="Core_0_16" id="162" />
+      <edge source="Core_0_9" target="Core_0_17" id="163" />
+      <edge source="Core_0_9" target="Core_0_18" id="164" />
+      <edge source="Core_0_9" target="Core_0_19" id="165" />
+      <edge source="Core_0_9" target="Periphery_21" id="166" />
+      <edge source="Core_0_9" target="Periphery_68" id="167" />
+      <edge source="Core_0_10" target="Core_0_11" id="168" />
+      <edge source="Core_0_10" target="Core_0_12" id="169" />
+      <edge source="Core_0_10" target="Core_0_13" id="170" />
+      <edge source="Core_0_10" target="Core_0_14" id="171" />
+      <edge source="Core_0_10" target="Core_0_15" id="172" />
+      <edge source="Core_0_10" target="Core_0_16" id="173" />
+      <edge source="Core_0_10" target="Core_0_17" id="174" />
+      <edge source="Core_0_10" target="Core_0_18" id="175" />
+      <edge source="Core_0_10" target="Core_0_19" id="176" />
+      <edge source="Core_0_11" target="Core_0_12" id="177" />
+      <edge source="Core_0_11" target="Core_0_13" id="178" />
+      <edge source="Core_0_11" target="Core_0_14" id="179" />
+      <edge source="Core_0_11" target="Core_0_15" id="180" />
+      <edge source="Core_0_11" target="Core_0_16" id="181" />
+      <edge source="Core_0_11" target="Core_0_17" id="182" />
+      <edge source="Core_0_11" target="Core_0_18" id="183" />
+      <edge source="Core_0_11" target="Core_0_19" id="184" />
+      <edge source="Core_0_11" target="Periphery_33" id="185" />
+      <edge source="Core_0_12" target="Core_0_13" id="186" />
+      <edge source="Core_0_12" target="Core_0_14" id="187" />
+      <edge source="Core_0_12" target="Core_0_15" id="188" />
+      <edge source="Core_0_12" target="Core_0_16" id="189" />
+      <edge source="Core_0_12" target="Core_0_17" id="190" />
+      <edge source="Core_0_12" target="Core_0_18" id="191" />
+      <edge source="Core_0_12" target="Core_0_19" id="192" />
+      <edge source="Core_0_12" target="Periphery_24" id="193" />
+      <edge source="Core_0_12" target="Periphery_48" id="194" />
+      <edge source="Core_0_13" target="Core_0_14" id="195" />
+      <edge source="Core_0_13" target="Core_0_15" id="196" />
+      <edge source="Core_0_13" target="Core_0_16" id="197" />
+      <edge source="Core_0_13" target="Core_0_17" id="198" />
+      <edge source="Core_0_13" target="Core_0_18" id="199" />
+      <edge source="Core_0_13" target="Core_0_19" id="200" />
+      <edge source="Core_0_13" target="Periphery_12" id="201" />
+      <edge source="Core_0_13" target="Periphery_73" id="202" />
+      <edge source="Core_0_13" target="Periphery_74" id="203" />
+      <edge source="Core_0_14" target="Core_0_15" id="204" />
+      <edge source="Core_0_14" target="Core_0_16" id="205" />
+      <edge source="Core_0_14" target="Core_0_17" id="206" />
+      <edge source="Core_0_14" target="Core_0_18" id="207" />
+      <edge source="Core_0_14" target="Core_0_19" id="208" />
+      <edge source="Core_0_14" target="Periphery_8" id="209" />
+      <edge source="Core_0_14" target="Periphery_13" id="210" />
+      <edge source="Core_0_15" target="Core_0_16" id="211" />
+      <edge source="Core_0_15" target="Core_0_17" id="212" />
+      <edge source="Core_0_15" target="Core_0_18" id="213" />
+      <edge source="Core_0_15" target="Core_0_19" id="214" />
+      <edge source="Core_0_16" target="Core_0_17" id="215" />
+      <edge source="Core_0_16" target="Core_0_18" id="216" />
+      <edge source="Core_0_16" target="Core_0_19" id="217" />
+      <edge source="Core_0_16" target="Periphery_5" id="218" />
+      <edge source="Core_0_16" target="Periphery_30" id="219" />
+      <edge source="Core_0_17" target="Core_0_18" id="220" />
+      <edge source="Core_0_17" target="Core_0_19" id="221" />
+      <edge source="Core_0_17" target="Periphery_49" id="222" />
+      <edge source="Core_0_17" target="Periphery_53" id="223" />
+      <edge source="Core_0_17" target="Periphery_58" id="224" />
+      <edge source="Core_0_18" target="Core_0_19" id="225" />
+      <edge source="Core_1_0" target="Core_1_1" id="226" />
+      <edge source="Core_1_0" target="Core_1_2" id="227" />
+      <edge source="Core_1_0" target="Core_1_3" id="228" />
+      <edge source="Core_1_0" target="Core_1_4" id="229" />
+      <edge source="Core_1_0" target="Core_1_5" id="230" />
+      <edge source="Core_1_0" target="Core_1_6" id="231" />
+      <edge source="Core_1_0" target="Core_1_7" id="232" />
+      <edge source="Core_1_0" target="Core_1_8" id="233" />
+      <edge source="Core_1_0" target="Core_1_9" id="234" />
+      <edge source="Core_1_0" target="Core_1_10" id="235" />
+      <edge source="Core_1_0" target="Core_1_11" id="236" />
+      <edge source="Core_1_0" target="Core_1_12" id="237" />
+      <edge source="Core_1_0" target="Core_1_13" id="238" />
+      <edge source="Core_1_0" target="Core_1_14" id="239" />
+      <edge source="Core_1_0" target="Core_1_15" id="240" />
+      <edge source="Core_1_0" target="Core_1_16" id="241" />
+      <edge source="Core_1_0" target="Core_1_17" id="242" />
+      <edge source="Core_1_0" target="Core_1_18" id="243" />
+      <edge source="Core_1_0" target="Core_1_19" id="244" />
+      <edge source="Core_1_0" target="Periphery_23" id="245" />
+      <edge source="Core_1_0" target="Periphery_39" id="246" />
+      <edge source="Core_1_0" target="Periphery_63" id="247" />
+      <edge source="Core_1_1" target="Core_1_2" id="248" />
+      <edge source="Core_1_1" target="Core_1_3" id="249" />
+      <edge source="Core_1_1" target="Core_1_4" id="250" />
+      <edge source="Core_1_1" target="Core_1_5" id="251" />
+      <edge source="Core_1_1" target="Core_1_6" id="252" />
+      <edge source="Core_1_1" target="Core_1_7" id="253" />
+      <edge source="Core_1_1" target="Core_1_8" id="254" />
+      <edge source="Core_1_1" target="Core_1_9" id="255" />
+      <edge source="Core_1_1" target="Core_1_10" id="256" />
+      <edge source="Core_1_1" target="Core_1_11" id="257" />
+      <edge source="Core_1_1" target="Core_1_12" id="258" />
+      <edge source="Core_1_1" target="Core_1_13" id="259" />
+      <edge source="Core_1_1" target="Core_1_14" id="260" />
+      <edge source="Core_1_1" target="Core_1_15" id="261" />
+      <edge source="Core_1_1" target="Core_1_16" id="262" />
+      <edge source="Core_1_1" target="Core_1_17" id="263" />
+      <edge source="Core_1_1" target="Core_1_18" id="264" />
+      <edge source="Core_1_1" target="Core_1_19" id="265" />
+      <edge source="Core_1_1" target="Periphery_43" id="266" />
+      <edge source="Core_1_2" target="Core_1_3" id="267" />
+      <edge source="Core_1_2" target="Core_1_4" id="268" />
+      <edge source="Core_1_2" target="Core_1_5" id="269" />
+      <edge source="Core_1_2" target="Core_1_6" id="270" />
+      <edge source="Core_1_2" target="Core_1_7" id="271" />
+      <edge source="Core_1_2" target="Core_1_8" id="272" />
+      <edge source="Core_1_2" target="Core_1_9" id="273" />
+      <edge source="Core_1_2" target="Core_1_10" id="274" />
+      <edge source="Core_1_2" target="Core_1_11" id="275" />
+      <edge source="Core_1_2" target="Core_1_12" id="276" />
+      <edge source="Core_1_2" target="Core_1_13" id="277" />
+      <edge source="Core_1_2" target="Core_1_14" id="278" />
+      <edge source="Core_1_2" target="Core_1_15" id="279" />
+      <edge source="Core_1_2" target="Core_1_16" id="280" />
+      <edge source="Core_1_2" target="Core_1_17" id="281" />
+      <edge source="Core_1_2" target="Core_1_18" id="282" />
+      <edge source="Core_1_2" target="Core_1_19" id="283" />
+      <edge source="Core_1_3" target="Core_1_4" id="284" />
+      <edge source="Core_1_3" target="Core_1_5" id="285" />
+      <edge source="Core_1_3" target="Core_1_6" id="286" />
+      <edge source="Core_1_3" target="Core_1_7" id="287" />
+      <edge source="Core_1_3" target="Core_1_8" id="288" />
+      <edge source="Core_1_3" target="Core_1_9" id="289" />
+      <edge source="Core_1_3" target="Core_1_10" id="290" />
+      <edge source="Core_1_3" target="Core_1_11" id="291" />
+      <edge source="Core_1_3" target="Core_1_12" id="292" />
+      <edge source="Core_1_3" target="Core_1_13" id="293" />
+      <edge source="Core_1_3" target="Core_1_14" id="294" />
+      <edge source="Core_1_3" target="Core_1_15" id="295" />
+      <edge source="Core_1_3" target="Core_1_16" id="296" />
+      <edge source="Core_1_3" target="Core_1_17" id="297" />
+      <edge source="Core_1_3" target="Core_1_18" id="298" />
+      <edge source="Core_1_3" target="Core_1_19" id="299" />
+      <edge source="Core_1_4" target="Core_1_5" id="300" />
+      <edge source="Core_1_4" target="Core_1_6" id="301" />
+      <edge source="Core_1_4" target="Core_1_7" id="302" />
+      <edge source="Core_1_4" target="Core_1_8" id="303" />
+      <edge source="Core_1_4" target="Core_1_9" id="304" />
+      <edge source="Core_1_4" target="Core_1_10" id="305" />
+      <edge source="Core_1_4" target="Core_1_11" id="306" />
+      <edge source="Core_1_4" target="Core_1_12" id="307" />
+      <edge source="Core_1_4" target="Core_1_13" id="308" />
+      <edge source="Core_1_4" target="Core_1_14" id="309" />
+      <edge source="Core_1_4" target="Core_1_15" id="310" />
+      <edge source="Core_1_4" target="Core_1_16" id="311" />
+      <edge source="Core_1_4" target="Core_1_17" id="312" />
+      <edge source="Core_1_4" target="Core_1_18" id="313" />
+      <edge source="Core_1_4" target="Core_1_19" id="314" />
+      <edge source="Core_1_4" target="Periphery_0" id="315" />
+      <edge source="Core_1_4" target="Periphery_51" id="316" />
+      <edge source="Core_1_5" target="Core_1_6" id="317" />
+      <edge source="Core_1_5" target="Core_1_7" id="318" />
+      <edge source="Core_1_5" target="Core_1_8" id="319" />
+      <edge source="Core_1_5" target="Core_1_9" id="320" />
+      <edge source="Core_1_5" target="Core_1_10" id="321" />
+      <edge source="Core_1_5" target="Core_1_11" id="322" />
+      <edge source="Core_1_5" target="Core_1_12" id="323" />
+      <edge source="Core_1_5" target="Core_1_13" id="324" />
+      <edge source="Core_1_5" target="Core_1_14" id="325" />
+      <edge source="Core_1_5" target="Core_1_15" id="326" />
+      <edge source="Core_1_5" target="Core_1_16" id="327" />
+      <edge source="Core_1_5" target="Core_1_17" id="328" />
+      <edge source="Core_1_5" target="Core_1_18" id="329" />
+      <edge source="Core_1_5" target="Core_1_19" id="330" />
+      <edge source="Core_1_5" target="Periphery_2" id="331" />
+      <edge source="Core_1_5" target="Periphery_65" id="332" />
+      <edge source="Core_1_6" target="Core_1_7" id="333" />
+      <edge source="Core_1_6" target="Core_1_8" id="334" />
+      <edge source="Core_1_6" target="Core_1_9" id="335" />
+      <edge source="Core_1_6" target="Core_1_10" id="336" />
+      <edge source="Core_1_6" target="Core_1_11" id="337" />
+      <edge source="Core_1_6" target="Core_1_12" id="338" />
+      <edge source="Core_1_6" target="Core_1_13" id="339" />
+      <edge source="Core_1_6" target="Core_1_14" id="340" />
+      <edge source="Core_1_6" target="Core_1_15" id="341" />
+      <edge source="Core_1_6" target="Core_1_16" id="342" />
+      <edge source="Core_1_6" target="Core_1_17" id="343" />
+      <edge source="Core_1_6" target="Core_1_18" id="344" />
+      <edge source="Core_1_6" target="Core_1_19" id="345" />
+      <edge source="Core_1_7" target="Core_1_8" id="346" />
+      <edge source="Core_1_7" target="Core_1_9" id="347" />
+      <edge source="Core_1_7" target="Core_1_10" id="348" />
+      <edge source="Core_1_7" target="Core_1_11" id="349" />
+      <edge source="Core_1_7" target="Core_1_12" id="350" />
+      <edge source="Core_1_7" target="Core_1_13" id="351" />
+      <edge source="Core_1_7" target="Core_1_14" id="352" />
+      <edge source="Core_1_7" target="Core_1_15" id="353" />
+      <edge source="Core_1_7" target="Core_1_16" id="354" />
+      <edge source="Core_1_7" target="Core_1_17" id="355" />
+      <edge source="Core_1_7" target="Core_1_18" id="356" />
+      <edge source="Core_1_7" target="Core_1_19" id="357" />
+      <edge source="Core_1_7" target="Periphery_42" id="358" />
+      <edge source="Core_1_7" target="Periphery_47" id="359" />
+      <edge source="Core_1_8" target="Core_1_9" id="360" />
+      <edge source="Core_1_8" target="Core_1_10" id="361" />
+      <edge source="Core_1_8" target="Core_1_11" id="362" />
+      <edge source="Core_1_8" target="Core_1_12" id="363" />
+      <edge source="Core_1_8" target="Core_1_13" id="364" />
+      <edge source="Core_1_8" target="Core_1_14" id="365" />
+      <edge source="Core_1_8" target="Core_1_15" id="366" />
+      <edge source="Core_1_8" target="Core_1_16" id="367" />
+      <edge source="Core_1_8" target="Core_1_17" id="368" />
+      <edge source="Core_1_8" target="Core_1_18" id="369" />
+      <edge source="Core_1_8" target="Core_1_19" id="370" />
+      <edge source="Core_1_9" target="Core_1_10" id="371" />
+      <edge source="Core_1_9" target="Core_1_11" id="372" />
+      <edge source="Core_1_9" target="Core_1_12" id="373" />
+      <edge source="Core_1_9" target="Core_1_13" id="374" />
+      <edge source="Core_1_9" target="Core_1_14" id="375" />
+      <edge source="Core_1_9" target="Core_1_15" id="376" />
+      <edge source="Core_1_9" target="Core_1_16" id="377" />
+      <edge source="Core_1_9" target="Core_1_17" id="378" />
+      <edge source="Core_1_9" target="Core_1_18" id="379" />
+      <edge source="Core_1_9" target="Core_1_19" id="380" />
+      <edge source="Core_1_10" target="Core_1_11" id="381" />
+      <edge source="Core_1_10" target="Core_1_12" id="382" />
+      <edge source="Core_1_10" target="Core_1_13" id="383" />
+      <edge source="Core_1_10" target="Core_1_14" id="384" />
+      <edge source="Core_1_10" target="Core_1_15" id="385" />
+      <edge source="Core_1_10" target="Core_1_16" id="386" />
+      <edge source="Core_1_10" target="Core_1_17" id="387" />
+      <edge source="Core_1_10" target="Core_1_18" id="388" />
+      <edge source="Core_1_10" target="Core_1_19" id="389" />
+      <edge source="Core_1_10" target="Periphery_59" id="390" />
+      <edge source="Core_1_10" target="Periphery_60" id="391" />
+      <edge source="Core_1_10" target="Periphery_76" id="392" />
+      <edge source="Core_1_10" target="Periphery_88" id="393" />
+      <edge source="Core_1_11" target="Core_1_12" id="394" />
+      <edge source="Core_1_11" target="Core_1_13" id="395" />
+      <edge source="Core_1_11" target="Core_1_14" id="396" />
+      <edge source="Core_1_11" target="Core_1_15" id="397" />
+      <edge source="Core_1_11" target="Core_1_16" id="398" />
+      <edge source="Core_1_11" target="Core_1_17" id="399" />
+      <edge source="Core_1_11" target="Core_1_18" id="400" />
+      <edge source="Core_1_11" target="Core_1_19" id="401" />
+      <edge source="Core_1_11" target="Periphery_67" id="402" />
+      <edge source="Core_1_12" target="Core_1_13" id="403" />
+      <edge source="Core_1_12" target="Core_1_14" id="404" />
+      <edge source="Core_1_12" target="Core_1_15" id="405" />
+      <edge source="Core_1_12" target="Core_1_16" id="406" />
+      <edge source="Core_1_12" target="Core_1_17" id="407" />
+      <edge source="Core_1_12" target="Core_1_18" id="408" />
+      <edge source="Core_1_12" target="Core_1_19" id="409" />
+      <edge source="Core_1_12" target="Periphery_15" id="410" />
+      <edge source="Core_1_13" target="Core_1_14" id="411" />
+      <edge source="Core_1_13" target="Core_1_15" id="412" />
+      <edge source="Core_1_13" target="Core_1_16" id="413" />
+      <edge source="Core_1_13" target="Core_1_17" id="414" />
+      <edge source="Core_1_13" target="Core_1_18" id="415" />
+      <edge source="Core_1_13" target="Core_1_19" id="416" />
+      <edge source="Core_1_13" target="Periphery_25" id="417" />
+      <edge source="Core_1_13" target="Periphery_38" id="418" />
+      <edge source="Core_1_13" target="Periphery_52" id="419" />
+      <edge source="Core_1_13" target="Periphery_71" id="420" />
+      <edge source="Core_1_14" target="Core_1_15" id="421" />
+      <edge source="Core_1_14" target="Core_1_16" id="422" />
+      <edge source="Core_1_14" target="Core_1_17" id="423" />
+      <edge source="Core_1_14" target="Core_1_18" id="424" />
+      <edge source="Core_1_14" target="Core_1_19" id="425" />
+      <edge source="Core_1_14" target="Periphery_95" id="426" />
+      <edge source="Core_1_15" target="Core_1_16" id="427" />
+      <edge source="Core_1_15" target="Core_1_17" id="428" />
+      <edge source="Core_1_15" target="Core_1_18" id="429" />
+      <edge source="Core_1_15" target="Core_1_19" id="430" />
+      <edge source="Core_1_15" target="Periphery_87" id="431" />
+      <edge source="Core_1_16" target="Core_1_17" id="432" />
+      <edge source="Core_1_16" target="Core_1_18" id="433" />
+      <edge source="Core_1_16" target="Core_1_19" id="434" />
+      <edge source="Core_1_17" target="Core_1_18" id="435" />
+      <edge source="Core_1_17" target="Core_1_19" id="436" />
+      <edge source="Core_1_17" target="Periphery_7" id="437" />
+      <edge source="Core_1_17" target="Periphery_41" id="438" />
+      <edge source="Core_1_17" target="Periphery_61" id="439" />
+      <edge source="Core_1_17" target="Periphery_99" id="440" />
+      <edge source="Core_1_18" target="Core_1_19" id="441" />
+      <edge source="Core_1_18" target="Periphery_55" id="442" />
+      <edge source="Core_1_18" target="Periphery_82" id="443" />
+      <edge source="Core_1_19" target="Periphery_29" id="444" />
+      <edge source="Core_1_19" target="Periphery_75" id="445" />
+      <edge source="Core_1_19" target="Periphery_78" id="446" />
+      <edge source="Core_2_0" target="Core_2_1" id="447" />
+      <edge source="Core_2_0" target="Core_2_2" id="448" />
+      <edge source="Core_2_0" target="Core_2_3" id="449" />
+      <edge source="Core_2_0" target="Core_2_4" id="450" />
+      <edge source="Core_2_0" target="Core_2_5" id="451" />
+      <edge source="Core_2_0" target="Core_2_6" id="452" />
+      <edge source="Core_2_0" target="Core_2_7" id="453" />
+      <edge source="Core_2_0" target="Core_2_8" id="454" />
+      <edge source="Core_2_0" target="Core_2_9" id="455" />
+      <edge source="Core_2_0" target="Core_2_10" id="456" />
+      <edge source="Core_2_0" target="Core_2_11" id="457" />
+      <edge source="Core_2_0" target="Core_2_12" id="458" />
+      <edge source="Core_2_0" target="Core_2_13" id="459" />
+      <edge source="Core_2_0" target="Core_2_14" id="460" />
+      <edge source="Core_2_0" target="Core_2_15" id="461" />
+      <edge source="Core_2_0" target="Core_2_16" id="462" />
+      <edge source="Core_2_0" target="Core_2_17" id="463" />
+      <edge source="Core_2_0" target="Core_2_18" id="464" />
+      <edge source="Core_2_0" target="Core_2_19" id="465" />
+      <edge source="Core_2_0" target="Periphery_1" id="466" />
+      <edge source="Core_2_0" target="Periphery_37" id="467" />
+      <edge source="Core_2_1" target="Core_2_2" id="468" />
+      <edge source="Core_2_1" target="Core_2_3" id="469" />
+      <edge source="Core_2_1" target="Core_2_4" id="470" />
+      <edge source="Core_2_1" target="Core_2_5" id="471" />
+      <edge source="Core_2_1" target="Core_2_6" id="472" />
+      <edge source="Core_2_1" target="Core_2_7" id="473" />
+      <edge source="Core_2_1" target="Core_2_8" id="474" />
+      <edge source="Core_2_1" target="Core_2_9" id="475" />
+      <edge source="Core_2_1" target="Core_2_10" id="476" />
+      <edge source="Core_2_1" target="Core_2_11" id="477" />
+      <edge source="Core_2_1" target="Core_2_12" id="478" />
+      <edge source="Core_2_1" target="Core_2_13" id="479" />
+      <edge source="Core_2_1" target="Core_2_14" id="480" />
+      <edge source="Core_2_1" target="Core_2_15" id="481" />
+      <edge source="Core_2_1" target="Core_2_16" id="482" />
+      <edge source="Core_2_1" target="Core_2_17" id="483" />
+      <edge source="Core_2_1" target="Core_2_18" id="484" />
+      <edge source="Core_2_1" target="Core_2_19" id="485" />
+      <edge source="Core_2_1" target="Periphery_46" id="486" />
+      <edge source="Core_2_2" target="Core_2_3" id="487" />
+      <edge source="Core_2_2" target="Core_2_4" id="488" />
+      <edge source="Core_2_2" target="Core_2_5" id="489" />
+      <edge source="Core_2_2" target="Core_2_6" id="490" />
+      <edge source="Core_2_2" target="Core_2_7" id="491" />
+      <edge source="Core_2_2" target="Core_2_8" id="492" />
+      <edge source="Core_2_2" target="Core_2_9" id="493" />
+      <edge source="Core_2_2" target="Core_2_10" id="494" />
+      <edge source="Core_2_2" target="Core_2_11" id="495" />
+      <edge source="Core_2_2" target="Core_2_12" id="496" />
+      <edge source="Core_2_2" target="Core_2_13" id="497" />
+      <edge source="Core_2_2" target="Core_2_14" id="498" />
+      <edge source="Core_2_2" target="Core_2_15" id="499" />
+      <edge source="Core_2_2" target="Core_2_16" id="500" />
+      <edge source="Core_2_2" target="Core_2_17" id="501" />
+      <edge source="Core_2_2" target="Core_2_18" id="502" />
+      <edge source="Core_2_2" target="Core_2_19" id="503" />
+      <edge source="Core_2_2" target="Periphery_27" id="504" />
+      <edge source="Core_2_2" target="Periphery_62" id="505" />
+      <edge source="Core_2_3" target="Core_2_4" id="506" />
+      <edge source="Core_2_3" target="Core_2_5" id="507" />
+      <edge source="Core_2_3" target="Core_2_6" id="508" />
+      <edge source="Core_2_3" target="Core_2_7" id="509" />
+      <edge source="Core_2_3" target="Core_2_8" id="510" />
+      <edge source="Core_2_3" target="Core_2_9" id="511" />
+      <edge source="Core_2_3" target="Core_2_10" id="512" />
+      <edge source="Core_2_3" target="Core_2_11" id="513" />
+      <edge source="Core_2_3" target="Core_2_12" id="514" />
+      <edge source="Core_2_3" target="Core_2_13" id="515" />
+      <edge source="Core_2_3" target="Core_2_14" id="516" />
+      <edge source="Core_2_3" target="Core_2_15" id="517" />
+      <edge source="Core_2_3" target="Core_2_16" id="518" />
+      <edge source="Core_2_3" target="Core_2_17" id="519" />
+      <edge source="Core_2_3" target="Core_2_18" id="520" />
+      <edge source="Core_2_3" target="Core_2_19" id="521" />
+      <edge source="Core_2_3" target="Periphery_6" id="522" />
+      <edge source="Core_2_3" target="Periphery_14" id="523" />
+      <edge source="Core_2_3" target="Periphery_34" id="524" />
+      <edge source="Core_2_3" target="Periphery_35" id="525" />
+      <edge source="Core_2_4" target="Core_2_5" id="526" />
+      <edge source="Core_2_4" target="Core_2_6" id="527" />
+      <edge source="Core_2_4" target="Core_2_7" id="528" />
+      <edge source="Core_2_4" target="Core_2_8" id="529" />
+      <edge source="Core_2_4" target="Core_2_9" id="530" />
+      <edge source="Core_2_4" target="Core_2_10" id="531" />
+      <edge source="Core_2_4" target="Core_2_11" id="532" />
+      <edge source="Core_2_4" target="Core_2_12" id="533" />
+      <edge source="Core_2_4" target="Core_2_13" id="534" />
+      <edge source="Core_2_4" target="Core_2_14" id="535" />
+      <edge source="Core_2_4" target="Core_2_15" id="536" />
+      <edge source="Core_2_4" target="Core_2_16" id="537" />
+      <edge source="Core_2_4" target="Core_2_17" id="538" />
+      <edge source="Core_2_4" target="Core_2_18" id="539" />
+      <edge source="Core_2_4" target="Core_2_19" id="540" />
+      <edge source="Core_2_4" target="Periphery_17" id="541" />
+      <edge source="Core_2_4" target="Periphery_85" id="542" />
+      <edge source="Core_2_5" target="Core_2_6" id="543" />
+      <edge source="Core_2_5" target="Core_2_7" id="544" />
+      <edge source="Core_2_5" target="Core_2_8" id="545" />
+      <edge source="Core_2_5" target="Core_2_9" id="546" />
+      <edge source="Core_2_5" target="Core_2_10" id="547" />
+      <edge source="Core_2_5" target="Core_2_11" id="548" />
+      <edge source="Core_2_5" target="Core_2_12" id="549" />
+      <edge source="Core_2_5" target="Core_2_13" id="550" />
+      <edge source="Core_2_5" target="Core_2_14" id="551" />
+      <edge source="Core_2_5" target="Core_2_15" id="552" />
+      <edge source="Core_2_5" target="Core_2_16" id="553" />
+      <edge source="Core_2_5" target="Core_2_17" id="554" />
+      <edge source="Core_2_5" target="Core_2_18" id="555" />
+      <edge source="Core_2_5" target="Core_2_19" id="556" />
+      <edge source="Core_2_5" target="Periphery_10" id="557" />
+      <edge source="Core_2_6" target="Core_2_7" id="558" />
+      <edge source="Core_2_6" target="Core_2_8" id="559" />
+      <edge source="Core_2_6" target="Core_2_9" id="560" />
+      <edge source="Core_2_6" target="Core_2_10" id="561" />
+      <edge source="Core_2_6" target="Core_2_11" id="562" />
+      <edge source="Core_2_6" target="Core_2_12" id="563" />
+      <edge source="Core_2_6" target="Core_2_13" id="564" />
+      <edge source="Core_2_6" target="Core_2_14" id="565" />
+      <edge source="Core_2_6" target="Core_2_15" id="566" />
+      <edge source="Core_2_6" target="Core_2_16" id="567" />
+      <edge source="Core_2_6" target="Core_2_17" id="568" />
+      <edge source="Core_2_6" target="Core_2_18" id="569" />
+      <edge source="Core_2_6" target="Core_2_19" id="570" />
+      <edge source="Core_2_7" target="Core_2_8" id="571" />
+      <edge source="Core_2_7" target="Core_2_9" id="572" />
+      <edge source="Core_2_7" target="Core_2_10" id="573" />
+      <edge source="Core_2_7" target="Core_2_11" id="574" />
+      <edge source="Core_2_7" target="Core_2_12" id="575" />
+      <edge source="Core_2_7" target="Core_2_13" id="576" />
+      <edge source="Core_2_7" target="Core_2_14" id="577" />
+      <edge source="Core_2_7" target="Core_2_15" id="578" />
+      <edge source="Core_2_7" target="Core_2_16" id="579" />
+      <edge source="Core_2_7" target="Core_2_17" id="580" />
+      <edge source="Core_2_7" target="Core_2_18" id="581" />
+      <edge source="Core_2_7" target="Core_2_19" id="582" />
+      <edge source="Core_2_7" target="Periphery_19" id="583" />
+      <edge source="Core_2_8" target="Core_2_9" id="584" />
+      <edge source="Core_2_8" target="Core_2_10" id="585" />
+      <edge source="Core_2_8" target="Core_2_11" id="586" />
+      <edge source="Core_2_8" target="Core_2_12" id="587" />
+      <edge source="Core_2_8" target="Core_2_13" id="588" />
+      <edge source="Core_2_8" target="Core_2_14" id="589" />
+      <edge source="Core_2_8" target="Core_2_15" id="590" />
+      <edge source="Core_2_8" target="Core_2_16" id="591" />
+      <edge source="Core_2_8" target="Core_2_17" id="592" />
+      <edge source="Core_2_8" target="Core_2_18" id="593" />
+      <edge source="Core_2_8" target="Core_2_19" id="594" />
+      <edge source="Core_2_8" target="Periphery_70" id="595" />
+      <edge source="Core_2_8" target="Periphery_89" id="596" />
+      <edge source="Core_2_9" target="Core_2_10" id="597" />
+      <edge source="Core_2_9" target="Core_2_11" id="598" />
+      <edge source="Core_2_9" target="Core_2_12" id="599" />
+      <edge source="Core_2_9" target="Core_2_13" id="600" />
+      <edge source="Core_2_9" target="Core_2_14" id="601" />
+      <edge source="Core_2_9" target="Core_2_15" id="602" />
+      <edge source="Core_2_9" target="Core_2_16" id="603" />
+      <edge source="Core_2_9" target="Core_2_17" id="604" />
+      <edge source="Core_2_9" target="Core_2_18" id="605" />
+      <edge source="Core_2_9" target="Core_2_19" id="606" />
+      <edge source="Core_2_9" target="Periphery_81" id="607" />
+      <edge source="Core_2_10" target="Core_2_11" id="608" />
+      <edge source="Core_2_10" target="Core_2_12" id="609" />
+      <edge source="Core_2_10" target="Core_2_13" id="610" />
+      <edge source="Core_2_10" target="Core_2_14" id="611" />
+      <edge source="Core_2_10" target="Core_2_15" id="612" />
+      <edge source="Core_2_10" target="Core_2_16" id="613" />
+      <edge source="Core_2_10" target="Core_2_17" id="614" />
+      <edge source="Core_2_10" target="Core_2_18" id="615" />
+      <edge source="Core_2_10" target="Core_2_19" id="616" />
+      <edge source="Core_2_10" target="Periphery_97" id="617" />
+      <edge source="Core_2_10" target="Periphery_98" id="618" />
+      <edge source="Core_2_11" target="Core_2_12" id="619" />
+      <edge source="Core_2_11" target="Core_2_13" id="620" />
+      <edge source="Core_2_11" target="Core_2_14" id="621" />
+      <edge source="Core_2_11" target="Core_2_15" id="622" />
+      <edge source="Core_2_11" target="Core_2_16" id="623" />
+      <edge source="Core_2_11" target="Core_2_17" id="624" />
+      <edge source="Core_2_11" target="Core_2_18" id="625" />
+      <edge source="Core_2_11" target="Core_2_19" id="626" />
+      <edge source="Core_2_11" target="Periphery_11" id="627" />
+      <edge source="Core_2_12" target="Core_2_13" id="628" />
+      <edge source="Core_2_12" target="Core_2_14" id="629" />
+      <edge source="Core_2_12" target="Core_2_15" id="630" />
+      <edge source="Core_2_12" target="Core_2_16" id="631" />
+      <edge source="Core_2_12" target="Core_2_17" id="632" />
+      <edge source="Core_2_12" target="Core_2_18" id="633" />
+      <edge source="Core_2_12" target="Core_2_19" id="634" />
+      <edge source="Core_2_12" target="Periphery_20" id="635" />
+      <edge source="Core_2_12" target="Periphery_22" id="636" />
+      <edge source="Core_2_13" target="Core_2_14" id="637" />
+      <edge source="Core_2_13" target="Core_2_15" id="638" />
+      <edge source="Core_2_13" target="Core_2_16" id="639" />
+      <edge source="Core_2_13" target="Core_2_17" id="640" />
+      <edge source="Core_2_13" target="Core_2_18" id="641" />
+      <edge source="Core_2_13" target="Core_2_19" id="642" />
+      <edge source="Core_2_13" target="Periphery_31" id="643" />
+      <edge source="Core_2_13" target="Periphery_86" id="644" />
+      <edge source="Core_2_14" target="Core_2_15" id="645" />
+      <edge source="Core_2_14" target="Core_2_16" id="646" />
+      <edge source="Core_2_14" target="Core_2_17" id="647" />
+      <edge source="Core_2_14" target="Core_2_18" id="648" />
+      <edge source="Core_2_14" target="Core_2_19" id="649" />
+      <edge source="Core_2_14" target="Periphery_69" id="650" />
+      <edge source="Core_2_15" target="Core_2_16" id="651" />
+      <edge source="Core_2_15" target="Core_2_17" id="652" />
+      <edge source="Core_2_15" target="Core_2_18" id="653" />
+      <edge source="Core_2_15" target="Core_2_19" id="654" />
+      <edge source="Core_2_16" target="Core_2_17" id="655" />
+      <edge source="Core_2_16" target="Core_2_18" id="656" />
+      <edge source="Core_2_16" target="Core_2_19" id="657" />
+      <edge source="Core_2_16" target="Periphery_57" id="658" />
+      <edge source="Core_2_16" target="Periphery_93" id="659" />
+      <edge source="Core_2_17" target="Core_2_18" id="660" />
+      <edge source="Core_2_17" target="Core_2_19" id="661" />
+      <edge source="Core_2_18" target="Core_2_19" id="662" />
+      <edge source="Core_2_18" target="Periphery_16" id="663" />
+      <edge source="Core_2_18" target="Periphery_56" id="664" />
+      <edge source="Core_2_18" target="Periphery_84" id="665" />
+      <edge source="Core_2_19" target="Periphery_4" id="666" />
+      <edge source="Core_2_19" target="Periphery_66" id="667" />
+      <edge source="Core_2_19" target="Periphery_79" id="668" />
+      <edge source="Core_2_19" target="Periphery_83" id="669" />
+    </edges>
+  </graph>
+</gexf>

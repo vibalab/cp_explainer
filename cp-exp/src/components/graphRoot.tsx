@@ -18,6 +18,7 @@ import {
   BsFullscreenExit,
   BsZoomIn,
   BsZoomOut,
+  BsArrowCounterclockwise,
 } from "react-icons/bs";
 import { Settings } from "sigma/settings";
 import { drawHover, drawLabel } from "../canvas-utils";
@@ -26,7 +27,7 @@ import GraphDataController from "./sigma/graphDataController";
 import GraphEventsController from "./sigma/graphEventController";
 import GraphSettingsController from "./sigma/graphSettingsController";
 import GraphTitle from "./sigma/graphTitle";
-import SearchField from "./searchField";
+import SearchField from "./sigma/searchField";
 import Tooltips from "./toolTips";
 import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
 import { Attributes } from "graphology-types";
@@ -36,6 +37,13 @@ import ConnectionProbabilityCalculator from "./sub/ConnectProbCal";
 import GraphThresholdUpdater from "./sigma/graphThresholdUpdater";
 import GraphCPApplier from "./sigma/graphCPApplier";
 import { NodeData, EdgeData } from "../types";
+import GraphSnapshot from "./sigma/graphSnapshot";
+
+interface ConnectionProbabilities {
+  coreCore: { possible: number; actual: number };
+  corePeriphery: { possible: number; actual: number };
+  peripheryPeriphery: { possible: number; actual: number };
+}
 
 interface RootProps {
   onNodeClick: (
@@ -55,6 +63,7 @@ interface RootProps {
     edges: EdgeData[];
     core_indices: number[];
   };
+  connectionProbabilities: ConnectionProbabilities | null;
   setGraphData: React.Dispatch<
     React.SetStateAction<{
       nodes: NodeData[];
@@ -62,6 +71,9 @@ interface RootProps {
       core_indices: number[];
     }>
   >;
+  onThresholdChange: (threshold: number) => void; // New callback to pass threshold to the parent of Root
+  threshold: number; // Receive the threshold from the parent
+  closenessCentralityAvg: number | null;
 }
 
 const NodeBorderCustomProgram = createNodeBorderProgram({
@@ -86,32 +98,18 @@ const NodeProgram = createNodeCompoundProgram([
   NodePictogramCustomProgram,
 ]);
 
-interface RootProps {
-  onNodeClick: (
-    nodeAttrs: Attributes,
-    neighbors: Array<{ label: string; attributes: Attributes }>
-  ) => void;
-  methods: string | null;
-  isDataUploaded: boolean;
-  onConnectionProbabilitiesCalculated: (data: {
-    coreCore: { possible: number; actual: number };
-    corePeriphery: { possible: number; actual: number };
-    peripheryPeriphery: { possible: number; actual: number };
-  }) => void; // Add the callback prop
-  onThresholdChange: (threshold: number) => void; // New callback to pass threshold to the parent of Root
-  threshold: number; // Receive the threshold from the parent
-}
-
 const Root: FC<RootProps> = ({
   onNodeClick,
   methods,
   isDataUploaded,
   isMethodChanged,
   onConnectionProbabilitiesCalculated, // Use this as the unified function
+  connectionProbabilities,
   onThresholdChange, // Receive the callback from the parent component
   threshold,
   graphData,
   setGraphData,
+  closenessCentralityAvg,
 }) => {
   const [showContents, setShowContents] = useState(false);
   const [dataReady, setDataReady] = useState(false);
@@ -121,8 +119,8 @@ const Root: FC<RootProps> = ({
   const method = methods;
   const sigmaSettings: Partial<Settings> = useMemo(
     () => ({
-      defaultDrawNodeLabel: drawLabel,
-      defaultDrawNodeHover: drawHover,
+      // defaultDrawNodeLabel: drawLabel,
+      // defaultDrawNodeHover: drawHover,
       enableEdgeEvents: true,
       defaultNodeType: "pictogram",
       nodeProgramClasses: {
@@ -179,13 +177,18 @@ const Root: FC<RootProps> = ({
       settings={sigmaSettings}
       className="react-sigma"
     >
-      <GraphSettingsController hoveredNode={hoveredNode} />
+      <GraphSettingsController
+        hoveredNode={hoveredNode}
+        threshold={threshold}
+      />
       <GraphEventsController
         setHoveredNode={setHoveredNode}
         setGraphData={setGraphData}
         onNodeClick={onNodeClick}
+        connectionProbabilities={connectionProbabilities}
         threshold={threshold}
         method={method}
+        closenessCentralityAvg={closenessCentralityAvg}
       />
       <GraphDataController dataset={dataset} threshold={threshold} />
       <GraphThresholdUpdater threshold={threshold} />
@@ -198,6 +201,7 @@ const Root: FC<RootProps> = ({
       {dataReady && (
         <>
           <div className="controls">
+            <GraphSnapshot />
             <FullScreenControl className="ico">
               <BsArrowsFullscreen />
               <BsFullscreenExit />
@@ -206,7 +210,7 @@ const Root: FC<RootProps> = ({
             <ZoomControl className="ico">
               <BsZoomIn />
               <BsZoomOut />
-              <BiRadioCircleMarked />
+              <BsArrowCounterclockwise />
             </ZoomControl>
           </div>
           <div className="contents">

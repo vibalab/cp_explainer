@@ -8,9 +8,13 @@ import axios from "axios";
 
 interface OverviewPanelProps {
   isDataUploaded: boolean;
+  onClosenessCentralityAvg: (value: number) => void; // New prop for callback
 }
 
-const OverviewPanel: React.FC<OverviewPanelProps> = ({ isDataUploaded }) => {
+const OverviewPanel: React.FC<OverviewPanelProps> = ({
+  isDataUploaded,
+  onClosenessCentralityAvg,
+}) => {
   const [graphData, setGraphData] = useState<Overview | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +35,7 @@ const OverviewPanel: React.FC<OverviewPanelProps> = ({ isDataUploaded }) => {
           x: event.clientX,
           y: event.clientY,
         });
-        setTimeout(() => setTooltip(null), 1000); // 1초 후에 tooltip 숨기기
+        setTimeout(() => setTooltip(null), 1000); // Hide tooltip after 1 second
       },
       (err) => {
         console.error("Failed to copy: ", err);
@@ -45,21 +49,25 @@ const OverviewPanel: React.FC<OverviewPanelProps> = ({ isDataUploaded }) => {
         const res = await axios.get(
           "http://localhost:8000/graph/overview-json/"
         );
-        const dataset: Overview = res.data; // 서버에서 가져온 데이터를 Overview 타입으로 변환
+        const dataset: Overview = res.data; // Convert data to Overview type
         setGraphData(dataset);
-        setLoading(false); // 로딩 완료 상태로 설정
+        setLoading(false); // Set loading to false when complete
+
+        // Pass closeness_centrality_avg to the parent component via callback
+        if (dataset.closeness_centrality_avg !== null) {
+          onClosenessCentralityAvg(dataset.closeness_centrality_avg);
+        }
       } catch (err) {
         console.error("Error fetching dataset:", err);
         setError("Failed to load graph data.");
-        setLoading(false); // 오류 발생 시 로딩 상태 해제
+        setLoading(false); // Disable loading state in case of error
       }
     };
 
-    // 데이터가 업로드될 때마다 fetchData 호출
     if (isDataUploaded) {
       fetchData();
     }
-  }, [isDataUploaded]);
+  }, [isDataUploaded]); // Added onClosenessCentralityAvg to dependencies
 
   if (loading) {
     return <div>Loading graph data...</div>;
