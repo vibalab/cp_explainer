@@ -88,10 +88,20 @@ const AdjacencyMatrixHeatmap: React.FC<AdjacencyProps> = ({
   if (error) return <div>{error}</div>;
 
   return (
-    <Accordion title="Adjacency Matrix" isOpen={isAccordionOpen}>
-      <button onClick={updateData}>Update Heatmap</button>
-      <p>Line shows the Core-periphery area</p>
-
+    <Accordion title="Adjacency Matrix Heatmap" isOpen={isAccordionOpen}>
+      <button onClick={updateData}>Refresh Heatmap</button>
+      <p>Adjacency matrix represented as a heatmap.</p>
+      <p>The line shows the core-periphery boundary.</p>
+      <div
+        style={{
+          marginTop: "8px",
+          fontSize: "12px",
+          color: "#555",
+        }}
+      >
+        <p>Top-left: Core-Core Connections</p>
+        <p>Bottom-right: Periphery-Periphery Connections</p>
+      </div>
       <div
         ref={containerRef}
         style={{

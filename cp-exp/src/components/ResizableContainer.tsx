@@ -356,7 +356,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview3}
                     onChange={(e) => handleCheckboxChange(e, "overview3")}
                   />
-                  Connected Nodes
+                  Connected Neighbors
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -364,7 +364,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview4}
                     onChange={(e) => handleCheckboxChange(e, "overview4")}
                   />
-                  Core-periphery Metric
+                  Connection Probability
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -380,7 +380,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview6}
                     onChange={(e) => handleCheckboxChange(e, "overview6")}
                   />
-                  Closeness Centrality Boxplot
+                  Closeness Centrality
                 </label>
               </div>
             )}

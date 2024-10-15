@@ -106,7 +106,7 @@ const ConnectionProbPanel: React.FC<ConnectionProbPanelProps> = ({
   }
 
   return (
-    <Accordion title="Connection Probability" isOpen={false}>
+    <Accordion title="Connection Probability Table" isOpen={false}>
       <div style={{ display: "flex", justifyContent: "center" }}>
         {/* Core-Periphery Probability Table */}
         <CorePeripheryTable p00={p00} p01={p01} p11={p11} />

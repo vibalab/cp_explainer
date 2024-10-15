@@ -68,11 +68,9 @@ const CentralityBox: React.FC<BoxplotProps> = ({
 
   return (
     <Accordion title="Closeness Centrality Boxplot" isOpen={isAccordionOpen}>
-      <p>
-        <strong>Closeness centrality: core vs periphery.</strong>
-      </p>
-      <p>Dashed line: overall average.</p>
       <button onClick={updateData}>Refresh Boxplot</button>
+      <p>Closeness centrality: core vs periphery.</p>
+      <p>Dashed line: overall average.</p>
       <div
         ref={containerRef}
         style={{
