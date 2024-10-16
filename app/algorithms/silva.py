@@ -37,7 +37,7 @@ class Silva:
         
         return self._calculate_total_capacity(n, shortest_paths)
 
-    def silva_core_coefficient(self, G):
+    def silva_core_coefficient(self, G, threshold):
         """
         Calculate the core coefficient of the network and return the core nodes and capacity changes.
         """
@@ -45,14 +45,15 @@ class Silva:
         closeness = nx.closeness_centrality(G)
         
         # Sort nodes by closeness centrality in decreasing order
-        sorted_nodes = sorted(closeness, key=closeness.get, reverse=True)
+        sorted_nodes = sorted(closeness, key=closeness.get)
         
         # Initialize variables
-        cumulative_capacity = 0
         N = len(G.nodes)
         removed_nodes = []
         G_removed = G.copy()
-        capacity = [self.get_capacity(G)]
+        tot_capacity = self.get_capacity(G)
+        capacity = [tot_capacity]
+        cumulative_capacity = [tot_capacity]
         
         # Calculate capacities after removing nodes in order
         for node in sorted_nodes:
@@ -60,25 +61,24 @@ class Silva:
             G_removed.remove_node(node)
             new_capacity = self.get_capacity(G_removed)
             capacity.append(new_capacity)
-            
-            # Add the new capacity to the cumulative capacity
-            cumulative_capacity += new_capacity
+            cumulative_capacity.append(np.sum(capacity))
             
             # Add the node to the removed nodes list
             removed_nodes.append(node)
         
         # Calculate the core coefficient
-        n = 1
-        while np.sum(capacity[:n]) <= cumulative_capacity * 0.9:
+        n = 0
+        while cumulative_capacity[n] <= cumulative_capacity[len(cumulative_capacity)-1] * threshold:
             n += 1
         
         cc = (N - n) / N
         
         # Calculate the changes in capacity and map to sorted nodes
-        capacities = {sorted_nodes[i]: capacity[i] for i in range(len(sorted_nodes))}
+        capacities = {sorted_nodes[i]: (capacity[i-1] - capacity[i]) for i in range(1, len(sorted_nodes))}
+        print(cc)
 
         r_nodes = list(G.nodes())
-        r_index = [r_nodes.index(i) for i in removed_nodes[:n]]
+        r_index = [r_nodes.index(i) for i in removed_nodes[n:]]
 
         n = self.G.number_of_nodes()
         core_indices = [0 for _ in range(n)]
@@ -92,4 +92,4 @@ class Silva:
             idx = node_to_index[node]  # Get the index of the node
             capacity_order[idx] = cap
 
-        return cc, core_indices, capacity_order
+        return cc, core_indices, capacity_order, cumulative_capacity

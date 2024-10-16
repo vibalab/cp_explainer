@@ -89,6 +89,16 @@ const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
             ? parseFloat(metric.C_cp).toFixed(4)
             : "N/A"}
         </i>
+      </h2>
+      <h2 style={{ marginTop: 0, marginBottom: 0 }}>
+        <i style={{ cursor: "pointer" }} onClick={toggleModal}>
+          C<sub>c_core</sub> / C<sub>c_all</sub>:{" "}
+          {loading
+            ? "Loading..."
+            : metric?.Core_Centrality !== undefined
+            ? parseFloat(metric.Core_Centrality).toFixed(4)
+            : "N/A"}
+        </i>
         <button
           onClick={handleUpdateMetric}
           style={{

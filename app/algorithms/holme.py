@@ -19,7 +19,7 @@ class Holme:
         if total_distance == 0:
             return 0
         
-        return (1 / (n_U * (n - 1))) / total_distance
+        return 1/(total_distance / (n_U * (n - 1))) 
 
     def closeness_centrality(self, G, U):
         """
@@ -79,7 +79,6 @@ class Holme:
             return 0
         
         best_k_core_nodes = self.find_best_k_core(G)
-
         C_C_core = self.closeness_centrality(G, best_k_core_nodes)
         
         core_centrality = C_C_core / C_C_V
@@ -109,4 +108,53 @@ class Holme:
             core_indices[i] = 1
 
 
-        return c_cp, core_indices
+        return c_cp, core_indices, core_centrality
+    
+    def holme_refresh(self, G, core_indices):
+        """
+        Refresh the core centrality based on a pre-computed set of core indices.
+
+        Parameters:
+        - G: the graph
+        - core_indices: a list or array indicating core nodes (1 for core, 0 for non-core)
+        
+        Returns:
+        - core centrality of the provided core indices
+        """
+        V = set(G.nodes)
+        
+        # Calculate closeness centrality for the entire graph
+        C_C_V = self.closeness_centrality(G, V)
+        
+        print(C_C_V)
+        if C_C_V == 0:
+            return 0
+        
+        # If core_indices is an index-based array, convert it back to node identifiers
+        node_list = list(G.nodes)
+        
+        # Calculate closeness centrality for the core nodes
+        C_C_core = self.closeness_centrality(G, core_indices)
+        
+        print(C_C_core)
+        # Calculate and return the core centrality
+        core_centrality = C_C_core / C_C_V
+
+        sum_random = []
+        for _ in range(10):
+            degree_sequence = [d for _, d in G.degree()]
+            G_random = nx.configuration_model(degree_sequence)
+            G_random = nx.Graph(G_random)
+            G_random.remove_edges_from(nx.selfloop_edges(G_random))
+            C_C_V_prime = self.closeness_centrality(G_random, set(G_random.nodes))
+            best_k_core_nodes_prime = self.find_best_k_core(G_random)
+            C_C_prime = self.closeness_centrality(G_random, best_k_core_nodes_prime)
+
+            core_centrality_prime = C_C_prime / C_C_V_prime
+            sum_random.append(core_centrality_prime)
+        
+        G_prime_average = np.mean(sum_random)
+        
+        c_cp = core_centrality - G_prime_average
+
+        return c_cp, core_centrality

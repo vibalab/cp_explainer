@@ -31,6 +31,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
   const graph = sigma.getGraph();
   const [isSaving, setIsSaving] = useState(false); // 저장 중인지 여부
   const [capacity, setCapcity] = useState<number>(0);
+  const [totCapacity, setTotCapacity] = useState<number>(0);
 
   const toggleModal = () => setModalOpen(!isModalOpen);
 
@@ -57,6 +58,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
     try {
       const dataset = await fetchMetricData();
       setMetric(dataset);
+      setTotCapacity(metric?.tot_capa);
       setError(null);
     } catch (err) {
       setError("Failed to load graph data.");
@@ -72,7 +74,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
       const graphData = createGraphData(graph);
       setGraphData(graphData);
     }
-  }, [method]);
+  }, [method, graph]);
 
   useEffect(() => {
     if (hoveredNode) {
@@ -101,22 +103,6 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
             ? metric.cc.toFixed(4)
             : "N/A"}
         </i>
-        <button
-          onClick={handleUpdateMetric}
-          style={{
-            marginLeft: "10px",
-            backgroundColor: isSaving ? "#cccccc" : "#f0f0f0",
-            border: "1px solid #ced4da",
-            padding: "5px 10px",
-            borderRadius: "5px",
-            fontSize: "12px",
-          }}
-        >
-          Refresh Metric
-        </button>
-      </h2>
-      <h2 style={{ marginTop: 0, marginBottom: 0 }}>
-        <i style={{ cursor: "pointer" }}>Capacity: {capacity}</i>
       </h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
@@ -135,20 +121,33 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
             maxWidth: "600px",
           }}
         >
-          <h3>Silva Explanation</h3> <br />
+          <h3>Silva Method Explanation</h3>
           <p>
-            The <strong>Silva</strong> introduces the concept of network
-            capacity to measure the overall connectivity of a network. The
-            capacity <InlineMath math="C" /> is defined as the sum of the
-            inverses of the distances between nodes <InlineMath math="i" /> and
-            <InlineMath math="j" />. A higher capacity indicates a
-            well-connected network, meaning that a sub-network of core nodes
-            should have high capacity.
+            Let <InlineMath math="d_{ij}" /> be the distance between nodes
+            <InlineMath math="i" /> and <InlineMath math="j" />. The capacity of
+            the network, <InlineMath math="C" />, is defined as:
+          </p>
+          <BlockMath math="C = \sum_{i<j} \frac{1}{d_{ij}}" />
+          <p>
+            This implies that shorter paths between nodes lead to a larger
+            network capacity. da Silva et al. argue that a core is
+            well-connected to the rest of the graph, meaning the removal of a
+            core node substantially reduces the network's capacity,{" "}
+            <InlineMath math="C" />.
           </p>
           <p>
-            Silva's method removes nodes with the lowest closeness centrality
-            until the network's capacity drops to 90% of its initial value. The
-            nodes remaining at this point are considered core nodes.
+            The authors introduce the concept of the core-coefficient,
+            <InlineMath math="cc" />, defined as{" "}
+            <InlineMath math="cc = \frac{N}{n}" />, where{" "}
+            <InlineMath math="N" /> satisfies the following condition:
+          </p>
+          <BlockMath math="\sum_{i=0}^{N} C_i = 0.9 \sum_{j=0}^{n} C_j" />
+          <p>
+            Here, <InlineMath math="C_i" /> is the capacity of the network after
+            removing <InlineMath math="i" /> nodes, in decreasing order of
+            closeness centrality. The core nodes are those whose removal leads
+            to a significant drop in the network's capacity, as indicated by the
+            90% threshold.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

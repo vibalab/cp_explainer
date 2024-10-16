@@ -22,7 +22,7 @@ class Lip:
                         periphery_periphery_edges += 1
 
         return core_core_edges + periphery_periphery_edges
-
+    
     @staticmethod
     @numba.jit(nopython=True, cache=True)
     def get_periphery_indices(n, core_indices) :

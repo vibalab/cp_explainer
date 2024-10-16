@@ -74,7 +74,7 @@ class Low_Rank_Core:
             X_C = set(sorted_indices[:nc])
             Y_C = set(sorted_indices[nc:])
             
-            objective_value = self.calculate_cp_density(G, X_C, Y_C, gamma=0)
+            objective_value = self.calculate_cp_density(G, X_C, Y_C, gamma=0, beta=0.1)
             
             if objective_value > max_objective:
                 max_objective = objective_value
@@ -85,7 +85,7 @@ class Low_Rank_Core:
         
         return V_C, V_P, best_nc
 
-    def low_rank_core(self, beta=None):
+    def low_rank_core(self, beta=None, gamma=0):
         G = self.G
         A = nx.adjacency_matrix(G).astype(float)
         eigenvalues, eigenvectors = eigs(A, k=2, which='LR')
@@ -104,12 +104,44 @@ class Low_Rank_Core:
             core_set = set(core_indices)
             periphery_set = set(range(n)) - core_set
         else:
-            b = 5
+            b = int(len(scores)*0.1)
             core_set, periphery_set, _ = self.find_cut(G, scores, b)
+            beta = 0.1
 
         n = self.G.number_of_nodes()
         core_indices = [0 for _ in range(n)]
         for i in core_set:
             core_indices[i] = 1
 
-        return scores, core_indices, self.calculate_cp_density(G, core_set, periphery_set, gamma=0)
+        return scores, core_indices, self.calculate_cp_density(G, core_set, periphery_set, gamma=gamma, beta=beta)
+        
+    def low_rank_core_refresh(self, core_set, beta=None):
+        """
+        Calculate the low rank core based on the provided core_set, and compute CP density.
+
+        Parameters:
+        - core_set: A set of nodes representing the core set (can be pre-determined).
+        - gamma: Parameter for calculating CP density (default is 0).
+        - beta: Parameter for calculating core size. If not provided, use 10% as default.
+
+        Returns:
+        - scores: The degree scores from the low-rank approximation.
+        - core_indices: Binary list indicating core nodes.
+        - cp_density: The CP density of the network.
+        """
+        G = self.G
+        A = nx.adjacency_matrix(G).astype(float)
+       
+
+        core_set = set(core_set)
+        # Calculate periphery set
+        n = self.G.number_of_nodes()
+        periphery_set = set(range(n)) - core_set
+
+        if beta is None :
+            beta = 0.1
+
+        # Calculate cp_density
+        cp_density = self.calculate_cp_density(G, core_set, periphery_set, gamma=0, beta=beta)
+
+        return cp_density

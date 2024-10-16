@@ -49,12 +49,12 @@ class Rombach:
         return core_scores, R_gamma
 
     class NodeOrderAnnealer(Annealer):
-        def __init__(self, state, A, alpha, beta, parent):
+        def __init__(self, state, A, alpha, beta, step, parent):
             self.A = A
             self.alpha = alpha
             self.beta = beta
             self.parent = parent
-            self.steps = 10000  # 총 단계 수
+            self.steps = step  # 총 단계 수
             self.Tmax = 1  # 초기 온도
             self.Tmin = 1e-8  # 최종 온도
             super().__init__(state)  # 초기 상태 설정
@@ -77,12 +77,12 @@ class Rombach:
             core_quality = self.parent.calculate_core_quality(A_ordered, core_vector)
             return -core_quality  # 코어 품질의 음수를 에너지로 사용
 
-    def optimize(self):
+    def optimize(self, step):
         # 초기 상태 (노드 순서)
         initial_state = list(np.arange(self.A.shape[0]))
 
         # Annealer 생성
-        annealer = self.NodeOrderAnnealer(initial_state, self.A, self.alpha, self.beta, self)
+        annealer = self.NodeOrderAnnealer(initial_state, self.A, self.alpha, self.beta, step, self)
 
         # 최적화 수행
         best_state, best_energy = annealer.anneal()

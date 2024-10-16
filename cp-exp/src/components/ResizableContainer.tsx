@@ -12,6 +12,7 @@ import { Attributes } from "graphology-types";
 import axios from "axios";
 import Spinner from "./sub/Spinner"; // Add a Spinner component or library
 import { NodeData, EdgeData } from "../types";
+import Tooltips from "./toolTips";
 
 const ResizableContainer: React.FC = () => {
   const [leftWidthPercentage, setLeftWidthPercentage] = useState<number>(75);
@@ -35,6 +36,7 @@ const ResizableContainer: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [isMethodModalOpen, setIsMethodModalOpen] = useState(false);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [isTooltipModalOpen, setIsTooltipModalOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
   const [isMethodChanged, setIsMethodChanged] = useState<boolean>(false);
@@ -266,8 +268,18 @@ const ResizableContainer: React.FC = () => {
         >
           {"Change Method"}
         </button>
-        <button className="fancy-button" onClick={toggleRightPanel}>
+        <button
+          className="fancy-button"
+          onClick={toggleRightPanel}
+          style={{ marginRight: "10px" }}
+        >
           {isRightPanelVisible ? "Hide Detail Panel" : "Show Detail Panel"}
+        </button>
+        <button
+          className="fancy-button"
+          onClick={() => setIsTooltipModalOpen(true)}
+        >
+          {"Tooltips"}
         </button>
         <Root
           onConnectionProbabilitiesCalculated={handleConnectionProbabilities} // Unified function passed to Root

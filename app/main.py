@@ -37,6 +37,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+stored_parameters = {}
+
+
 class NodeData(BaseModel):
     id: str
     key: str
@@ -49,6 +52,7 @@ class NodeData(BaseModel):
     closeness_centrality: float
     eigenvector_centrality: float
     core_periphery: float
+    core_periphery_score: float
     group: int
     attributes: Dict[str, Any]
 
@@ -254,6 +258,7 @@ async def get_centrality_box(request: dict):
                 closeness_centrality=node['closeness_centrality'],
                 eigenvector_centrality=node['eigenvector_centrality'],
                 core_periphery=node['core_periphery'],
+                core_periphery_score=node['core_periphery_score'],
                 attributes=node['attributes'],
                 pos=(node['x'], node['y'])  # Adding node coordinates
             )
@@ -292,6 +297,7 @@ async def apply_algorithm(
         # parameters가 존재할 경우 JSON 문자열을 딕셔너리로 변환
         if parameters:
             parameters_dict = json.loads(parameters)
+            stored_parameters[filename] = parameters_dict
         else:
             parameters_dict = {}
 
@@ -306,20 +312,32 @@ async def apply_algorithm(
         # 선택한 메소드에 따른 처리
         if method == "BE":
             model = Borgatti_Everett(graph, A, n)
-            cp_index, cp_metric, cp_cluster = model.fit()
+            try:
+                n_iterations = int(parameters_dict['n_iter'])
+            except:
+                n_iterations = 1000
+            cp_index, cp_metric, cp_cluster = model.fit(n_iterations)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=cp_index)
             metric = {"rho": cp_metric}
         elif method == "Brusco":
             model = Brusco(graph, A, n)
-            cp_index, cp_metric, cp_cluster = model.fit()
+            try:
+                n_iterations = int(parameters_dict['n_iter'])
+            except:
+                n_iterations = 1000
+            cp_index, cp_metric, cp_cluster = model.fit(n_iterations)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=cp_index)
             metric = {"Z": int(cp_metric)}
 
         elif method == "Holme":
             model = Holme(graph)
-            cp_metric, core_indices = model.holme_metric(graph, 100)
+            try:
+                n_iterations = int(parameters_dict['n_iter'])
+            except:
+                n_iterations = 100
+            cp_metric, core_indices, core_centrality = model.holme_metric(graph, n_iterations)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices)
-            metric = {"C_cp": cp_metric}
+            metric = {"C_cp": cp_metric, "Core_Centrality": core_centrality}
 
         elif method == "Lip":
             model = Lip(graph, A)
@@ -329,27 +347,39 @@ async def apply_algorithm(
 
         elif method == "LLC":
             model = Low_Rank_Core(graph)
-            scores, core_indices, q = model.low_rank_core()
+            try:
+                beta = float(parameters_dict['beta'])
+            except:
+                beta = None
+            scores, core_indices, q = model.low_rank_core(beta=beta)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=scores)
-            print(q)
             metric = {"Q": q}
 
         elif method == "Minre":
             model = Minre(graph, A)
-            w, indices, PRE = model.minres()
+            try:
+                n_iterations = int(parameters_dict['n_iter'])
+            except:
+                n_iterations = 10000
+            w, indices, PRE = model.minres(max_iter=n_iterations)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=w, cp_node_metric=w)
             metric = {"PRE": PRE}
 
         elif method == "Rombach":
             model = Rombach(graph, A)
-            best_order, core_scores_optimized, result, R_gamma = model.optimize()
+            try:
+                n_iterations = int(parameters_dict['n_iter'])
+            except:
+                n_iterations = 10000
+            best_order, core_scores_optimized, result, R_gamma = model.optimize(step=n_iterations)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_scores_optimized, cp_node_metric=core_scores_optimized)
             metric = {"R_gamma": R_gamma}
 
         elif method == "Silva":
             model = Silva(graph)
-            cc, core_indices, capcity_order = model.silva_core_coefficient(graph)
-            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=capcity_order)
+            threshold = float(parameters_dict['threshold'])
+            cc, core_indices, capcity_order, cumulative_capacity = model.silva_core_coefficient(graph, threshold)
+            node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices)
             metric = {"cc": cc}
 
         elif method == "Rossa":
@@ -417,6 +447,7 @@ async def upload_graph(data: GraphWithMethod):
                 closeness_centrality=node.closeness_centrality,
                 eigenvector_centrality=node.eigenvector_centrality,
                 core_periphery=node.core_periphery,
+                core_periphery_score=node.core_periphery_score,
                 attributes=node.attributes,
                 pos=(node.x, node.y)  # 노드의 좌표 추가
             )
@@ -446,14 +477,27 @@ async def upload_graph(data: GraphWithMethod):
 
         elif method == "Holme":
             model = Holme(G)
+            nodes = list(G.nodes())
+            core_nodes = []
+            for i in core_indices:
+                core_nodes.append(nodes[i])
+
+            c_cp, core_centrality = model.holme_refresh(G, core_nodes)
+            metric = {"C_cp": c_cp, "Core_Centrality": core_centrality}
 
         elif method == "Lip":
             model = Lip(G, A)
             Z = model.brusco_metric(core_indices)
             metric = {"Z": int(Z)}
 
-        elif method == "LowRankCore":
+        elif method == "LLC":
+            try :
+                beta = float(stored_parameters[list(stored_parameters.keys())[0]]['beta'])
+            except:
+                beta = None
             model = Low_Rank_Core(G)
+            q = model.low_rank_core_refresh(core_indices, beta=beta)
+            metric = {"Q": q}
 
         elif method == "Minre":
             model = Minre(G)

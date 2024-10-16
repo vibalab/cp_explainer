@@ -98,7 +98,7 @@ const LowRankCore: FC<LowRankCoreProps> = ({
       </h1>
       <h2 style={{ marginTop: 0, marginBottom: 0 }}>
         <i style={{ cursor: "pointer" }} onClick={toggleModal}>
-          Q:{" "}
+          CP-density:{" "}
           {loading
             ? "Loading..."
             : metric?.Q !== undefined

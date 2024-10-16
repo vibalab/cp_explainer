@@ -260,7 +260,7 @@ const NodeChangePanel: FC<{
 
   return (
     <PanelContainer x={adjustedX} y={adjustedY}>
-      {method !== "Rossa" && (
+      {method !== "Rossa" && method !== "Silva" && (
         <ToggleButton
           onClick={toggleCorePeripheryStatus}
           isHovered={isHovered}

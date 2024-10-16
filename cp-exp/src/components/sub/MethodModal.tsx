@@ -43,185 +43,129 @@ const MethodModal: React.FC<MethodModalProps> = ({
         return (
           <div>
             <label>
-              Alpha:
+              Number of Iters:
+              <br />
               <input
                 type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
             <br />
-            <label>
-              Beta:
-              <input
-                type="number"
-                value={parameters["beta"] || ""}
-                onChange={(e) => handleParameterChange("beta", e.target.value)}
-              />
-            </label>
           </div>
         );
       case "Brusco":
         return (
           <div>
             <label>
-              Alpha:
+              Number of Iters:
+              <br />
               <input
                 type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
             <br />
-            <label>
-              Beta:
-              <input
-                type="number"
-                value={parameters["beta"] || ""}
-                onChange={(e) => handleParameterChange("beta", e.target.value)}
-              />
-            </label>
           </div>
         );
 
       case "Lip":
-        return (
-          <div>
-            <label>
-              Alpha:
-              <input
-                type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
-              />
-            </label>
-            <br />
-            <label>
-              Beta:
-              <input
-                type="number"
-                value={parameters["beta"] || ""}
-                onChange={(e) => handleParameterChange("beta", e.target.value)}
-              />
-            </label>
-          </div>
-        );
+        return <div></div>;
       case "Holme":
         return (
           <div>
             <label>
-              Alpha:
+              Number of Iters for Configure Model:
+              <br />
               <input
                 type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
             <br />
-            <label>
-              Beta:
-              <input
-                type="number"
-                value={parameters["beta"] || ""}
-                onChange={(e) => handleParameterChange("beta", e.target.value)}
-              />
-            </label>
           </div>
         );
       case "Silva":
         return (
           <div>
             <label>
-              Alpha:
+              Threshold:
+              <br />
               <input
                 type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
+                value={parameters["threshold"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("threshold", e.target.value)
+                }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
             <br />
-            <label>
-              Beta:
-              <input
-                type="number"
-                value={parameters["beta"] || ""}
-                onChange={(e) => handleParameterChange("beta", e.target.value)}
-              />
-            </label>
           </div>
         );
       case "LLC":
         return (
           <div>
             <label>
-              Alpha:
-              <input
-                type="number"
-                value={parameters["alpha"] || ""}
-                onChange={(e) => handleParameterChange("alpha", e.target.value)}
-              />
-            </label>
-            <br />
-            <label>
               Beta:
+              <br />
               <input
                 type="number"
                 value={parameters["beta"] || ""}
                 onChange={(e) => handleParameterChange("beta", e.target.value)}
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
+            <br />
           </div>
         );
       case "Rossa":
-        return (
-          <div>
-            <label>
-              Threshold:
-              <input
-                type="number"
-                value={parameters["threshold"] || ""}
-                onChange={(e) =>
-                  handleParameterChange("threshold", e.target.value)
-                }
-              />
-            </label>
-          </div>
-        );
+        return <div></div>;
       case "Minre":
         return (
           <div>
             <label>
-              Gamma:
+              Number of Iters:
+              <br />
               <input
                 type="number"
-                value={parameters["gamma"] || ""}
-                onChange={(e) => handleParameterChange("gamma", e.target.value)}
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
             <br />
-            <label>
-              Delta:
-              <input
-                type="number"
-                value={parameters["delta"] || ""}
-                onChange={(e) => handleParameterChange("delta", e.target.value)}
-              />
-            </label>
           </div>
         );
       case "Rombach":
         return (
           <div>
             <label>
-              Threshold:
+              Number of Steps:
+              <br />
               <input
                 type="number"
-                value={parameters["threshold"] || ""}
+                value={parameters["n_iter"] || ""}
                 onChange={(e) =>
-                  handleParameterChange("threshold", e.target.value)
+                  handleParameterChange("n_iter", e.target.value)
                 }
+                style={{ width: "100%", padding: "5px", marginTop: "5px" }} // 스타일 수정
               />
             </label>
+            <br />
           </div>
         );
       default:
@@ -260,16 +204,17 @@ const MethodModal: React.FC<MethodModalProps> = ({
         }}
       >
         <h3>Select Method</h3>
-        <div style={{ marginBottom: "20px" }}>
+        <div style={{ marginBottom: "20px", textAlign: "left" }}>
           <label htmlFor="method-select">Choose a method: </label>
+          <br />
           <select
             id="method-select"
             value={selectedMethod}
             onChange={handleMethodChange}
             style={{
-              marginLeft: "10px",
-              padding: "5px",
-              width: "100%",
+              width: "100%", // select 필드를 가득 채움
+              padding: "5px", // padding 추가
+              marginTop: "5px",
             }}
           >
             <option value="BE">Borgatti Everett</option>
@@ -284,7 +229,9 @@ const MethodModal: React.FC<MethodModalProps> = ({
           </select>
         </div>
 
-        <div style={{ marginBottom: "20px" }}>{renderParameters()}</div>
+        <div style={{ marginBottom: "20px", textAlign: "left" }}>
+          {renderParameters()}
+        </div>
 
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <button
