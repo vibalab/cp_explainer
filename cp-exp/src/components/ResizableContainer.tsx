@@ -135,8 +135,6 @@ const ResizableContainer: React.FC = () => {
         }
       );
 
-      const algorithmResultPath = algorithmResponse.data.filepath;
-
       alert(`알고리즘 적용 및 업데이트 완료`);
       setIsMethodChanged(true);
     } catch (error) {
@@ -198,13 +196,6 @@ const ResizableContainer: React.FC = () => {
 
   const toggleRightPanel = () => {
     setIsRightPanelVisible((prev) => !prev);
-  };
-
-  const toggleOverview = (overview: keyof typeof showOverview) => {
-    setShowOverview((prev) => ({
-      ...prev,
-      [overview]: !prev[overview],
-    }));
   };
 
   const handleDropdownToggle = () => {
@@ -473,6 +464,13 @@ const ResizableContainer: React.FC = () => {
         onClose={() => setIsUploadModalOpen(false)}
         onFileUpload={handleFileUpload}
       />
+
+      {isTooltipModalOpen && (
+        <Tooltips
+          isOpen={isTooltipModalOpen}
+          onClose={() => setIsTooltipModalOpen(false)}
+        />
+      )}
     </div>
   );
 };
