@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2021-05-14">
+    <creator>NetworkX 2.5</creator>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static" name="">
+    <nodes>
+      <node id="влада4" label="влада4" />
+      <node id="morgenshtern" label="morgenshtern" />
+      <node id="ольгабузова" label="ольгабузова" />
+      <node id="киркоров" label="киркоров" />
+      <node id="instasamka" label="instasamka" />
+      <node id="pewdiepie" label="pewdiepie" />
+      <node id="ивангай" label="ивангай" />
+      <node id="элджей" label="элджей" />
+      <node id="путин" label="путин" />
+      <node id="face" label="face" />
+      <node id="биллиайлиш" label="биллиайлиш" />
+      <node id="егоркрид" label="егоркрид" />
+      <node id="юрийхованский" label="юрийхованский" />
+      <node id="жириновский" label="жириновский" />
+      <node id="трамп" label="трамп" />
+      <node id="thrillpil" label="thrillpil" />
+      <node id="jazzcartier" label="jazzcartier" />
+      <node id="месси" label="месси" />
+      <node id="wylsacom" label="wylsacom" />
+      <node id="биллгейтс" label="биллгейтс" />
+      <node id="тимати" label="тимати" />
+      <node id="фирамир" label="фирамир" />
+      <node id="женяшаларионова" label="женяшаларионова" />
+      <node id="валуев" label="валуев" />
+      <node id="бриларсон" label="бриларсон" />
+      <node id="андреймалахов" label="андреймалахов" />
+      <node id="fixeye" label="fixeye" />
+      <node id="медведев" label="медведев" />
+      <node id="янарудковская" label="янарудковская" />
+      <node id="джигурда" label="джигурда" />
+      <node id="коннормакгрегор" label="коннормакгрегор" />
+      <node id="каринастримерша" label="каринастримерша" />
+      <node id="артемийлебедев" label="артемийлебедев" />
+      <node id="мейбибейби" label="мейбибейби" />
+      <node id="гоблин" label="гоблин" />
+      <node id="максимгорький" label="максимгорький" />
+      <node id="nerkin" label="nerkin" />
+      <node id="лукашенко" label="лукашенко" />
+      <node id="mendeshd" label="mendeshd" />
+      <node id="buster" label="buster" />
+      <node id="николайбасков" label="николайбасков" />
+      <node id="мистермакс" label="мистермакс" />
+      <node id="роналдо" label="роналдо" />
+      <node id="6ix9ine" label="6ix9ine" />
+      <node id="belledelphine" label="belledelphine" />
+      <node id="ramil" label="ramil" />
+      <node id="андрейпетров" label="андрейпетров" />
+      <node id="дзюба" label="дзюба" />
+      <node id="кравцов" label="кравцов" />
+      <node id="марьянаро" label="марьянаро" />
+      <node id="принцеса" label="принцеса" />
+      <node id="игорьсиняк" label="игорьсиняк" />
+      <node id="feduk" label="feduk" />
+      <node id="мишустин" label="мишустин" />
+      <node id="владимирсоловьев" label="владимирсоловьев" />
+      <node id="тимабелорусских" label="тимабелорусских" />
+      <node id="niletto" label="niletto" />
+      <node id="badcomedian" label="badcomedian" />
+      <node id="иккеро" label="иккеро" />
+      <node id="misskaty" label="misskaty" />
+      <node id="аллапугачева" label="аллапугачева" />
+      <node id="organstory" label="organstory" />
+      <node id="гитлер" label="гитлер" />
+    </nodes>
+    <edges>
+      <edge source="влада4" target="ивангай" id="0" weight="0.78116703" />
+      <edge source="влада4" target="фирамир" id="1" weight="0.63594174" />
+      <edge source="влада4" target="мистермакс" id="2" weight="0.7394858" />
+      <edge source="morgenshtern" target="киркоров" id="3" weight="0.6111041" />
+      <edge source="morgenshtern" target="элджей" id="4" weight="0.82934874" />
+      <edge source="morgenshtern" target="егоркрид" id="5" weight="0.6932656" />
+      <edge source="morgenshtern" target="thrillpil" id="6" weight="0.6968434" />
+      <edge source="morgenshtern" target="тимати" id="7" weight="0.7731486" />
+      <edge source="morgenshtern" target="6ix9ine" id="8" weight="0.6413659" />
+      <edge source="morgenshtern" target="feduk" id="9" weight="0.61249757" />
+      <edge source="morgenshtern" target="тимабелорусских" id="10" weight="0.60323435" />
+      <edge source="ольгабузова" target="киркоров" id="11" weight="0.72872794" />
+      <edge source="ольгабузова" target="элджей" id="12" weight="0.60070133" />
+      <edge source="ольгабузова" target="егоркрид" id="13" weight="0.7420364" />
+      <edge source="ольгабузова" target="тимати" id="14" weight="0.6277449" />
+      <edge source="ольгабузова" target="янарудковская" id="15" weight="0.65187716" />
+      <edge source="киркоров" target="элджей" id="16" weight="0.7150662" />
+      <edge source="киркоров" target="егоркрид" id="17" weight="0.6987746" />
+      <edge source="киркоров" target="тимати" id="18" weight="0.73468155" />
+      <edge source="киркоров" target="андреймалахов" id="19" weight="0.6904429" />
+      <edge source="киркоров" target="янарудковская" id="20" weight="0.7284099" />
+      <edge source="киркоров" target="джигурда" id="21" weight="0.7298535" />
+      <edge source="киркоров" target="николайбасков" id="22" weight="0.7486352" />
+      <edge source="киркоров" target="аллапугачева" id="23" weight="0.6773305" />
+      <edge source="instasamka" target="игорьсиняк" id="24" weight="0.62936425" />
+      <edge source="ивангай" target="егоркрид" id="25" weight="0.6273606" />
+      <edge source="ивангай" target="юрийхованский" id="26" weight="0.63703346" />
+      <edge source="ивангай" target="фирамир" id="27" weight="0.7406244" />
+      <edge source="ивангай" target="мейбибейби" id="28" weight="0.63808715" />
+      <edge source="ивангай" target="мистермакс" id="29" weight="0.82584596" />
+      <edge source="ивангай" target="марьянаро" id="30" weight="0.7579535" />
+      <edge source="ивангай" target="иккеро" id="31" weight="0.69795877" />
+      <edge source="ивангай" target="misskaty" id="32" weight="0.6492691" />
+      <edge source="элджей" target="егоркрид" id="33" weight="0.7574445" />
+      <edge source="элджей" target="thrillpil" id="34" weight="0.66970325" />
+      <edge source="элджей" target="тимати" id="35" weight="0.8289529" />
+      <edge source="элджей" target="джигурда" id="36" weight="0.63763046" />
+      <edge source="элджей" target="николайбасков" id="37" weight="0.63060683" />
+      <edge source="элджей" target="feduk" id="38" weight="0.63120204" />
+      <edge source="элджей" target="тимабелорусских" id="39" weight="0.62691164" />
+      <edge source="элджей" target="niletto" id="40" weight="0.6183393" />
+      <edge source="путин" target="жириновский" id="41" weight="0.8238467" />
+      <edge source="путин" target="трамп" id="42" weight="0.80111474" />
+      <edge source="путин" target="валуев" id="43" weight="0.6152251" />
+      <edge source="путин" target="медведев" id="44" weight="0.86201566" />
+      <edge source="путин" target="джигурда" id="45" weight="0.61057854" />
+      <edge source="путин" target="лукашенко" id="46" weight="0.71952343" />
+      <edge source="путин" target="кравцов" id="47" weight="0.6050475" />
+      <edge source="путин" target="мишустин" id="48" weight="0.8306755" />
+      <edge source="путин" target="владимирсоловьев" id="49" weight="0.7936995" />
+      <edge source="егоркрид" target="thrillpil" id="50" weight="0.66088164" />
+      <edge source="егоркрид" target="тимати" id="51" weight="0.78649247" />
+      <edge source="егоркрид" target="джигурда" id="52" weight="0.63553035" />
+      <edge source="егоркрид" target="каринастримерша" id="53" weight="0.6189536" />
+      <edge source="егоркрид" target="мейбибейби" id="54" weight="0.6026534" />
+      <edge source="егоркрид" target="николайбасков" id="55" weight="0.6576103" />
+      <edge source="егоркрид" target="марьянаро" id="56" weight="0.6742431" />
+      <edge source="егоркрид" target="игорьсиняк" id="57" weight="0.6313319" />
+      <edge source="егоркрид" target="feduk" id="58" weight="0.6022515" />
+      <edge source="егоркрид" target="тимабелорусских" id="59" weight="0.6477442" />
+      <edge source="егоркрид" target="niletto" id="60" weight="0.6386206" />
+      <edge source="юрийхованский" target="фирамир" id="61" weight="0.6247509" />
+      <edge source="юрийхованский" target="каринастримерша" id="62" weight="0.65507644" />
+      <edge source="юрийхованский" target="мейбибейби" id="63" weight="0.61858726" />
+      <edge source="юрийхованский" target="мистермакс" id="64" weight="0.6355419" />
+      <edge source="юрийхованский" target="андрейпетров" id="65" weight="0.6448518" />
+      <edge source="юрийхованский" target="марьянаро" id="66" weight="0.6256895" />
+      <edge source="юрийхованский" target="игорьсиняк" id="67" weight="0.62944335" />
+      <edge source="жириновский" target="трамп" id="68" weight="0.6387744" />
+      <edge source="жириновский" target="валуев" id="69" weight="0.60875106" />
+      <edge source="жириновский" target="медведев" id="70" weight="0.7995837" />
+      <edge source="жириновский" target="джигурда" id="71" weight="0.6416794" />
+      <edge source="жириновский" target="лукашенко" id="72" weight="0.6810581" />
+      <edge source="жириновский" target="мишустин" id="73" weight="0.71935177" />
+      <edge source="жириновский" target="владимирсоловьев" id="74" weight="0.77175915" />
+      <edge source="трамп" target="биллгейтс" id="75" weight="0.6273761" />
+      <edge source="трамп" target="медведев" id="76" weight="0.71884394" />
+      <edge source="трамп" target="лукашенко" id="77" weight="0.61980987" />
+      <edge source="трамп" target="мишустин" id="78" weight="0.6665772" />
+      <edge source="трамп" target="владимирсоловьев" id="79" weight="0.6737977" />
+      <edge source="thrillpil" target="тимати" id="80" weight="0.6205143" />
+      <edge source="thrillpil" target="feduk" id="81" weight="0.7221334" />
+      <edge source="thrillpil" target="тимабелорусских" id="82" weight="0.6271069" />
+      <edge source="месси" target="коннормакгрегор" id="83" weight="0.6167624" />
+      <edge source="месси" target="роналдо" id="84" weight="0.8742671" />
+      <edge source="месси" target="дзюба" id="85" weight="0.6457486" />
+      <edge source="тимати" target="джигурда" id="86" weight="0.65268475" />
+      <edge source="тимати" target="feduk" id="87" weight="0.62824583" />
+      <edge source="тимати" target="тимабелорусских" id="88" weight="0.6527661" />
+      <edge source="тимати" target="niletto" id="89" weight="0.6203983" />
+      <edge source="фирамир" target="мейбибейби" id="90" weight="0.64327675" />
+      <edge source="фирамир" target="nerkin" id="91" weight="0.6048796" />
+      <edge source="фирамир" target="мистермакс" id="92" weight="0.73635334" />
+      <edge source="фирамир" target="марьянаро" id="93" weight="0.63217247" />
+      <edge source="валуев" target="андреймалахов" id="94" weight="0.63051915" />
+      <edge source="валуев" target="медведев" id="95" weight="0.6457116" />
+      <edge source="валуев" target="джигурда" id="96" weight="0.6732526" />
+      <edge source="валуев" target="коннормакгрегор" id="97" weight="0.6144726" />
+      <edge source="валуев" target="дзюба" id="98" weight="0.6077516" />
+      <edge source="валуев" target="владимирсоловьев" id="99" weight="0.71947896" />
+      <edge source="андреймалахов" target="янарудковская" id="100" weight="0.7495258" />
+      <edge source="андреймалахов" target="джигурда" id="101" weight="0.7570088" />
+      <edge source="андреймалахов" target="николайбасков" id="102" weight="0.6823719" />
+      <edge source="андреймалахов" target="андрейпетров" id="103" weight="0.65967715" />
+      <edge source="андреймалахов" target="владимирсоловьев" id="104" weight="0.69402254" />
+      <edge source="андреймалахов" target="аллапугачева" id="105" weight="0.7311913" />
+      <edge source="fixeye" target="nerkin" id="106" weight="0.6116432" />
+      <edge source="медведев" target="джигурда" id="107" weight="0.629267" />
+      <edge source="медведев" target="лукашенко" id="108" weight="0.6183065" />
+      <edge source="медведев" target="мишустин" id="109" weight="0.8294238" />
+      <edge source="медведев" target="владимирсоловьев" id="110" weight="0.7585406" />
+      <edge source="янарудковская" target="джигурда" id="111" weight="0.70346725" />
+      <edge source="янарудковская" target="артемийлебедев" id="112" weight="0.6068401" />
+      <edge source="янарудковская" target="николайбасков" id="113" weight="0.67386794" />
+      <edge source="янарудковская" target="андрейпетров" id="114" weight="0.6583141" />
+      <edge source="янарудковская" target="марьянаро" id="115" weight="0.6181738" />
+      <edge source="янарудковская" target="владимирсоловьев" id="116" weight="0.6844733" />
+      <edge source="янарудковская" target="аллапугачева" id="117" weight="0.7543426" />
+      <edge source="джигурда" target="артемийлебедев" id="118" weight="0.6080125" />
+      <edge source="джигурда" target="николайбасков" id="119" weight="0.6694311" />
+      <edge source="джигурда" target="дзюба" id="120" weight="0.60240513" />
+      <edge source="джигурда" target="мишустин" id="121" weight="0.604831" />
+      <edge source="джигурда" target="владимирсоловьев" id="122" weight="0.7783166" />
+      <edge source="джигурда" target="аллапугачева" id="123" weight="0.69368684" />
+      <edge source="коннормакгрегор" target="роналдо" id="124" weight="0.6082336" />
+      <edge source="каринастримерша" target="мейбибейби" id="125" weight="0.64116716" />
+      <edge source="каринастримерша" target="buster" id="126" weight="0.6957549" />
+      <edge source="каринастримерша" target="андрейпетров" id="127" weight="0.61845934" />
+      <edge source="каринастримерша" target="марьянаро" id="128" weight="0.60776937" />
+      <edge source="каринастримерша" target="игорьсиняк" id="129" weight="0.6731249" />
+      <edge source="мейбибейби" target="марьянаро" id="130" weight="0.7249595" />
+      <edge source="мейбибейби" target="игорьсиняк" id="131" weight="0.6037673" />
+      <edge source="лукашенко" target="мишустин" id="132" weight="0.63162905" />
+      <edge source="лукашенко" target="владимирсоловьев" id="133" weight="0.63129026" />
+      <edge source="николайбасков" target="тимабелорусских" id="134" weight="0.6526091" />
+      <edge source="николайбасков" target="niletto" id="135" weight="0.6561954" />
+      <edge source="николайбасков" target="аллапугачева" id="136" weight="0.770422" />
+      <edge source="мистермакс" target="марьянаро" id="137" weight="0.6350237" />
+      <edge source="мистермакс" target="игорьсиняк" id="138" weight="0.61017066" />
+      <edge source="мистермакс" target="иккеро" id="139" weight="0.6943127" />
+      <edge source="роналдо" target="дзюба" id="140" weight="0.680657" />
+      <edge source="ramil" target="тимабелорусских" id="141" weight="0.61017287" />
+      <edge source="андрейпетров" target="игорьсиняк" id="142" weight="0.8065255" />
+      <edge source="кравцов" target="мишустин" id="143" weight="0.6058224" />
+      <edge source="кравцов" target="владимирсоловьев" id="144" weight="0.62800837" />
+      <edge source="марьянаро" target="игорьсиняк" id="145" weight="0.67594385" />
+      <edge source="марьянаро" target="misskaty" id="146" weight="0.6000047" />
+      <edge source="feduk" target="тимабелорусских" id="147" weight="0.6015152" />
+      <edge source="мишустин" target="владимирсоловьев" id="148" weight="0.7566108" />
+      <edge source="владимирсоловьев" target="аллапугачева" id="149" weight="0.68721294" />
+      <edge source="тимабелорусских" target="niletto" id="150" weight="0.71853805" />
+    </edges>
+  </graph>
+</gexf>

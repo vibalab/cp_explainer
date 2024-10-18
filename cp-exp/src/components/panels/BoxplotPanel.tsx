@@ -51,7 +51,6 @@ const CentralityBox: React.FC<BoxplotProps> = ({
       const plot = JSON.parse(response.data); // 이미 JSON 데이터일 수 있음
       setPlotData(plot);
       setLoading(false);
-      console.log(plot);
     } catch (err) {
       console.error(err); // 에러 로그 출력
       setError("Failed to load heatmap.");

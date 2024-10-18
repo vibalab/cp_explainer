@@ -83,7 +83,7 @@ const ResizableContainer: React.FC = () => {
     setIsDataUploaded(false);
 
     const filename = file.name;
-
+    console.log(filename);
     try {
       const graphOverviewResponse = await axios.get(
         `http://localhost:8000/graph/overview?filename=${filename}`

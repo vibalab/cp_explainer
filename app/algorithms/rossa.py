@@ -43,6 +43,10 @@ class Rossa:
                 num2 = np.sum(np.array([pi[p] * m[p, j] + pi[j] * m[j, p] for p in P]))
                 denom = np.sum(np.array([pi[p] for p in P])) + pi[j]
 
+                # ZeroDivisionError 방지: denom이 0인 경우 처리
+                if denom == 0:
+                    continue  # denom이 0이면 이 후보를 건너뜁니다
+
                 alpha_candidate = (num1 + num2) / denom
 
                 if alpha_candidate < min_val:
