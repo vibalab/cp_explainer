@@ -3,18 +3,74 @@ import numpy as np
 import json
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import pandas as pd
 
+def load_excel_to_graph(excel_file_path) :
+    try: 
+        df = pd.read_excel(excel_file_path)
+        
+        # Check if 'weight' column exists
+        if 'weight' in df.columns:
+            # If weight column exists, include it as an edge attribute
+            graph = nx.from_pandas_edgelist(df, source='source', target='target', edge_attr='weight')
+        else:
+            # If weight column is missing, just load the source and target
+            graph = nx.from_pandas_edgelist(df, source='source', target='target')
+        
+        return graph
+    
+    except Exception as e:
+        # 최종적으로 다른 예외 발생 시 디버깅 메시지 출력
+        error_message = f"Unexpected error occurred: {str(e)}"
+        print(error_message)
+        raise Exception(error_message)
+
+def load_csv_to_graph(csv_file_path) :
+    try: 
+        df = pd.read_csv(csv_file_path)
+        
+        # Check if 'weight' column exists
+        if 'weight' in df.columns:
+            # If weight column exists, include it as an edge attribute
+            graph = nx.from_pandas_edgelist(df, source='source', target='target', edge_attr='weight')
+        else:
+            # If weight column is missing, just load the source and target
+            graph = nx.from_pandas_edgelist(df, source='source', target='target')
+        
+        return graph
+    
+    except Exception as e:
+        # 최종적으로 다른 예외 발생 시 디버깅 메시지 출력
+        error_message = f"Unexpected error occurred: {str(e)}"
+        print(error_message)
+        raise Exception(error_message)
+    
 
 # GML 파일 로드
 def load_gml_to_graph(gml_file_path):
-    graph = nx.read_gml(gml_file_path)
-    return graph
+    try:
+        graph = nx.read_gml(gml_file_path)
+        return graph
 
+    except Exception as e:
+        # 최종적으로 다른 예외 발생 시 디버깅 메시지 출력
+        error_message = f"Unexpected error occurred: {str(e)}"
+        print(error_message)
+        raise Exception(error_message)
+    
 # GEXF 파일 로드
 def load_gexf_to_graph(gexf_file_path):
-    graph = nx.read_gexf(gexf_file_path)
-    return graph
+    try:
+        graph = nx.read_gexf(gexf_file_path)
+        
+        return graph
 
+    except Exception as e:
+        # 최종적으로 다른 예외 발생 시 디버깅 메시지 출력
+        error_message = f"Unexpected error occurred: {str(e)}"
+        print(error_message)
+        raise Exception(error_message)
+    
 # GraphML 파일 로드
 def load_graphml_to_graph(graphml_file_path):
     graph = nx.read_graphml(graphml_file_path)
@@ -159,93 +215,102 @@ def graph_overview(G):
 
 # 노드 및 엣지 데이터를 생성하는 함수
 def graph_node_edge(G, cp_index=None, cp_cluster=None, cp_node_metric=None):
-    # 멀티그래프인 경우 단일 그래프로 변환 (중복 엣지 제거)
-    if isinstance(G, nx.MultiGraph) or isinstance(G, nx.MultiDiGraph):
-        G = nx.Graph(G)  # 멀티그래프를 단일 그래프로 변환
-
-    # 방향 그래프인 경우 무방향 그래프로 변환
-    if G.is_directed():
-        G = G.to_undirected()  # 방향 그래프를 무방향 그래프로 변환
-
-    pos = nx.spring_layout(G)  # spring layout을 사용하여 노드 위치 계산
-
-    # None인 경우 기본값 설정
-    if cp_index is None:
-        cp_index = np.zeros(G.number_of_nodes())
-
-    if cp_cluster is None:
-        cp_cluster = np.zeros(G.number_of_nodes())
-
-    if cp_node_metric is None:
-        cp_node_metric = np.zeros(G.number_of_nodes())
-
-    # Degree Centrality
     try:
-        degree_centrality = nx.degree_centrality(G)
+        # 멀티그래프인 경우 단일 그래프로 변환 (중복 엣지 제거)
+        if isinstance(G, nx.MultiGraph) or isinstance(G, nx.MultiDiGraph):
+            G = nx.Graph(G)  # 멀티그래프를 단일 그래프로 변환
+
+        # 방향 그래프인 경우 무방향 그래프로 변환
+        if G.is_directed():
+            G = G.to_undirected()  # 방향 그래프를 무방향 그래프로 변환
+
+
+        pos = nx.spring_layout(G)  # spring layout을 사용하여 노드 위치 계산
+
+
+        # None인 경우 기본값 설정
+        if cp_index is None:
+            cp_index = np.zeros(G.number_of_nodes())
+
+        if cp_cluster is None:
+            cp_cluster = np.zeros(G.number_of_nodes())
+
+        if cp_node_metric is None:
+            cp_node_metric = np.zeros(G.number_of_nodes())
+
+        # Degree Centrality
+        try:
+            degree_centrality = nx.degree_centrality(G)
+        except Exception as e:
+            print(f"Error calculating degree_centrality: {e}")
+            degree_centrality = {n: None for n in G.nodes()}
+
+        # Betweenness Centrality
+        try:
+            betweenness_centrality = nx.betweenness_centrality(G, weight='weight')
+        except Exception as e:
+            print(f"Error calculating betweenness_centrality: {e}")
+            betweenness_centrality = {n: None for n in G.nodes()}
+
+        # Closeness Centrality
+        try:
+            closeness_centrality = nx.closeness_centrality(G)
+        except Exception as e:
+            print(f"Error calculating closeness_centrality: {e}")
+            closeness_centrality = {n: None for n in G.nodes()}
+
+        # Eigenvector Centrality
+        try:
+            eigenvector_centrality = nx.eigenvector_centrality(G, max_iter=1000, tol=1e-4)
+        except nx.PowerIterationFailedConvergence as e:
+            print(f"Eigenvector centrality did not converge: {e}")
+            eigenvector_centrality = {n: None for n in G.nodes()}
+        except Exception as e:
+            print(f"Error calculating eigenvector_centrality: {e}")
+            eigenvector_centrality = {n: None for n in G.nodes()}
+
+        # Degree 정보
+        degree = dict(G.degree())
+
+        # 노드 데이터 생성
+        nodes = [
+            {
+                "id": n,
+                "key": n,
+                "label": data.get('label', n),
+                "x": pos[n][0],
+                "y": pos[n][1],
+                "degree": degree[n],
+                "degree_centrality": degree_centrality[n],
+                "betweenness_centrality": betweenness_centrality[n],
+                "closeness_centrality": closeness_centrality[n],
+                "eigenvector_centrality": eigenvector_centrality[n],
+                "core_periphery": float(cp_index[list(G.nodes).index(n)]),
+                "core_periphery_score": float(cp_node_metric[list(G.nodes).index(n)]),
+                "group": cp_cluster[list(G.nodes).index(n)],
+                "attributes": data,
+            }
+            for n, data in G.nodes(data=True)
+        ]
+
+        # 엣지 데이터 생성
+        edges = [
+            {
+                "source": u,
+                "target": v,
+                "weight": data.get("weight", 1.0),
+                "attributes": data
+            }
+            for u, v, data in G.edges(data=True)
+        ]
+
+        return {"nodes": nodes, "edges": edges}
+
     except Exception as e:
-        print(f"Error calculating degree_centrality: {e}")
-        degree_centrality = {n: None for n in G.nodes()}
-
-    # Betweenness Centrality
-    try:
-        betweenness_centrality = nx.betweenness_centrality(G, weight='weight')
-    except Exception as e:
-        print(f"Error calculating betweenness_centrality: {e}")
-        betweenness_centrality = {n: None for n in G.nodes()}
-
-    # Closeness Centrality
-    try:
-        closeness_centrality = nx.closeness_centrality(G)
-    except Exception as e:
-        print(f"Error calculating closeness_centrality: {e}")
-        closeness_centrality = {n: None for n in G.nodes()}
-
-    # Eigenvector Centrality
-    try:
-        eigenvector_centrality = nx.eigenvector_centrality(G, max_iter=1000, tol=1e-4)
-    except nx.PowerIterationFailedConvergence as e:
-        print(f"Eigenvector centrality did not converge: {e}")
-        eigenvector_centrality = {n: None for n in G.nodes()}
-    except Exception as e:
-        print(f"Error calculating eigenvector_centrality: {e}")
-        eigenvector_centrality = {n: None for n in G.nodes()}
-
-    # Degree 정보
-    degree = dict(G.degree())
-
-    # 노드 데이터 생성
-    nodes = [
-        {
-            "id": n,
-            "key": n,
-            "label": data.get('label', n),
-            "x": pos[n][0],
-            "y": pos[n][1],
-            "degree": degree[n],
-            "degree_centrality": degree_centrality[n],
-            "betweenness_centrality": betweenness_centrality[n],
-            "closeness_centrality": closeness_centrality[n],
-            "eigenvector_centrality": eigenvector_centrality[n],
-            "core_periphery": float(cp_index[list(G.nodes).index(n)]),
-            "core_periphery_score": float(cp_node_metric[list(G.nodes).index(n)]),
-            "group": cp_cluster[list(G.nodes).index(n)],
-            "attributes": data,
-        }
-        for n, data in G.nodes(data=True)
-    ]
-
-    # 엣지 데이터 생성
-    edges = [
-        {
-            "source": u,
-            "target": v,
-            "weight": data.get("weight", 1.0),
-            "attributes": data
-        }
-        for u, v, data in G.edges(data=True)
-    ]
-
-    return {"nodes": nodes, "edges": edges}
+        # 최종적으로 다른 예외 발생 시 디버깅 메시지 출력
+        error_message = f"Unexpected error occurred: {str(e)}"
+        print(error_message)
+        raise Exception(error_message)
 
 # 인접 행렬 생성 함수
 def graph_adjacency(G, cp_index, threshold=0.5):

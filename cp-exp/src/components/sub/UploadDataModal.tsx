@@ -70,7 +70,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: "none",
           zIndex: 999,
         }}
         onClick={onClose} // 배경 클릭 시 모달 닫기
@@ -89,9 +89,114 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           width: "300px",
           borderRadius: "10px",
+          border: "1px solid black",
         }}
       >
-        <h3>Upload Your Own gexf File</h3>
+        <h3>Upload Your Own Graph File</h3>
+        <p style={{ fontSize: "14px", color: "#666" }}>
+          Supported file formats:{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/gexf.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .gexf
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/gml.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .gml
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/graphml.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .graphml
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/adjlist.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .adjlist
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/edgelist.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .edgelist
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/pajek.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .net
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/yaml.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .yaml
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/graph6.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .graph6
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/graph6.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .sparse6
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/gpickle.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .gpickle
+          </a>
+          ,{" "}
+          <a
+            href="https://networkx.org/documentation/stable/reference/readwrite/json_graph.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            .json
+          </a>
+          ,{" "}
+          <span className="tooltip">
+            .xlsx, .csv
+            <span className="tooltiptext">
+              Format for .xlsx/.csv: <br />
+              <strong>With weights:</strong>
+              <br />
+              source | target | weight
+              <br />
+              <strong>Without weights:</strong>
+              <br />
+              source | target
+            </span>
+          </span>
+        </p>
         <div style={{ marginBottom: "20px" }}>
           <input type="file" onChange={handleFileChange} />
         </div>
@@ -125,6 +230,37 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           </button>
         </div>
       </div>
+
+      {/* CSS for tooltip */}
+      <style>{`
+        .tooltip {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        .tooltiptext {
+          visibility: hidden;
+          width: 200px;
+          background-color: #f9f9f9;
+          color: #333;
+          text-align: center;
+          border-radius: 6px;
+          padding: 5px;
+          position: absolute;
+          z-index: 1;
+          bottom: 125%; /* Position above the text */
+          left: 50%;
+          margin-left: -100px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+        }
+      `}</style>
     </>
   );
 };

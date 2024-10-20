@@ -281,6 +281,8 @@ ul > li {
   display: flex; /* 플렉스 박스 사용으로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   align-items: center; /* 세로 중앙 정렬 */
+  z-index: 1;
+  position: relative; /* Make sure z-index works by adding position */
 }
 
 /**
@@ -397,7 +399,7 @@ ul > li {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -413,6 +415,7 @@ ul > li {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
 }
 
 .modal-header {

@@ -118,7 +118,7 @@ async def get_graph_overview(filename: str):
             raise HTTPException(status_code=404, detail="File not found")
 
         # 파일 확장자에 따라 다른 그래프 로딩 함수 호출
-        if filename.endswith(".gexf"):
+        if filename.endswith(".gexf") or filename.endswith(".gephi"):
             graph = preprocess.load_gexf_to_graph(str(file_location))
         elif filename.endswith(".gml"):
             graph = preprocess.load_gml_to_graph(str(file_location))
@@ -140,11 +140,14 @@ async def get_graph_overview(filename: str):
             graph = preprocess.load_gpickle_to_graph(str(file_location))
         elif filename.endswith(".json"):
             graph = preprocess.load_json_to_graph(str(file_location))
+        elif filename.endswith(".xlsx") :
+            graph = preprocess.load_excel_to_graph(str(file_location))
+        elif filename.endswith(".csv") :
+            graph = preprocess.load_csv_to_graph(str(file_location))
         else:
             raise HTTPException(status_code=400, detail="Unsupported file format. Supported formats are .gexf, .gml, .graphml, .adjlist, .edgelist, .net, .yaml, .graph6, .sparse6, .gpickle, and .json")
 
         overview = preprocess.graph_overview(graph)
-
 
         # JSON 파일로 저장
         output_file = JSON_DIR / f"overview.json"
@@ -171,7 +174,7 @@ async def get_graph_node_edge(filename: str):
             raise HTTPException(status_code=404, detail="File not found")
 
         # 파일 확장자에 따라 다른 그래프 로딩 함수 호출
-        if filename.endswith(".gexf"):
+        if filename.endswith(".gexf") or filename.endswith(".gephi"):
             graph = preprocess.load_gexf_to_graph(str(file_location))
         elif filename.endswith(".gml"):
             graph = preprocess.load_gml_to_graph(str(file_location))
@@ -193,9 +196,12 @@ async def get_graph_node_edge(filename: str):
             graph = preprocess.load_gpickle_to_graph(str(file_location))
         elif filename.endswith(".json"):
             graph = preprocess.load_json_to_graph(str(file_location))
+        elif filename.endswith(".xlsx") :
+            graph = preprocess.load_excel_to_graph(str(file_location))
+        elif filename.endswith(".csv") :
+            graph = preprocess.load_csv_to_graph(str(file_location))
         else:
             raise HTTPException(status_code=400, detail="Unsupported file format. Supported formats are .gexf, .gml, .graphml, .adjlist, .edgelist, .net, .yaml, .graph6, .sparse6, .gpickle, and .json")
-
 
         node_edge_data = preprocess.graph_node_edge(graph)
 
@@ -226,7 +232,8 @@ async def get_graph_adjacency_json(filename: str):
         if not file_location.exists():
             raise HTTPException(status_code=404, detail="File not found")
 
-        if filename.endswith(".gexf"):
+        # 파일 확장자에 따라 다른 그래프 로딩 함수 호출
+        if filename.endswith(".gexf") or filename.endswith(".gephi"):
             graph = preprocess.load_gexf_to_graph(str(file_location))
         elif filename.endswith(".gml"):
             graph = preprocess.load_gml_to_graph(str(file_location))
@@ -248,6 +255,10 @@ async def get_graph_adjacency_json(filename: str):
             graph = preprocess.load_gpickle_to_graph(str(file_location))
         elif filename.endswith(".json"):
             graph = preprocess.load_json_to_graph(str(file_location))
+        elif filename.endswith(".xlsx") :
+            graph = preprocess.load_excel_to_graph(str(file_location))
+        elif filename.endswith(".csv") :
+            graph = preprocess.load_csv_to_graph(str(file_location))
         else:
             raise HTTPException(status_code=400, detail="Unsupported file format. Supported formats are .gexf, .gml, .graphml, .adjlist, .edgelist, .net, .yaml, .graph6, .sparse6, .gpickle, and .json")
 
@@ -388,7 +399,8 @@ async def apply_algorithm(
 
         # 파일 확장자에 따라 다른 그래프 로딩 함수 호출
 
-        if filename.endswith(".gexf"):
+        # 파일 확장자에 따라 다른 그래프 로딩 함수 호출
+        if filename.endswith(".gexf") or filename.endswith(".gephi"):
             graph = preprocess.load_gexf_to_graph(str(file_location))
         elif filename.endswith(".gml"):
             graph = preprocess.load_gml_to_graph(str(file_location))
@@ -410,6 +422,10 @@ async def apply_algorithm(
             graph = preprocess.load_gpickle_to_graph(str(file_location))
         elif filename.endswith(".json"):
             graph = preprocess.load_json_to_graph(str(file_location))
+        elif filename.endswith(".xlsx") :
+            graph = preprocess.load_excel_to_graph(str(file_location))
+        elif filename.endswith(".csv") :
+            graph = preprocess.load_csv_to_graph(str(file_location))
         else:
             raise HTTPException(status_code=400, detail="Unsupported file format. Supported formats are .gexf, .gml, .graphml, .adjlist, .edgelist, .net, .yaml, .graph6, .sparse6, .gpickle, and .json")
         

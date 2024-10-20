@@ -182,7 +182,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: "none",
           zIndex: 999,
         }}
         onClick={onClose}
@@ -201,6 +201,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           width: "300px",
           borderRadius: "10px",
+          border: "1px solid black",
         }}
       >
         <h3>Select Method</h3>
