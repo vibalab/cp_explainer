@@ -38,6 +38,7 @@ import GraphThresholdUpdater from "./sigma/graphThresholdUpdater";
 import GraphCPApplier from "./sigma/graphCPApplier";
 import { NodeData, EdgeData } from "../types";
 import GraphSnapshot from "./sigma/graphSnapshot";
+import GraphAppearanceController from "./sigma/graphAppearanceController";
 
 interface ConnectionProbabilities {
   coreCore: { possible: number; actual: number };
@@ -116,6 +117,9 @@ const Root: FC<RootProps> = ({
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [hoveredNode, setHoveredNode] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [nodeHSL, setNodeHSL] = useState({ h: 197, s: 71, l: 73 }); // Store node color HSL
+  const [edgeHSL, setEdgeHSL] = useState({ h: 0, s: 0, l: 0 }); // Store edge color HSL
+
   const method = methods;
   const sigmaSettings: Partial<Settings> = useMemo(
     () => ({
@@ -170,6 +174,17 @@ const Root: FC<RootProps> = ({
 
   if (!dataset) return null;
 
+  const handleNodeColorChange = (h: number, s: number, l: number) => {
+    setNodeHSL({ h, s, l });
+    console.log(`Node color HSL updated: h=${h}, s=${s}, l=${l}`);
+  };
+
+  // Callback to handle edge color HSL changes
+  const handleEdgeColorChange = (h: number, s: number, l: number) => {
+    setEdgeHSL({ h, s, l });
+    console.log(`Edge color HSL updated: h=${h}, s=${s}, l=${l}`);
+  };
+
   return (
     <SigmaContainer
       style={{ width: "100%", height: "95%" }}
@@ -188,19 +203,30 @@ const Root: FC<RootProps> = ({
         connectionProbabilities={connectionProbabilities}
         threshold={threshold}
         method={method}
+        nodeHSL={nodeHSL}
         closenessCentralityAvg={closenessCentralityAvg}
       />
-      <GraphDataController dataset={dataset} threshold={threshold} />
-      <GraphThresholdUpdater threshold={threshold} />
+      <GraphDataController
+        dataset={dataset}
+        threshold={threshold}
+        nodeHSL={nodeHSL}
+      />
+      <GraphThresholdUpdater threshold={threshold} nodeHSL={nodeHSL} />
       <GraphCPApplier
         isMethodChanged={isMethodChanged}
         threshold={threshold}
+        nodeHSL={nodeHSL}
         setGraphData={setGraphData}
       />
       {/* Add the GraphThresholdUpdater */}
       {dataReady && (
         <>
           <div className="controls">
+            <GraphAppearanceController
+              threshold={threshold}
+              onNodeColorChange={handleNodeColorChange} // Pass node color callback
+              onEdgeColorChange={handleEdgeColorChange} // Pass edge color callback
+            />
             <GraphSnapshot />
             <FullScreenControl className="ico">
               <BsArrowsFullscreen />

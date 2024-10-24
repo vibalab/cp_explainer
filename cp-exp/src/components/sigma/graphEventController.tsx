@@ -28,6 +28,7 @@ const GraphEventsController: FC<
     >; // setGraphData를 props로 받아옴
     connectionProbabilities: ConnectionProbabilities | null;
     closenessCentralityAvg: number | null;
+    nodeHSL: { h: number; s: number; l: number };
   }>
 > = ({
   setHoveredNode,
@@ -37,6 +38,7 @@ const GraphEventsController: FC<
   threshold,
   method,
   children,
+  nodeHSL,
   closenessCentralityAvg,
 }) => {
   const sigma = useSigma();
@@ -204,6 +206,7 @@ const GraphEventsController: FC<
         setGraphData={setGraphData}
         threshold={threshold}
         method={method}
+        nodeHSL={nodeHSL}
         closenessCentralityAvg={closenessCentralityAvg}
       />
     </>

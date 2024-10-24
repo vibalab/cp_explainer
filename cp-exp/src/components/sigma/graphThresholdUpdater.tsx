@@ -4,10 +4,12 @@ import { getHSLColor } from "../sub/colorUtils";
 
 interface GraphThresholdUpdaterProps {
   threshold: number;
+  nodeHSL: { h: number; s: number; l: number };
 }
 
 const GraphThresholdUpdater: FC<GraphThresholdUpdaterProps> = ({
   threshold,
+  nodeHSL,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
@@ -23,7 +25,9 @@ const GraphThresholdUpdater: FC<GraphThresholdUpdaterProps> = ({
       graph.forEachNode((nodeId, attributes) => {
         const corePeriphery = attributes.core_periphery;
         const borderColor =
-          corePeriphery < threshold ? getHSLColor(197, 71, 73, 1) : "#000000";
+          corePeriphery < threshold
+            ? getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1)
+            : "#000000";
         graph.setNodeAttribute(nodeId, "borderColor", borderColor);
       });
 

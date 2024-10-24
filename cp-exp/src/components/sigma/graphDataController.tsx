@@ -8,11 +8,13 @@ import { getHSLColor } from "../sub/colorUtils";
 interface GraphDataControllerProps {
   dataset: Dataset;
   threshold: number;
+  nodeHSL: { h: number; s: number; l: number };
 }
 
 const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
   dataset,
   threshold,
+  nodeHSL,
   children,
 }) => {
   const sigma = useSigma();
@@ -50,10 +52,15 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
           group: node.group,
           attributes: node.attributes,
           size: nodeSize,
-          color: getHSLColor(197, 71, 73, node.core_periphery),
+          color: getHSLColor(
+            nodeHSL.h,
+            nodeHSL.s,
+            nodeHSL.l,
+            node.core_periphery
+          ),
           borderColor:
             node.core_periphery < threshold
-              ? getHSLColor(197, 71, 73, 1)
+              ? getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1)
               : "#000000",
           pictoColor: "FFFFFF",
           clicked: false,

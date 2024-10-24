@@ -16,6 +16,7 @@ interface GraphDataControllerProps {
       core_indices: number[];
     }>
   >; // setGraphData를 props로 받아옴
+  nodeHSL: { h: number; s: number; l: number };
 }
 
 const GraphCPApplier: FC<PropsWithChildren<GraphDataControllerProps>> = ({
@@ -23,6 +24,7 @@ const GraphCPApplier: FC<PropsWithChildren<GraphDataControllerProps>> = ({
   threshold,
   children,
   setGraphData,
+  nodeHSL,
 }) => {
   const sigma = useSigma();
   const graph = sigma.getGraph();
@@ -37,7 +39,7 @@ const GraphCPApplier: FC<PropsWithChildren<GraphDataControllerProps>> = ({
       dataset.nodes.forEach((node: any) => {
         const borderColor =
           node.core_periphery < threshold
-            ? getHSLColor(197, 71, 73, 1)
+            ? getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1)
             : "#000000";
 
         graph.setNodeAttribute(node.id, "core_periphery", node.core_periphery);
@@ -49,7 +51,7 @@ const GraphCPApplier: FC<PropsWithChildren<GraphDataControllerProps>> = ({
         graph.setNodeAttribute(
           node.id,
           "color",
-          getHSLColor(197, 71, 73, node.core_periphery)
+          getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, node.core_periphery)
         );
         graph.setNodeAttribute(node.id, "borderColor", borderColor);
       });

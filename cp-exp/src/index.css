@@ -582,7 +582,11 @@ ul > li {
 }
 
 .fancy-button:hover {
-  background: linear-gradient(135deg, #87ceeb, #87ceeb);
+  background: linear-gradient(
+    135deg,
+    var(--fancy-button-hover-color, #87ceeb),
+    var(--fancy-button-hover-color, #87ceeb)
+  );
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-3px);
 }

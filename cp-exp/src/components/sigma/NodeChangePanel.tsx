@@ -41,6 +41,7 @@ const NodeChangePanel: FC<{
   >;
   connectionProbabilities: ConnectionProbabilities | null;
   closenessCentralityAvg: number | null;
+  nodeHSL: { h: number; s: number; l: number };
 }> = ({
   panelPosition,
   selectedNode,
@@ -51,6 +52,7 @@ const NodeChangePanel: FC<{
   threshold,
   method,
   connectionProbabilities,
+  nodeHSL,
   closenessCentralityAvg,
 }) => {
   const sigma = useSigma();
@@ -102,9 +104,9 @@ const NodeChangePanel: FC<{
 
     const currentColor = graph.getNodeAttribute(selectedNode.id, "color");
     const newColor =
-      currentColor === getHSLColor(197, 71, 73, 1)
+      currentColor === getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1)
         ? "#FFFFFF"
-        : getHSLColor(197, 71, 73, 1);
+        : getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1);
     graph.setNodeAttribute(selectedNode.id, "color", newColor);
 
     const currentBorderColor = graph.getNodeAttribute(
@@ -112,9 +114,9 @@ const NodeChangePanel: FC<{
       "borderColor"
     );
     const newBorderColor =
-      currentBorderColor === getHSLColor(197, 71, 73, 1)
+      currentBorderColor === getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1)
         ? "#000000"
-        : getHSLColor(197, 71, 73, 1);
+        : getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, 1);
     graph.setNodeAttribute(selectedNode.id, "borderColor", newBorderColor);
 
     const graphData = createGraphData(graph);

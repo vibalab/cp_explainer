@@ -465,12 +465,10 @@ const ResizableContainer: React.FC = () => {
         onFileUpload={handleFileUpload}
       />
 
-      {isTooltipModalOpen && (
-        <Tooltips
-          isOpen={isTooltipModalOpen}
-          onClose={() => setIsTooltipModalOpen(false)}
-        />
-      )}
+      <Tooltips
+        isOpen={isTooltipModalOpen}
+        onClose={() => setIsTooltipModalOpen(false)}
+      />
     </div>
   );
 };

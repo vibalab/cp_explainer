@@ -1,80 +1,992 @@
 {
     "nodes": [
         {
-            "id": 1,
-            "key": 1,
-            "label": 1,
-            "x": -0.4762731054899268,
-            "y": 0.7181192957581358,
-            "degree": 2,
-            "degree_centrality": 0.5,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5714285714285714,
-            "eigenvector_centrality": 0.49702919530041184,
+            "id": "Beak",
+            "key": "Beak",
+            "label": "Beak",
+            "x": -0.09013785971696088,
+            "y": -0.17390182478572205,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.01908259621374376,
+            "closeness_centrality": 0.3465909090909091,
+            "eigenvector_centrality": 0.1284996808604519,
             "core_periphery": 0.0,
             "core_periphery_score": 0.0,
             "group": 0.0,
             "attributes": {}
         },
         {
-            "id": 2,
-            "key": 2,
-            "label": 2,
-            "x": -0.9242217056785891,
-            "y": 0.206485025928888,
-            "degree": 2,
-            "degree_centrality": 0.5,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5714285714285714,
-            "eigenvector_centrality": 0.49702919530041184,
+            "id": "Beescratch",
+            "key": "Beescratch",
+            "label": "Beescratch",
+            "x": 0.25343460422692515,
+            "y": 0.2708443132544172,
+            "degree": 8,
+            "degree_centrality": 0.13114754098360656,
+            "betweenness_centrality": 0.21332443553281097,
+            "closeness_centrality": 0.3719512195121951,
+            "eigenvector_centrality": 0.04369803115845865,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Bumper",
+            "key": "Bumper",
+            "label": "Bumper",
+            "x": 0.06530233981006604,
+            "y": -0.4000362236851563,
+            "degree": 4,
+            "degree_centrality": 0.06557377049180328,
+            "betweenness_centrality": 0.00907281243346817,
+            "closeness_centrality": 0.2824074074074074,
+            "eigenvector_centrality": 0.03975791732351505,
             "core_periphery": 0.0,
             "core_periphery_score": 0.0,
             "group": 0.0,
             "attributes": {}
         },
         {
-            "id": 3,
-            "key": 3,
-            "label": 3,
-            "x": -0.11607231727379928,
-            "y": 0.08722126747508432,
+            "id": "CCL",
+            "key": "CCL",
+            "label": "CCL",
+            "x": -0.24485123906474376,
+            "y": -0.04230852267108359,
             "degree": 3,
-            "degree_centrality": 0.75,
-            "betweenness_centrality": 0.6666666666666666,
-            "closeness_centrality": 0.8,
-            "eigenvector_centrality": 0.6037034834183143,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.0023737965131407756,
+            "closeness_centrality": 0.30808080808080807,
+            "eigenvector_centrality": 0.07930307946680988,
             "core_periphery": 0.0,
             "core_periphery_score": 0.0,
             "group": 0.0,
             "attributes": {}
         },
         {
-            "id": 4,
-            "key": 4,
-            "label": 4,
-            "x": 0.5165671284423153,
-            "y": -0.3422846597868543,
-            "degree": 2,
-            "degree_centrality": 0.5,
-            "betweenness_centrality": 0.5,
-            "closeness_centrality": 0.6666666666666666,
-            "eigenvector_centrality": 0.34273415190855155,
-            "core_periphery": 0.0,
-            "core_periphery_score": 0.0,
-            "group": 0.0,
-            "attributes": {}
-        },
-        {
-            "id": 5,
-            "key": 5,
-            "label": 5,
-            "x": 1.0,
-            "y": -0.669540929375254,
+            "id": "Cross",
+            "key": "Cross",
+            "label": "Cross",
+            "x": -0.7437473773994753,
+            "y": -0.12571526126163834,
             "degree": 1,
-            "degree_centrality": 0.25,
+            "degree_centrality": 0.01639344262295082,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.4444444444444444,
-            "eigenvector_centrality": 0.15491727877215383,
+            "closeness_centrality": 0.24897959183673468,
+            "eigenvector_centrality": 0.029250976373792776,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "DN16",
+            "key": "DN16",
+            "label": "DN16",
+            "x": 0.612134356317822,
+            "y": 0.6306946450335695,
+            "degree": 4,
+            "degree_centrality": 0.06557377049180328,
+            "betweenness_centrality": 0.004380300179480508,
+            "closeness_centrality": 0.23828125,
+            "eigenvector_centrality": 0.007990959892028237,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "DN21",
+            "key": "DN21",
+            "label": "DN21",
+            "x": 0.5765675905763656,
+            "y": 0.5249461209908872,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.029372536747686685,
+            "closeness_centrality": 0.2675438596491228,
+            "eigenvector_centrality": 0.014389514382369057,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "DN63",
+            "key": "DN63",
+            "label": "DN63",
+            "x": 0.19127404867218653,
+            "y": 0.14034415702072292,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.11823861926938342,
+            "closeness_centrality": 0.3652694610778443,
+            "eigenvector_centrality": 0.04364613533537516,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Double",
+            "key": "Double",
+            "label": "Double",
+            "x": -0.15038235166984193,
+            "y": -0.04701224821151624,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.022365737598409235,
+            "closeness_centrality": 0.3630952380952381,
+            "eigenvector_centrality": 0.14310714421337375,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Feather",
+            "key": "Feather",
+            "label": "Feather",
+            "x": 0.5185897860547595,
+            "y": 0.6129341955066719,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.020894380361593475,
+            "closeness_centrality": 0.25206611570247933,
+            "eigenvector_centrality": 0.014614438536753711,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Fish",
+            "key": "Fish",
+            "label": "Fish",
+            "x": -0.07292822155109722,
+            "y": -0.29693307465776486,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.016092020911693046,
+            "closeness_centrality": 0.3128205128205128,
+            "eigenvector_centrality": 0.07525082696514997,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Five",
+            "key": "Five",
+            "label": "Five",
+            "x": -0.7295109560040343,
+            "y": -0.030051463456392785,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.24897959183673468,
+            "eigenvector_centrality": 0.029250976373792776,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Fork",
+            "key": "Fork",
+            "label": "Fork",
+            "x": -0.5197416937559104,
+            "y": -0.4289357899706794,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.2687224669603524,
+            "eigenvector_centrality": 0.03904510447539593,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Gallatin",
+            "key": "Gallatin",
+            "label": "Gallatin",
+            "x": 0.4992833821474481,
+            "y": 0.5677041591118923,
+            "degree": 8,
+            "degree_centrality": 0.13114754098360656,
+            "betweenness_centrality": 0.05284632843869151,
+            "closeness_centrality": 0.27111111111111114,
+            "eigenvector_centrality": 0.017733251819816533,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Grin",
+            "key": "Grin",
+            "label": "Grin",
+            "x": -0.2311422511948432,
+            "y": -0.2692264762753447,
+            "degree": 12,
+            "degree_centrality": 0.19672131147540983,
+            "betweenness_centrality": 0.06197200484885411,
+            "closeness_centrality": 0.3765432098765432,
+            "eigenvector_centrality": 0.31558629638157765,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Haecksel",
+            "key": "Haecksel",
+            "label": "Haecksel",
+            "x": -0.3198167343774946,
+            "y": -0.056038447726885626,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.03329222098223321,
+            "closeness_centrality": 0.3388888888888889,
+            "eigenvector_centrality": 0.16407722357495602,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Hook",
+            "key": "Hook",
+            "label": "Hook",
+            "x": -0.19699116956304788,
+            "y": -0.3311904556039373,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.0033047098620869113,
+            "closeness_centrality": 0.32972972972972975,
+            "eigenvector_centrality": 0.2078729774502716,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Jet",
+            "key": "Jet",
+            "label": "Jet",
+            "x": 0.4868015463962989,
+            "y": 0.48019871528975117,
+            "degree": 9,
+            "degree_centrality": 0.14754098360655737,
+            "betweenness_centrality": 0.11430016291546972,
+            "closeness_centrality": 0.3096446700507614,
+            "eigenvector_centrality": 0.01990215564142596,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Jonah",
+            "key": "Jonah",
+            "label": "Jonah",
+            "x": -0.3730441063092009,
+            "y": -0.1584034759848257,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.014854899716954898,
+            "closeness_centrality": 0.3370165745856354,
+            "eigenvector_centrality": 0.2023105223567369,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Knit",
+            "key": "Knit",
+            "label": "Knit",
+            "x": 0.31639322871875114,
+            "y": 0.1556678403174528,
+            "degree": 4,
+            "degree_centrality": 0.06557377049180328,
+            "betweenness_centrality": 0.013314394166853183,
+            "closeness_centrality": 0.3160621761658031,
+            "eigenvector_centrality": 0.0214982651811615,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Kringel",
+            "key": "Kringel",
+            "label": "Kringel",
+            "x": -0.1282438282197521,
+            "y": -0.1796045380422554,
+            "degree": 9,
+            "degree_centrality": 0.14754098360655737,
+            "betweenness_centrality": 0.10264573972090968,
+            "closeness_centrality": 0.391025641025641,
+            "eigenvector_centrality": 0.18452427052168233,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MN105",
+            "key": "MN105",
+            "label": "MN105",
+            "x": -0.39470320136540066,
+            "y": -0.2370125353521751,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.012700653930162125,
+            "closeness_centrality": 0.3333333333333333,
+            "eigenvector_centrality": 0.20715715010690233,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MN23",
+            "key": "MN23",
+            "label": "MN23",
+            "x": 0.707696718228823,
+            "y": 0.5856241907187618,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.23735408560311283,
+            "eigenvector_centrality": 0.002837013976206228,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MN60",
+            "key": "MN60",
+            "label": "MN60",
+            "x": -0.3255843745914326,
+            "y": 0.047276762256369335,
+            "degree": 3,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.04218278563875618,
+            "closeness_centrality": 0.3333333333333333,
+            "eigenvector_centrality": 0.08734753948756403,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MN83",
+            "key": "MN83",
+            "label": "MN83",
+            "x": -0.4323166051670477,
+            "y": -0.1774536425872751,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.007383043489600868,
+            "closeness_centrality": 0.3128205128205128,
+            "eigenvector_centrality": 0.19302223938253743,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Mus",
+            "key": "Mus",
+            "label": "Mus",
+            "x": 0.33231464917854125,
+            "y": 0.5425296708946122,
+            "degree": 3,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.0016441148408361526,
+            "closeness_centrality": 0.25523012552301255,
+            "eigenvector_centrality": 0.006611800478446158,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Notch",
+            "key": "Notch",
+            "label": "Notch",
+            "x": 0.24247081529972472,
+            "y": 0.4675429706169199,
+            "degree": 3,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.00436247723132969,
+            "closeness_centrality": 0.2772727272727273,
+            "eigenvector_centrality": 0.009499033017238154,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Number1",
+            "key": "Number1",
+            "label": "Number1",
+            "x": 0.30654450883161977,
+            "y": 0.37631770829696976,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.029236860493157983,
+            "closeness_centrality": 0.3160621761658031,
+            "eigenvector_centrality": 0.017324254521364556,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Oscar",
+            "key": "Oscar",
+            "label": "Oscar",
+            "x": 0.06046691166153541,
+            "y": 0.01648602938042078,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.06675695466395656,
+            "closeness_centrality": 0.3652694610778443,
+            "eigenvector_centrality": 0.0685900785395147,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Patchback",
+            "key": "Patchback",
+            "label": "Patchback",
+            "x": -0.3820668443592678,
+            "y": -0.3013607589204545,
+            "degree": 9,
+            "degree_centrality": 0.14754098360655737,
+            "betweenness_centrality": 0.06552928249649563,
+            "closeness_centrality": 0.32275132275132273,
+            "eigenvector_centrality": 0.2115477601646546,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "PL",
+            "key": "PL",
+            "label": "PL",
+            "x": 0.1794750728846792,
+            "y": -0.02736921790672787,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.03305046077177225,
+            "closeness_centrality": 0.32275132275132273,
+            "eigenvector_centrality": 0.0411071986165377,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Quasi",
+            "key": "Quasi",
+            "label": "Quasi",
+            "x": 0.7179658996615101,
+            "y": 0.4966598038389232,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.23735408560311283,
+            "eigenvector_centrality": 0.002837013976206228,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Ripplefluke",
+            "key": "Ripplefluke",
+            "label": "Ripplefluke",
+            "x": 0.5272446820804239,
+            "y": 0.8004012097300024,
+            "degree": 3,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.03278688524590164,
+            "closeness_centrality": 0.21631205673758866,
+            "eigenvector_centrality": 0.004748061441472403,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Scabs",
+            "key": "Scabs",
+            "label": "Scabs",
+            "x": -0.28789026654749367,
+            "y": -0.3401116673546359,
+            "degree": 10,
+            "degree_centrality": 0.1639344262295082,
+            "betweenness_centrality": 0.057166440117259784,
+            "closeness_centrality": 0.3652694610778443,
+            "eigenvector_centrality": 0.280913363008514,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Shmuddel",
+            "key": "Shmuddel",
+            "label": "Shmuddel",
+            "x": -0.17054599167927537,
+            "y": -0.47402094898592895,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.032694759702956426,
+            "closeness_centrality": 0.3160621761658031,
+            "eigenvector_centrality": 0.13873481295251638,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SMN5",
+            "key": "SMN5",
+            "label": "SMN5",
+            "x": -0.5998274541040142,
+            "y": -0.4615153205859179,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.24497991967871485,
+            "eigenvector_centrality": 0.029401549389145017,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN100",
+            "key": "SN100",
+            "label": "SN100",
+            "x": -0.03922514032676031,
+            "y": 0.058637605960825054,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.24823719602893804,
+            "closeness_centrality": 0.4178082191780822,
+            "eigenvector_centrality": 0.1331201025242974,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN4",
+            "key": "SN4",
+            "label": "SN4",
+            "x": -0.17484456489701872,
+            "y": -0.24775345049950662,
+            "degree": 11,
+            "degree_centrality": 0.18032786885245902,
+            "betweenness_centrality": 0.13856978865859435,
+            "closeness_centrality": 0.39869281045751637,
+            "eigenvector_centrality": 0.300434694092632,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN63",
+            "key": "SN63",
+            "label": "SN63",
+            "x": -0.24026938156689526,
+            "y": -0.4157841851812654,
+            "degree": 8,
+            "degree_centrality": 0.13114754098360656,
+            "betweenness_centrality": 0.04535223883584539,
+            "closeness_centrality": 0.32972972972972975,
+            "eigenvector_centrality": 0.1964949623543159,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN89",
+            "key": "SN89",
+            "label": "SN89",
+            "x": 0.21165071236162883,
+            "y": 0.2871307056223751,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.070516778539934,
+            "closeness_centrality": 0.33516483516483514,
+            "eigenvector_centrality": 0.021393335470318513,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN9",
+            "key": "SN9",
+            "label": "SN9",
+            "x": -0.11864273714867829,
+            "y": -0.10825200055900416,
+            "degree": 8,
+            "degree_centrality": 0.13114754098360656,
+            "betweenness_centrality": 0.1431495183426175,
+            "closeness_centrality": 0.40397350993377484,
+            "eigenvector_centrality": 0.20794272497016436,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN90",
+            "key": "SN90",
+            "label": "SN90",
+            "x": 0.41569285172440085,
+            "y": 0.457371534116083,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.023251600670186175,
+            "closeness_centrality": 0.2975609756097561,
+            "eigenvector_centrality": 0.01720950290984991,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "SN96",
+            "key": "SN96",
+            "label": "SN96",
+            "x": 0.020821510048472897,
+            "y": -0.22152196254874917,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.029157951944837193,
+            "closeness_centrality": 0.32972972972972975,
+            "eigenvector_centrality": 0.08101008713748226,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Stripes",
+            "key": "Stripes",
+            "label": "Stripes",
+            "x": -0.24139913169563929,
+            "y": -0.4815321513586153,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.06283060442896508,
+            "closeness_centrality": 0.3370165745856354,
+            "eigenvector_centrality": 0.1901876692237275,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Thumper",
+            "key": "Thumper",
+            "label": "Thumper",
+            "x": -0.07808831543391682,
+            "y": -0.40992294045263106,
+            "degree": 4,
+            "degree_centrality": 0.06557377049180328,
+            "betweenness_centrality": 0.012037805849281259,
+            "closeness_centrality": 0.3112244897959184,
+            "eigenvector_centrality": 0.07777441781205963,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Topless",
+            "key": "Topless",
+            "label": "Topless",
+            "x": -0.32982046511710283,
+            "y": -0.11533544359531679,
+            "degree": 11,
+            "degree_centrality": 0.18032786885245902,
+            "betweenness_centrality": 0.04067044059647018,
+            "closeness_centrality": 0.3465909090909091,
+            "eigenvector_centrality": 0.2847747361273833,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TR120",
+            "key": "TR120",
+            "label": "TR120",
+            "x": -0.22421042072263836,
+            "y": -0.7277585117416154,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.0030084669428931724,
+            "closeness_centrality": 0.25630252100840334,
+            "eigenvector_centrality": 0.029687644467492346,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TR77",
+            "key": "TR77",
+            "label": "TR77",
+            "x": 0.04563364821180526,
+            "y": -0.14348415523627087,
+            "degree": 6,
+            "degree_centrality": 0.09836065573770492,
+            "betweenness_centrality": 0.0232014761195089,
+            "closeness_centrality": 0.3388888888888889,
+            "eigenvector_centrality": 0.08051044091071376,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TR82",
+            "key": "TR82",
+            "label": "TR82",
+            "x": 0.7434174989386262,
+            "y": 0.3992162743315451,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.23282442748091603,
+            "eigenvector_centrality": 0.0028773772547884503,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TR88",
+            "key": "TR88",
+            "label": "TR88",
+            "x": -0.1220905335087713,
+            "y": -0.7167838455786143,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.0009289617486338798,
+            "closeness_centrality": 0.24696356275303644,
+            "eigenvector_centrality": 0.023409279749005838,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TR99",
+            "key": "TR99",
+            "label": "TR99",
+            "x": -0.25191769485978766,
+            "y": -0.20234565293163187,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.03341103492742837,
+            "closeness_centrality": 0.3505747126436782,
+            "eigenvector_centrality": 0.2175507731491524,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Trigger",
+            "key": "Trigger",
+            "label": "Trigger",
+            "x": -0.49732266440040773,
+            "y": -0.11507784868532336,
+            "degree": 10,
+            "degree_centrality": 0.1639344262295082,
+            "betweenness_centrality": 0.08467725475022557,
+            "closeness_centrality": 0.32972972972972975,
+            "eigenvector_centrality": 0.21046497119908122,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TSN103",
+            "key": "TSN103",
+            "label": "TSN103",
+            "x": -0.28199479536302385,
+            "y": -0.2856761811157048,
+            "degree": 4,
+            "degree_centrality": 0.06557377049180328,
+            "betweenness_centrality": 0.0192343448900826,
+            "closeness_centrality": 0.34269662921348315,
+            "eigenvector_centrality": 0.12948682262155134,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "TSN83",
+            "key": "TSN83",
+            "label": "TSN83",
+            "x": -0.06787028060832093,
+            "y": -0.6146242392335772,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.0011930783242258653,
+            "closeness_centrality": 0.25957446808510637,
+            "eigenvector_centrality": 0.03365714169073576,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Upbang",
+            "key": "Upbang",
+            "label": "Upbang",
+            "x": 0.4050506492845303,
+            "y": 0.3444727977145406,
+            "degree": 7,
+            "degree_centrality": 0.11475409836065574,
+            "betweenness_centrality": 0.0991216467635194,
+            "closeness_centrality": 0.324468085106383,
+            "eigenvector_centrality": 0.02516259327916272,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Vau",
+            "key": "Vau",
+            "label": "Vau",
+            "x": -0.5347721396658853,
+            "y": 0.02098638138002219,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.0008774695250105086,
+            "closeness_centrality": 0.27111111111111114,
+            "eigenvector_centrality": 0.0520569455296256,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Wave",
+            "key": "Wave",
+            "label": "Wave",
+            "x": 0.7222546979791222,
+            "y": 0.6892213585854747,
+            "degree": 2,
+            "degree_centrality": 0.03278688524590164,
+            "betweenness_centrality": 0.0001366120218579235,
+            "closeness_centrality": 0.21328671328671328,
+            "eigenvector_centrality": 0.0032180394021758796,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Web",
+            "key": "Web",
+            "label": "Web",
+            "x": 0.5107064704883393,
+            "y": 0.4434838634437835,
+            "degree": 9,
+            "degree_centrality": 0.14754098360655737,
+            "betweenness_centrality": 0.08420468343495603,
+            "closeness_centrality": 0.30198019801980197,
+            "eigenvector_centrality": 0.020117966547608886,
+            "core_periphery": 1.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Whitetip",
+            "key": "Whitetip",
+            "label": "Whitetip",
+            "x": -0.36200221393955173,
+            "y": -0.6429808780995534,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.24897959183673468,
+            "eigenvector_centrality": 0.027311706509733767,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Zap",
+            "key": "Zap",
+            "label": "Zap",
+            "x": -0.2271248797598753,
+            "y": 0.047779446098238726,
+            "degree": 5,
+            "degree_centrality": 0.0819672131147541,
+            "betweenness_centrality": 0.020332774690384588,
+            "closeness_centrality": 0.34269662921348315,
+            "eigenvector_centrality": 0.11181965049530448,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Zig",
+            "key": "Zig",
+            "label": "Zig",
+            "x": 0.5219776352675644,
+            "y": 0.9999999999999999,
+            "degree": 1,
+            "degree_centrality": 0.01639344262295082,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.1783625730994152,
+            "eigenvector_centrality": 0.0006863048261050234,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Zipfel",
+            "key": "Zipfel",
+            "label": "Zipfel",
+            "x": -0.006097929397362121,
+            "y": -0.4574371186675282,
+            "degree": 3,
+            "degree_centrality": 0.04918032786885246,
+            "betweenness_centrality": 0.014194982613015397,
+            "closeness_centrality": 0.30198019801980197,
+            "eigenvector_centrality": 0.05196533038954653,
             "core_periphery": 0.0,
             "core_periphery_score": 0.0,
             "group": 0.0,
@@ -83,44 +995,958 @@
     ],
     "edges": [
         {
-            "source": 1,
-            "target": 2,
-            "weight": 0.5,
-            "attributes": {
-                "weight": 0.5
-            }
-        },
-        {
-            "source": 1,
-            "target": 3,
+            "source": "Beak",
+            "target": "Fish",
             "weight": 1.0,
-            "attributes": {
-                "weight": 1.0
-            }
+            "attributes": {}
         },
         {
-            "source": 2,
-            "target": 3,
-            "weight": 0.75,
-            "attributes": {
-                "weight": 0.75
-            }
+            "source": "Beak",
+            "target": "Grin",
+            "weight": 1.0,
+            "attributes": {}
         },
         {
-            "source": 3,
-            "target": 4,
-            "weight": 1.5,
-            "attributes": {
-                "weight": 1.5
-            }
+            "source": "Beak",
+            "target": "Haecksel",
+            "weight": 1.0,
+            "attributes": {}
         },
         {
-            "source": 4,
-            "target": 5,
-            "weight": 2.0,
-            "attributes": {
-                "weight": 2.0
-            }
+            "source": "Beak",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beak",
+            "target": "SN96",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beak",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Jet",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Knit",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Notch",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Number1",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Oscar",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "SN100",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "SN90",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Beescratch",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Bumper",
+            "target": "Fish",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Bumper",
+            "target": "SN96",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Bumper",
+            "target": "Thumper",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Bumper",
+            "target": "Zipfel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "CCL",
+            "target": "Double",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "CCL",
+            "target": "Grin",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "CCL",
+            "target": "Zap",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Cross",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN16",
+            "target": "Feather",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN16",
+            "target": "Gallatin",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN16",
+            "target": "Wave",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN16",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Feather",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Gallatin",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Jet",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Wave",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN21",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN63",
+            "target": "Knit",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN63",
+            "target": "Number1",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN63",
+            "target": "PL",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN63",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "DN63",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Double",
+            "target": "Kringel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Double",
+            "target": "Oscar",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Double",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Double",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Double",
+            "target": "Zap",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Feather",
+            "target": "Gallatin",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Feather",
+            "target": "Jet",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Feather",
+            "target": "Ripplefluke",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Feather",
+            "target": "SN90",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Feather",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Fish",
+            "target": "Patchback",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Fish",
+            "target": "SN96",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Fish",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Five",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Fork",
+            "target": "Scabs",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Gallatin",
+            "target": "Jet",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Gallatin",
+            "target": "Ripplefluke",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Gallatin",
+            "target": "SN90",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Gallatin",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Gallatin",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "Hook",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "MN83",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "Scabs",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "Shmuddel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "SN63",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "Stripes",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Grin",
+            "target": "TSN103",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "Jonah",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "MN83",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "Vau",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Haecksel",
+            "target": "Zap",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Hook",
+            "target": "Kringel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Hook",
+            "target": "Scabs",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Hook",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Hook",
+            "target": "SN63",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Hook",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jet",
+            "target": "MN23",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jet",
+            "target": "Mus",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jet",
+            "target": "Number1",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jet",
+            "target": "Quasi",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jet",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "Kringel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "MN105",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "MN83",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "Patchback",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Jonah",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Knit",
+            "target": "PL",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Knit",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "Oscar",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "SN100",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "SN63",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "Thumper",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Kringel",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN105",
+            "target": "Patchback",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN105",
+            "target": "Scabs",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN105",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN105",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN105",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN60",
+            "target": "SN100",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN60",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN60",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN83",
+            "target": "Patchback",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN83",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "MN83",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Mus",
+            "target": "Notch",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Mus",
+            "target": "Number1",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Notch",
+            "target": "Number1",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Oscar",
+            "target": "PL",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Oscar",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Patchback",
+            "target": "SMN5",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Patchback",
+            "target": "Stripes",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Patchback",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Patchback",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Patchback",
+            "target": "TSN103",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "PL",
+            "target": "SN96",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "PL",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Ripplefluke",
+            "target": "Zig",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "Shmuddel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "SN63",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "Stripes",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Scabs",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Shmuddel",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Shmuddel",
+            "target": "Thumper",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Shmuddel",
+            "target": "TR88",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN100",
+            "target": "SN4",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN100",
+            "target": "SN89",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN100",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN100",
+            "target": "Zap",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN4",
+            "target": "SN9",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN4",
+            "target": "Stripes",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN4",
+            "target": "Topless",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN4",
+            "target": "Zipfel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN63",
+            "target": "Stripes",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN63",
+            "target": "Thumper",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN63",
+            "target": "TSN103",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN63",
+            "target": "Whitetip",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN89",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN9",
+            "target": "TSN103",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN90",
+            "target": "Upbang",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN90",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN96",
+            "target": "TR77",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "SN96",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Stripes",
+            "target": "TR120",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Stripes",
+            "target": "TSN83",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Topless",
+            "target": "TR99",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Topless",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Topless",
+            "target": "Zap",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "TR120",
+            "target": "TR88",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "TR82",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "TR99",
+            "target": "Trigger",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Trigger",
+            "target": "Vau",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "TSN83",
+            "target": "Zipfel",
+            "weight": 1.0,
+            "attributes": {}
+        },
+        {
+            "source": "Upbang",
+            "target": "Web",
+            "weight": 1.0,
+            "attributes": {}
         }
     ]
 }
