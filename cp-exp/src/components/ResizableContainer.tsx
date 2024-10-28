@@ -7,6 +7,7 @@ import ConnectedNodes from "./panels/ConnectedNodesPanel";
 import ConenctionProbPanel from "./panels/ConnectionProbPanel"; // ConnectionProbPanel 가져오기
 import MethodModal from "./sub/MethodModal";
 import UploadDataModal from "./sub/UploadDataModal";
+import ExportGraphData from "./sub/ExportDataModal";
 import CentralityBox from "./panels/BoxplotPanel";
 import { Attributes } from "graphology-types";
 import axios from "axios";
@@ -36,6 +37,7 @@ const ResizableContainer: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [isMethodModalOpen, setIsMethodModalOpen] = useState(false);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [isExportModalOpen, setExportModalOpen] = useState(false);
   const [isTooltipModalOpen, setIsTooltipModalOpen] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [isDataUploaded, setIsDataUploaded] = useState<boolean>(false);
@@ -250,14 +252,21 @@ const ResizableContainer: React.FC = () => {
           onClick={() => setIsUploadModalOpen(true)} // Upload Data 모달 열기
           style={{ marginRight: "10px" }}
         >
-          {"Upload Data"}
+          {"Data Upload"}
+        </button>
+        <button
+          className="fancy-button"
+          onClick={() => setExportModalOpen(true)} // Upload Data 모달 열기
+          style={{ marginRight: "10px" }}
+        >
+          {"Data Export"}
         </button>
         <button
           className="fancy-button"
           onClick={() => setIsMethodModalOpen(true)} // Method 모달 열기
           style={{ marginRight: "10px" }}
         >
-          {"Change Method"}
+          {"Select Method"}
         </button>
         <button
           className="fancy-button"
@@ -322,7 +331,7 @@ const ResizableContainer: React.FC = () => {
             }}
           >
             <button className="fancy-button" onClick={handleDropdownToggle}>
-              Select Overviews
+              Select Panels
             </button>
             {isDropdownOpen && (
               <div
@@ -343,7 +352,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview1}
                     onChange={(e) => handleCheckboxChange(e, "overview1")}
                   />
-                  Graph Overview Stats
+                  Graph Statistics
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -351,7 +360,7 @@ const ResizableContainer: React.FC = () => {
                     checked={showOverview.overview2}
                     onChange={(e) => handleCheckboxChange(e, "overview2")}
                   />
-                  Node Detail Panel
+                  Node Detail
                 </label>
                 <label style={{ display: "block", marginBottom: "5px" }}>
                   <input
@@ -464,7 +473,11 @@ const ResizableContainer: React.FC = () => {
         onClose={() => setIsUploadModalOpen(false)}
         onFileUpload={handleFileUpload}
       />
-
+      <ExportGraphData
+        isOpen={isExportModalOpen}
+        onClose={() => setExportModalOpen(false)}
+        graphData={graphData}
+      />
       <Tooltips
         isOpen={isTooltipModalOpen}
         onClose={() => setIsTooltipModalOpen(false)}
