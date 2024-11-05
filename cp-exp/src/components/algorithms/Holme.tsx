@@ -136,16 +136,36 @@ const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
             The <strong>Holme algorithm</strong> identifies core-periphery (CP)
             structures by optimizing the closeness centrality of core nodes. It
             assumes that core nodes are closely connected to all other nodes,
-            differing from Borgatti-Everett-based methods. The closeness
-            centrality is computed as the inverse of the average distance
-            between core nodes and all other nodes.
+            differing from Borgatti-Everett-based methods.
+          </p>
+          <p>
+            The closeness centrality, <InlineMath math="C_{cp}" />, is
+            calculated as:
+            <br />
+            <BlockMath math="C_{cp} = \left( \frac{1}{|U|(n - 1)} \sum_{i \in U} \sum_{j \in V \setminus \{i\}} d_{ij} \right)^{-1}" />
+            where:
+            <ul>
+              <li>
+                <InlineMath math="U" /> represents the core nodes,
+              </li>
+              <li>
+                <InlineMath math="V" /> represents all nodes,
+              </li>
+              <li>
+                <InlineMath math="d_{ij}" /> is the distance between nodes{" "}
+                <InlineMath math="i" /> and <InlineMath math="j" />.
+              </li>
+            </ul>
+            This measure is the inverse of the average distance between core
+            nodes and all other nodes, capturing how efficiently the core is
+            connected within the network.
           </p>
           <p>
             The algorithm evaluates various <InlineMath math="k" />
-            -cores and selects the best <InlineMath math="k" /> that maximizes
-            the closeness centrality. Finally, it compares the observed core
-            with a random configuration model to assess its statistical
-            significance.
+            -cores and selects the best
+            <InlineMath math="k" /> that maximizes the closeness centrality.
+            Finally, it compares the observed core with a random configuration
+            model to assess its statistical significance.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { downloadAsImage } from "@sigma/export-image";
 import { useSigma } from "@react-sigma/core";
 import { BsCamera } from "react-icons/bs";
+import styled from "styled-components";
 
 const GraphSnapshot: React.FC = () => {
   const sigma = useSigma();
@@ -145,42 +146,37 @@ const GraphSnapshot: React.FC = () => {
               <input type="checkbox" id="reset-camera-state" />
               <label htmlFor="reset-camera-state">Reset camera state</label>
             </div>
-            <button
-              type="button"
-              onClick={saveSnapshot}
-              id="save-as-png"
-              style={{
-                marginTop: "10px",
-                backgroundColor: "#4CAF50",
-                color: "#fff",
-                padding: "0.5em 1em",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Save image snapshot
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowModal(false)}
-              style={{
-                marginTop: "10px",
-                background: "#f44336",
-                color: "#fff",
-                padding: "0.5em 1em",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </button>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <StyledButton onClick={saveSnapshot}>Save</StyledButton>
+              <StyledButton onClick={() => setShowModal(false)}>
+                Close
+              </StyledButton>
+            </div>
           </form>
         </div>
       )}
     </div>
   );
 };
+
+// StyledButton component for consistent styling
+const StyledButton = styled.button<{ isHovered?: boolean }>`
+  display: block;
+  width: 45%;
+  background-color: ${(props) => (props.isHovered ? "#87CEEB" : "#fff")};
+  color: ${(props) => (props.isHovered ? "#fff" : "#000")};
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #87ceeb;
+    color: #fff;
+  }
+`;
 
 export default GraphSnapshot;

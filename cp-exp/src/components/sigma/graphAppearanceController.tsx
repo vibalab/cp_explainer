@@ -3,6 +3,7 @@ import { useSigma } from "@react-sigma/core";
 import { BsBrush } from "react-icons/bs";
 import { Attributes } from "graphology-types";
 import { getHSLColor } from "../sub/colorUtils";
+import styled from "styled-components";
 
 interface GraphAppearanceControllerProps {
   threshold: number;
@@ -126,24 +127,26 @@ const GraphAppearanceController: React.FC<GraphAppearanceControllerProps> = ({
     sigma.refresh();
   };
 
-  // Function to reset all states to default values
   const resetToDefault = () => {
     const graph = sigma.getGraph();
 
-    // Iterate over nodes to reset their attributes based on the provided dataset logic
     graph.forEachNode((node, attributes) => {
-      const nodeHSL = { h: 197, s: 71, l: 73 }; // Replace with your default HSL value
+      const nodeHSL = { h: 197, s: 71, l: 73 };
       const nodeSize = Math.min(
         Math.max(attributes.degree_centrality * 100, 10),
         30
       );
 
-      // Set individual attributes using setNodeAttribute
       graph.setNodeAttribute(node, "size", nodeSize);
       graph.setNodeAttribute(
         node,
         "color",
         getHSLColor(nodeHSL.h, nodeHSL.s, nodeHSL.l, attributes.core_periphery)
+      );
+
+      document.documentElement.style.setProperty(
+        "--fancy-button-hover-color",
+        "#87ceeb"
       );
       graph.setNodeAttribute(
         node,
@@ -153,8 +156,8 @@ const GraphAppearanceController: React.FC<GraphAppearanceControllerProps> = ({
           : "#000000"
       );
     });
+    onNodeColorChange(197, 71, 73);
 
-    // Iterate over edges to reset their attributes
     graph.forEachEdge((edge, attributes) => {
       const edgeWeight = attributes.weight || 1;
       graph.setEdgeAttribute(edge, "size", edgeWeight / 2);
@@ -163,6 +166,7 @@ const GraphAppearanceController: React.FC<GraphAppearanceControllerProps> = ({
 
     sigma.refresh();
   };
+
   return (
     <div>
       <button
@@ -375,61 +379,46 @@ const GraphAppearanceController: React.FC<GraphAppearanceControllerProps> = ({
                 gap: "10px",
               }}
             >
-              <button
-                type="button"
-                onClick={resetToDefault}
-                style={{
-                  marginTop: "10px",
-                  backgroundColor: "#FFC107",
-                  color: "#fff",
-                  padding: "0.5em 1em",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  flex: 1,
-                }}
-              >
+              <StyledButton type="button" onClick={resetToDefault}>
                 Default
-              </button>
-
-              <button
-                type="button"
-                onClick={updateNodeSize}
-                style={{
-                  marginTop: "10px",
-                  backgroundColor: "#4CAF50",
-                  color: "#fff",
-                  padding: "0.5em 1em",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  flex: 1,
-                }}
-              >
-                Apply Changes
-              </button>
+              </StyledButton>
+              <StyledButton type="button" onClick={updateNodeSize}>
+                Apply
+              </StyledButton>
             </div>
-
-            <button
-              type="button"
-              onClick={() => setShowModal(false)}
-              style={{
-                marginTop: "10px",
-                background: "#f44336",
-                color: "#fff",
-                padding: "0.5em 1em",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </button>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <StyledButton
+                onClick={() => setShowModal(false)}
+                style={{ width: "100%" }}
+              >
+                Close
+              </StyledButton>
+            </div>
           </form>
         </div>
       )}
     </div>
   );
 };
+
+// StyledButton component for consistent styling
+const StyledButton = styled.button<{ $isHovered?: boolean }>`
+  display: block;
+  width: 50%;
+  background-color: ${(props) => (props.$isHovered ? "#87CEEB" : "#fff")};
+  color: ${(props) => (props.$isHovered ? "#fff" : "#000")};
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #87ceeb;
+    color: #fff;
+  }
+`;
 
 export default GraphAppearanceController;

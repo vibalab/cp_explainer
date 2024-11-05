@@ -33,8 +33,8 @@ const Tooltips: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         understanding of network structures.
         <br />
         <br />
-        The system supports the use of <strong>GEXF format</strong> for external
-        data uploads, ensuring compatibility with widely used tools like{" "}
+        The system supports the use of various formats for external data loads,
+        ensuring compatibility with widely used tools like{" "}
         <a href="https://gephi.org" target="_blank" rel="noopener noreferrer">
           Gephi
         </a>
@@ -48,7 +48,7 @@ const Tooltips: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   );
 
   const dataload = (
-    <Accordion title="Network Data Uploading">
+    <Accordion title="Network Data Loading">
       <center>
         <img
           src="/data_upload.png" // Replace with the actual path to your image in public folder
@@ -57,17 +57,47 @@ const Tooltips: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         />
       </center>
       <p>
-        <strong>Upload Data Button</strong>: This button opens a modal window
-        for uploading GEXF files.
+        This modal dialog allows users to upload their own graph files for
+        analysis.
       </p>
       <br />
       <p>
-        <strong>File Upload Modal</strong>: Users can select a GEXF file from
-        their system. In the example, the file <em>airlines-sample.gexf</em> is
-        selected. After selecting, clicking the <strong>Load</strong> button
-        uploads and processes the data, which is then visualized in the network
-        graph. Users can also quit without changes by clicking the{" "}
-        <strong>Quit</strong> button.
+        <strong>File Format Information:</strong>
+        The modal displays supported file formats for uploading, including
+        formats like <code>.gexf</code>, <code>.gml</code>,{" "}
+        <code>.graphml</code>, <code>.adjlist</code>, <code>.edgelist</code>,{" "}
+        <code>.net</code>, <code>.yaml</code>, <code>.graph6</code>,{" "}
+        <code>.sparse6</code>, <code>.gpickle</code>, <code>.json</code>, as
+        well as <code>.xlsx</code> and <code>.csv</code>. These are clickable
+        links, leading to documentation for each format, making it easier for
+        users to understand and ensure compatibility.
+      </p>
+      <br />
+
+      <p>
+        <strong>File Upload Section:</strong>A file selection button (
+        <code>파일 선택</code>) allows users to browse and choose a file for
+        upload, with the selected file name displayed next to the button (
+        <code>선택된 파일 없음</code> if no file is selected).
+      </p>
+      <br />
+
+      <p>
+        <strong>Action Buttons:</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Load</strong>: Initiates the upload process for the selected
+          file.
+        </li>
+        <li>
+          <strong>Quit</strong>: Closes the modal without uploading a file.
+        </li>
+      </ul>
+
+      <p>
+        The modal is designed to be user-friendly, with clear instructions and
+        compatibility information to streamline the file upload process.
       </p>
     </Accordion>
   );
@@ -84,36 +114,35 @@ const Tooltips: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       </center>
       <br />
       <p>
-        Data is automatically visualized as a network uploaded. Powered by{" "}
-        <strong>Sigma.js</strong>, it allows users to interactively explore
-        nodes and edges that represent relationships between entities in a
-        network. The main features of this system include node degree
-        visualization, edge strength indication, and real-time interactions.
+        Data is automatically visualized as a network when uploaded. Powered by{" "}
+        <strong>Sigma.js</strong>, this system allows users to interactively
+        explore nodes and edges that represent relationships between entities in
+        a network. Key features include node degree visualization, edge strength
+        indication, real-time interactions, and configurable settings to
+        customize the appearance.
       </p>
 
       <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
         <li>
           <strong>Node Size Based on Degree</strong>: The size of each node in
-          the graph represents its degree, which indicates the number of
-          connections that node has. Larger nodes have more connections and are
-          generally more central within the network, signifying their importance
-          or influence within the core-periphery structure.
+          the graph initially represents its degree, indicating the number of
+          connections that node has. Larger nodes have more connections,
+          highlighting their centrality and influence within the network’s
+          core-periphery structure.
         </li>
         <li>
           <strong>Edge Thickness for Connection Strength</strong>: The thickness
           of the edges reflects the strength of the connection between nodes.
-          Stronger or more significant connections are visualized with thicker
-          lines, allowing users to easily distinguish between different levels
-          of connectivity.
+          Thicker lines indicate stronger or more significant connections,
+          allowing users to quickly assess connectivity levels.
         </li>
         <li>
           <strong>Real-Time Interaction</strong>: Users can interact with the
-          graph through a variety of intuitive actions:
+          graph using intuitive actions:
           <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
             <li>
               <strong>Hover</strong>: Highlight a node and its immediate
-              connections by hovering over it. This interaction allows users to
-              quickly identify which nodes are connected.
+              connections by hovering over it, helping users see related nodes.
             </li>
             <li>
               <strong>Click</strong>: Clicking on a node provides detailed
@@ -121,39 +150,41 @@ const Tooltips: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               highlighting its neighboring nodes.
             </li>
             <li>
-              <strong>Drag and Drop</strong>: Users can freely move nodes around
-              the canvas to explore the network layout in a way that best suits
-              their analysis.
+              <strong>Drag and Drop</strong>: Move nodes freely around the
+              canvas to explore the layout in a way that best suits your
+              analysis.
             </li>
           </ul>
         </li>
         <li>
-          <strong>Graph Tools and Controls</strong>: At the bottom of the
-          screen, several interactive tools enhance the visualization
-          experience:
+          <strong>Graph Tools and Controls</strong>: Interactive tools at the
+          bottom of the screen enhance the visualization experience:
           <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
             <li>
-              <strong>Zoom In/Out</strong>: Users can zoom into specific areas
-              of the graph or zoom out for a broader view of the entire network.
+              <strong>Zoom In/Out</strong>: Zoom into specific areas or zoom out
+              for a broader view of the network.
             </li>
             <li>
-              <strong>Full-Screen Mode</strong>: The graph can be expanded to
-              fill the entire screen, providing a more immersive analysis
-              experience.
+              <strong>Full-Screen Mode</strong>: Expand the graph to fill the
+              screen for a more immersive analysis experience.
             </li>
             <li>
-              <strong>Screenshot</strong>: A screenshot tool allows users to
-              capture the current state of the graph for documentation or
-              further analysis.
+              <strong>Screenshot</strong>: Capture the current state of the
+              graph for documentation or further analysis.
             </li>
           </ul>
         </li>
         <li>
-          <strong>Search Functionality</strong>: Located at the bottom-right
-          corner of the interface, a search tool (magnifying glass icon) allows
-          users to quickly find and highlight specific nodes in the network by
-          name or other identifiers. This feature makes it easy to locate
-          particular nodes within large and complex graphs.
+          <strong>Search Functionality</strong>: A search tool (magnifying glass
+          icon) at the bottom-right corner allows users to quickly find and
+          highlight specific nodes by name or other identifiers, simplifying
+          navigation within large graphs.
+        </li>
+        <li>
+          <strong>Customizable Appearance</strong>: Users can adjust node size,
+          color, and other visual attributes to suit their preferences or
+          analysis needs. This configuration allows for greater flexibility in
+          highlighting specific patterns or distinctions within the network.
         </li>
       </ul>
     </Accordion>

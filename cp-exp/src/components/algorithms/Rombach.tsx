@@ -139,20 +139,58 @@ const Rombach: FC<RombachProps> = ({
             maxWidth: "600px",
           }}
         >
-          <h3>Core-Periphery Profile Explanation</h3> <br />
+          <h3>Rombach Explanation</h3> <br />
           <p>
-            The <strong>Rombach algorithm</strong> focuses on maximizing Core
-            Quality, which is defined as the product of the adjacency matrix
-            <InlineMath math="A" /> and the core-periphery matrix{" "}
-            <InlineMath math="C" />. The matrix <InlineMath math="C" /> can be
-            defined in various ways using a transition function that assigns
-            nodes to either the core or periphery.
+            The <strong>Rombach algorithm</strong> identifies core-periphery
+            structures by maximizing Core Quality, measured using the adjacency
+            matrix <InlineMath math="A" /> and the core-periphery matrix{" "}
+            <InlineMath math="C" />. The core-periphery assignment is optimized
+            through a transition function.
           </p>
           <p>
-            Optimization is performed using annealing, allowing the model to
-            find the optimal core-periphery allocation for the network.
-            Additionally, the model calculates a Core Score to evaluate each
-            node’s contribution to the CP structure.
+            The algorithm defines <InlineMath math="R_{\gamma}" /> as follows:
+            <br />
+            <BlockMath math="R_{\gamma} = \frac{\sum_{i,j} A_{ij} C_{i} C_{j}}{\sum_{i,j} A_{ij}}" />
+            where:
+            <ul>
+              <li>
+                <InlineMath math="A_{ij}" /> represents the adjacency matrix
+                element between nodes <InlineMath math="i" /> and{" "}
+                <InlineMath math="j" />.
+              </li>
+              <li>
+                <InlineMath math="C_{i}" /> and <InlineMath math="C_{j}" />{" "}
+                represent core-periphery assignments.
+              </li>
+            </ul>
+            This ratio quantifies how well the network aligns with an ideal
+            core-periphery structure.
+          </p>
+          <br />
+          <p>
+            The <strong>Core Score</strong> for each node is calculated as:
+            <br />
+            <BlockMath math="Core\ Score(i) = \sum_{j} A_{ij} C_{j}" />
+            where:
+            <ul>
+              <li>
+                <InlineMath math="A_{ij}" /> is the adjacency matrix value
+                between node <InlineMath math="i" /> and <InlineMath math="j" />
+                .
+              </li>
+              <li>
+                <InlineMath math="C_{j}" /> is the core-periphery assignment of
+                node <InlineMath math="j" />, where core nodes contribute higher
+                values.
+              </li>
+            </ul>
+            This score reflects each node's role in the core-periphery
+            structure, with higher scores indicating stronger integration into
+            the core.
+          </p>
+          <p>
+            The Rombach algorithm uses an annealing process to refine
+            assignments, maximizing Core Quality and Core Scores.
           </p>
           <button onClick={toggleModal}>Close</button>
         </div>

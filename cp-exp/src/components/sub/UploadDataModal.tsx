@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
 
 interface UploadDataModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onFileUpload: (file: File) => void; // 파일 객체를 전달할 콜백
+  onFileUpload: (file: File) => void;
 }
 
 const UploadDataModal: React.FC<UploadDataModalProps> = ({
   isOpen,
   onClose,
-  onFileUpload, // 부모로부터 받은 콜백 함수
+  onFileUpload,
 }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  // 파일 선택 핸들러
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
     setSelectedFile(file);
   };
 
-  // 파일 업로드 핸들러
   const handleUpload = async () => {
     if (!selectedFile) {
       alert("파일을 선택하세요.");
@@ -41,8 +40,8 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
         }
       );
       alert(response.data.message);
-      onFileUpload(selectedFile); // 부모에게 파일 객체 전달
-      onClose(); // 업로드 완료 후 모달 닫기
+      onFileUpload(selectedFile);
+      onClose();
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(
@@ -58,11 +57,10 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
     }
   };
 
-  if (!isOpen) return null; // 모달이 열리지 않았을 때 렌더링하지 않음
+  if (!isOpen) return null;
 
   return (
     <>
-      {/* 모달 배경 */}
       <div
         style={{
           position: "fixed",
@@ -73,10 +71,9 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           backgroundColor: "none",
           zIndex: 999,
         }}
-        onClick={onClose} // 배경 클릭 시 모달 닫기
+        onClick={onClose}
       />
 
-      {/* 모달 창 */}
       <div
         style={{
           position: "fixed",
@@ -200,38 +197,12 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
         <div style={{ marginBottom: "20px" }}>
           <input type="file" onChange={handleFileChange} />
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <button
-            onClick={handleUpload}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Load
-          </button>
-          <button
-            onClick={onClose}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#f44336",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginLeft: "10px",
-            }}
-          >
-            Quit
-          </button>
-        </div>
+        <ButtonContainer>
+          <ToggleButton onClick={handleUpload}>Load</ToggleButton>
+          <ToggleButton onClick={onClose}>Quit</ToggleButton>
+        </ButtonContainer>
       </div>
 
-      {/* CSS for tooltip */}
       <style>{`
         .tooltip {
           position: relative;
@@ -249,7 +220,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           padding: 5px;
           position: absolute;
           z-index: 1;
-          bottom: 125%; /* Position above the text */
+          bottom: 125%;
           left: 50%;
           margin-left: -100px;
           opacity: 0;
@@ -266,3 +237,26 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
 };
 
 export default UploadDataModal;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ToggleButton = styled.button`
+  display: block;
+  width: 45%;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #87ceeb;
+    color: #fff;
+  }
+`;

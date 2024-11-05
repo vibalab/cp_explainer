@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Attributes } from "graphology-types";
-import Accordion, { AccordionHandle } from "../sub/Accordion";
+import Accordion from "../sub/Accordion";
 import styled from "styled-components";
-import SmallAccordion from "../sub/SmallAccordion";
 import Tooltip from "../sub/Tooltip";
 import OverviewItem from "../sub/OverviewItem";
 
@@ -69,10 +68,11 @@ const NodeDetailsPanel: React.FC<NodeDetailsPanelProps> = ({
                   width: "15px",
                   height: "15px",
                   backgroundColor: nodeColor,
+                  borderWidth: "1px",
+                  borderStyle: "solid",
                   borderColor: nodeAttributes?.borderColor,
                   marginRight: "10px",
-                  border: "1px solid #000",
-                  display: "inline-block", // Add this to match the inline style of the title
+                  display: "inline-block",
                   borderRadius: "50%", // 원형으로 만들기 위해 반지름을 50%로 설정
                 }}
               />

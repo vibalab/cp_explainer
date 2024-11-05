@@ -45,6 +45,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
       // 분리된 graphData 생성 로직과 통신 로직을 사용하여 업데이트
       const updatedMetric = await updateGraphMetric(graphData, method);
       setMetric(updatedMetric);
+      setTotCapacity(updatedMetric?.cc);
     } catch (error) {
       console.error("Error uploading graph data:", error);
     } finally {
@@ -58,7 +59,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
     try {
       const dataset = await fetchMetricData();
       setMetric(dataset);
-      setTotCapacity(metric?.tot_capa);
+      setTotCapacity(dataset?.cc);
       setError(null);
     } catch (err) {
       setError("Failed to load graph data.");
@@ -74,7 +75,7 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
       const graphData = createGraphData(graph);
       setGraphData(graphData);
     }
-  }, [method, graph]);
+  }, [method, graph, setGraphData]);
 
   useEffect(() => {
     if (hoveredNode) {

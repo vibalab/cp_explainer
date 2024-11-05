@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
+import styled from "styled-components";
 import { NodeData, EdgeData } from "../../types";
 
 interface GraphData {
@@ -76,61 +77,90 @@ const ExportGraphData: React.FC<ExportGraphDataProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div style={modalOverlayStyles}>
-      <div style={modalContentStyles}>
+    <ModalOverlay onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
         <h3>Export Graph Data</h3>
-        {"File Name:"}
-        <input
-          type="text"
-          value={fileName}
-          onChange={(e) => setFileName(e.target.value)}
-          placeholder="Enter file name"
-          style={{ marginBottom: "10px", width: "100%" }}
-        />
-        {"File Format:"}
-        <select
-          value={fileFormat}
-          onChange={(e) => setFileFormat(e.target.value)}
-          style={{ marginBottom: "10px", width: "100%" }}
-        >
-          <option value="json">JSON</option>
-          <option value="csv">CSV</option>
-          <option value="xlsx">XLSX</option>
-        </select>
-        <button onClick={handleFileExport}>Export</button>
-        <button onClick={onClose} style={{ marginTop: "10px" }}>
-          Close
-        </button>
-      </div>
-    </div>
+        <label>
+          File Name:
+          <input
+            type="text"
+            value={fileName}
+            onChange={(e) => setFileName(e.target.value)}
+            placeholder="Enter file name"
+            style={{ marginBottom: "10px", width: "100%" }}
+          />
+        </label>
+        <label>
+          File Format:
+          <select
+            value={fileFormat}
+            onChange={(e) => setFileFormat(e.target.value)}
+            style={{ marginBottom: "10px", width: "100%" }}
+          >
+            <option value="json">JSON</option>
+            <option value="csv">CSV</option>
+            <option value="xlsx">XLSX</option>
+          </select>
+        </label>
+        <ButtonContainer>
+          <StyledButton onClick={handleFileExport}>Export</StyledButton>
+          <StyledButton onClick={onClose}>Close</StyledButton>
+        </ButtonContainer>
+      </ModalContent>
+    </ModalOverlay>
   );
 };
 
-const modalOverlayStyles: React.CSSProperties = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  backgroundColor: "rgba(0, 0, 0, 0)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  zIndex: 1000,
-};
+// Styled components for modal and buttons
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+`;
 
-const modalContentStyles: React.CSSProperties = {
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  backgroundColor: "white",
-  padding: "20px",
-  zIndex: 1000,
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  width: "300px",
-  borderRadius: "10px",
-  border: "1px solid black",
-};
+const ModalContent = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  border-radius: 10px;
+  border: 1px solid black;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
+const StyledButton = styled.button<{ $isHovered?: boolean }>`
+  display: block;
+  width: 45%;
+  background-color: ${(props) => (props.$isHovered ? "#87CEEB" : "#fff")};
+  color: ${(props) => (props.$isHovered ? "#fff" : "#000")};
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #87ceeb;
+    color: #fff;
+  }
+`;
 
 export default ExportGraphData;

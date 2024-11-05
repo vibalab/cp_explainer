@@ -275,26 +275,24 @@ const NodeChangePanel: FC<{
 
       <StatsContainer>
         <StatText>
-          <strong>Total Core Connection Ratio:</strong>{" "}
+          <strong>(Connected Core) / (Total Core):</strong>{" "}
           {totCoreConn !== null ? totCoreConn.toFixed(2) : "N/A"}
         </StatText>
 
         <StatText>
-          <strong>Proportion Core Connection:</strong>{" "}
+          <strong>(Connected Core) / (Connected Nodes):</strong>{" "}
           {propCoreConn !== null ? propCoreConn.toFixed(2) : "N/A"}
         </StatText>
 
         <StatText>
-          <strong>VS. AVG Closeness Centrality:</strong>{" "}
+          <strong>Ratio to Avg Closeness Centrality:</strong>{" "}
           <ConnectionValue
             highlight={closeCentrality !== null && closeCentrality >= 1.5}
           >
             {closeCentrality !== null ? closeCentrality.toFixed(2) : "N/A"}
           </ConnectionValue>
         </StatText>
-
         <SubHeader>Current Allocation Affects:</SubHeader>
-
         <StatFlexRow>
           <P00Container>
             <StatTextWithColor color={getColorPeri(deltaP00)}>
@@ -332,7 +330,7 @@ const PanelContainer = styled.div<{ x: number; y: number }>`
   box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   font-family: "Arial", sans-serif;
-  width: 280px;
+  width: 300px;
 `;
 
 const ToggleButton = styled.button<{ isHovered: boolean }>`

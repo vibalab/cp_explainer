@@ -506,10 +506,14 @@ async def apply_algorithm(
 
         elif method == "Silva":
             model = Silva(graph)
-            threshold = float(parameters_dict['threshold'])
+            try:
+                threshold = float(parameters_dict['threshold'])
+            except:
+                threshold = 0.9
             cc, core_indices, capcity_order, cumulative_capacity = model.silva_core_coefficient(graph, threshold)
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices)
             metric = {"cc": cc}
+
 
         elif method == "Rossa":
             model = Rossa(graph)

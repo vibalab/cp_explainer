@@ -25,7 +25,7 @@ const GraphDataController: FC<PropsWithChildren<GraphDataControllerProps>> = ({
       console.error("Graph or dataset not available");
       return;
     } else {
-      console.log("Dataset is for Animations");
+      console.log("Dataset is now available.");
     }
 
     try {
