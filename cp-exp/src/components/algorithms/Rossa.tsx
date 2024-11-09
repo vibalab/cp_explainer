@@ -205,7 +205,7 @@ const Rossa: FC<RossaProps> = ({
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0)",
             zIndex: 999,
           }}
           onClick={toggleModal} // 배경 클릭 시 모달 닫기
