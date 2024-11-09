@@ -74,7 +74,7 @@ const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
 
   return (
     <div>
-      <h3 style={{ marginBottom: 0 }}>Metric: </h3>
+      <h3 style={{ marginBottom: 0 }}>Method: </h3>
       <h1 style={{ fontSize: "24px", marginTop: 0, marginBottom: 0 }}>
         <a href={doiRef} target="_blank" rel="noopener noreferrer">
           Holme.
@@ -179,7 +179,7 @@ const Holme: FC<HolmeProps> = ({ method, setGraphData }) => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: "rgba(0, 0, 0, 0)",
             zIndex: 999,
           }}
           onClick={toggleModal}

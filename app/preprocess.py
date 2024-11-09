@@ -119,8 +119,8 @@ def load_gpickle_to_graph(gpickle_file_path):
 # JSON 파일 로드
 def load_json_to_graph(json_file_path):
     with open(json_file_path, "r") as f:
-        data = f.read()
-    graph = nx.node_link_graph(data)
+        data = json.load(f)  # JSON 파일을 파싱하여 Python 딕셔너리로 변환
+    graph = nx.node_link_graph(data)  # 딕셔너리를 NetworkX 그래프로 변환
     return graph
 
 

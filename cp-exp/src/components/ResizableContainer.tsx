@@ -252,7 +252,7 @@ const ResizableContainer: React.FC = () => {
           onClick={() => setIsUploadModalOpen(true)} // Upload Data 모달 열기
           style={{ marginRight: "10px" }}
         >
-          {"Data Upload"}
+          {"Data Import"}
         </button>
         <button
           className="fancy-button"

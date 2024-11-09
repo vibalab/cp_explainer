@@ -89,7 +89,7 @@ const UploadDataModal: React.FC<UploadDataModalProps> = ({
           border: "1px solid black",
         }}
       >
-        <h3>Upload Your Own Graph File</h3>
+        <h3>Import Your Own Graph File</h3>
         <p style={{ fontSize: "14px", color: "#666" }}>
           Supported file formats:{" "}
           <a
