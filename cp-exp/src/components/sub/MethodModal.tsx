@@ -7,17 +7,17 @@ interface MethodModalProps {
   onProcessing: (method: string, parameters: Record<string, string>) => void;
 }
 
-const Tooltip = styled.div<{ top: number; left: number }>`
+const Tooltip = styled.div<{ $top: number; $left: number }>`
   position: fixed;
-  top: ${({ top }) => top}px;
-  left: ${({ left }) => left}px;
+  top: ${({ $top }) => $top}px;
+  left: ${({ $left }) => $left}px;
   background-color: #333;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 0.9em;
   pointer-events: none;
-  z-index: 2000;
+  z-index: 1000;
   white-space: nowrap;
 `;
 
@@ -401,7 +401,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
   return (
     <>
       {tooltip && (
-        <Tooltip top={tooltip.top} left={tooltip.left}>
+        <Tooltip $top={tooltip.top} $left={tooltip.left}>
           {tooltip.text}
         </Tooltip>
       )}
