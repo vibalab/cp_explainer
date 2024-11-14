@@ -58,8 +58,8 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
     setLoading(true);
     try {
       const dataset = await fetchMetricData();
+      console.log(dataset);
       setMetric(dataset);
-      setTotCapacity(dataset?.cc);
       setError(null);
     } catch (err) {
       setError("Failed to load graph data.");
@@ -73,19 +73,10 @@ const Silva: FC<SilvaProps> = ({ method, hoveredNode, setGraphData }) => {
     if (method) {
       handleFetchData();
       const graphData = createGraphData(graph);
+
       setGraphData(graphData);
     }
   }, [method, graph, setGraphData]);
-
-  useEffect(() => {
-    if (hoveredNode) {
-      const newCapcity =
-        graph.getNodeAttribute(hoveredNode, "core_periphery_score") || 0;
-      setCapcity(newCapcity.toFixed(2));
-    } else {
-      setCapcity(0); // hoveredNode가 없을 때는 0으로 설정
-    }
-  }, [graph, hoveredNode]);
 
   return (
     <div>

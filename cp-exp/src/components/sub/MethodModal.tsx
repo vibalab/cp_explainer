@@ -7,6 +7,39 @@ interface MethodModalProps {
   onProcessing: (method: string, parameters: Record<string, string>) => void;
 }
 
+const Tooltip = styled.div<{ top: number; left: number }>`
+  position: fixed;
+  top: ${({ top }) => top}px;
+  left: ${({ left }) => left}px;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  pointer-events: none;
+  z-index: 2000;
+  white-space: nowrap;
+`;
+
+const StyledButton = styled.button<{ $isHovered?: boolean }>`
+  display: block;
+  width: 45%;
+  background-color: ${(props) => (props.$isHovered ? "#87CEEB" : "#fff")};
+  color: ${(props) => (props.$isHovered ? "#fff" : "#000")};
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-family: "Arial", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #87ceeb;
+    color: #fff;
+  }
+`;
+
 const MethodModal: React.FC<MethodModalProps> = ({
   isOpen,
   onClose,
@@ -14,12 +47,17 @@ const MethodModal: React.FC<MethodModalProps> = ({
 }) => {
   const [selectedMethod, setSelectedMethod] = useState("BE");
   const [parameters, setParameters] = useState<Record<string, string>>({});
+  const [tooltip, setTooltip] = useState<{
+    text: string;
+    top: number;
+    left: number;
+  } | null>(null);
 
   if (!isOpen) return null;
 
   const handleMethodChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedMethod(event.target.value);
-    setParameters({}); // 메소드 변경 시 파라미터 초기화
+    setParameters({});
   };
 
   const handleParameterChange = (paramKey: string, value: string) => {
@@ -29,9 +67,25 @@ const MethodModal: React.FC<MethodModalProps> = ({
     }));
   };
 
+  const handleMouseEnter = (e: React.MouseEvent, text: string) => {
+    setTooltip({ text, top: e.clientY + 15, left: e.clientX + 15 });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (tooltip) {
+      setTooltip(
+        (prev) => prev && { ...prev, top: e.clientY + 15, left: e.clientX + 15 }
+      );
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setTooltip(null);
+  };
+
   const handleSubmit = () => {
-    onProcessing(selectedMethod, parameters); // 선택한 메소드와 파라미터를 부모로 전달
-    onClose(); // 모달 닫기
+    onProcessing(selectedMethod, parameters);
+    onClose();
   };
 
   const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -192,13 +246,10 @@ const MethodModal: React.FC<MethodModalProps> = ({
   const renderParameters = () => {
     switch (selectedMethod) {
       case "BE":
-      case "Brusco":
-      case "Holme":
-      case "Minre":
         return (
           <div>
             <label>
-              Number of Iters:
+              Number of Iters (default: 1000):
               <br />
               <input
                 type="number"
@@ -206,6 +257,89 @@ const MethodModal: React.FC<MethodModalProps> = ({
                 onChange={(e) =>
                   handleParameterChange("n_iter", e.target.value)
                 }
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The number of iterations used in the algorithm to optimize core-periphery assignments."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{ width: "95%", padding: "5px", marginTop: "5px" }}
+              />
+            </label>
+          </div>
+        );
+      case "Brusco":
+        return (
+          <div>
+            <label>
+              Number of Iters (default: 1000):
+              <br />
+              <input
+                type="number"
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The number of iterations used in the algorithm to optimize core-periphery assignments."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{ width: "95%", padding: "5px", marginTop: "5px" }}
+              />
+            </label>
+          </div>
+        );
+      case "Holme":
+        return (
+          <div>
+            <label>
+              Number of Iters (default: 100):
+              <br />
+              <input
+                type="number"
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The number of iterations used in Holme to get C_cp Score."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{ width: "95%", padding: "5px", marginTop: "5px" }}
+              />
+            </label>
+          </div>
+        );
+      case "Minre":
+        return (
+          <div>
+            <label>
+              Number of Iters (default: 10000):
+              <br />
+              <input
+                type="number"
+                value={parameters["n_iter"] || ""}
+                onChange={(e) =>
+                  handleParameterChange("n_iter", e.target.value)
+                }
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The number of iterations used in the algorithm to optimize core-periphery assignments."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
                 style={{ width: "95%", padding: "5px", marginTop: "5px" }}
               />
             </label>
@@ -215,7 +349,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
         return (
           <div>
             <label>
-              Threshold:
+              Threshold (default: 0.9) :
               <br />
               <input
                 type="number"
@@ -223,6 +357,14 @@ const MethodModal: React.FC<MethodModalProps> = ({
                 onChange={(e) =>
                   handleParameterChange("threshold", e.target.value)
                 }
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The threshold value of Capacity to determine core-periphery separation in the Silva method."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
                 style={{ width: "95%", padding: "5px", marginTop: "5px" }}
               />
             </label>
@@ -232,12 +374,20 @@ const MethodModal: React.FC<MethodModalProps> = ({
         return (
           <div>
             <label>
-              Beta:
+              Beta (default: 0.1) :
               <br />
               <input
                 type="number"
                 value={parameters["beta"] || ""}
                 onChange={(e) => handleParameterChange("beta", e.target.value)}
+                onMouseEnter={(e) =>
+                  handleMouseEnter(
+                    e,
+                    "The beta parameter controls the proportion of core nodes."
+                  )
+                }
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
                 style={{ width: "95%", padding: "5px", marginTop: "5px" }}
               />
             </label>
@@ -250,6 +400,11 @@ const MethodModal: React.FC<MethodModalProps> = ({
 
   return (
     <>
+      {tooltip && (
+        <Tooltip top={tooltip.top} left={tooltip.left}>
+          {tooltip.text}
+        </Tooltip>
+      )}
       <div
         style={{
           position: "fixed",
@@ -262,7 +417,6 @@ const MethodModal: React.FC<MethodModalProps> = ({
         }}
         onClick={onClose}
       />
-
       <div
         onClick={handleModalClick}
         style={{
@@ -311,7 +465,6 @@ const MethodModal: React.FC<MethodModalProps> = ({
         <div style={{ marginBottom: "20px", textAlign: "left" }}>
           {renderParameters()}
         </div>
-
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <StyledButton onClick={handleSubmit}>Confirm</StyledButton>
           <StyledButton onClick={onClose}>Cancel</StyledButton>
@@ -320,25 +473,5 @@ const MethodModal: React.FC<MethodModalProps> = ({
     </>
   );
 };
-
-// StyledButton component for consistent styling
-const StyledButton = styled.button<{ $isHovered?: boolean }>`
-  display: block;
-  width: 45%;
-  background-color: ${(props) => (props.$isHovered ? "#87CEEB" : "#fff")};
-  color: ${(props) => (props.$isHovered ? "#fff" : "#000")};
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 8px;
-  cursor: pointer;
-  margin-bottom: 8px;
-  font-family: "Arial", sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: #87ceeb;
-    color: #fff;
-  }
-`;
 
 export default MethodModal;

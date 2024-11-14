@@ -10,7 +10,7 @@ from typing import Optional,  List, Dict, Any
 from pydantic import BaseModel
 import networkx as nx
 import traceback
-
+import logging
 from algorithms.borgatti_everett import Borgatti_Everett
 from algorithms.rossa import Rossa
 from algorithms.brusco import Brusco
@@ -112,6 +112,7 @@ async def upload_file(file: UploadFile):
 # 그래프 요약 정보 API
 @app.get("/graph/overview/")
 async def get_graph_overview(filename: str):
+    print(JSON_DIR)
     try:
         file_location = UPLOAD_DIR / filename
         if not file_location.exists():
@@ -164,6 +165,16 @@ async def get_graph_overview_json():
     if not OVERVIEW_FILE.exists():
         raise HTTPException(status_code=404, detail="Overview file not found")
     return FileResponse(OVERVIEW_FILE, media_type='application/json')
+
+
+@app.get("/graph/metric-file/")
+async def get_graph_metric_file():
+    if not METFILE.exists():
+        raise HTTPException(status_code=404, detail="Metric file not found")
+    return FileResponse(METFILE, media_type='application/json')
+
+
+
 
 # 그래프 노드 및 엣지 데이터 API
 @app.get("/graph/node-edge/")
@@ -545,7 +556,7 @@ async def apply_algorithm(
 
         with open(metric_file, "w") as f:
             json.dump(metric, f, indent=4)
-
+        
         return {"message": "Algorithm applied successfully", "filepath": str(output_file)}
 
     except Exception as e:
@@ -553,12 +564,6 @@ async def apply_algorithm(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.get("/graph/metric-json/")
-async def get_graph_metric_json():
-    if not METFILE.exists():
-        raise HTTPException(status_code=404, detail="Metric file not found")
-    return FileResponse(METFILE, media_type='application/json')
-
 
 
 # GEXF 파일 업로드 및 분석 처리
