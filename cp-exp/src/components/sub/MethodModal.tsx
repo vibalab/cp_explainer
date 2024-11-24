@@ -17,7 +17,7 @@ const Tooltip = styled.div<{ $top: number; $left: number }>`
   border-radius: 5px;
   font-size: 0.9em;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 2000;
   white-space: nowrap;
 `;
 

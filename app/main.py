@@ -112,7 +112,6 @@ async def upload_file(file: UploadFile):
 # 그래프 요약 정보 API
 @app.get("/graph/overview/")
 async def get_graph_overview(filename: str):
-    print(JSON_DIR)
     try:
         file_location = UPLOAD_DIR / filename
         if not file_location.exists():
@@ -164,14 +163,23 @@ async def get_graph_overview(filename: str):
 async def get_graph_overview_json():
     if not OVERVIEW_FILE.exists():
         raise HTTPException(status_code=404, detail="Overview file not found")
-    return FileResponse(OVERVIEW_FILE, media_type='application/json')
+    response = FileResponse(OVERVIEW_FILE, media_type="application/json")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 
 
 @app.get("/graph/metric-file/")
 async def get_graph_metric_file():
     if not METFILE.exists():
         raise HTTPException(status_code=404, detail="Metric file not found")
-    return FileResponse(METFILE, media_type='application/json')
+    response = FileResponse(METFILE, media_type="application/json")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
 
@@ -231,8 +239,11 @@ async def get_graph_node_edge(filename: str):
 async def get_graph_node_edge_json():
     if not NODEFILE.exists():
         raise HTTPException(status_code=404, detail="Node Edge file not found")
-    return FileResponse(NODEFILE, media_type='application/json')
-
+    response = FileResponse(NODEFILE, media_type="application/json")
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
     
@@ -483,6 +494,8 @@ async def apply_algorithm(
             model = Lip(graph, A)
             z_influence, core_indices, z = model.calculate()
             node_edge_data = preprocess.graph_node_edge(graph, cp_index=core_indices, cp_node_metric=z_influence)
+            print(core_indices)
+            print(z)
             metric = {"Z": int(z)}
 
         elif method == "LLC":
@@ -559,6 +572,7 @@ async def apply_algorithm(
         
         return {"message": "Algorithm applied successfully", "filepath": str(output_file)}
 
+    
     except Exception as e:
         print(f"Error: {e}")
         traceback.print_exc()
@@ -625,8 +639,9 @@ async def upload_graph(data: GraphWithMethod):
 
         elif method == "Lip":
             model = Lip(G, A)
-            Z = model.brusco_metric(core_indices)
-            metric = {"Z": int(Z)}
+            print(core_indices)
+            z = model.brusco_metric(core_indices)
+            metric = {"Z": int(z)}
 
         elif method == "LLC":
             try :

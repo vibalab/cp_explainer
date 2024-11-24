@@ -1,18 +1,14 @@
 import {
   SigmaContainer,
-  ControlsContainer,
   FullScreenControl,
   ZoomControl,
-  useSigma,
 } from "@react-sigma/core";
 import EdgeCurveProgram from "@sigma/edge-curve";
-import { createNodeBorderProgram, NodeBorderProgram } from "@sigma/node-border";
+import { createNodeBorderProgram } from "@sigma/node-border";
 import { createNodeImageProgram } from "@sigma/node-image";
 import { createNodeCompoundProgram } from "sigma/rendering";
 import { UndirectedGraph } from "graphology";
-import { constant, keyBy, mapValues } from "lodash";
 import { FC, useEffect, useMemo, useState } from "react";
-import { BiRadioCircleMarked } from "react-icons/bi";
 import {
   BsArrowsFullscreen,
   BsFullscreenExit,
@@ -21,15 +17,12 @@ import {
   BsArrowCounterclockwise,
 } from "react-icons/bs";
 import { Settings } from "sigma/settings";
-import { drawHover, drawLabel } from "../canvas-utils";
 import { Dataset } from "../types";
 import GraphDataController from "./sigma/graphDataController";
 import GraphEventsController from "./sigma/graphEventController";
 import GraphSettingsController from "./sigma/graphSettingsController";
 import GraphTitle from "./sigma/graphTitle";
 import SearchField from "./sigma/searchField";
-import Tooltips from "./toolTips";
-import { ReactComponent as DescIcon } from "../icon/information-circle.svg";
 import { Attributes } from "graphology-types";
 import CPMetric from "./sigma/CPMetricDisplay";
 import axios from "axios";
@@ -169,7 +162,22 @@ const Root: FC<RootProps> = ({
   }, [isDataUploaded]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ textAlign: "center", padding: "2rem" }}>
+        <h2>Welcome to CP-Explainer</h2>
+        <br />
+        <p>
+          CP-Explainer is a web-based system designed to help you analyze and
+          visualize Core-Periphery (CP) structures in networks. The tool
+          provides an intuitive interface for exploring network characteristics,
+          applying various CP methods, and gaining insights into your data.
+        </p>
+        <p>
+          To get started, click <strong>"Data Import"</strong> and upload your
+          graph data in a supported format (e.g., JSON, CSV).
+        </p>
+      </div>
+    );
   }
 
   if (!dataset) return null;

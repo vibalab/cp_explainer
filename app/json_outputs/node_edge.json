@@ -1,3485 +1,3269 @@
 {
     "nodes": [
         {
-            "id": "Core_0",
-            "key": "Core_0",
-            "label": "Core_0",
-            "x": -0.05573480566489069,
-            "y": -0.20742736675161583,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9998736396800337,
-            "core_periphery_score": 0.9998736396800337,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_0"
-            }
-        },
-        {
-            "id": "Core_1",
-            "key": "Core_1",
-            "label": "Core_1",
-            "x": 0.17095291196422965,
-            "y": 0.0978630212647092,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9999464881975256,
-            "core_periphery_score": 0.9999464881975256,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_1"
-            }
-        },
-        {
-            "id": "Core_2",
-            "key": "Core_2",
-            "label": "Core_2",
-            "x": 0.20998546063186307,
-            "y": -0.04581392200436564,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9997953346942995,
-            "core_periphery_score": 0.9997953346942995,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_2"
-            }
-        },
-        {
-            "id": "Core_3",
-            "key": "Core_3",
-            "label": "Core_3",
-            "x": 0.014490363089820678,
-            "y": -0.05927067022189332,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.999728949384502,
-            "core_periphery_score": 0.999728949384502,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_3"
-            }
-        },
-        {
-            "id": "Core_4",
-            "key": "Core_4",
-            "label": "Core_4",
-            "x": -0.19930140512740427,
-            "y": 0.10405596066113934,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9998411491656788,
-            "core_periphery_score": 0.9998411491656788,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_4"
-            }
-        },
-        {
-            "id": "Core_5",
-            "key": "Core_5",
-            "label": "Core_5",
-            "x": 0.03434054196939789,
-            "y": 0.09667940871629402,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 1.0,
-            "core_periphery_score": 1.0,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_5"
-            }
-        },
-        {
-            "id": "Core_6",
-            "key": "Core_6",
-            "label": "Core_6",
-            "x": 0.11316218611840616,
-            "y": -0.17193642216964192,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9998368607230894,
-            "core_periphery_score": 0.9998368607230894,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_6"
-            }
-        },
-        {
-            "id": "Core_7",
-            "key": "Core_7",
-            "label": "Core_7",
-            "x": -0.1686469952922467,
-            "y": -0.10039838562742451,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9998761844481427,
-            "core_periphery_score": 0.9998761844481427,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_7"
-            }
-        },
-        {
-            "id": "Core_8",
-            "key": "Core_8",
-            "label": "Core_8",
-            "x": -0.09423180497051271,
-            "y": 0.0503812301828896,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9997179154371315,
-            "core_periphery_score": 0.9997179154371315,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_8"
-            }
-        },
-        {
-            "id": "Core_9",
-            "key": "Core_9",
-            "label": "Core_9",
-            "x": 0.03107230177258986,
-            "y": 0.22088001645065705,
-            "degree": 39,
-            "degree_centrality": 1.0,
-            "betweenness_centrality": 0.05870445344129557,
-            "closeness_centrality": 1.0,
-            "eigenvector_centrality": 0.2501071072348631,
-            "core_periphery": 0.9999092719265202,
-            "core_periphery_score": 0.9999092719265202,
-            "group": 0.0,
-            "attributes": {
-                "label": "Core_9"
-            }
-        },
-        {
-            "id": "Periphery_0",
-            "key": "Periphery_0",
-            "label": "Periphery_0",
-            "x": 0.9922841871096857,
-            "y": -0.06295342917383294,
+            "id": "Myriel",
+            "key": "Myriel",
+            "label": "Myriel",
+            "x": -0.7079481148073781,
+            "y": 0.15682569936097612,
             "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 3.3143824978287037e-05,
-            "core_periphery_score": 3.3143824978287037e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_0"
-            }
-        },
-        {
-            "id": "Periphery_1",
-            "key": "Periphery_1",
-            "label": "Periphery_1",
-            "x": -0.9056617451745116,
-            "y": -0.31110779256992965,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 6.70054085972846e-05,
-            "core_periphery_score": 6.70054085972846e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_1"
-            }
-        },
-        {
-            "id": "Periphery_2",
-            "key": "Periphery_2",
-            "label": "Periphery_2",
-            "x": -0.7261934695707835,
-            "y": 0.6887640812804726,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 4.568378438751861e-05,
-            "core_periphery_score": 4.568378438751861e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_2"
-            }
-        },
-        {
-            "id": "Periphery_3",
-            "key": "Periphery_3",
-            "label": "Periphery_3",
-            "x": 0.8534421106646853,
-            "y": -0.46141751096443295,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 6.59300116210656e-05,
-            "core_periphery_score": 6.59300116210656e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_3"
-            }
-        },
-        {
-            "id": "Periphery_4",
-            "key": "Periphery_4",
-            "label": "Periphery_4",
-            "x": 0.2016132462981089,
-            "y": 0.7502232186076412,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 9.603432323454264e-05,
-            "core_periphery_score": 9.603432323454264e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_4"
-            }
-        },
-        {
-            "id": "Periphery_5",
-            "key": "Periphery_5",
-            "label": "Periphery_5",
-            "x": -0.8756067587914168,
-            "y": 0.4529605930136427,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 5.4616749834343054e-05,
-            "core_periphery_score": 5.4616749834343054e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_5"
-            }
-        },
-        {
-            "id": "Periphery_6",
-            "key": "Periphery_6",
-            "label": "Periphery_6",
-            "x": 0.5744081435174577,
-            "y": -0.8191246529729226,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 3.2436969621252375e-05,
-            "core_periphery_score": 3.2436969621252375e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_6"
-            }
-        },
-        {
-            "id": "Periphery_7",
-            "key": "Periphery_7",
-            "label": "Periphery_7",
-            "x": 0.9383162416857777,
-            "y": 0.35570490430070717,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 6.29721320074846e-05,
-            "core_periphery_score": 6.29721320074846e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_7"
-            }
-        },
-        {
-            "id": "Periphery_8",
-            "key": "Periphery_8",
-            "label": "Periphery_8",
-            "x": 0.6606299497830266,
-            "y": -0.5914154064623875,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 8.192041875428268e-05,
-            "core_periphery_score": 8.192041875428268e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_8"
-            }
-        },
-        {
-            "id": "Periphery_9",
-            "key": "Periphery_9",
-            "label": "Periphery_9",
-            "x": 0.8436799362508304,
-            "y": -0.24051372631442186,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 5.7228632772485764e-05,
-            "core_periphery_score": 5.7228632772485764e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_9"
-            }
-        },
-        {
-            "id": "Periphery_10",
-            "key": "Periphery_10",
-            "label": "Periphery_10",
-            "x": 0.32005873862076006,
-            "y": -0.7013278716056184,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 0.00012030074250206094,
-            "core_periphery_score": 0.00012030074250206094,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_10"
-            }
-        },
-        {
-            "id": "Periphery_11",
-            "key": "Periphery_11",
-            "label": "Periphery_11",
-            "x": 0.6285261418986017,
-            "y": 0.42637370032379895,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 8.092195297154778e-05,
-            "core_periphery_score": 8.092195297154778e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_11"
-            }
-        },
-        {
-            "id": "Periphery_12",
-            "key": "Periphery_12",
-            "label": "Periphery_12",
-            "x": 0.3263140837354344,
-            "y": 0.9701892516428995,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 7.73168067485318e-05,
-            "core_periphery_score": 7.73168067485318e-05,
-            "group": 0.0,
-            "attributes": {
-                "label": "Periphery_12"
-            }
-        },
-        {
-            "id": "Periphery_13",
-            "key": "Periphery_13",
-            "label": "Periphery_13",
-            "x": -0.39108234705064493,
-            "y": -0.9196835404816549,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
+            "degree_centrality": 0.13157894736842105,
+            "betweenness_centrality": 0.17684210526315788,
+            "closeness_centrality": 0.4293785310734463,
+            "eigenvector_centrality": 0.028302903454958565,
             "core_periphery": 0.0,
             "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_13"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_14",
-            "key": "Periphery_14",
-            "label": "Periphery_14",
-            "x": 0.8377208573005799,
-            "y": 0.12128050059261866,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Napoleon",
+            "key": "Napoleon",
+            "label": "Napoleon",
+            "x": -0.8723179198532921,
+            "y": 0.3793305155522234,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 6.208156193504135e-05,
-            "core_periphery_score": 6.208156193504135e-05,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_14"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_15",
-            "key": "Periphery_15",
-            "label": "Periphery_15",
-            "x": -0.7538957457096709,
-            "y": 0.2488110338376879,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "MlleBaptistine",
+            "key": "MlleBaptistine",
+            "label": "MlleBaptistine",
+            "x": -0.47394339968710575,
+            "y": 0.07757396306992605,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 2.949888051707062e-05,
-            "core_periphery_score": 2.949888051707062e-05,
+            "closeness_centrality": 0.41304347826086957,
+            "eigenvector_centrality": 0.027028346380204175,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_15"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_16",
-            "key": "Periphery_16",
-            "label": "Periphery_16",
+            "id": "MmeMagloire",
+            "key": "MmeMagloire",
+            "label": "MmeMagloire",
+            "x": -0.4608997135819782,
+            "y": 0.1364971107919411,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.41304347826086957,
+            "eigenvector_centrality": 0.027028346380204175,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "CountessDeLo",
+            "key": "CountessDeLo",
+            "label": "CountessDeLo",
+            "x": -0.9872474191467554,
+            "y": 0.09894043077331462,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Geborand",
+            "key": "Geborand",
+            "label": "Geborand",
             "x": -1.0,
-            "y": 0.11101071863647219,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "y": 0.18186006375850527,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 3.6229848714004425e-05,
-            "core_periphery_score": 3.6229848714004425e-05,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_16"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_17",
-            "key": "Periphery_17",
-            "label": "Periphery_17",
-            "x": 0.2861259542719,
-            "y": -0.9622713135232606,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Champtercier",
+            "key": "Champtercier",
+            "label": "Champtercier",
+            "x": -0.9823045439978861,
+            "y": 0.282780243405559,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 0.0001113524059634659,
-            "core_periphery_score": 0.0001113524059634659,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_17"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_18",
-            "key": "Periphery_18",
-            "label": "Periphery_18",
-            "x": -0.8539417860524318,
-            "y": -0.0927207071678969,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Cravatte",
+            "key": "Cravatte",
+            "label": "Cravatte",
+            "x": -0.9022248786561359,
+            "y": 0.3073260634986659,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 9.063632896532971e-07,
-            "core_periphery_score": 9.063632896532971e-07,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_18"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_19",
-            "key": "Periphery_19",
-            "label": "Periphery_19",
-            "x": -0.17099160989649767,
-            "y": -0.8684535016911678,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Count",
+            "key": "Count",
+            "label": "Count",
+            "x": -0.9419977444804168,
+            "y": 0.032511698383177266,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 8.316380578705643e-05,
-            "core_periphery_score": 8.316380578705643e-05,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_19"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_20",
-            "key": "Periphery_20",
-            "label": "Periphery_20",
-            "x": -0.6065094002362824,
-            "y": -0.7823751514951786,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "OldMan",
+            "key": "OldMan",
+            "label": "OldMan",
+            "x": -0.924837356924414,
+            "y": 0.19814342262621412,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 6.633488779182487e-05,
-            "core_periphery_score": 6.633488779182487e-05,
+            "closeness_centrality": 0.30158730158730157,
+            "eigenvector_centrality": 0.002362268182192287,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_20"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_21",
-            "key": "Periphery_21",
-            "label": "Periphery_21",
-            "x": -0.5888631888224632,
-            "y": -0.5354020644463956,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Labarre",
+            "key": "Labarre",
+            "label": "Labarre",
+            "x": -0.26363093473875093,
+            "y": 0.2655098735483824,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 5.049841391227847e-05,
-            "core_periphery_score": 5.049841391227847e-05,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.02241035074250543,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_21"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_22",
-            "key": "Periphery_22",
-            "label": "Periphery_22",
-            "x": 0.7529531282613806,
-            "y": 0.6233661912942714,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 0.0001251091508383008,
-            "core_periphery_score": 0.0001251091508383008,
+            "id": "Valjean",
+            "key": "Valjean",
+            "label": "Valjean",
+            "x": -0.08927880975536837,
+            "y": 0.00406615651254816,
+            "degree": 36,
+            "degree_centrality": 0.47368421052631576,
+            "betweenness_centrality": 0.5699890527836184,
+            "closeness_centrality": 0.6440677966101694,
+            "eigenvector_centrality": 0.268686149992531,
+            "core_periphery": 1.0,
+            "core_periphery_score": 16.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_22"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_23",
-            "key": "Periphery_23",
-            "label": "Periphery_23",
-            "x": -0.4346102845586463,
-            "y": 0.9061861724353893,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Marguerite",
+            "key": "Marguerite",
+            "label": "Marguerite",
+            "x": -0.1215118864940012,
+            "y": -0.293203827882938,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 4.287328140793755e-06,
-            "core_periphery_score": 4.287328140793755e-06,
+            "closeness_centrality": 0.41304347826086957,
+            "eigenvector_centrality": 0.029965949720385382,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_23"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_24",
-            "key": "Periphery_24",
-            "label": "Periphery_24",
-            "x": -0.4883413420511725,
-            "y": 0.6335897950709942,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "MmeDeR",
+            "key": "MmeDeR",
+            "label": "MmeDeR",
+            "x": -0.3163096277383503,
+            "y": 0.21202793539467726,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 8.592935874605972e-05,
-            "core_periphery_score": 8.592935874605972e-05,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.02241035074250543,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_24"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_25",
-            "key": "Periphery_25",
-            "label": "Periphery_25",
-            "x": 0.03972431221695977,
-            "y": -0.9317838508313976,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Isabeau",
+            "key": "Isabeau",
+            "label": "Isabeau",
+            "x": -0.3431214673908182,
+            "y": 0.025969841412365496,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 2.2821283441237723e-06,
-            "core_periphery_score": 2.2821283441237723e-06,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.02241035074250543,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_25"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_26",
-            "key": "Periphery_26",
-            "label": "Periphery_26",
-            "x": -0.1930916294393004,
-            "y": 0.8033015246787476,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Gervais",
+            "key": "Gervais",
+            "label": "Gervais",
+            "x": -0.26270154231424303,
+            "y": -0.28822963054412926,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 1.8220402634203076e-05,
-            "core_periphery_score": 1.8220402634203076e-05,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.02241035074250543,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_26"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_27",
-            "key": "Periphery_27",
-            "label": "Periphery_27",
-            "x": -0.8473640566464241,
-            "y": -0.5669358240107357,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
-            "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 0.0001031935170233983,
-            "core_periphery_score": 0.0001031935170233983,
+            "id": "Tholomyes",
+            "key": "Tholomyes",
+            "label": "Tholomyes",
+            "x": 0.12310868270538794,
+            "y": -0.3799783497705142,
+            "degree": 9,
+            "degree_centrality": 0.11842105263157894,
+            "betweenness_centrality": 0.04062934817733579,
+            "closeness_centrality": 0.3917525773195876,
+            "eigenvector_centrality": 0.04843788859647595,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_27"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_28",
-            "key": "Periphery_28",
-            "label": "Periphery_28",
-            "x": 0.5328647700363056,
-            "y": 0.7788706655192996,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Listolier",
+            "key": "Listolier",
+            "label": "Listolier",
+            "x": 0.027379441558083566,
+            "y": -0.6169474292651366,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 1.8224265485676947e-05,
-            "core_periphery_score": 1.8224265485676947e-05,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_28"
-            }
+            "attributes": {}
         },
         {
-            "id": "Periphery_29",
-            "key": "Periphery_29",
-            "label": "Periphery_29",
-            "x": -0.00859719214248568,
-            "y": 0.9918411219758354,
-            "degree": 10,
-            "degree_centrality": 0.2564102564102564,
+            "id": "Fameuil",
+            "key": "Fameuil",
+            "label": "Fameuil",
+            "x": 0.007628381961367897,
+            "y": -0.5628338428244195,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
             "betweenness_centrality": 0.0,
-            "closeness_centrality": 0.5735294117647058,
-            "eigenvector_centrality": 0.11172352021934726,
-            "core_periphery": 7.156079456477847e-05,
-            "core_periphery_score": 7.156079456477847e-05,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
             "group": 0.0,
-            "attributes": {
-                "label": "Periphery_29"
-            }
+            "attributes": {}
+        },
+        {
+            "id": "Blacheville",
+            "key": "Blacheville",
+            "label": "Blacheville",
+            "x": 0.09974179487549811,
+            "y": -0.618071334143776,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Favourite",
+            "key": "Favourite",
+            "label": "Favourite",
+            "x": 0.05384190263080679,
+            "y": -0.5833109452150423,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Dahlia",
+            "key": "Dahlia",
+            "label": "Dahlia",
+            "x": 0.1332113724981303,
+            "y": -0.5798775680120322,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Zephine",
+            "key": "Zephine",
+            "label": "Zephine",
+            "x": 0.0866706438400306,
+            "y": -0.5493624518552468,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34080717488789236,
+            "eigenvector_centrality": 0.0199448790777537,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Fantine",
+            "key": "Fantine",
+            "label": "Fantine",
+            "x": 0.03680959646354764,
+            "y": -0.3522510083832898,
+            "degree": 15,
+            "degree_centrality": 0.19736842105263158,
+            "betweenness_centrality": 0.12964454098819422,
+            "closeness_centrality": 0.46060606060606063,
+            "eigenvector_centrality": 0.09046304157983374,
+            "core_periphery": 0.0,
+            "core_periphery_score": 6.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MmeThenardier",
+            "key": "MmeThenardier",
+            "label": "MmeThenardier",
+            "x": 0.11129378594820215,
+            "y": -0.12157795559883511,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.02900241873046176,
+            "closeness_centrality": 0.46060606060606063,
+            "eigenvector_centrality": 0.12299294051779441,
+            "core_periphery": 0.0,
+            "core_periphery_score": 10.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Thenardier",
+            "key": "Thenardier",
+            "label": "Thenardier",
+            "x": 0.2102208904085618,
+            "y": -0.09734099574147893,
+            "degree": 16,
+            "degree_centrality": 0.21052631578947367,
+            "betweenness_centrality": 0.07490122123424225,
+            "closeness_centrality": 0.5170068027210885,
+            "eigenvector_centrality": 0.18857701904734991,
+            "core_periphery": 0.0,
+            "core_periphery_score": 13.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Cosette",
+            "key": "Cosette",
+            "label": "Cosette",
+            "x": 0.10038870820627599,
+            "y": 0.01736693255554449,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.023796253454148188,
+            "closeness_centrality": 0.4779874213836478,
+            "eigenvector_centrality": 0.11153644522416362,
+            "core_periphery": 0.0,
+            "core_periphery_score": 3.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Javert",
+            "key": "Javert",
+            "label": "Javert",
+            "x": 0.04701650175313544,
+            "y": -0.023682731527202988,
+            "degree": 17,
+            "degree_centrality": 0.22368421052631576,
+            "betweenness_centrality": 0.05433155966478436,
+            "closeness_centrality": 0.5170068027210885,
+            "eigenvector_centrality": 0.1850330520257204,
+            "core_periphery": 0.0,
+            "core_periphery_score": 13.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Fauchelevent",
+            "key": "Fauchelevent",
+            "label": "Fauchelevent",
+            "x": -0.10037029094494154,
+            "y": 0.2884005533251084,
+            "degree": 4,
+            "degree_centrality": 0.05263157894736842,
+            "betweenness_centrality": 0.026491228070175437,
+            "closeness_centrality": 0.4021164021164021,
+            "eigenvector_centrality": 0.040276899697835274,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Bamatabois",
+            "key": "Bamatabois",
+            "label": "Bamatabois",
+            "x": -0.1632613489000773,
+            "y": -0.17609740767167753,
+            "degree": 8,
+            "degree_centrality": 0.10526315789473684,
+            "betweenness_centrality": 0.008040935672514621,
+            "closeness_centrality": 0.42696629213483145,
+            "eigenvector_centrality": 0.0627357974069352,
+            "core_periphery": 0.0,
+            "core_periphery_score": 1.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Perpetue",
+            "key": "Perpetue",
+            "label": "Perpetue",
+            "x": 0.12747388352085118,
+            "y": -0.4723440607958129,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.3179916317991632,
+            "eigenvector_centrality": 0.01142543147644225,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Simplice",
+            "key": "Simplice",
+            "label": "Simplice",
+            "x": 0.009097941909378925,
+            "y": -0.25352562660636013,
+            "degree": 4,
+            "degree_centrality": 0.05263157894736842,
+            "betweenness_centrality": 0.008640295033483888,
+            "closeness_centrality": 0.4175824175824176,
+            "eigenvector_centrality": 0.04635601424975749,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Scaufflaire",
+            "key": "Scaufflaire",
+            "label": "Scaufflaire",
+            "x": -0.32712998314782554,
+            "y": 0.13024862261726988,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.02241035074250543,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Woman1",
+            "key": "Woman1",
+            "label": "Woman1",
+            "x": -0.16556232854039651,
+            "y": 0.10258079683293693,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.3958333333333333,
+            "eigenvector_centrality": 0.03784544939271121,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Judge",
+            "key": "Judge",
+            "label": "Judge",
+            "x": -0.2591583761562354,
+            "y": -0.1542843890385607,
+            "degree": 6,
+            "degree_centrality": 0.07894736842105263,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.40425531914893614,
+            "eigenvector_centrality": 0.04151689861726772,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Champmathieu",
+            "key": "Champmathieu",
+            "label": "Champmathieu",
+            "x": -0.3240804891854175,
+            "y": -0.19080027457177962,
+            "degree": 6,
+            "degree_centrality": 0.07894736842105263,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.40425531914893614,
+            "eigenvector_centrality": 0.04151689861726772,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Brevet",
+            "key": "Brevet",
+            "label": "Brevet",
+            "x": -0.3328608000700277,
+            "y": -0.13629059378029687,
+            "degree": 6,
+            "degree_centrality": 0.07894736842105263,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.40425531914893614,
+            "eigenvector_centrality": 0.04151689861726772,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Chenildieu",
+            "key": "Chenildieu",
+            "label": "Chenildieu",
+            "x": -0.27745912175600795,
+            "y": -0.2076830118178118,
+            "degree": 6,
+            "degree_centrality": 0.07894736842105263,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.40425531914893614,
+            "eigenvector_centrality": 0.04151689861726772,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Cochepaille",
+            "key": "Cochepaille",
+            "label": "Cochepaille",
+            "x": -0.2892672300978854,
+            "y": -0.10612378338879981,
+            "degree": 6,
+            "degree_centrality": 0.07894736842105263,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.40425531914893614,
+            "eigenvector_centrality": 0.04151689861726772,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Pontmercy",
+            "key": "Pontmercy",
+            "label": "Pontmercy",
+            "x": 0.31515720022619864,
+            "y": 0.23166219792900983,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
+            "betweenness_centrality": 0.006925438596491228,
+            "closeness_centrality": 0.37254901960784315,
+            "eigenvector_centrality": 0.037996429771144036,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Boulatruelle",
+            "key": "Boulatruelle",
+            "label": "Boulatruelle",
+            "x": 0.4488583159033895,
+            "y": -0.33587023043411973,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34234234234234234,
+            "eigenvector_centrality": 0.01572912233128237,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Eponine",
+            "key": "Eponine",
+            "label": "Eponine",
+            "x": 0.31848679148904124,
+            "y": -0.10206208128835025,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.011487550654163002,
+            "closeness_centrality": 0.3958333333333333,
+            "eigenvector_centrality": 0.1422880410058462,
+            "core_periphery": 0.0,
+            "core_periphery_score": 3.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Anzelma",
+            "key": "Anzelma",
+            "label": "Anzelma",
+            "x": 0.3010467003895938,
+            "y": -0.26001535924304153,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.35185185185185186,
+            "eigenvector_centrality": 0.037855399567808486,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Woman2",
+            "key": "Woman2",
+            "label": "Woman2",
+            "x": -0.010200747653589028,
+            "y": 0.15708417975581837,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.4021164021164021,
+            "eigenvector_centrality": 0.047150042027170144,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MotherInnocent",
+            "key": "MotherInnocent",
+            "label": "MotherInnocent",
+            "x": -0.18779256384228965,
+            "y": 0.30286047621730794,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.39790575916230364,
+            "eigenvector_centrality": 0.02577167245146604,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Gribier",
+            "key": "Gribier",
+            "label": "Gribier",
+            "x": -0.1867383938168417,
+            "y": 0.5815057166027595,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.2878787878787879,
+            "eigenvector_centrality": 0.00336132170896061,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Jondrette",
+            "key": "Jondrette",
+            "label": "Jondrette",
+            "x": -0.4118903236633224,
+            "y": 0.0012042931123634364,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.25675675675675674,
+            "eigenvector_centrality": 0.002217721026422696,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MmeBurgon",
+            "key": "MmeBurgon",
+            "label": "MmeBurgon",
+            "x": -0.08809300032722821,
+            "y": 0.0761071407746378,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.02631578947368421,
+            "closeness_centrality": 0.3438914027149321,
+            "eigenvector_centrality": 0.026634019307922804,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Gavroche",
+            "key": "Gavroche",
+            "label": "Gavroche",
+            "x": 0.31367320066779936,
+            "y": 0.09303131581429143,
+            "degree": 22,
+            "degree_centrality": 0.2894736842105263,
+            "betweenness_centrality": 0.16511250242584766,
+            "closeness_centrality": 0.5135135135135135,
+            "eigenvector_centrality": 0.31762028179446566,
+            "core_periphery": 1.0,
+            "core_periphery_score": 17.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Gillenormand",
+            "key": "Gillenormand",
+            "label": "Gillenormand",
+            "x": 0.18673377688445184,
+            "y": 0.10559303946644648,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.02021062158319776,
+            "closeness_centrality": 0.4418604651162791,
+            "eigenvector_centrality": 0.06559472966913489,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Magnon",
+            "key": "Magnon",
+            "label": "Magnon",
+            "x": 0.10178563314178768,
+            "y": 0.14971888725535099,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.00021720969089390142,
+            "closeness_centrality": 0.33480176211453744,
+            "eigenvector_centrality": 0.015734046074833623,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MlleGillenormand",
+            "key": "MlleGillenormand",
+            "label": "MlleGillenormand",
+            "x": 0.15153014817455102,
+            "y": 0.27253903670423785,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.047598927875243675,
+            "closeness_centrality": 0.4418604651162791,
+            "eigenvector_centrality": 0.06336114813624939,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MmePontmercy",
+            "key": "MmePontmercy",
+            "label": "MmePontmercy",
+            "x": 0.3039029018795521,
+            "y": 0.46794505977915984,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0003508771929824561,
+            "closeness_centrality": 0.3153526970954357,
+            "eigenvector_centrality": 0.008449923111793482,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MlleVaubois",
+            "key": "MlleVaubois",
+            "label": "MlleVaubois",
+            "x": 0.18998383862011772,
+            "y": 0.5903045832454248,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.3076923076923077,
+            "eigenvector_centrality": 0.005283089230398381,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "LtGillenormand",
+            "key": "LtGillenormand",
+            "label": "LtGillenormand",
+            "x": 0.2146971503533633,
+            "y": 0.2164464050966755,
+            "degree": 4,
+            "degree_centrality": 0.05263157894736842,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.36538461538461536,
+            "eigenvector_centrality": 0.04161961277205043,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Marius",
+            "key": "Marius",
+            "label": "Marius",
+            "x": 0.28880883990082884,
+            "y": 0.02036365172649696,
+            "degree": 19,
+            "degree_centrality": 0.25,
+            "betweenness_centrality": 0.132032488621946,
+            "closeness_centrality": 0.5314685314685315,
+            "eigenvector_centrality": 0.25893503392849104,
+            "core_periphery": 1.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "BaronessT",
+            "key": "BaronessT",
+            "label": "BaronessT",
+            "x": 0.42679786578064166,
+            "y": -0.07784108045550057,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.35185185185185186,
+            "eigenvector_centrality": 0.027031930907193105,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Mabeuf",
+            "key": "Mabeuf",
+            "label": "Mabeuf",
+            "x": 0.5261757591640606,
+            "y": -0.010803925731187752,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.027661236424394314,
+            "closeness_centrality": 0.3958333333333333,
+            "eigenvector_centrality": 0.1945285313369529,
+            "core_periphery": 1.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Enjolras",
+            "key": "Enjolras",
+            "label": "Enjolras",
+            "x": 0.3391128952096088,
+            "y": 0.04345944812909084,
+            "degree": 15,
+            "degree_centrality": 0.19736842105263158,
+            "betweenness_centrality": 0.0425533568221771,
+            "closeness_centrality": 0.4810126582278481,
+            "eigenvector_centrality": 0.26673253588507917,
+            "core_periphery": 1.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Combeferre",
+            "key": "Combeferre",
+            "label": "Combeferre",
+            "x": 0.4616360823458443,
+            "y": 0.07787855975954917,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.0012501455659350393,
+            "closeness_centrality": 0.3917525773195876,
+            "eigenvector_centrality": 0.21008333313639962,
+            "core_periphery": 1.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Prouvaire",
+            "key": "Prouvaire",
+            "label": "Prouvaire",
+            "x": 0.48720746140259197,
+            "y": 0.16957510766163633,
+            "degree": 9,
+            "degree_centrality": 0.11842105263157894,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.3568075117370892,
+            "eigenvector_centrality": 0.17523290360094299,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Feuilly",
+            "key": "Feuilly",
+            "label": "Feuilly",
+            "x": 0.507540890885018,
+            "y": 0.03977396916217634,
+            "degree": 11,
+            "degree_centrality": 0.14473684210526316,
+            "betweenness_centrality": 0.0012501455659350393,
+            "closeness_centrality": 0.3917525773195876,
+            "eigenvector_centrality": 0.21008333313639962,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Courfeyrac",
+            "key": "Courfeyrac",
+            "label": "Courfeyrac",
+            "x": 0.4623242128130851,
+            "y": 0.030161119086448942,
+            "degree": 13,
+            "degree_centrality": 0.17105263157894735,
+            "betweenness_centrality": 0.00526702988198833,
+            "closeness_centrality": 0.4,
+            "eigenvector_centrality": 0.23180699401572055,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Bahorel",
+            "key": "Bahorel",
+            "label": "Bahorel",
+            "x": 0.5034973875176741,
+            "y": 0.08620444682714884,
+            "degree": 12,
+            "degree_centrality": 0.15789473684210525,
+            "betweenness_centrality": 0.0021854883087570067,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.22085840472184926,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Bossuet",
+            "key": "Bossuet",
+            "label": "Bossuet",
+            "x": 0.3732131703419026,
+            "y": 0.08703453693929439,
+            "degree": 13,
+            "degree_centrality": 0.17105263157894735,
+            "betweenness_centrality": 0.03075365017995782,
+            "closeness_centrality": 0.475,
+            "eigenvector_centrality": 0.24154281286267168,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Joly",
+            "key": "Joly",
+            "label": "Joly",
+            "x": 0.4667989432359551,
+            "y": 0.119625822620298,
+            "degree": 12,
+            "degree_centrality": 0.15789473684210525,
+            "betweenness_centrality": 0.0021854883087570067,
+            "closeness_centrality": 0.39378238341968913,
+            "eigenvector_centrality": 0.22085840472184926,
+            "core_periphery": 1.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Grantaire",
+            "key": "Grantaire",
+            "label": "Grantaire",
+            "x": 0.5508976484136712,
+            "y": 0.10720343619869137,
+            "degree": 10,
+            "degree_centrality": 0.13157894736842105,
+            "betweenness_centrality": 0.00015037593984962405,
+            "closeness_centrality": 0.3584905660377358,
+            "eigenvector_centrality": 0.18600797518639267,
+            "core_periphery": 0.0,
+            "core_periphery_score": 14.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MotherPlutarch",
+            "key": "MotherPlutarch",
+            "label": "MotherPlutarch",
+            "x": 0.8425875536036951,
+            "y": -0.05341523611244059,
+            "degree": 1,
+            "degree_centrality": 0.013157894736842105,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.2846441947565543,
+            "eigenvector_centrality": 0.016188670102931707,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Gueulemer",
+            "key": "Gueulemer",
+            "label": "Gueulemer",
+            "x": 0.14661021192163612,
+            "y": -0.054772362848073526,
+            "degree": 10,
+            "degree_centrality": 0.13157894736842105,
+            "betweenness_centrality": 0.004960383978389518,
+            "closeness_centrality": 0.4634146341463415,
+            "eigenvector_centrality": 0.1460612418292759,
+            "core_periphery": 0.0,
+            "core_periphery_score": 10.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Babet",
+            "key": "Babet",
+            "label": "Babet",
+            "x": 0.15517864515570343,
+            "y": -0.00900691153971168,
+            "degree": 10,
+            "degree_centrality": 0.13157894736842105,
+            "betweenness_centrality": 0.004960383978389518,
+            "closeness_centrality": 0.4634146341463415,
+            "eigenvector_centrality": 0.1460612418292759,
+            "core_periphery": 0.0,
+            "core_periphery_score": 10.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Claquesous",
+            "key": "Claquesous",
+            "label": "Claquesous",
+            "x": 0.1589947965125374,
+            "y": -0.09733434425271303,
+            "degree": 10,
+            "degree_centrality": 0.13157894736842105,
+            "betweenness_centrality": 0.00486180419559921,
+            "closeness_centrality": 0.4523809523809524,
+            "eigenvector_centrality": 0.14214319773738954,
+            "core_periphery": 0.0,
+            "core_periphery_score": 9.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Montparnasse",
+            "key": "Montparnasse",
+            "label": "Montparnasse",
+            "x": 0.1873557700923857,
+            "y": -0.025616057709996212,
+            "degree": 9,
+            "degree_centrality": 0.11842105263157894,
+            "betweenness_centrality": 0.0038738298738298727,
+            "closeness_centrality": 0.4578313253012048,
+            "eigenvector_centrality": 0.13658760137465858,
+            "core_periphery": 0.0,
+            "core_periphery_score": 7.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Toussaint",
+            "key": "Toussaint",
+            "label": "Toussaint",
+            "x": -0.04166546803648001,
+            "y": 0.10841276970024252,
+            "degree": 3,
+            "degree_centrality": 0.039473684210526314,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.4021164021164021,
+            "eigenvector_centrality": 0.047150042027170144,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Child1",
+            "key": "Child1",
+            "label": "Child1",
+            "x": 0.5188115615390598,
+            "y": 0.36877912611369934,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34234234234234234,
+            "eigenvector_centrality": 0.028851740334345115,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Child2",
+            "key": "Child2",
+            "label": "Child2",
+            "x": 0.5835086328430128,
+            "y": 0.3216115477956414,
+            "degree": 2,
+            "degree_centrality": 0.02631578947368421,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.34234234234234234,
+            "eigenvector_centrality": 0.028851740334345115,
+            "core_periphery": 0.0,
+            "core_periphery_score": 0.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "Brujon",
+            "key": "Brujon",
+            "label": "Brujon",
+            "x": 0.2753180739406459,
+            "y": -0.09483180625935189,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.00043859649122807013,
+            "closeness_centrality": 0.38,
+            "eigenvector_centrality": 0.10165701860134334,
+            "core_periphery": 0.0,
+            "core_periphery_score": 1.0,
+            "group": 0.0,
+            "attributes": {}
+        },
+        {
+            "id": "MmeHucheloup",
+            "key": "MmeHucheloup",
+            "label": "MmeHucheloup",
+            "x": 0.5336902370767954,
+            "y": 0.16134081741639317,
+            "degree": 7,
+            "degree_centrality": 0.09210526315789473,
+            "betweenness_centrality": 0.0,
+            "closeness_centrality": 0.35348837209302325,
+            "eigenvector_centrality": 0.14027290374666507,
+            "core_periphery": 0.0,
+            "core_periphery_score": 11.0,
+            "group": 0.0,
+            "attributes": {}
         }
     ],
     "edges": [
         {
-            "source": "Core_0",
-            "target": "Core_1",
+            "source": "Myriel",
+            "target": "Napoleon",
             "weight": 1.0,
             "attributes": {
-                "id": "0"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_2",
+            "source": "Myriel",
+            "target": "MlleBaptistine",
             "weight": 1.0,
             "attributes": {
-                "id": "1"
+                "value": 8
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_3",
+            "source": "Myriel",
+            "target": "MmeMagloire",
             "weight": 1.0,
             "attributes": {
-                "id": "2"
+                "value": 10
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_4",
+            "source": "Myriel",
+            "target": "CountessDeLo",
             "weight": 1.0,
             "attributes": {
-                "id": "3"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_5",
+            "source": "Myriel",
+            "target": "Geborand",
             "weight": 1.0,
             "attributes": {
-                "id": "4"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_6",
+            "source": "Myriel",
+            "target": "Champtercier",
             "weight": 1.0,
             "attributes": {
-                "id": "5"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_7",
+            "source": "Myriel",
+            "target": "Cravatte",
             "weight": 1.0,
             "attributes": {
-                "id": "6"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_8",
+            "source": "Myriel",
+            "target": "Count",
             "weight": 1.0,
             "attributes": {
-                "id": "7"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Core_9",
+            "source": "Myriel",
+            "target": "OldMan",
             "weight": 1.0,
             "attributes": {
-                "id": "8"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_0",
+            "source": "Myriel",
+            "target": "Valjean",
             "weight": 1.0,
             "attributes": {
-                "id": "9"
+                "value": 5
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_1",
+            "source": "MlleBaptistine",
+            "target": "MmeMagloire",
             "weight": 1.0,
             "attributes": {
-                "id": "10"
+                "value": 6
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_2",
+            "source": "MlleBaptistine",
+            "target": "Valjean",
             "weight": 1.0,
             "attributes": {
-                "id": "11"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_3",
+            "source": "MmeMagloire",
+            "target": "Valjean",
             "weight": 1.0,
             "attributes": {
-                "id": "12"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_4",
+            "source": "Labarre",
+            "target": "Valjean",
             "weight": 1.0,
             "attributes": {
-                "id": "13"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_5",
+            "source": "Valjean",
+            "target": "Marguerite",
             "weight": 1.0,
             "attributes": {
-                "id": "14"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_6",
+            "source": "Valjean",
+            "target": "MmeDeR",
             "weight": 1.0,
             "attributes": {
-                "id": "15"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_7",
+            "source": "Valjean",
+            "target": "Isabeau",
             "weight": 1.0,
             "attributes": {
-                "id": "16"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_8",
+            "source": "Valjean",
+            "target": "Gervais",
             "weight": 1.0,
             "attributes": {
-                "id": "17"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_9",
+            "source": "Valjean",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "18"
+                "value": 9
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_10",
+            "source": "Valjean",
+            "target": "MmeThenardier",
             "weight": 1.0,
             "attributes": {
-                "id": "19"
+                "value": 7
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_11",
+            "source": "Valjean",
+            "target": "Thenardier",
             "weight": 1.0,
             "attributes": {
-                "id": "20"
+                "value": 12
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_12",
+            "source": "Valjean",
+            "target": "Cosette",
             "weight": 1.0,
             "attributes": {
-                "id": "21"
+                "value": 31
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_13",
+            "source": "Valjean",
+            "target": "Javert",
             "weight": 1.0,
             "attributes": {
-                "id": "22"
+                "value": 17
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_14",
+            "source": "Valjean",
+            "target": "Fauchelevent",
             "weight": 1.0,
             "attributes": {
-                "id": "23"
+                "value": 8
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_15",
+            "source": "Valjean",
+            "target": "Bamatabois",
             "weight": 1.0,
             "attributes": {
-                "id": "24"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_16",
+            "source": "Valjean",
+            "target": "Simplice",
             "weight": 1.0,
             "attributes": {
-                "id": "25"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_17",
+            "source": "Valjean",
+            "target": "Scaufflaire",
             "weight": 1.0,
             "attributes": {
-                "id": "26"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_18",
+            "source": "Valjean",
+            "target": "Woman1",
             "weight": 1.0,
             "attributes": {
-                "id": "27"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_19",
+            "source": "Valjean",
+            "target": "Judge",
             "weight": 1.0,
             "attributes": {
-                "id": "28"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_20",
+            "source": "Valjean",
+            "target": "Champmathieu",
             "weight": 1.0,
             "attributes": {
-                "id": "29"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_21",
+            "source": "Valjean",
+            "target": "Brevet",
             "weight": 1.0,
             "attributes": {
-                "id": "30"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_22",
+            "source": "Valjean",
+            "target": "Chenildieu",
             "weight": 1.0,
             "attributes": {
-                "id": "31"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_23",
+            "source": "Valjean",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "32"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_24",
+            "source": "Valjean",
+            "target": "Woman2",
             "weight": 1.0,
             "attributes": {
-                "id": "33"
+                "value": 3
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_25",
+            "source": "Valjean",
+            "target": "MotherInnocent",
             "weight": 1.0,
             "attributes": {
-                "id": "34"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_26",
+            "source": "Valjean",
+            "target": "Gavroche",
             "weight": 1.0,
             "attributes": {
-                "id": "35"
+                "value": 1
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_27",
+            "source": "Valjean",
+            "target": "Gillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "36"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_28",
+            "source": "Valjean",
+            "target": "MlleGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "37"
+                "value": 2
             }
         },
         {
-            "source": "Core_0",
-            "target": "Periphery_29",
+            "source": "Valjean",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "38"
+                "value": 19
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_2",
+            "source": "Valjean",
+            "target": "Enjolras",
             "weight": 1.0,
             "attributes": {
-                "id": "39"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_3",
+            "source": "Valjean",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "40"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_4",
+            "source": "Valjean",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "41"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_5",
+            "source": "Valjean",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "42"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_6",
+            "source": "Valjean",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "43"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_7",
+            "source": "Valjean",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "44"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_8",
+            "source": "Valjean",
+            "target": "Toussaint",
             "weight": 1.0,
             "attributes": {
-                "id": "45"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Core_9",
+            "source": "Marguerite",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "46"
+                "value": 2
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_0",
+            "source": "Tholomyes",
+            "target": "Listolier",
             "weight": 1.0,
             "attributes": {
-                "id": "47"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_1",
+            "source": "Tholomyes",
+            "target": "Fameuil",
             "weight": 1.0,
             "attributes": {
-                "id": "48"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_2",
+            "source": "Tholomyes",
+            "target": "Blacheville",
             "weight": 1.0,
             "attributes": {
-                "id": "49"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_3",
+            "source": "Tholomyes",
+            "target": "Favourite",
             "weight": 1.0,
             "attributes": {
-                "id": "50"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_4",
+            "source": "Tholomyes",
+            "target": "Dahlia",
             "weight": 1.0,
             "attributes": {
-                "id": "51"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_5",
+            "source": "Tholomyes",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "52"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_6",
+            "source": "Tholomyes",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "53"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_7",
+            "source": "Tholomyes",
+            "target": "Cosette",
             "weight": 1.0,
             "attributes": {
-                "id": "54"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_8",
+            "source": "Tholomyes",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "55"
+                "value": 1
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_9",
+            "source": "Listolier",
+            "target": "Fameuil",
             "weight": 1.0,
             "attributes": {
-                "id": "56"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_10",
+            "source": "Listolier",
+            "target": "Blacheville",
             "weight": 1.0,
             "attributes": {
-                "id": "57"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_11",
+            "source": "Listolier",
+            "target": "Favourite",
             "weight": 1.0,
             "attributes": {
-                "id": "58"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_12",
+            "source": "Listolier",
+            "target": "Dahlia",
             "weight": 1.0,
             "attributes": {
-                "id": "59"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_13",
+            "source": "Listolier",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "60"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_14",
+            "source": "Listolier",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "61"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_15",
+            "source": "Fameuil",
+            "target": "Blacheville",
             "weight": 1.0,
             "attributes": {
-                "id": "62"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_16",
+            "source": "Fameuil",
+            "target": "Favourite",
             "weight": 1.0,
             "attributes": {
-                "id": "63"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_17",
+            "source": "Fameuil",
+            "target": "Dahlia",
             "weight": 1.0,
             "attributes": {
-                "id": "64"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_18",
+            "source": "Fameuil",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "65"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_19",
+            "source": "Fameuil",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "66"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_20",
+            "source": "Blacheville",
+            "target": "Favourite",
             "weight": 1.0,
             "attributes": {
-                "id": "67"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_21",
+            "source": "Blacheville",
+            "target": "Dahlia",
             "weight": 1.0,
             "attributes": {
-                "id": "68"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_22",
+            "source": "Blacheville",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "69"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_23",
+            "source": "Blacheville",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "70"
+                "value": 3
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_24",
+            "source": "Favourite",
+            "target": "Dahlia",
             "weight": 1.0,
             "attributes": {
-                "id": "71"
+                "value": 5
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_25",
+            "source": "Favourite",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "72"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_26",
+            "source": "Favourite",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "73"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_27",
+            "source": "Dahlia",
+            "target": "Zephine",
             "weight": 1.0,
             "attributes": {
-                "id": "74"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_28",
+            "source": "Dahlia",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "75"
+                "value": 4
             }
         },
         {
-            "source": "Core_1",
-            "target": "Periphery_29",
+            "source": "Zephine",
+            "target": "Fantine",
             "weight": 1.0,
             "attributes": {
-                "id": "76"
+                "value": 4
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_3",
+            "source": "Fantine",
+            "target": "MmeThenardier",
             "weight": 1.0,
             "attributes": {
-                "id": "77"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_4",
+            "source": "Fantine",
+            "target": "Thenardier",
             "weight": 1.0,
             "attributes": {
-                "id": "78"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_5",
+            "source": "Fantine",
+            "target": "Javert",
             "weight": 1.0,
             "attributes": {
-                "id": "79"
+                "value": 5
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_6",
+            "source": "Fantine",
+            "target": "Bamatabois",
             "weight": 1.0,
             "attributes": {
-                "id": "80"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_7",
+            "source": "Fantine",
+            "target": "Perpetue",
             "weight": 1.0,
             "attributes": {
-                "id": "81"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_8",
+            "source": "Fantine",
+            "target": "Simplice",
             "weight": 1.0,
             "attributes": {
-                "id": "82"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Core_9",
+            "source": "MmeThenardier",
+            "target": "Thenardier",
             "weight": 1.0,
             "attributes": {
-                "id": "83"
+                "value": 13
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_0",
+            "source": "MmeThenardier",
+            "target": "Cosette",
             "weight": 1.0,
             "attributes": {
-                "id": "84"
+                "value": 4
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_1",
+            "source": "MmeThenardier",
+            "target": "Javert",
             "weight": 1.0,
             "attributes": {
-                "id": "85"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_2",
+            "source": "MmeThenardier",
+            "target": "Eponine",
             "weight": 1.0,
             "attributes": {
-                "id": "86"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_3",
+            "source": "MmeThenardier",
+            "target": "Anzelma",
             "weight": 1.0,
             "attributes": {
-                "id": "87"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_4",
+            "source": "MmeThenardier",
+            "target": "Magnon",
             "weight": 1.0,
             "attributes": {
-                "id": "88"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_5",
+            "source": "MmeThenardier",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "89"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_6",
+            "source": "MmeThenardier",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "90"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_7",
+            "source": "MmeThenardier",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "91"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_8",
+            "source": "Thenardier",
+            "target": "Cosette",
             "weight": 1.0,
             "attributes": {
-                "id": "92"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_9",
+            "source": "Thenardier",
+            "target": "Javert",
             "weight": 1.0,
             "attributes": {
-                "id": "93"
+                "value": 5
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_10",
+            "source": "Thenardier",
+            "target": "Pontmercy",
             "weight": 1.0,
             "attributes": {
-                "id": "94"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_11",
+            "source": "Thenardier",
+            "target": "Boulatruelle",
             "weight": 1.0,
             "attributes": {
-                "id": "95"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_12",
+            "source": "Thenardier",
+            "target": "Eponine",
             "weight": 1.0,
             "attributes": {
-                "id": "96"
+                "value": 3
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_13",
+            "source": "Thenardier",
+            "target": "Anzelma",
             "weight": 1.0,
             "attributes": {
-                "id": "97"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_14",
+            "source": "Thenardier",
+            "target": "Gavroche",
             "weight": 1.0,
             "attributes": {
-                "id": "98"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_15",
+            "source": "Thenardier",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "99"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_16",
+            "source": "Thenardier",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "100"
+                "value": 5
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_17",
+            "source": "Thenardier",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "101"
+                "value": 6
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_18",
+            "source": "Thenardier",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "102"
+                "value": 4
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_19",
+            "source": "Thenardier",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "103"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_20",
+            "source": "Thenardier",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "104"
+                "value": 3
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_21",
+            "source": "Cosette",
+            "target": "Javert",
             "weight": 1.0,
             "attributes": {
-                "id": "105"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_22",
+            "source": "Cosette",
+            "target": "Woman2",
             "weight": 1.0,
             "attributes": {
-                "id": "106"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_23",
+            "source": "Cosette",
+            "target": "Gillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "107"
+                "value": 3
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_24",
+            "source": "Cosette",
+            "target": "MlleGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "108"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_25",
+            "source": "Cosette",
+            "target": "LtGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "109"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_26",
+            "source": "Cosette",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "110"
+                "value": 21
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_27",
+            "source": "Cosette",
+            "target": "Toussaint",
             "weight": 1.0,
             "attributes": {
-                "id": "111"
+                "value": 2
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_28",
+            "source": "Javert",
+            "target": "Fauchelevent",
             "weight": 1.0,
             "attributes": {
-                "id": "112"
+                "value": 1
             }
         },
         {
-            "source": "Core_2",
-            "target": "Periphery_29",
+            "source": "Javert",
+            "target": "Bamatabois",
             "weight": 1.0,
             "attributes": {
-                "id": "113"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_4",
+            "source": "Javert",
+            "target": "Simplice",
             "weight": 1.0,
             "attributes": {
-                "id": "114"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_5",
+            "source": "Javert",
+            "target": "Woman1",
             "weight": 1.0,
             "attributes": {
-                "id": "115"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_6",
+            "source": "Javert",
+            "target": "Woman2",
             "weight": 1.0,
             "attributes": {
-                "id": "116"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_7",
+            "source": "Javert",
+            "target": "Gavroche",
             "weight": 1.0,
             "attributes": {
-                "id": "117"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_8",
+            "source": "Javert",
+            "target": "Enjolras",
             "weight": 1.0,
             "attributes": {
-                "id": "118"
+                "value": 6
             }
         },
         {
-            "source": "Core_3",
-            "target": "Core_9",
+            "source": "Javert",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "119"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_0",
+            "source": "Javert",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "120"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_1",
+            "source": "Javert",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "121"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_2",
+            "source": "Javert",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "122"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_3",
+            "source": "Javert",
+            "target": "Toussaint",
             "weight": 1.0,
             "attributes": {
-                "id": "123"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_4",
+            "source": "Fauchelevent",
+            "target": "MotherInnocent",
             "weight": 1.0,
             "attributes": {
-                "id": "124"
+                "value": 3
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_5",
+            "source": "Fauchelevent",
+            "target": "Gribier",
             "weight": 1.0,
             "attributes": {
-                "id": "125"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_6",
+            "source": "Bamatabois",
+            "target": "Judge",
             "weight": 1.0,
             "attributes": {
-                "id": "126"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_7",
+            "source": "Bamatabois",
+            "target": "Champmathieu",
             "weight": 1.0,
             "attributes": {
-                "id": "127"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_8",
+            "source": "Bamatabois",
+            "target": "Brevet",
             "weight": 1.0,
             "attributes": {
-                "id": "128"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_9",
+            "source": "Bamatabois",
+            "target": "Chenildieu",
             "weight": 1.0,
             "attributes": {
-                "id": "129"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_10",
+            "source": "Bamatabois",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "130"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_11",
+            "source": "Perpetue",
+            "target": "Simplice",
             "weight": 1.0,
             "attributes": {
-                "id": "131"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_12",
+            "source": "Judge",
+            "target": "Champmathieu",
             "weight": 1.0,
             "attributes": {
-                "id": "132"
+                "value": 3
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_13",
+            "source": "Judge",
+            "target": "Brevet",
             "weight": 1.0,
             "attributes": {
-                "id": "133"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_14",
+            "source": "Judge",
+            "target": "Chenildieu",
             "weight": 1.0,
             "attributes": {
-                "id": "134"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_15",
+            "source": "Judge",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "135"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_16",
+            "source": "Champmathieu",
+            "target": "Brevet",
             "weight": 1.0,
             "attributes": {
-                "id": "136"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_17",
+            "source": "Champmathieu",
+            "target": "Chenildieu",
             "weight": 1.0,
             "attributes": {
-                "id": "137"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_18",
+            "source": "Champmathieu",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "138"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_19",
+            "source": "Brevet",
+            "target": "Chenildieu",
             "weight": 1.0,
             "attributes": {
-                "id": "139"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_20",
+            "source": "Brevet",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "140"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_21",
+            "source": "Chenildieu",
+            "target": "Cochepaille",
             "weight": 1.0,
             "attributes": {
-                "id": "141"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_22",
+            "source": "Pontmercy",
+            "target": "MmePontmercy",
             "weight": 1.0,
             "attributes": {
-                "id": "142"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_23",
+            "source": "Pontmercy",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "143"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_24",
+            "source": "Eponine",
+            "target": "Anzelma",
             "weight": 1.0,
             "attributes": {
-                "id": "144"
+                "value": 2
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_25",
+            "source": "Eponine",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "145"
+                "value": 5
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_26",
+            "source": "Eponine",
+            "target": "Mabeuf",
             "weight": 1.0,
             "attributes": {
-                "id": "146"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_27",
+            "source": "Eponine",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "147"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_28",
+            "source": "Eponine",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "148"
+                "value": 1
             }
         },
         {
-            "source": "Core_3",
-            "target": "Periphery_29",
+            "source": "Eponine",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "149"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Core_5",
+            "source": "Eponine",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "150"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Core_6",
+            "source": "Eponine",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "151"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Core_7",
+            "source": "Eponine",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "152"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Core_8",
+            "source": "Jondrette",
+            "target": "MmeBurgon",
             "weight": 1.0,
             "attributes": {
-                "id": "153"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Core_9",
+            "source": "MmeBurgon",
+            "target": "Gavroche",
             "weight": 1.0,
             "attributes": {
-                "id": "154"
+                "value": 2
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_0",
+            "source": "Gavroche",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "155"
+                "value": 4
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_1",
+            "source": "Gavroche",
+            "target": "Mabeuf",
             "weight": 1.0,
             "attributes": {
-                "id": "156"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_2",
+            "source": "Gavroche",
+            "target": "Enjolras",
             "weight": 1.0,
             "attributes": {
-                "id": "157"
+                "value": 7
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_3",
+            "source": "Gavroche",
+            "target": "Combeferre",
             "weight": 1.0,
             "attributes": {
-                "id": "158"
+                "value": 6
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_4",
+            "source": "Gavroche",
+            "target": "Prouvaire",
             "weight": 1.0,
             "attributes": {
-                "id": "159"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_5",
+            "source": "Gavroche",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "160"
+                "value": 2
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_6",
+            "source": "Gavroche",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "161"
+                "value": 7
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_7",
+            "source": "Gavroche",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "162"
+                "value": 5
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_8",
+            "source": "Gavroche",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "163"
+                "value": 5
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_9",
+            "source": "Gavroche",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "164"
+                "value": 3
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_10",
+            "source": "Gavroche",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "165"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_11",
+            "source": "Gavroche",
+            "target": "Gueulemer",
             "weight": 1.0,
             "attributes": {
-                "id": "166"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_12",
+            "source": "Gavroche",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "167"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_13",
+            "source": "Gavroche",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "168"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_14",
+            "source": "Gavroche",
+            "target": "Child1",
             "weight": 1.0,
             "attributes": {
-                "id": "169"
+                "value": 2
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_15",
+            "source": "Gavroche",
+            "target": "Child2",
             "weight": 1.0,
             "attributes": {
-                "id": "170"
+                "value": 2
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_16",
+            "source": "Gavroche",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "171"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_17",
+            "source": "Gavroche",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "172"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_18",
+            "source": "Gillenormand",
+            "target": "Magnon",
             "weight": 1.0,
             "attributes": {
-                "id": "173"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_19",
+            "source": "Gillenormand",
+            "target": "MlleGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "174"
+                "value": 9
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_20",
+            "source": "Gillenormand",
+            "target": "LtGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "175"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_21",
+            "source": "Gillenormand",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "176"
+                "value": 12
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_22",
+            "source": "Gillenormand",
+            "target": "BaronessT",
             "weight": 1.0,
             "attributes": {
-                "id": "177"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_23",
+            "source": "MlleGillenormand",
+            "target": "MmePontmercy",
             "weight": 1.0,
             "attributes": {
-                "id": "178"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_24",
+            "source": "MlleGillenormand",
+            "target": "MlleVaubois",
             "weight": 1.0,
             "attributes": {
-                "id": "179"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_25",
+            "source": "MlleGillenormand",
+            "target": "LtGillenormand",
             "weight": 1.0,
             "attributes": {
-                "id": "180"
+                "value": 2
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_26",
+            "source": "MlleGillenormand",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "181"
+                "value": 6
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_27",
+            "source": "LtGillenormand",
+            "target": "Marius",
             "weight": 1.0,
             "attributes": {
-                "id": "182"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_28",
+            "source": "Marius",
+            "target": "BaronessT",
             "weight": 1.0,
             "attributes": {
-                "id": "183"
+                "value": 1
             }
         },
         {
-            "source": "Core_4",
-            "target": "Periphery_29",
+            "source": "Marius",
+            "target": "Mabeuf",
             "weight": 1.0,
             "attributes": {
-                "id": "184"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Core_6",
+            "source": "Marius",
+            "target": "Enjolras",
             "weight": 1.0,
             "attributes": {
-                "id": "185"
+                "value": 7
             }
         },
         {
-            "source": "Core_5",
-            "target": "Core_7",
+            "source": "Marius",
+            "target": "Combeferre",
             "weight": 1.0,
             "attributes": {
-                "id": "186"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Core_8",
+            "source": "Marius",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "187"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Core_9",
+            "source": "Marius",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "188"
+                "value": 9
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_0",
+            "source": "Marius",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "189"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_1",
+            "source": "Marius",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "190"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_2",
+            "source": "Marius",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "191"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_3",
+            "source": "Mabeuf",
+            "target": "Enjolras",
             "weight": 1.0,
             "attributes": {
-                "id": "192"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_4",
+            "source": "Mabeuf",
+            "target": "Combeferre",
             "weight": 1.0,
             "attributes": {
-                "id": "193"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_5",
+            "source": "Mabeuf",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "194"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_6",
+            "source": "Mabeuf",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "195"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_7",
+            "source": "Mabeuf",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "196"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_8",
+            "source": "Mabeuf",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "197"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_9",
+            "source": "Mabeuf",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "198"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_10",
+            "source": "Mabeuf",
+            "target": "MotherPlutarch",
             "weight": 1.0,
             "attributes": {
-                "id": "199"
+                "value": 3
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_11",
+            "source": "Enjolras",
+            "target": "Combeferre",
             "weight": 1.0,
             "attributes": {
-                "id": "200"
+                "value": 15
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_12",
+            "source": "Enjolras",
+            "target": "Prouvaire",
             "weight": 1.0,
             "attributes": {
-                "id": "201"
+                "value": 4
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_13",
+            "source": "Enjolras",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "202"
+                "value": 6
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_14",
+            "source": "Enjolras",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "203"
+                "value": 17
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_15",
+            "source": "Enjolras",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "204"
+                "value": 4
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_16",
+            "source": "Enjolras",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "205"
+                "value": 10
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_17",
+            "source": "Enjolras",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "206"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_18",
+            "source": "Enjolras",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "207"
+                "value": 3
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_19",
+            "source": "Enjolras",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "208"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_20",
+            "source": "Enjolras",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "209"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_21",
+            "source": "Combeferre",
+            "target": "Prouvaire",
             "weight": 1.0,
             "attributes": {
-                "id": "210"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_22",
+            "source": "Combeferre",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "211"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_23",
+            "source": "Combeferre",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "212"
+                "value": 13
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_24",
+            "source": "Combeferre",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "213"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_25",
+            "source": "Combeferre",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "214"
+                "value": 9
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_26",
+            "source": "Combeferre",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "215"
+                "value": 5
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_27",
+            "source": "Combeferre",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "216"
+                "value": 1
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_28",
+            "source": "Prouvaire",
+            "target": "Feuilly",
             "weight": 1.0,
             "attributes": {
-                "id": "217"
+                "value": 2
             }
         },
         {
-            "source": "Core_5",
-            "target": "Periphery_29",
+            "source": "Prouvaire",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "218"
+                "value": 3
             }
         },
         {
-            "source": "Core_6",
-            "target": "Core_7",
+            "source": "Prouvaire",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "219"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Core_8",
+            "source": "Prouvaire",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "220"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Core_9",
+            "source": "Prouvaire",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "221"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_0",
+            "source": "Prouvaire",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "222"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_1",
+            "source": "Feuilly",
+            "target": "Courfeyrac",
             "weight": 1.0,
             "attributes": {
-                "id": "223"
+                "value": 6
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_2",
+            "source": "Feuilly",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "224"
+                "value": 3
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_3",
+            "source": "Feuilly",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "225"
+                "value": 6
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_4",
+            "source": "Feuilly",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "226"
+                "value": 5
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_5",
+            "source": "Feuilly",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "227"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_6",
+            "source": "Courfeyrac",
+            "target": "Bahorel",
             "weight": 1.0,
             "attributes": {
-                "id": "228"
+                "value": 6
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_7",
+            "source": "Courfeyrac",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "229"
+                "value": 12
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_8",
+            "source": "Courfeyrac",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "230"
+                "value": 5
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_9",
+            "source": "Courfeyrac",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "231"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_10",
+            "source": "Courfeyrac",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "232"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_11",
+            "source": "Bahorel",
+            "target": "Bossuet",
             "weight": 1.0,
             "attributes": {
-                "id": "233"
+                "value": 4
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_12",
+            "source": "Bahorel",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "234"
+                "value": 5
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_13",
+            "source": "Bahorel",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "235"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_14",
+            "source": "Bahorel",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "236"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_15",
+            "source": "Bossuet",
+            "target": "Joly",
             "weight": 1.0,
             "attributes": {
-                "id": "237"
+                "value": 7
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_16",
+            "source": "Bossuet",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "238"
+                "value": 3
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_17",
+            "source": "Bossuet",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "239"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_18",
+            "source": "Joly",
+            "target": "Grantaire",
             "weight": 1.0,
             "attributes": {
-                "id": "240"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_19",
+            "source": "Joly",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "241"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_20",
+            "source": "Grantaire",
+            "target": "MmeHucheloup",
             "weight": 1.0,
             "attributes": {
-                "id": "242"
+                "value": 1
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_21",
+            "source": "Gueulemer",
+            "target": "Babet",
             "weight": 1.0,
             "attributes": {
-                "id": "243"
+                "value": 6
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_22",
+            "source": "Gueulemer",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "244"
+                "value": 4
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_23",
+            "source": "Gueulemer",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "245"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_24",
+            "source": "Gueulemer",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "246"
+                "value": 3
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_25",
+            "source": "Babet",
+            "target": "Claquesous",
             "weight": 1.0,
             "attributes": {
-                "id": "247"
+                "value": 4
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_26",
+            "source": "Babet",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "248"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_27",
+            "source": "Babet",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "249"
+                "value": 3
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_28",
+            "source": "Claquesous",
+            "target": "Montparnasse",
             "weight": 1.0,
             "attributes": {
-                "id": "250"
+                "value": 2
             }
         },
         {
-            "source": "Core_6",
-            "target": "Periphery_29",
+            "source": "Claquesous",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "251"
+                "value": 1
             }
         },
         {
-            "source": "Core_7",
-            "target": "Core_8",
+            "source": "Montparnasse",
+            "target": "Brujon",
             "weight": 1.0,
             "attributes": {
-                "id": "252"
+                "value": 1
             }
         },
         {
-            "source": "Core_7",
-            "target": "Core_9",
+            "source": "Child1",
+            "target": "Child2",
             "weight": 1.0,
             "attributes": {
-                "id": "253"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_0",
-            "weight": 1.0,
-            "attributes": {
-                "id": "254"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_1",
-            "weight": 1.0,
-            "attributes": {
-                "id": "255"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_2",
-            "weight": 1.0,
-            "attributes": {
-                "id": "256"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_3",
-            "weight": 1.0,
-            "attributes": {
-                "id": "257"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_4",
-            "weight": 1.0,
-            "attributes": {
-                "id": "258"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_5",
-            "weight": 1.0,
-            "attributes": {
-                "id": "259"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_6",
-            "weight": 1.0,
-            "attributes": {
-                "id": "260"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_7",
-            "weight": 1.0,
-            "attributes": {
-                "id": "261"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_8",
-            "weight": 1.0,
-            "attributes": {
-                "id": "262"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_9",
-            "weight": 1.0,
-            "attributes": {
-                "id": "263"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_10",
-            "weight": 1.0,
-            "attributes": {
-                "id": "264"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_11",
-            "weight": 1.0,
-            "attributes": {
-                "id": "265"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_12",
-            "weight": 1.0,
-            "attributes": {
-                "id": "266"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_13",
-            "weight": 1.0,
-            "attributes": {
-                "id": "267"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_14",
-            "weight": 1.0,
-            "attributes": {
-                "id": "268"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_15",
-            "weight": 1.0,
-            "attributes": {
-                "id": "269"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_16",
-            "weight": 1.0,
-            "attributes": {
-                "id": "270"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_17",
-            "weight": 1.0,
-            "attributes": {
-                "id": "271"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_18",
-            "weight": 1.0,
-            "attributes": {
-                "id": "272"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_19",
-            "weight": 1.0,
-            "attributes": {
-                "id": "273"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_20",
-            "weight": 1.0,
-            "attributes": {
-                "id": "274"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_21",
-            "weight": 1.0,
-            "attributes": {
-                "id": "275"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_22",
-            "weight": 1.0,
-            "attributes": {
-                "id": "276"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_23",
-            "weight": 1.0,
-            "attributes": {
-                "id": "277"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_24",
-            "weight": 1.0,
-            "attributes": {
-                "id": "278"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_25",
-            "weight": 1.0,
-            "attributes": {
-                "id": "279"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_26",
-            "weight": 1.0,
-            "attributes": {
-                "id": "280"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_27",
-            "weight": 1.0,
-            "attributes": {
-                "id": "281"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_28",
-            "weight": 1.0,
-            "attributes": {
-                "id": "282"
-            }
-        },
-        {
-            "source": "Core_7",
-            "target": "Periphery_29",
-            "weight": 1.0,
-            "attributes": {
-                "id": "283"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Core_9",
-            "weight": 1.0,
-            "attributes": {
-                "id": "284"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_0",
-            "weight": 1.0,
-            "attributes": {
-                "id": "285"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_1",
-            "weight": 1.0,
-            "attributes": {
-                "id": "286"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_2",
-            "weight": 1.0,
-            "attributes": {
-                "id": "287"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_3",
-            "weight": 1.0,
-            "attributes": {
-                "id": "288"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_4",
-            "weight": 1.0,
-            "attributes": {
-                "id": "289"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_5",
-            "weight": 1.0,
-            "attributes": {
-                "id": "290"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_6",
-            "weight": 1.0,
-            "attributes": {
-                "id": "291"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_7",
-            "weight": 1.0,
-            "attributes": {
-                "id": "292"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_8",
-            "weight": 1.0,
-            "attributes": {
-                "id": "293"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_9",
-            "weight": 1.0,
-            "attributes": {
-                "id": "294"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_10",
-            "weight": 1.0,
-            "attributes": {
-                "id": "295"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_11",
-            "weight": 1.0,
-            "attributes": {
-                "id": "296"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_12",
-            "weight": 1.0,
-            "attributes": {
-                "id": "297"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_13",
-            "weight": 1.0,
-            "attributes": {
-                "id": "298"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_14",
-            "weight": 1.0,
-            "attributes": {
-                "id": "299"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_15",
-            "weight": 1.0,
-            "attributes": {
-                "id": "300"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_16",
-            "weight": 1.0,
-            "attributes": {
-                "id": "301"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_17",
-            "weight": 1.0,
-            "attributes": {
-                "id": "302"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_18",
-            "weight": 1.0,
-            "attributes": {
-                "id": "303"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_19",
-            "weight": 1.0,
-            "attributes": {
-                "id": "304"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_20",
-            "weight": 1.0,
-            "attributes": {
-                "id": "305"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_21",
-            "weight": 1.0,
-            "attributes": {
-                "id": "306"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_22",
-            "weight": 1.0,
-            "attributes": {
-                "id": "307"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_23",
-            "weight": 1.0,
-            "attributes": {
-                "id": "308"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_24",
-            "weight": 1.0,
-            "attributes": {
-                "id": "309"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_25",
-            "weight": 1.0,
-            "attributes": {
-                "id": "310"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_26",
-            "weight": 1.0,
-            "attributes": {
-                "id": "311"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_27",
-            "weight": 1.0,
-            "attributes": {
-                "id": "312"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_28",
-            "weight": 1.0,
-            "attributes": {
-                "id": "313"
-            }
-        },
-        {
-            "source": "Core_8",
-            "target": "Periphery_29",
-            "weight": 1.0,
-            "attributes": {
-                "id": "314"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_0",
-            "weight": 1.0,
-            "attributes": {
-                "id": "315"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_1",
-            "weight": 1.0,
-            "attributes": {
-                "id": "316"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_2",
-            "weight": 1.0,
-            "attributes": {
-                "id": "317"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_3",
-            "weight": 1.0,
-            "attributes": {
-                "id": "318"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_4",
-            "weight": 1.0,
-            "attributes": {
-                "id": "319"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_5",
-            "weight": 1.0,
-            "attributes": {
-                "id": "320"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_6",
-            "weight": 1.0,
-            "attributes": {
-                "id": "321"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_7",
-            "weight": 1.0,
-            "attributes": {
-                "id": "322"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_8",
-            "weight": 1.0,
-            "attributes": {
-                "id": "323"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_9",
-            "weight": 1.0,
-            "attributes": {
-                "id": "324"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_10",
-            "weight": 1.0,
-            "attributes": {
-                "id": "325"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_11",
-            "weight": 1.0,
-            "attributes": {
-                "id": "326"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_12",
-            "weight": 1.0,
-            "attributes": {
-                "id": "327"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_13",
-            "weight": 1.0,
-            "attributes": {
-                "id": "328"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_14",
-            "weight": 1.0,
-            "attributes": {
-                "id": "329"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_15",
-            "weight": 1.0,
-            "attributes": {
-                "id": "330"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_16",
-            "weight": 1.0,
-            "attributes": {
-                "id": "331"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_17",
-            "weight": 1.0,
-            "attributes": {
-                "id": "332"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_18",
-            "weight": 1.0,
-            "attributes": {
-                "id": "333"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_19",
-            "weight": 1.0,
-            "attributes": {
-                "id": "334"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_20",
-            "weight": 1.0,
-            "attributes": {
-                "id": "335"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_21",
-            "weight": 1.0,
-            "attributes": {
-                "id": "336"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_22",
-            "weight": 1.0,
-            "attributes": {
-                "id": "337"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_23",
-            "weight": 1.0,
-            "attributes": {
-                "id": "338"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_24",
-            "weight": 1.0,
-            "attributes": {
-                "id": "339"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_25",
-            "weight": 1.0,
-            "attributes": {
-                "id": "340"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_26",
-            "weight": 1.0,
-            "attributes": {
-                "id": "341"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_27",
-            "weight": 1.0,
-            "attributes": {
-                "id": "342"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_28",
-            "weight": 1.0,
-            "attributes": {
-                "id": "343"
-            }
-        },
-        {
-            "source": "Core_9",
-            "target": "Periphery_29",
-            "weight": 1.0,
-            "attributes": {
-                "id": "344"
+                "value": 3
             }
         }
     ]

@@ -65,5 +65,6 @@ class Lip:
         for i in cores:
             core_indices[i] = 1
 
-        z = self.brusco_metric(core_indices)
+
+        z = self.brusco_metric(cores)
         return z_influence, core_indices, z

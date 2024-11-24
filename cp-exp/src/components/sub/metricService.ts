@@ -83,6 +83,5 @@ export const updateGraphMetric = async (
 // Function to fetch the metric data from the server
 export const fetchMetricData = async () => {
   const response = await axios.get("http://localhost:8000/graph/metric-file/");
-  console.log(response.data);
   return response.data;
 };

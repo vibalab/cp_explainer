@@ -70,7 +70,7 @@ const OverviewPanel: React.FC<OverviewPanelProps> = ({
   }, [isDataUploaded]); // Added onClosenessCentralityAvg to dependencies
 
   if (loading) {
-    return <div>Loading graph data...</div>;
+    return <div> </div>;
   }
 
   if (error) {
