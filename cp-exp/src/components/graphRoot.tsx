@@ -162,6 +162,8 @@ const Root: FC<RootProps> = ({
   }, [isDataUploaded]);
 
   if (isLoading) {
+    const sampleDataLink = "/data/example_data.zip"; // 샘플 데이터 다운로드 링크
+
     return (
       <div style={{ textAlign: "center", padding: "2rem" }}>
         <h2>Welcome to CP-Explainer</h2>
@@ -176,6 +178,36 @@ const Root: FC<RootProps> = ({
           To get started, click <strong>"Data Import"</strong> and upload your
           graph data in a supported format (e.g., JSON, CSV).
         </p>
+        <p>
+          Alternatively, you can use our sample data to explore the features of
+          CP-Explainer.
+        </p>
+        <br />
+        <a
+          href={sampleDataLink}
+          style={{
+            display: "inline-block",
+            padding: "0.5rem 1rem",
+            backgroundColor: "white",
+            color: "black",
+            border: "1px solid black", // 외곽선을 black으로 설정
+            borderRadius: "0.3rem",
+            cursor: "pointer",
+            textDecoration: "none",
+            transition: "background-color 0.3s ease, color 0.3s ease", // 부드러운 전환 효과
+          }}
+          onMouseEnter={(e) => {
+            (e.target as HTMLAnchorElement).style.backgroundColor = "#87ceeb";
+            (e.target as HTMLAnchorElement).style.color = "white";
+          }}
+          onMouseLeave={(e) => {
+            (e.target as HTMLAnchorElement).style.backgroundColor = "white";
+            (e.target as HTMLAnchorElement).style.color = "black";
+          }}
+          download
+        >
+          Download Sample Data
+        </a>
       </div>
     );
   }

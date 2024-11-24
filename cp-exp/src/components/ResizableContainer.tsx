@@ -79,6 +79,13 @@ const ResizableContainer: React.FC = () => {
     setConnectionProbabilities(data);
   };
 
+  const [isSampleData, setIsSampleData] = useState(false); // 샘플 데이터 여부 상태
+
+  const handleLoadSampleData = () => {
+    setIsSampleData(true); // 샘플 데이터 플래그 활성화
+    setIsUploadModalOpen(true); // 모달 열기
+  };
+
   // 파일 업로드 완료 시 호출될 함수
   const handleFileUpload = async (file: File) => {
     setUploadedFile(file);
