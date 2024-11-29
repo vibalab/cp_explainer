@@ -1,98 +1,68 @@
 # CP-Explainer: A Visualization Tool for Core-Periphery Analysis
 
+<p align="center">
+  <img src="./graph.png" alt="Anime" width="55%"/>
+</p>
+
 **CP-Explainer** is a web-based interactive system designed to simplify and enhance the analysis of core-periphery (CP) structures in networks. It provides an integrated analytical environment with intuitive visualizations, detailed algorithm explanations, and no-code interaction, making CP analysis accessible for users of all expertise levels.
 
 ---
 
 ## Features
 
-### 1. **Streamlined Analysis Workflow**
+### Key Features
 
-- Supports multiple CP classification methods with detailed explanations.
-- Integrated interface for network statistics, metrics, and interactive settings.
-- Real-time updates for efficient and iterative analysis.
+#### 1. **Network Visualization with Multiple Data Formats**
 
-### 2. **Accessibility and Compatibility**
+#### 2. **Application of Core-Periphery Algorithms**
 
-- No coding required for CP analysis.
-- Import and export network data in various formats: CSV, JSON, XLSX, and images.
-- Web-based interface accessible through any modern browser.
+#### 3. **Detailed Panels for Comprehensive Analysis**
 
-### 3. **Interactive and Customizable Analysis**
-
-- Intuitive interface for adjusting parameters, modifying thresholds, and switching methods dynamically.
-- Customizable node and edge visuals to tailor visual analysis.
-
-### 4. **Detailed Panels for In-Depth Insights**
-
-- **Overview Statistics:** Summary of network metrics (node count, average centrality, density, etc.).
-- **Node Details:** Centrality metrics, core-periphery status, and neighbor information.
-- **Connection Probability:** Visualization of connection patterns within CP groups.
-- **Adjacency Matrix Heatmap:** Visual analysis of connection density and clustering tendencies.
-- **Boxplot of Closeness Centrality:** Comparative analysis of core and peripheral nodes.
-
-### 5. **Core-Periphery Explanation**
-
-- Interactive panels to explore and validate node classifications.
-- Node-level core scores and classification logic visualized for deeper understanding.
-
-### 6. **Convenience Features**
-
-- Tooltip guidance for new users.
-- Network snapshot functionality for capturing and exporting customized visualizations.
+#### 4. **User-Friendly Features**
 
 ---
 
-## System Components
+## Requirements
 
-### 1. **Data Import and Export**
-
-- Easy import of network data in multiple formats.
-- Export results and analysis outcomes for integration with external tools.
-
-### 2. **Method Selection**
-
-- Nine CP detection methods categorized for diverse network characteristics.
-- Customizable parameters for detailed analysis.
-
-### 3. **Network Visualization**
-
-- Interactive exploration of nodes and edges.
-- Visual indicators (size, color, thickness) to represent network properties.
+- Python 3.9.2
+- Conda
+- React with TypeScript
 
 ---
 
-## User Scenarios
+## Installation
 
-### **Experienced Analyst**
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/vibalab/CP-Explainer
+   ```
+2. **Set up Python Environment**
 
-A data scientist uses CP-Explainer to investigate roles within financial networks by selecting appropriate CP algorithms, adjusting parameters, and exporting findings for presentations.
+   ```bash
+   conda create -n cp-explainer python=3.9.20
+   conda activate cp-explainer
+   pip install -r requirements.txt
+   ```
 
-### **Non-Expert User**
+3. **Install React TypeScript Dependencies**
+   ```bash
+    cd cp-exp
+    npm install
+    cd ..
+   ```
 
-An HR manager analyzes inter-departmental collaboration to identify key communication hubs, leveraging CP-Explainer’s user-friendly interface for actionable insights.
+## Usage
 
----
-
-## Installation and Usage
-
-1. **Access the System**
-
-   - Open the [CP-Explainer Web Interface](https://cp-explainer.netlify.app/) in your browser.
-
-2. **Import Data**
-
-   - Upload network data in supported formats (e.g., CSV, JSON, XLSX).
-
-3. **Analyze the Network**
-
-   - Select a CP detection method and adjust parameters as needed.
-   - Interact with the visualization to explore network structures.
-
-4. **Export Results**
-   - Save analyzed data and visualizations in preferred formats.
-
----
+1. **Start the Uvicorn Server**
+   ```bash
+    cd app
+    uvicorn main:app --reload
+   ```
+2. **Start the React Frontend**
+   ```bash
+    cd cp-exp
+    npm start
+   ```
 
 ## Feedback and Contributions
 
@@ -100,20 +70,6 @@ We welcome feedback and suggestions for improving CP-Explainer. Feel free to ope
 
 ---
 
-## Authors
-
-- Jeongjin Park, Seoul National University
-- Jinwoo Choi, Seoul National University
-- Hyunwoo Park, Seoul National University
-
----
-
 ## License
 
-This project is licensed under the terms of the Creative Commons Attribution License. For more information, see the [LICENSE](LICENSE) file.
-
----
-
-## References
-
-For academic references and detailed methodology, refer to our [EuroVis 2025 Paper](https://doi.org/your-paper-link).
+This project is licensed under the terms of the Creative Commons Attribution License.
