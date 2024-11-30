@@ -8,10 +8,6 @@
 
 **CP-Explainer** is a web-based interactive system designed to simplify and enhance the analysis of core-periphery (CP) structures in networks. It provides an integrated analytical environment with intuitive visualizations, detailed algorithm explanations, and no-code interaction, making CP analysis accessible for users of all expertise levels.
 
----
-
-## Demo Video
-
 🎥 [Watch the Demo Video](https://youtu.be/GAMnm-1YHw8)
 
 ---
