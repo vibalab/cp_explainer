@@ -10,6 +10,12 @@
 
 ---
 
+## Demo Video
+
+🎥 [Watch the Demo Video](https://youtu.be/GAMnm-1YHw8)
+
+---
+
 ## Features
 
 ### Key Features

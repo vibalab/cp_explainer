@@ -360,7 +360,7 @@ const MethodModal: React.FC<MethodModalProps> = ({
                 onMouseEnter={(e) =>
                   handleMouseEnter(
                     e,
-                    "The threshold value of Capacity to determine core-periphery separation in the Silva method."
+                    "The threshold value of cumulative Capacity to determine core-periphery separation in the Silva method. Higher Threshold → More Nodes in Core"
                   )
                 }
                 onMouseMove={handleMouseMove}
